@@ -1,0 +1,20 @@
+=== AdaBoost: Accuracy vs Number of Weak Classifiers ===
+
+ Classifiers    Ensemble Acc  vs Baseline
+---------------------------------------------
+           1           70.0%  (baseline)
+           2           70.0%  +0.0%
+           5           71.7%  +1.7%
+          10           78.3%  +8.3%
+          20           80.8%  +10.8%
+          50           85.0%  +15.0%
+         100           82.5%  +12.5%
+         200           83.3%  +13.3%
+
+Baseline (1 stump): 70.0%
+
+=== Final Model Comparison ===
+
+  Single Tree (depth=5)       : 83.3%
+  Random Forest 100 trees     : 88.3%
+  AdaBoost 200 stumps         : 83.3%

@@ -1,0 +1,18 @@
+=== XOR Problem ===
+
+Perceptron (0 hidden): acc=25%  preds=[1 1 0 1]
+MLFFNN (4 hidden)    : acc=100%  preds=[0 1 1 0]
+
+Learned hidden-layer weights (2 inputs -> 4 neurons):
+  Neuron 1: x1*-1.584 + x2*-2.045 + bias:+0.086
+  Neuron 2: x1*+1.380 + x2*-2.327 + bias:-0.567
+  Neuron 3: x1*-2.385 + x2*-1.930 + bias:+0.320
+  Neuron 4: x1*-2.277 + x2*+1.388 + bias:-0.451
+
+=== Architecture Comparison (3-class task) ===
+
+Architecture           Test Acc   Total Params
+------------------------------------------------
+  (10,)                   94.0%            143
+  (20, 10)                92.5%            463
+  (50, 30, 10)            93.5%           2423

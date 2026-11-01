@@ -1,0 +1,35 @@
+=== CLIP: Contrastive Language-Image Pre-training ===
+
+Training objective:
+  1. Encode all images and all captions into the SAME m-dim space
+  2. Compute cosine similarity of every (image, caption) pair
+  3. MAXIMISE similarity of the N correct pairs
+     MINIMISE similarity of the N^2 - N incorrect pairs
+
+Similarity matrix S (rows = images, cols = captions):
+
+            cap1      cap2      cap3      cap4      
+  image1   +0.946  +0.577  -0.661  -0.390  
+  image2   +0.660  +0.829  -0.059  +0.030  
+  image3   -0.541  -0.233  +0.979  +0.742  
+  image4   -0.394  -0.387  +0.703  +0.951  
+
+Diagonal (correct pairs)  : [0.946 0.829 0.979 0.951]
+Off-diagonal (wrong pairs): mean +0.004
+Number of wrong pairs = N^2 - N = 12
+
+Image -> caption retrieval (pick argmax per row):
+  image1 -> 'a dog on a beach'   [correct]
+  image2 -> 'a plate of pasta'   [correct]
+  image3 -> 'a red sports car'   [correct]
+  image4 -> 'two children playing'   [correct]
+Retrieval accuracy: 100%
+
+Contrastive loss (temperature tau=0.07):
+  image->text loss = 0.0382
+  text->image loss = 0.0281
+  total = (sum)/2  = 0.0332
+
+CLIP is used in DALL-E 2: the CLIP text encoder maps the caption into
+representation space, then a diffusion prior maps it to a CLIP image
+encoding, and reverse diffusion generates the final image.

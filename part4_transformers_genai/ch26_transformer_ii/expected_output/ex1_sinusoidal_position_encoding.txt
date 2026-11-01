@@ -1,0 +1,40 @@
+=== Sinusoidal Position Encoding ===
+
+Why needed? Attention has NO notion of order. Consider:
+  "The food was good, not bad at all"
+  "The food was bad, not good at all"
+Same words, opposite meaning -> position information is essential.
+
+Position encoding matrix p_t for T=6 positions, d=8:
+[[ 0.      1.      0.      1.      0.      1.      0.      1.    ]
+ [ 0.8415  0.5403  0.0998  0.995   0.01    1.      0.001   1.    ]
+ [ 0.9093 -0.4161  0.1987  0.9801  0.02    0.9998  0.002   1.    ]
+ [ 0.1411 -0.99    0.2955  0.9553  0.03    0.9996  0.003   1.    ]
+ [-0.7568 -0.6536  0.3894  0.9211  0.04    0.9992  0.004   1.    ]
+ [-0.9589  0.2837  0.4794  0.8776  0.05    0.9988  0.005   1.    ]]
+
+Every position gets a DIFFERENT vector:
+  p_0 = [0. 1. 0. 1. 0. 1. 0. 1.]
+  p_1 = [0.8415 0.5403 0.0998 0.995  0.01   1.     0.001  1.    ]
+  p_2 = [ 0.9093 -0.4161  0.1987  0.9801  0.02    0.9998  0.002   1.    ]
+
+Combine with word embedding:  x_hat_t = x_t + p_t
+  word embedding x  (same word at any position): [ 1.764  0.4    0.979  2.241  1.868 -0.977  0.95  -0.151]
+  x_hat at position 0 = [1.764 1.4   0.979 3.241 1.868 0.023 0.95  0.849]
+  x_hat at position 3 = [ 1.905 -0.59   1.275  3.196  1.898  0.023  0.953  0.849]
+  -> the SAME word gets different embeddings at different positions.
+
+=== Property: similarity decays with distance ===
+Dot product between position 0 and position t:
+  p_0 . p_0 = +4.0000
+  p_0 . p_1 = +3.5353
+  p_0 . p_2 = +2.5637
+  p_0 . p_3 = +1.9649
+  p_0 . p_4 = +2.2666
+  p_0 . p_5 = +3.1600
+Nearby positions have higher similarity -> the model can infer relative order.
+
+=== Why sinusoidal (not learned integers)? ===
+  * Values stay bounded in [-1, 1] regardless of sequence length
+  * Generalises to sequences longer than those seen in training
+  * Relative position is expressible as a linear function of p_t

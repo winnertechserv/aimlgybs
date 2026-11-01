@@ -1,0 +1,47 @@
+=== Scaled Dot-Product Attention ===
+
+Terminology borrowed from regression: Query, Key, Value
+
+Query q_t          : [-1.05 -1.42 -1.71  1.95]
+Key matrix K  (5x4):
+[[ 1.76  0.4   0.98  2.24]
+ [ 1.87 -0.98  0.95 -0.15]
+ [-0.1   0.41  0.14  1.45]
+ [ 0.76  0.12  0.44  0.33]
+ [ 1.49 -0.21  0.31 -0.85]]
+Value matrix V (5x4):
+[[-2.55  0.65  0.86 -0.74]
+ [ 2.27 -1.45  0.05 -0.19]
+ [ 1.53  1.47  0.15  0.38]
+ [-0.89 -1.98 -0.35  0.16]
+ [ 1.23  1.2  -0.39 -0.3 ]]
+
+Step 1: scaled dot product  alpha_tm = <q_t, k_m> / sqrt(d)
+  alpha_t1 = [1.76 0.4  0.98 2.24] . q / sqrt(4) = +0.1381
+  alpha_t2 = [ 1.87 -0.98  0.95 -0.15] . q / sqrt(4) = -1.2445
+  alpha_t3 = [-0.1   0.41  0.14  1.45] . q / sqrt(4) = +1.0554
+  alpha_t4 = [0.76 0.12 0.44 0.33] . q / sqrt(4) = -0.5387
+  alpha_t5 = [ 1.49 -0.21  0.31 -0.85] . q / sqrt(4) = -1.7269
+
+Step 2: attention scores  a_tm = softmax(alpha_tm)
+  a_t1 = 0.2264  #########
+  a_t2 = 0.0568  ##
+  a_t3 = 0.5666  ######################
+  a_t4 = 0.1151  ####
+  a_t5 = 0.0351  #
+  Sum of attention scores = 1.0000  (softmax always sums to 1)
+
+Step 3: context vector  c_t = sum_m a_tm * v_m
+  c_t = [0.3593 0.712  0.2286 0.0449]
+
+Interpretation:
+  Key 3 receives the highest attention (0.5666),
+  so the context vector is pulled most towards Value vector 3.
+
+Why divide by sqrt(d)? Without scaling, large dot products push softmax
+into a saturated region where gradients vanish during training.
+
+=== Effect of the 1/sqrt(d) scaling ===
+  Unscaled logits [10.  8.  6.  4.  2.] -> softmax [8.647e-01 1.170e-01 1.580e-02 2.100e-03 3.000e-04]
+  Scaled by sqrt(4)            -> softmax [0.6364 0.2341 0.0861 0.0317 0.0117]
+  Scaling keeps the distribution smoother (non-saturated gradients).

@@ -1,0 +1,28 @@
+Dataset: 300 samples | Ground truth: 4 clusters
+
+=== Elbow Method ===
+
+   K    Distortion J      Change   Silhouette
+----------------------------------------------
+   1        19780.25           —          N/A
+   2         9211.21    -10569.0       0.6030
+   3         1919.36     -7291.8       0.7783
+   4          362.47     -1556.9       0.8335
+   5          329.27       -33.2       0.6976
+   6          294.61       -34.7       0.5882
+   7          261.56       -33.0       0.4487
+   8          232.01       -29.6       0.3322
+
+Elbow at K=4 — biggest drop plateaus after K=4.
+Silhouette also peaks at K=4. Both methods agree!
+
+=== K-Means Result (K=4) ===
+
+Cluster Centers:
+  Cluster 0: (-2.637, +8.986) | 75 points
+  Cluster 1: (-6.842, -6.840) | 75 points
+  Cluster 2: (+4.703, +2.028) | 75 points
+  Cluster 3: (-8.833, +7.218) | 75 points
+
+Total Distortion J = 362.4724
+Silhouette Score   = 0.8335

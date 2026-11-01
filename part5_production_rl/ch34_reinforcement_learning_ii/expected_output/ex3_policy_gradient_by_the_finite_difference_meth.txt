@@ -1,0 +1,42 @@
+=== Policy Gradient: the Finite-Difference Method ===
+
+Value-based methods learn U(s) or Q(s,a) and then pick actions from it.
+Policy gradient methods skip that: they adjust the policy's parameters
+theta DIRECTLY, in the direction that raises the total reward J.
+
+The finite-difference recipe:
+  1. Nudge the weights m times by small random amounts  delta_theta_i
+  2. Run a roll-out of H moves with each nudged policy, measure delta_J_i
+  3. Stack nudges as rows of D and reward changes into y, then solve
+        grad J = (D^T D)^-1 D^T y        (the linear-regression formula)
+  4. Gradient ASCENT:  theta <- theta + eta * grad J
+
+Environment: a corridor of 7 cells, start in the middle (cell 3).
+Right end = +1, left end = -1, every other step = -0.01, horizon H=20.
+Policy: P(move right | s) = sigmoid(theta_0 + theta_1 * position)
+
+ iter   theta_0   theta_1   P(right) at start         J
+---------------------------------------------------------
+    0    -1.000     0.000               0.269    -0.752
+    2    -0.584     0.015               0.358    -0.480
+    4     0.643     0.020               0.655     0.515
+    6     1.465     0.113               0.812     0.785
+    8     1.657     0.136               0.840     0.796
+   10     1.878     0.126               0.867     0.831
+   12     2.012     0.158               0.882     0.840
+
+What happened:
+  The policy began by preferring the WRONG direction (P(right) = 0.27),
+  so it usually fell off the left end and J was negative.
+  Nobody told it which way to go. Each iteration it just tried small
+  random changes, saw which ones earned more reward, fitted a gradient,
+  and stepped uphill. P(right) climbed to nearly 0.9 and J turned positive.
+
+=== From here to Actor-Critic ===
+  Finite differences need many roll-outs per step, which is slow.
+  Actor-critic methods use TWO networks instead:
+    the ACTOR  (policy network) chooses actions,
+    the CRITIC (Q-network) scores them using the TD error
+        delta_t = R_t + gamma*Q(s_t+1, a_t+1) - Q(s_t, a_t).
+  The critic's score tells the actor which way to move, one step at a time,
+  without waiting for whole roll-outs. AlphaGo and walking robots use this idea.

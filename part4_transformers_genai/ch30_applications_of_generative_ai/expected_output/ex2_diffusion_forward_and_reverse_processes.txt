@@ -1,0 +1,68 @@
+=== Diffusion Models: Forward and Reverse Processes ===
+
+Forward diffusion : slowly DESTROY structure by adding noise
+Reverse diffusion : learn to RESTORE structure, turning noise into data
+
+Forward step:
+  x_(t+1) = sqrt(1 - beta_t) * x_t + sqrt(beta_t) * eps ,  eps ~ N(0, I)
+  As T -> infinity, x_T ~ N(0, I)  (pure noise)
+
+Original data x_0 : [ 1.   0.8 -0.6 -1.   0.4]
+Noise schedule beta_t from 0.05 to 0.35 over T=12 steps
+
+--- Forward Diffusion Process (adding noise step by step) ---
+
+  t   beta_t  x_t                                         corr with x_0
+--------------------------------------------------------------------------
+  1    0.050  [ 1.34  0.64 -0.7  -1.21  0.58]                    0.9854
+  4    0.132  [ 0.61  0.29 -1.2  -1.05  0.99]                    0.8740
+  7    0.214  [-0.48  0.35 -1.27 -1.1   0.9 ]                    0.6743
+ 10    0.295  [-0.74 -0.46  0.11  0.7   1.18]                   -0.5317
+ 12    0.350  [-0.    0.03  0.1   0.47  1.21]                   -0.1340
+
+Final x_T mean = +0.362, std = 0.459
+The structure of x_0 is essentially destroyed -> x_T is nearly N(0,I).
+
+--- Closed-form shortcut ---
+
+Instead of looping, we can jump directly to step t:
+  x_t = sqrt(alpha_bar_t) * x_0 + sqrt(1 - alpha_bar_t) * eps
+
+  t   alpha_bar_t   signal kept   noise added
+----------------------------------------------
+  1        0.9500        0.9747        0.2236
+  4        0.6815        0.8255        0.5644
+  7        0.3667        0.6055        0.7958
+ 10        0.1435        0.3788        0.9255
+ 12        0.0632        0.2513        0.9679
+
+Signal decays and noise grows monotonically - that is the whole schedule.
+
+--- Reverse Diffusion Process (denoising) ---
+
+A neural network (a U-Net with conv blocks, self-attention, GroupNorm,
+GELU/SiLU activations) predicts the noise eps at each step, and we
+subtract it to step back from x_t to x_(t-1).
+
+Start from pure noise x_T : [-0.005  0.031  0.099  0.47   1.214]
+Stepping backwards, each step removes a little predicted noise:
+
+ step t  x_t                                       err vs x_0
+--------------------------------------------------------------
+     11  [ 0.426  0.346  0.154  0.365 -0.361]          0.7815
+      8  [ 0.36   0.305 -0.247 -0.586  0.323]          0.3960
+      5  [ 1.002  1.019 -0.543 -1.231  0.698]          0.1615
+      2  [ 0.949  0.914 -0.651 -1.095  0.224]          0.0974
+      0  [ 1.022  0.769 -0.687 -0.991  0.398]          0.0301
+
+Recovered x_0             : [ 1.022  0.769 -0.687 -0.991  0.398]
+Original  x_0             : [ 1.   0.8 -0.6 -1.   0.4]
+Mean absolute error       : 0.0301
+The reverse process progressively recovers the structure. It is not
+exact because the denoising network is only an approximation - which
+is also why real diffusion models use hundreds of small steps.
+
+=== DALL-E 2 text-to-image pipeline ===
+  1. CLIP text encoder  : caption -> text representation
+  2. Diffusion prior    : text encoding -> CLIP image encoding
+  3. Reverse diffusion  : image encoding -> final generated image

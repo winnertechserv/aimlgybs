@@ -1,0 +1,34 @@
+=== LSTM Cell - One Timestep, All Gates ===
+
+An LSTM has 3 gates + a cell state, designed to avoid vanishing gradients:
+  Forget gate f_t : what to erase from cell state
+  Input gate  i_t : what new info to write
+  Output gate o_t : what to read out as the hidden state
+  Cell state  s_t : the long-term memory conveyor belt
+
+Current input  x_t   : [ 0.5 -0.3  0.8]
+Previous hidden h_(t-1): [ 0.1  -0.2   0.05  0.15]
+Previous cell   s_(t-1): [ 0.2  0.1 -0.1  0.3]
+
+Step 1 - Gate activations (sigmoid -> values in 0..1):
+  Input gate  i_t = [0.373 0.531 0.469 0.576]
+  Forget gate f_t = [0.433 0.658 0.505 0.515]
+  Output gate o_t = [0.478 0.442 0.336 0.448]
+  Candidate ~s_t  = [ 0.317  0.312 -0.061  0.537]  (tanh, -1..1)
+
+Step 2 - Cell state update (selective forget + selective write):
+  s_t = f_t (*) s_(t-1) + i_t (*) ~s_t
+      = [ 0.087  0.066 -0.051  0.155] + [ 0.118  0.166 -0.029  0.309]
+      = [ 0.2049  0.2314 -0.0794  0.464 ]
+
+Step 3 - Hidden state (selective read):
+  h_t = o_t (*) tanh(s_t) = [ 0.0965  0.1005 -0.0266  0.194 ]
+
+Why no vanishing gradient? The cell state s_t updates ADDITIVELY
+(f_t * s_(t-1) + ...), so gradients flow back through time without
+being repeatedly multiplied down to zero - unlike a vanilla RNN.
+
+Parameter count: LSTM has 4 weight sets (i,f,o,candidate)
+  = 4x the parameters of a vanilla RNN hidden layer
+  Vanilla RNN: U(4x3) + W(4x4) = 28 weights
+  LSTM       : 4 x (28) = 112 weights

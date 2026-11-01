@@ -1,0 +1,8 @@
+Grid search best mean : (116.20, 21.85)  log-likelihood -57.67
+Sample mean (formula) : (116.20, 21.85)
+-> Maximum likelihood estimate of a Gaussian mean = the sample mean.
+
+Product of 10 likelihoods: 9.016e-26  (sum of logs: -57.67)
+
+Parameters per class: Naive Bayes 26, full covariance 104
+Test accuracy  Naive Bayes: 0.963   Full-covariance Bayes: 1.000

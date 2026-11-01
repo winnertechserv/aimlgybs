@@ -1,0 +1,10 @@
+SVM boundary: 1.411*x1 + 2.475*x2 + 1.364 = 0
+Number of support vectors: 2 (out of 40 points)
+  support vector [-0.703 -0.554]  y*g(x) = 1.000  alpha*y = -4.059
+  support vector [-0.356  0.055]  y*g(x) = 1.000  alpha*y = +4.059
+
+Margin (distance from boundary to nearest point) = 1/||w|| = 0.351
+Width of the empty 'street' between the classes  = 2/||w|| = 0.702
+w rebuilt from support vectors: [1.411 2.475] (matches w)
+
+Closest point to the PERCEPTRON line: 0.032  vs  SVM: 0.351

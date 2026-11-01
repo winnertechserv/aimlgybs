@@ -1,0 +1,11 @@
+GD epoch     1: training MSE =   23374.7
+GD epoch    10: training MSE =    5816.5
+GD epoch   100: training MSE =    2812.7
+GD epoch  1000: training MSE =    2805.7
+GD epoch  3000: training MSE =    2804.2
+
+Test RMSE  closed form     : 55.65
+Test RMSE  gradient descent: 55.67
+Test RMSE  scikit-learn    : 55.65
+Largest weight difference, closed form vs GD: 1.550
+Test RMSE as % of the mean target: 36.6%

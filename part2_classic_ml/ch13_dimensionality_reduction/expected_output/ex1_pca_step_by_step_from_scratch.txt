@@ -1,0 +1,23 @@
+Dataset shape: (20, 5)  (20 samples, 5 features)
+
+Step 1: Covariance matrix computed (5x5)
+
+Step 2: Eigenvalues and cumulative variance:
+  PC1:    342787.18  |  99.73%  |  cum 99.73% <- 95% crossed
+  PC2:       790.08  |   0.23%  |  cum 99.96%
+  PC3:       130.23  |   0.04%  |  cum 99.99%
+  PC4:        16.40  |   0.00%  |  cum 100.00%
+  PC5:         2.49  |   0.00%  |  cum 100.00%
+
+Step 3: Keep l = 1 principal component(s) (95% rule)
+Step 4: Original shape (20, 5) -> Projected shape (20, 1)
+
+First 5 projected samples:
+  Sample 1: [-443.26]
+  Sample 2: [-530.7]
+  Sample 3: [452.14]
+  Sample 4: [-480.82]
+  Sample 5: [-375.42]
+
+Step 5: Variance of PC1: 325647.8184
+        (equals eigenvalue of PC1 - data is uncorrelated in new space)

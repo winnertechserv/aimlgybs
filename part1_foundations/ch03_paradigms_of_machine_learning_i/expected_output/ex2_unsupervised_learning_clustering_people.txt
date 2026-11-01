@@ -1,0 +1,14 @@
+ k   compactness (inertia)
+ 1      29581.3
+ 2       4332.2
+ 3       2463.4
+ 4       1170.9
+ 5        773.5
+Compactness drops sharply from k=1 to k=2, then flattens (the 'elbow').
+
+Cluster centres (height, weight):
+  (170.1 cm, 68.16 kg)
+  (116.2 cm, 21.85 kg)
+
+Agreement with the hidden child/adult labels: 100%
+New person (130 cm, 30 kg) joins cluster with centre [116.2  21.8]

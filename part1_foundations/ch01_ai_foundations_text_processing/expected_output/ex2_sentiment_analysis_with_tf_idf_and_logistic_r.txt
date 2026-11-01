@@ -1,0 +1,8 @@
+Vocabulary size (words + word pairs): 98
+The food was good, not bad at all      -> pos  (P(pos) = 0.73)
+The food was bad, not good at all      -> neg  (P(pos) = 0.27)
+friendly staff and delicious pizza     -> pos  (P(pos) = 0.72)
+rude staff and cold pizza              -> neg  (P(pos) = 0.27)
+
+Strongest NEGATIVE signals: ['bad', 'was bad', 'was burnt', 'burnt', 'not good']
+Strongest POSITIVE signals: ['good', 'was good', 'delicious', 'was delicious', 'quite good']

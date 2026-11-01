@@ -1,0 +1,11 @@
+Child: prior P = 0.50, mean = [116.2   21.85]
+Adult: prior P = 0.50, mean = [170.1   68.16]
+
+Test person x = [150.  47.]
+  likelihood p(x | Child) = 3.44e-17   posterior P(Child | x) = 6.48e-14
+  likelihood p(x | Adult) = 5.31e-04   posterior P(Adult | x) = 1.00e+00
+  Decision: Adult
+
+x2 = [140.  35.] with equal priors: P(Child|x) = 0.395, P(Adult|x) = 0.605 -> Adult
+
+x2 = [140.  35.] with school priors: P(Child|x) = 0.855, P(Adult|x) = 0.145 -> Child

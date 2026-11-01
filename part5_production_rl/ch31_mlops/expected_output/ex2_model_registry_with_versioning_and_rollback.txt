@@ -1,0 +1,60 @@
+=== Model Registry: Versioning, Promotion and Rollback ===
+
+A registry answers: which model is in production RIGHT NOW, what data
+and code produced it, and how do we roll back if it misbehaves?
+
+--- Registering successive model versions ---
+
+  ver  registered    test_acc  latency_ms  stage       data      commit
+  ------------------------------------------------------------------------------
+  v1   2026-03-11       0.842          21  None        d1a3f9    a91c4e2
+  v2   2026-03-12       0.871          24  None        d1a3f9    b32d81f
+  v3   2026-03-13       0.889          26  None        e77b21    c4419aa
+
+--- Promote v2 to Production ---
+  ver  registered    test_acc  latency_ms  stage       data      commit
+  ------------------------------------------------------------------------------
+  v1   2026-03-11       0.842          21  None        d1a3f9    a91c4e2
+  v2   2026-03-12       0.871          24  Production  d1a3f9    b32d81f
+  v3   2026-03-13       0.889          26  None        e77b21    c4419aa
+
+--- v3 looks better offline: promote to Staging, then Production ---
+  ver  registered    test_acc  latency_ms  stage       data      commit
+  ------------------------------------------------------------------------------
+  v1   2026-03-11       0.842          21  None        d1a3f9    a91c4e2
+  v2   2026-03-12       0.871          24  Archived    d1a3f9    b32d81f
+  v3   2026-03-13       0.889          26  Production  e77b21    c4419aa
+
+--- INCIDENT: v3 degrades in production (data mismatch) ---
+  Live monitoring: accuracy dropped to 0.71, error rate up 3x
+  Action: roll back to the last known-good version (v2)
+
+  ver  registered    test_acc  latency_ms  stage       data      commit
+  ------------------------------------------------------------------------------
+  v1   2026-03-11       0.842          21  None        d1a3f9    a91c4e2
+  v2   2026-03-12       0.871          24  Production  d1a3f9    b32d81f
+  v3   2026-03-13       0.889          26  Archived    e77b21    c4419aa
+
+--- Audit trail (what regulators / postmortems need) ---
+  1. registered v1
+  2. registered v2
+  3. registered v3
+  4. v2 -> Production
+  5. v3 -> Staging
+  6. v3 -> Production (v2 archived)
+  7. v2 -> Production (v3 archived)
+
+=== Why versioning matters ===
+  * Compare: a model trained in January differs from one trained in March
+  * Roll back quickly to a stable model, minimising downtime
+  * Reproducibility: model + data + code are versioned together
+  * Tools: Git (code), DVC / LakeFS (data), MLflow (models/metrics),
+           SageMaker Model Registry (cloud model versions)
+
+=== Reproducibility check ===
+
+Re-running v2 with the SAME data hash and code commit should give
+the same metrics. If it does not, something untracked has changed.
+  original v2 metrics : {'test_acc': 0.871, 'latency_ms': 24}
+  re-run metrics      : {'test_acc': 0.871, 'latency_ms': 24}
+  reproducible?       : True

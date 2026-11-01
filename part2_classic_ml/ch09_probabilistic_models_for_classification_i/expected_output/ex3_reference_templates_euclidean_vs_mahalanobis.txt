@@ -1,0 +1,16 @@
+Child: mean = [116.2   21.85], covariance =
+[[161.96  60.7 ]
+ [ 60.7   25.39]]
+
+Adult: mean = [170.1   68.16], covariance =
+[[131.21 131.76]
+ [131.76 162.8 ]]
+
+Test person x = [150.  47.]
+  Child: Euclidean distance  42.13   Mahalanobis distance  8.13
+  Adult: Euclidean distance  29.18   Mahalanobis distance  1.76
+
+Test person x2 = [137.  38.] (between the two groups)
+  Child: Euclidean  26.33   Mahalanobis  5.40
+  Adult: Euclidean  44.78   Mahalanobis  2.94
+  Euclidean picks: Child | Mahalanobis picks: Adult

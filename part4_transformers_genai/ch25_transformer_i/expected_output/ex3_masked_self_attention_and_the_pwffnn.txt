@@ -1,0 +1,42 @@
+=== Masked Self-Attention in the Decoder ===
+
+In the decoder, the output word at time t may depend ONLY on words
+y_1 ... y_t (already generated). Future words must be hidden -> masking.
+
+Causal mask (True = blocked / future position):
+[[0 1 1 1 1]
+ [0 0 1 1 1]
+ [0 0 0 1 1]
+ [0 0 0 0 1]
+ [0 0 0 0 0]]
+
+Attention scores WITHOUT mask (token 2 can see the future - wrong!):
+[[0.209 0.19  0.231 0.197 0.173]
+ [0.192 0.202 0.197 0.207 0.202]
+ [0.208 0.206 0.192 0.182 0.212]
+ [0.205 0.204 0.195 0.189 0.207]
+ [0.21  0.188 0.224 0.184 0.194]]
+
+Attention scores WITH causal mask (upper triangle is exactly 0):
+[[1.    0.    0.    0.    0.   ]
+ [0.487 0.513 0.    0.    0.   ]
+ [0.343 0.34  0.317 0.    0.   ]
+ [0.258 0.258 0.246 0.238 0.   ]
+ [0.21  0.188 0.224 0.184 0.194]]
+
+Row sums with mask: [1. 1. 1. 1. 1.] (still valid distributions)
+Token 1 attends only to itself; token 5 can attend to all 5 positions.
+
+=== Position-Wise Feedforward Neural Network (PWFFNN) ===
+
+There are T=5 MLFFNNs (one per position), but the weight matrices
+W_FF1 (6, 12) and W_FF2 (12, 6) are SHARED across all positions.
+Parameters if NOT shared : 5 x (144) = 720
+Parameters WITH sharing  : 144
+Reduction                : 80% fewer parameters
+
+Input to PWFFNN  (position 1): [ 0.1146  0.1699  0.0613  0.422  -0.5214  0.3122]
+Output of PWFFNN (position 1): [-0.2092  0.0133 -0.1183 -0.2155 -0.0143  0.0524]
+Output sequence shape: (5, 6)  (same length and dimension as input)
+
+Same input at any position -> same output? True  (confirms shared weights)

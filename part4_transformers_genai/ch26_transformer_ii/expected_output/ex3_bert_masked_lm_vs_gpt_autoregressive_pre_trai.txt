@@ -1,0 +1,50 @@
+=== Pre-Training Objectives: BERT vs GPT ===
+
+Both pre-train on huge UNLABELED text, then fine-tune on a small
+labeled dataset for a downstream task.
+
+Sentence (9 tokens): the quick brown fox jumps over the lazy dog
+
+--- BERT (encoder pre-training): Masked Language Modelling ---
+Randomly mask ~15% of tokens; the model predicts them using BOTH
+left and right context (bidirectional).
+
+  Masked positions : [6]
+  Model input      : the quick brown fox jumps over [MASK] lazy dog
+  Prediction target: ['the']
+  Context used     : ALL other tokens (both directions)
+
+  Second BERT objective - Next Sentence Prediction (NSP):
+    Input : [CLS] the quick brown fox ... [SEP] it was very fast [SEP]
+    Target: IsNext = True/False
+
+--- GPT (decoder pre-training): Autoregressive Language Modelling ---
+Predict the NEXT word using only the PRECEDING words (unidirectional).
+
+   t  Input (context)                               Predict
+  ------------------------------------------------------------------
+   1  the                                           -> quick
+   2  the quick                                     -> brown
+   3  the quick brown                               -> fox
+   4  the quick brown fox                           -> jumps
+   5  the quick brown fox jumps                     -> over
+  ...
+
+=== Cross-Entropy Loss for One Prediction ===
+
+Vocabulary      : ['fox', 'dog', 'cat', 'car', 'tree']
+Model logits    : [ 3.2  1.1  0.8 -0.5  0.2]
+Softmax probs   : [0.7766 0.0951 0.0705 0.0192 0.0387]
+True next word  : 'fox' (one-hot target)
+Cross-entropy loss = -log(p_correct) = -log(0.7766) = 0.2528
+
+If the model were confident and WRONG (p_correct = 0.01):
+  loss = -log(0.01) = 4.6052   (heavily penalised)
+If the model were perfect (p_correct = 1.0):
+  loss = -log(1.00) = -0.0000
+
+=== Summary ===
+  BERT : encoder-only,  bidirectional, Masked LM + NSP
+  GPT  : decoder-only,  autoregressive (masked self-attention)
+  T5   : encoder-decoder, text-to-text transfer
+  ViLBERT: encoder pre-training for visual-linguistic (image+text) data

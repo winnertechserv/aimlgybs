@@ -1,0 +1,11 @@
+Kernel (x.z + 1)^2      = 25.0
+phi(x) . phi(z) (6-dim) = 25.0   <- same number, less work
+
+Two rings (not linearly separable):
+  linear            test accuracy 0.542   support vectors 274
+  polynomial (p=2)  test accuracy 1.000   support vectors 16
+  Gaussian / RBF    test accuracy 1.000   support vectors 34
+
+4 classes:
+  One-against-the-rest: 4 SVMs, test accuracy 0.878
+  One-against-one     : 6 SVMs (C(C-1)/2 = 6), test accuracy 0.894

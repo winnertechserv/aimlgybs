@@ -1,0 +1,33 @@
+=== Vanilla RNN Forward Pass (from scratch) ===
+
+Architecture: input -> hidden (recurrent) -> output
+  h_t = tanh(U x_t + W h_(t-1) + b_h)
+  y_t = V h_t + b_o
+
+U (input->hidden) : (4, 3)
+W (recurrent)     : (4, 4)
+V (hidden->output): (2, 4)
+
+Processing a sequence of length T=4:
+
+Initial hidden state h_0: [0. 0. 0. 0.]
+
+t=1: x_t=[ 1.   0.5 -0.5]
+     h_1 = [0.6591 0.2498 0.5387 0.6386]
+     y_1 = [-0.335  -0.5169]
+
+t=2: x_t=[ 0.2 -1.   0.3]
+     h_2 = [ 0.1868 -0.6933  0.6564 -0.8292]
+     y_2 = [-0.2714  0.0137]
+
+t=3: x_t=[-0.5  0.8  1. ]
+     h_3 = [ 0.0163 -0.443  -0.7587  0.2783]
+     y_3 = [0.0875 0.4345]
+
+t=4: x_t=[ 0.9  0.1 -0.2]
+     h_4 = [0.2472 0.0487 0.1787 0.2374]
+     y_4 = [-0.1291 -0.167 ]
+
+Key insight: h_t depends on x_t AND h_(t-1), so the hidden state
+carries 'memory' of ALL previous inputs in the sequence.
+The SAME weights U, W, V are reused at every timestep (weight sharing in time).

@@ -1,0 +1,20 @@
+=== Gradient Flow Through a 20-Layer Network ===
+
+Plain network: grad_(L-1) = grad_L * w * sigmoid'(a)
+Residual net : grad_(L-1) = grad_L * (1 + w * sigmoid'(a))  <- the +1 is the skip
+
+ Layer     Plain grad    Residual grad
+----------------------------------------
+    20       1.66e-01         1.17e+00
+    16       1.93e-05         1.81e+00
+    12       1.55e-09         2.72e+00
+     8       4.56e-13         4.55e+00
+     4       3.73e-17         6.67e+00
+     1       1.04e-19         9.95e+00
+
+After backprop through all 20 layers:
+  Plain network gradient   : 1.04e-19  (vanished to near-zero!)
+  Residual network gradient: 9.95e+00  (healthy, training continues)
+
+Ratio: residual gradient is 9.58e+19x larger
+This is why ResNet can train 50, 101, even 152 layers deep.

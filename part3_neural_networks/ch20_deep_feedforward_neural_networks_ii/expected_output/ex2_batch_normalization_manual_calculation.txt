@@ -1,0 +1,38 @@
+Hidden layer output s (5 examples x 4 neurons):
+[[ 2.1 -0.5  3.2  0.8]
+ [ 1.8  0.3  3.5  1.2]
+ [ 2.5 -0.9  2.8  0.5]
+ [ 1.5  0.7  3.   0.9]
+ [ 2.3 -0.2  3.4  1.1]]
+
+Step 1: Per-neuron statistics (computed across all 5 examples):
+  mean mu   = [ 2.04 -0.12  3.18  0.9 ]
+  var  s^2  = [0.1264 0.3216 0.0656 0.06  ]
+  std  sigma= [0.3555 0.5671 0.2561 0.2449]
+
+Step 2: Normalized s_hat = (s - mu) / sigma:
+[[ 0.1688 -0.6701  0.0781 -0.4082]
+ [-0.6751  0.7406  1.2494  1.2247]
+ [ 1.2939 -1.3754 -1.4837 -1.633 ]
+ [-1.5189  1.446  -0.7028  0.    ]
+ [ 0.7313 -0.1411  0.859   0.8165]]
+  Verify mean : [-0. -0. -0.  0.]  <- all ~0
+  Verify std  : [1. 1. 1. 1.]  <- all ~1
+
+Step 3: z = gamma * s_hat + beta
+  gamma=[1.5 0.8 2.  1.2]  beta=[ 0.1  0.  -0.5  0.3]
+Final output z:
+[[ 0.3531 -0.5361 -0.3438 -0.1899]
+ [-0.9126  0.5925  1.9988  1.7697]
+ [ 2.0408 -1.1003 -3.4673 -1.6596]
+ [-2.1783  1.1568 -1.9056  0.3   ]
+ [ 1.197  -0.1129  1.2179  1.2798]]
+
+=== Internal Covariate Shift Demo ===
+
+Mini-batch 1 raw: mean=2.04, std=0.36
+Mini-batch 2 raw: mean=7.88, std=1.13
+After BN batch 1: mean=-0.00, std=1.00
+After BN batch 2: mean=-0.00, std=1.00
+
+Both batches normalized to same distribution -> covariate shift eliminated!

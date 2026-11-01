@@ -1,0 +1,41 @@
+=== Choosing Compute: On-Demand vs Spot vs Serverless ===
+
+--- Workload A: TRAINING a deep model (fault-tolerant, batch) ---
+
+  Job size: 200 GPU-hours
+  Option                              rate $/h    hours      total
+  ----------------------------------------------------------------
+  On-demand GPU                           3.06      200     612.00
+  Spot / preemptible GPU                  0.77      234     179.01
+
+  Saving with spot: $432.99 (71%)
+  Spot requires checkpointing: interrupted work must resume, not restart.
+  Suitable for batch training, ETL and hyperparameter tuning;
+  NOT suitable for latency-critical production inference.
+
+--- Workload B: INFERENCE endpoint (latency sensitive) ---
+
+    Requests/month   Always-on container   Serverless (FaaS)  Cheaper
+  ------------------------------------------------------------------------------
+            10,000                $69.12               $0.02  serverless
+           100,000                $69.12               $0.23  serverless
+         1,000,000                $69.12               $2.28  serverless
+        10,000,000                $69.12              $22.83  serverless
+        50,000,000                $69.12             $114.17  container
+
+  Break-even point: about 30,271,478 requests/month
+  Below it, serverless is cheaper (scale-to-zero when idle).
+  Above it, an always-on container is cheaper and avoids cold starts.
+
+=== Choosing the right service ===
+
+  Need                          Recommended
+  --------------------------------------------------------------------------
+  Large distributed training    GPU/TPU nodes on SageMaker, Vertex AI, Azure ML
+  Custom model serving          Containers on GKE / EKS / AKS or ECS-Fargate
+  Lightweight inference         Serverless: AWS Lambda, Cloud Functions, Azure Functions
+  Feature storage & serving     BigQuery, DynamoDB, Cosmos DB
+  Cost-sensitive batch jobs     Spot / preemptible instances with checkpointing
+
+  Serverless limits: execution time caps, limited memory/CPU, no GPU,
+  cold-start latency, and statelessness - so it cannot train large models.

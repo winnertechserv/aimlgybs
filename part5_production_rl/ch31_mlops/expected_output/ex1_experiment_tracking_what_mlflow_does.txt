@@ -1,0 +1,39 @@
+=== Experiment Tracking (the core of MLflow) ===
+
+Without tracking you cannot answer: which run produced this model?
+what data and hyperparameters were used? can we reproduce it?
+
+Dataset: 569 samples, 30 features
+
+Running experiments and logging every run...
+
+  run 5a0a2d82 | logreg         | {'model': 'LogisticRegression', 'C': 0.1}        | test_acc=0.9883
+  run 612da96f | logreg         | {'model': 'LogisticRegression', 'C': 1.0}        | test_acc=0.9825
+  run a35a4b4f | logreg         | {'model': 'LogisticRegression', 'C': 10.0}       | test_acc=0.9766
+  run 526014c4 | random_forest  | {'model': 'RandomForest', 'n_estimators': 50}    | test_acc=0.9708
+  run 821b0f28 | random_forest  | {'model': 'RandomForest', 'n_estimators': 200}   | test_acc=0.9649
+
+=== Run Comparison (what the MLflow UI shows) ===
+
+run_id    experiment       train_acc  test_acc  test_f1  artifact
+------------------------------------------------------------------------------
+5a0a2d82  logreg              0.9774    0.9883   0.9908  85f20695a1bc
+612da96f  logreg              0.9874    0.9825    0.986  a4b0a1c69faf
+a35a4b4f  logreg              0.9899    0.9766   0.9813  ec4a28574858
+526014c4  random_forest          1.0    0.9708   0.9772  b1b0ea773e90
+821b0f28  random_forest          1.0    0.9649   0.9725  f2e26ff1c0f0
+
+Best run: 5a0a2d82  ({'model': 'LogisticRegression', 'C': 0.1})
+  test accuracy = 0.9883
+
+=== Generalisation check from logged metrics ===
+
+  5a0a2d82  train-test gap = -0.0109  [ok]
+  612da96f  train-test gap = +0.0049  [ok]
+  a35a4b4f  train-test gap = +0.0133  [ok]
+  526014c4  train-test gap = +0.0292  [ok]
+  821b0f28  train-test gap = +0.0351  [ok]
+
+All runs persisted to mlruns.json (1444 bytes)
+This is exactly what MLflow does: log params, metrics and artifacts
+for every run so results are comparable, auditable and reproducible.

@@ -1,0 +1,35 @@
+=== Activation Functions ===
+
+   Input a   Logistic       Tanh       ReLU
+                (0,1)     (-1,1)    [0,inf)
+--------------------------------------------
+      -5.0     0.0067    -0.9999     0.0000
+      -4.0     0.0180    -0.9993     0.0000
+      -3.0     0.0474    -0.9951     0.0000
+      -2.0     0.1192    -0.9640     0.0000
+      -1.0     0.2689    -0.7616     0.0000
+       0.0     0.5000     0.0000     0.0000
+       1.0     0.7311     0.7616     1.0000
+       2.0     0.8808     0.9640     2.0000
+       3.0     0.9526     0.9951     3.0000
+       4.0     0.9820     0.9993     4.0000
+       5.0     0.9933     0.9999     5.0000
+
+=== Softmax: 4-class probability output ===
+
+Class         Raw     Prob
+  Dog         2.0   0.6461  XXXXXXXXXXXXXXXXXXX
+  Cat         1.0   0.2377  XXXXXXX
+  Bird        0.1   0.0966  XX
+  Fish       -1.5   0.0195  
+Sum of probs: 1.0000  (always 1.0)
+
+=== Logistic Derivative (used in backprop) ===
+
+ Input a       f(a)      df/da  Note
+-------------------------------------------------------
+      -4     0.0180     0.0177  SATURATED (near-zero gradient!)
+      -2     0.1192     0.1050  Healthy gradient
+       0     0.5000     0.2500  Healthy gradient
+       2     0.8808     0.1050  Healthy gradient
+       4     0.9820     0.0177  SATURATED (near-zero gradient!)

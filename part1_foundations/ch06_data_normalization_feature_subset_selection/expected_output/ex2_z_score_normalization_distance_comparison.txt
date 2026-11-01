@@ -1,0 +1,30 @@
+=== Z-Score Normalization ===
+Sales  → mean: 24611.00, std: 19150.39
+Scores → mean: 4.36, std: 2.22
+
+ID       Sales (Rs)    Score    Z-Sales    Z-Score
+--------------------------------------------------
+S001          23500        8      -0.06       1.64
+S002          23500        6      -0.06       0.74
+S003          22879        2      -0.09      -1.06
+S004           2300        4      -1.17      -0.16
+S005          34678        5       0.53       0.29
+S006          15687        8      -0.47       1.64
+S007          18945        8      -0.30       1.64
+S008           8750        2      -0.83      -1.06
+S009          37489        4       0.67      -0.16
+S010          73567        2       2.56      -1.06
+S011          52789        4       1.47      -0.16
+S012           2900        3      -1.13      -0.61
+S013           6570        3      -0.94      -0.61
+S014          21000        2      -0.19      -1.06
+
+After normalization: mean=0.0000, std=1.0000
+
+--- Euclidean Distance to query (23000, 6.5) ---
+Before normalization (Sales dominates):
+  S001: 500.00   S002: 500.00   S003: 121.08
+After Z-score normalization (both features contribute equally):
+  S001: 0.6751   S002: 0.2264   S003: 2.0239
+
+S002 is now correctly identified as nearest neighbour.

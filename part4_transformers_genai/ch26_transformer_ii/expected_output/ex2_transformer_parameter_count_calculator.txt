@@ -1,0 +1,38 @@
+=== Complexity of the Transformer Model ===
+
+Parameter counts:
+  Encoder self-attention MHA in N layers : 3*l*d*h*N
+  Decoder self-attention MHA in N layers : 3*l*d*h*N
+  Cross-attention MHA in N layers        : 3*l*d*h*N
+  W_o matrices in 3 MHA sub-layers       : 3*d^2*N
+  Two weight matrices in 2 PWFFNN        : 4*d^2*N
+  Linear layer in decoder                : d*V
+
+Configuration: d=512, h=8 heads (l=64), N=6 layers, vocab V=37000
+  Encoder self-attention MHA :    4,718,592
+  Decoder self-attention MHA :    4,718,592
+  Cross-attention MHA        :    4,718,592
+  W_o matrices               :    4,718,592
+  PWFFNN weight matrices     :    6,291,456
+  Decoder linear layer       :   18,944,000
+  TOTAL                        44,109,824
+
+=== How parameters scale with each hyperparameter ===
+
+Config                                     Parameters
+------------------------------------------------------
+  small  (d=256, h=4,  N=2)                 4,657,152
+  base   (d=512, h=8,  N=6)                44,109,824
+  large  (d=1024,h=16, N=6)               138,551,296
+  deep   (d=512, h=8,  N=12)               69,275,648
+
+Observations:
+  * Doubling d roughly QUADRUPLES the parameters (terms are O(d^2)).
+  * Doubling N doubles the parameters (linear in depth).
+  * Changing h alone does not change the count, since l = d/h keeps l*h = d.
+
+=== Training the Transformer ===
+  * Trained end-to-end with error backpropagation, cross-entropy loss.
+  * Training data for translation: (source sentence, target sentence) pairs.
+  * Desired output at time t: one-hot vector of the t-th target word.
+  * Error is backpropagated through decoder then encoder layers, N, N-1, ..., 1.

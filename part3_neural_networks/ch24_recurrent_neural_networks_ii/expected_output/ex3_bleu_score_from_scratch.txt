@@ -1,0 +1,44 @@
+=== BLEU Score from Scratch (Machine Translation / Captioning metric) ===
+
+BLEU = precision-based n-gram matching between generated & reference text,
+multiplied by a brevity penalty for too-short outputs.
+
+--- Example 1: Perfect match (BLEU-4) ---
+  Candidate: 'the cat is on the mat'
+  Reference: 'the cat is on the mat'
+    1-gram precision: 1.0000
+    2-gram precision: 1.0000
+    3-gram precision: 1.0000
+    4-gram precision: 1.0000
+    geo-mean=1.0000  brevity-penalty=1.0000 (c=6, r=6)
+    => BLEU-4 = 1.0000
+
+--- Example 2: Partially correct (BLEU-2) ---
+  Candidate: 'the cat sat on mat'
+  Reference: 'the cat is on the mat'
+    1-gram precision: 0.8000
+    2-gram precision: 0.2500
+    geo-mean=0.4472  brevity-penalty=0.8187 (c=5, r=6)
+    => BLEU-2 = 0.3661
+
+--- Example 3: Too short - brevity penalty (BLEU-2) ---
+  Candidate: 'the cat'
+  Reference: 'the cat is on the mat'
+    1-gram precision: 1.0000
+    2-gram precision: 1.0000
+    geo-mean=1.0000  brevity-penalty=0.1353 (c=2, r=6)
+    => BLEU-2 = 0.1353
+
+--- Example 4: Good but reworded (BLEU-2) ---
+  Candidate: 'the cat is on the mat'
+  Reference: 'a cat sits on the mat'
+    1-gram precision: 0.6667
+    2-gram precision: 0.4000
+    geo-mean=0.5164  brevity-penalty=1.0000 (c=6, r=6)
+    => BLEU-2 = 0.5164
+
+==========================================================
+BLEU ranges 0..1. Perfect match = 1.0. Missing higher-order
+n-grams or too-short output sharply lowers the score.
+BLEU = precision-focused; METEOR adds recall + synonyms;
+ROUGE = recall-focused (summaries); CIDEr weights rare n-grams.

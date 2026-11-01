@@ -1,0 +1,36 @@
+=== The GAN Minimax Optimization Problem ===
+
+min_thetaG  max_thetaD   E_p(x)[log D(x)] + E_p(z)[log(1 - D(G(z)))]
+
+  Discriminator D: MAXIMIZE it (gradient ASCENT)
+  Generator     G: MINIMIZE it (gradient DESCENT)
+  Desired D output: 1 for a real image, 0 for a synthetic image
+
+Scenario                                             V(D,G)  Reading
+----------------------------------------------------------------------------------------
+  Untrained D (outputs ~0.5 for everything)         -1.3863  V = 2*log(0.5) = -1.386
+  Strong D (real->0.95, fake->0.05): G is losing    -0.1026  D winning (V high)
+  Strong G (D fooled: fake->0.90)                   -2.8134  G winning (V low)
+  Equilibrium (D cannot tell: both 0.5)             -1.3863  V = 2*log(0.5) = -1.386
+
+Theoretical equilibrium value: 2*log(0.5) = -1.3863
+At equilibrium p(x_synthetic) ~ p(x_real), so D outputs 0.5 everywhere.
+
+=== Mini-Batch Mode Training of a GAN (one step) ===
+
+Step 3.1  Sample M random noise vectors z ~ N(0, sigma^2 I)
+          z shape = (6, 4)  (M=6 noise vectors of dim 4)
+
+Step 3.2  Update DISCRIMINATOR by GRADIENT ASCENT
+          V before = -0.8927
+          V after  = -0.7827   (INCREASED -> ascent worked)
+
+Step 3.3  Update GENERATOR by GRADIENT DESCENT
+          V before = -0.7827
+          V after  = -1.1394   (DECREASED -> descent worked)
+
+Step 4    Repeat until convergence.
+
+Note the adversarial tension: D pushes V up, G pushes V down.
+This is why the objective goes up AND down during GAN training,
+unlike ordinary supervised learning where loss decreases steadily.

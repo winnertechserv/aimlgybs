@@ -1,0 +1,37 @@
+=== Cloud Autoscaling for ML Inference ===
+
+Scalability = adjust capacity to match demand while keeping latency
+stable. The control loop:
+  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilise
+
+Config: 100 req/s per replica, target CPU 70%, min=2, max=20 replicas
+
+ hour   req/s  replicas    util   latency  action
+--------------------------------------------------------------
+    0     120         2     60%      100ms  hold
+    3      60         2     30%       57ms  hold
+    6     220         4     55%       89ms  scale UP
+    9     780        12     65%      114ms  scale UP
+   12    1180        17     69%      131ms  scale UP
+   15     820        12     68%      126ms  scale DOWN
+   18    1320        19     69%      131ms  scale UP
+   21     520         8     65%      114ms  scale DOWN
+
+=== Autoscaling vs Fixed Capacity (24 hours) ===
+
+Strategy                            pod-hours      cost  SLA breaches
+----------------------------------------------------------------------
+  Autoscaling (2-20 replicas)             218$    21.80             0
+  Fixed 6 replicas                        144$    14.40            14
+  Over-provisioned 20 replicas            480$    48.00             0
+
+Autoscaling saves 55% versus permanent over-provisioning,
+while keeping SLA breaches at 0 (fixed capacity: 14).
+
+=== Types of autoscaling ===
+  Instance autoscaling : VM level - EC2 Auto Scaling Groups, GCE Instance Groups
+  Container autoscaling: pod level - Kubernetes HPA (horizontal) and VPA (vertical)
+  Serverless autoscaling: function level - scales to ZERO when idle, pay per call
+
+Horizontal scaling adds machines/pods; vertical scaling grows one machine
+(more CPU/RAM/GPU) and is limited by the largest available hardware.

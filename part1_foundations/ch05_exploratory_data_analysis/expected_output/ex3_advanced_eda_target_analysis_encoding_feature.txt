@@ -1,0 +1,34 @@
+Survival rate by class:
+pclass
+1    0.73
+2    0.51
+3    0.31
+
+Survival rate by sex:
+sex
+female    0.60
+male      0.36
+
+Median fare by outcome:
+survived
+0    14.10
+1    26.56
+
+One-hot columns: ['class_1', 'class_2', 'class_3']
+
+Survival by age group:
+age_group
+child     0.69
+teen      0.52
+adult     0.44
+senior    0.40
+
+Correlation with 'survived':
+lifeboat_assigned    0.97
+pclass              -0.33
+log_fare             0.27
+sex_label           -0.24
+age                 -0.15
+family_size          0.00
+
+WARNING: 'lifeboat_assigned' has r = 0.97 with the target. Is it known at prediction time? If not, it is DATA LEAKAGE - drop it.

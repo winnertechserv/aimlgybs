@@ -1,0 +1,8 @@
+[1, 2, 3, 4, 5]          rule: polynomial of degree 1     next -> 6
+[1, 3, 5, 7, 9]          rule: polynomial of degree 1     next -> 11
+[2, 3, 5, 7, 11]         rule: next prime number          next -> 13
+[1, 4, 9, 16, 25]        rule: polynomial of degree 2     next -> 36
+[1, 2, 4, 8, 16, 32]     rule: multiply by 2              next -> 64
+[1, 1, 2, 3, 5, 8]       rule: sum of previous 2 terms    next -> 13
+[1, 1, 2, 4, 7, 13]      rule: sum of previous 3 terms    next -> 24
+[3, 5, 12, 24, 41]       rule: polynomial of degree 2     next -> 63

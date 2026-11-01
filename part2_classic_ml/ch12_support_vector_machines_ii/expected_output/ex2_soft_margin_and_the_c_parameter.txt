@@ -1,0 +1,12 @@
+    C     margin  support vectors  train acc  test acc  points with xi>1
+  0.001     4.03       178          0.911     0.900        16
+  0.01      1.52        97          0.917     0.917        15
+  0.1       0.91        51          0.928     0.900        13
+  1         0.64        39          0.928     0.900        13
+  100       0.55        36          0.928     0.908        13
+
+Small C: wide margin, many support vectors, tolerates errors.
+Large C: narrow margin, tries hard to classify every training point.
+  outside the margin (xi = 0)     : 143 points
+  inside the margin (0 < xi < 1)  :  24 points
+  wrong side (xi > 1)             :  13 points

@@ -1,0 +1,31 @@
+=== Decision Tree (CART, criterion=entropy) ===
+
+|--- Size <= 0.50
+|   |--- Color <= 1.50
+|   |   |--- class: Banana
+|   |--- Color >  1.50
+|   |   |--- Taste <= 0.50
+|   |   |   |--- class: Grape
+|   |   |--- Taste >  0.50
+|   |   |   |--- class: Cherry
+|--- Size >  0.50
+|   |--- Size <= 1.50
+|   |   |--- Taste <= 0.50
+|   |   |   |--- Color <= 0.50
+|   |   |   |   |--- class: Apple
+|   |   |   |--- Color >  0.50
+|   |   |   |   |--- class: Lemon
+|   |   |--- Taste >  0.50
+|   |   |   |--- class: Apple
+|   |--- Size >  1.50
+|   |   |--- Color <= 0.50
+|   |   |   |--- class: Watermelon
+|   |   |--- Color >  0.50
+|   |   |   |--- class: Grapefruit
+
+Training Accuracy: 100.0%
+
+=== Predictions on New Fruit Descriptions ===
+  Red, Small, Round, Sweet                      -> Cherry
+  Yellow, Big, Round, NonSweet                  -> Grapefruit
+  Green, Big, Round, NonSweet                   -> Watermelon

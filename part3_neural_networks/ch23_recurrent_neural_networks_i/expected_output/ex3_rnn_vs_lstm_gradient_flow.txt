@@ -1,0 +1,29 @@
+=== Why Vanilla RNNs Forget: Gradient Flow Over Time ===
+
+During BPTT (Backprop Through Time), the gradient at the first timestep
+depends on a product of factors across ALL timesteps.
+
+Vanilla RNN (recurrent weight W=0.8, sigmoid neurons):
+  Gradient reaching t=1 after 30 steps: 1.074e-21
+  (each step multiplies by W*sigmoid' = 0.2 < 1, so it vanishes)
+
+LSTM (cell-state highway, forget gate f_t ~ 0.95):
+  Gradient reaching t=1 after 30 steps: 2.146e-01
+  (cell state path multiplies by ~f_t=0.95, close to 1, so it survives)
+
+ Timestep back     RNN gradient    LSTM gradient
+------------------------------------------------
+             1        2.000e-01        9.500e-01
+             5        3.200e-04        7.738e-01
+            10        1.024e-07        5.987e-01
+            15        3.277e-11        4.633e-01
+            20        1.049e-14        3.585e-01
+            25        3.355e-18        2.774e-01
+            30        1.074e-21        2.146e-01
+
+After 30 timesteps:
+  RNN  gradient: 1.074e-21  -> vanished, early inputs forgotten
+  LSTM gradient: 2.146e-01  -> preserved, long-range memory works
+
+This is why LSTMs handle long sequences (long sentences, long audio)
+while vanilla RNNs struggle to learn long-range dependencies.

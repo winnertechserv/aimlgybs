@@ -1,0 +1,16 @@
+Item supports: {'banana': 0.2, 'bread': 0.7, 'butter': 0.4, 'cereal': 0.4, 'jam': 0.2, 'milk': 0.6}
+
+Rules with support >= 20% (sorted by lift):
+  rule                    support  confidence  lift
+   banana -> cereal         0.20      1.00     2.50
+   cereal -> banana         0.20      0.50     2.50
+   butter -> bread          0.40      1.00     1.43
+      jam -> bread          0.20      1.00     1.43
+    bread -> butter         0.40      0.57     1.43
+    bread -> jam            0.20      0.29     1.43
+     milk -> cereal         0.30      0.50     1.25
+   cereal -> milk           0.30      0.75     1.25
+     milk -> bread          0.40      0.67     0.95
+    bread -> milk           0.40      0.57     0.95
+   butter -> milk           0.20      0.50     0.83
+     milk -> butter         0.20      0.33     0.83

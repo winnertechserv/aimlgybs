@@ -1,0 +1,17 @@
+=== Pearson Correlation with Target (Rain) ===
+
+  rho(Rain, Temperature ) = -0.9476  -> Very Strong negative
+  rho(Rain, Humidity    ) =  0.9169  -> Very Strong positive
+  rho(Rain, Pressure    ) = -0.1530  -> Weak negative
+
+=== Full Correlation Matrix ===
+             Temperature  Humidity  Pressure   Rain
+Temperature        1.000    -0.925     0.115 -0.948
+Humidity          -0.925     1.000    -0.180  0.917
+Pressure           0.115    -0.180     1.000 -0.153
+Rain              -0.948     0.917    -0.153  1.000
+
+=== Feature Selection Decision (drop threshold: |rho| < 0.15) ===
+  Temperature   : rho = -0.9476  -> KEEP
+  Humidity      : rho = +0.9169  -> KEEP
+  Pressure      : rho = -0.1530  -> KEEP

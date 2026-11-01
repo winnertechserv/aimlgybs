@@ -1,0 +1,12 @@
+Query digit 5 -> top-5 labels [5, 5, 5, 5, 5]  similarity [0.966, 0.922, 0.906, 0.875, 0.873]  precision@5 = 1.0
+Query digit 0 -> top-5 labels [0, 0, 0, 0, 0]  similarity [0.981, 0.979, 0.973, 0.973, 0.973]  precision@5 = 1.0
+Query digit 4 -> top-5 labels [4, 4, 4, 4, 4]  similarity [0.987, 0.968, 0.963, 0.949, 0.948]  precision@5 = 1.0
+Query digit 3 -> top-5 labels [3, 8, 3, 8, 3]  similarity [0.931, 0.913, 0.907, 0.897, 0.895]  precision@5 = 0.6
+Query digit 0 -> top-5 labels [0, 0, 0, 0, 0]  similarity [0.944, 0.943, 0.933, 0.932, 0.928]  precision@5 = 1.0
+Query digit 3 -> top-5 labels [3, 3, 3, 3, 3]  similarity [0.974, 0.966, 0.958, 0.955, 0.953]  precision@5 = 1.0
+Query digit 3 -> top-5 labels [3, 3, 3, 3, 3]  similarity [0.962, 0.949, 0.947, 0.938, 0.933]  precision@5 = 1.0
+Query digit 3 -> top-5 labels [3, 3, 3, 3, 3]  similarity [0.935, 0.92, 0.908, 0.903, 0.903]  precision@5 = 1.0
+
+Mean precision@5 over 8 queries: 0.95
+
+QBS 'show me sevens': 179 annotated images match the keyword '7'

@@ -1,0 +1,7 @@
+Data matrix X has shape (15, 3) (N rows, d+1 columns)
+w (normal equation) = [178.5985  -0.2754  -0.1349]
+w (pseudo-inverse)  = [178.5985  -0.2754  -0.1349]
+
+Test: humidity 66.0, pressure 1020.0 -> predicted 22.84 C (actual 21.7, squared error 1.3024)
+Training RMSE = 1.212 C  (4.8% of the mean temperature)
+Meaning of the weights: each extra 1% humidity changes temperature by -0.275 C, holding pressure fixed.

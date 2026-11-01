@@ -1,0 +1,23 @@
+Dataset: Breast Cancer | 569 samples, 30 features
+Test Accuracy: 97.08%
+
+Top 10 Most Important Features:
+  Rank  Feature                         Importance
+--------------------------------------------------
+  1     mean concave points                0.1419  XXXXXXXXXXXXXXXXXXXXX
+  2     worst concave points               0.1271  XXXXXXXXXXXXXXXXXXX
+  3     worst area                         0.1182  XXXXXXXXXXXXXXXXX
+  4     mean concavity                     0.0806  XXXXXXXXXXXX
+  5     worst radius                       0.0780  XXXXXXXXXXX
+  6     worst perimeter                    0.0743  XXXXXXXXXXX
+  7     mean perimeter                     0.0601  XXXXXXXXX
+  8     mean area                          0.0538  XXXXXXXX
+  9     worst concavity                    0.0411  XXXXXX
+  10    mean radius                        0.0323  XXXX
+
+Bottom 5 (candidates to drop):
+  symmetry error                : 0.0040
+  concave points error          : 0.0034
+  mean symmetry                 : 0.0033
+  texture error                 : 0.0032
+  mean fractal dimension        : 0.0031

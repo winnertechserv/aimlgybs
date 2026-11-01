@@ -1,0 +1,64 @@
+=== Decoding Strategies in LLMs: Greedy vs Beam Search ===
+
+After the model produces probabilities over the vocabulary at each
+step, a DECODING STRATEGY chooses the actual output words.
+
+Toy language model P(next | current):
+
+  current         the      cat      sat      mat    <end>
+  <start>        0.60     0.25     0.05     0.05     0.05
+  the            0.05     0.45     0.10     0.35     0.05
+  cat            0.05     0.05     0.70     0.10     0.10
+  sat            0.50     0.05     0.05     0.30     0.10
+  mat            0.05     0.05     0.05     0.05     0.80
+  <end>          0.00     0.00     0.00     0.00     1.00
+
+--- Greedy Search: always take the single most likely next word ---
+
+  step 1: pick 'the' (p=0.60)   sequence so far: the
+  step 2: pick 'cat' (p=0.45)   sequence so far: the cat
+  step 3: pick 'sat' (p=0.70)   sequence so far: the cat sat
+  step 4: pick 'the' (p=0.50)   sequence so far: the cat sat the
+  step 5: pick 'cat' (p=0.45)   sequence so far: the cat sat the cat
+
+  Greedy result : the cat sat the cat
+  log-probability: -3.1577   (probability 0.04252)
+
+--- Beam Search: keep the B best partial sequences at every step ---
+
+  After step 1, top 3 beams:
+     the                          logP = -0.5108
+     cat                          logP = -1.3863
+     sat                          logP = -2.9957
+  After step 2, top 3 beams:
+     the cat                      logP = -1.3093
+     the mat                      logP = -1.5606
+     cat sat                      logP = -1.7430
+  After step 3, top 3 beams:
+     the cat sat                  logP = -1.6660
+     the mat <end>                logP = -1.7838
+     cat sat the                  logP = -2.4361
+  After step 4, top 3 beams:
+     the mat <end>                logP = -1.7838
+     the cat sat the              logP = -2.3592
+     the cat sat mat              logP = -2.8700
+  After step 5, top 3 beams:
+     the mat <end>                logP = -1.7838
+     the cat sat mat <end>        logP = -3.0931
+     the cat sat the cat          logP = -3.1577
+
+  Beam search result : the mat <end>
+  log-probability    : -1.7838   (probability 0.16800)
+
+=== Comparison ===
+
+  Strategy        Sequence                            logP
+  --------------------------------------------------------
+  Greedy          the cat sat the cat              -3.1577
+  Beam (B=3)      the mat <end>                    -1.7838
+
+  Higher log-probability found by: beam search
+
+  Greedy is fast but can be trapped by a locally attractive word.
+  Beam search explores B alternatives and usually finds a better
+  overall sequence, at B times the computation cost.

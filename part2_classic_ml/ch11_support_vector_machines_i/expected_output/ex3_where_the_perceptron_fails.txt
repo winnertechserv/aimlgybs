@@ -1,0 +1,6 @@
+XOR data - mistakes per epoch (first 10): [3, 5, 4, 4, 4, 5, 5, 4, 4, 7]
+After 50 epochs still 8 mistakes -> it never converges.
+Perceptron (scikit-learn) accuracy on XOR: 0.42
+K-NN (K=5) accuracy on XOR: 1.00
+
+Overlapping data: mistakes in the last 5 epochs [9, 15, 9, 10, 13] - never reaches 0.

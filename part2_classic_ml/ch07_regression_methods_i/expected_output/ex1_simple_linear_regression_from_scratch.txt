@@ -1,0 +1,18 @@
+Mean of x = 9.0, mean of y = 59.9
+Slope w   = 3.04   (each extra year adds about $3,043)
+Intercept w0 = 32.52  (predicted starting salary)
+
+Sum-of-squares error on training data, E = 10.15
+  x    y   predicted  error
+   1   35     35.56    0.56
+   3   40     41.64    1.64
+   4   47     44.69   -2.31
+   6   50     50.77    0.77
+   7   56     53.81   -2.19
+   9   58     59.90    1.90
+  11   67     65.99   -1.01
+  13   71     72.07    1.07
+  16   82     81.20   -0.80
+  20   93     93.37    0.37
+
+Test: 10 years -> predicted 62.94, actual 64, squared error 1.12

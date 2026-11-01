@@ -1,0 +1,30 @@
+Test person: height 150 cm, weight 47.0 kg
+  5 nearest training examples:
+    (152, 52.00)  distance   5.39  class Adult
+    (158, 50.50)  distance   8.73  class Adult
+    (165, 57.80)  distance  18.48  class Adult
+    (161, 63.20)  distance  19.58  class Adult
+    (134, 31.00)  distance  22.63  class Child
+  K = 1: predicted Adult
+  K = 3: predicted Adult
+  K = 5: predicted Adult
+
+Test person: height 140 cm, weight 46.0 kg
+  5 nearest training examples:
+    (152, 52.00)  distance  13.42  class Adult
+    (134, 31.00)  distance  16.16  class Child
+    (158, 50.50)  distance  18.55  class Adult
+    (131, 26.30)  distance  21.66  class Child
+    (127, 27.10)  distance  22.94  class Child
+  K = 1: predicted Adult
+  K = 3: predicted Adult
+  K = 5: predicted Child
+
+Choosing K on a validation set (Iris):
+  K =  1: validation accuracy 0.967
+  K =  3: validation accuracy 0.983
+  K =  5: validation accuracy 0.967
+  K =  7: validation accuracy 0.983
+  K =  9: validation accuracy 0.983
+  K = 15: validation accuracy 0.967
+  K = 25: validation accuracy 0.950

@@ -1,0 +1,40 @@
+=== Conditional GAN (cGAN) ===
+
+Both G and D are conditioned on additional information C.
+C can be a class label, a source-domain image, a sketch, or text.
+
+--- Class-Conditional GAN: C = class label ---
+
+Random noise vector z (6-dim)      : [ 1.76  0.4   0.98  2.24  1.87 -0.98]
+Class label            : 2 = 'bird'
+One-hot encoding C     : [0. 0. 1. 0. 0.]
+Generator input [z ; C]: [ 1.76  0.4   0.98  2.24  1.87 -0.98  0.    0.    1.    0.    0.  ]   (dim 11)
+
+The SAME z with a DIFFERENT label produces a different image:
+  label 0 ('cat  ') -> input [ 1.76  0.4   0.98  2.24  1.87 -0.98  1.    0.    0.    0.    0.  ]
+  label 3 ('car  ') -> input [ 1.76  0.4   0.98  2.24  1.87 -0.98  0.    0.    0.    1.    0.  ]
+
+Discriminator also receives C, so it must judge:
+  'is this a REAL image AND does it match the given label?'
+
+--- Auxiliary Classifier GAN (ACGAN) ---
+
+The discriminator has TWO outputs:
+  1. probability the input image is real
+  2. the class label of the input image (auxiliary classifier C)
+
+  real 'bird' image     : D_real = 0.93 | class probs = [0.045 0.055 0.811 0.04  0.049]
+                          predicted class = 'bird' (correct: bird)
+  synthetic 'bird' image: D_real = 0.21 | class probs = [0.092 0.112 0.612 0.083 0.101]
+                          predicted class = 'bird' (correct: bird)
+
+ACGAN loss has two parts:
+  L_source = log P(real | x)     -> adversarial term
+  L_class  = log P(class | x)    -> classification term
+  D maximises L_source + L_class ; G maximises L_class - L_source
+
+--- Other conditional variants ---
+  BigGAN          : class-conditional GAN on ImageNet, built from ResBlocks
+  pix2pix (cGAN)  : C = image from the source domain (image-to-image)
+  Sketch-to-photo : C = a sketch
+  Text-to-image   : C = representation of a text prompt

@@ -1,0 +1,50 @@
+=== Value Iteration on the 4x3 Grid World ===
+
+Grid (column, row), (1,1) is bottom-left:
+
+     3 | . . . +1
+     2 | . # . -1        # = wall/forbidden square (2,2)
+     1 | S . . .         S = START
+       +---------
+       1 2 3 4
+
+Stochastic environment: the intended action succeeds with p=0.8,
+and moves at right angles with p=0.1 each. Bumping into a wall
+leaves the agent in the same square.
+Reward: -0.04 for every non-terminal transition. Discount gamma=1.0
+
+Bellman update:  U(s) <- max_a  sum_s' P(s'|s,a) [ R(s,a,s') + gamma*U(s') ]
+
+ iter    U(1,1)    U(1,3)    U(3,3)    U(4,1)   max change
+----------------------------------------------------------
+    1   -0.0400   -0.0400    0.7600   -0.0400     0.760000
+    2   -0.0800   -0.0800    0.8320   -0.0800     0.600000
+    3   -0.1200    0.3920    0.8896   -0.1200     0.472000
+    4   -0.1600    0.5773    0.9062    0.1002     0.369600
+    5    0.1625    0.6980    0.9135    0.1849     0.322496
+   10    0.6754    0.8090    0.9178    0.3510     0.043501
+   20    0.7053    0.8116    0.9178    0.3876     0.000346
+   22    0.7053    0.8116    0.9178    0.3878     0.000084
+
+Converged after 22 iterations (max change < 1e-4)
+
+=== Converged utility values U(s) ===
+
+  row 3 |  0.8116  0.8678  0.9178  1.0000
+  row 2 |  0.7616   WALL   0.6603 -1.0000
+  row 1 |  0.7053  0.6553  0.6114  0.3878
+             col 1   col 2   col 3   col 4
+
+=== Optimal policy (best action in every state) ===
+
+  row 3 |   >     >     >    +1  
+  row 2 |   ^     #     ^    -1  
+  row 1 |   ^     <     <     <  
+           col 1 col 2 col 3 col 4
+
+The policy routes the agent up and around the wall to reach +1 while
+avoiding the -1 square, just as expected.
+
+Utility of the START state (1,1): 0.7053
+Sanity check: reaching +1 in 5 steps gives 4*(-0.04) + 1 = 0.84,
+and the converged utility is lower because of the stochastic slips.

@@ -1,0 +1,16 @@
+=== Training Mode Comparison ===
+
+Mode                         Train    Test   Epochs
+----------------------------------------------------
+  Batch (full dataset)       96.6%   94.0%      300
+  Mini-Batch size=32        100.0%   94.2%      117
+  Mini-Batch size=64        100.0%   94.0%      186
+  Mini-Batch size=128       100.0%   94.0%      296
+  Adam (batch=32)           100.0%   93.8%       45
+
+=== Early Stopping Demo ===
+
+  Early Stopping OFF: epochs= 206 | Test=94.8%
+  Early Stopping ON : epochs=  55 | Test=93.8%
+
+Early stopping: fewer epochs, same performance, less compute wasted.

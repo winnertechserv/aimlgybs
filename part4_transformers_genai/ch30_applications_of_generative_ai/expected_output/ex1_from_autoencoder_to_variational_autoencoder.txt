@@ -1,0 +1,51 @@
+=== From Autoencoder to Variational Autoencoder ===
+
+AANN / deterministic autoencoder: encoder maps x to a SINGLE point
+in the bottleneck (dimension-reduction) layer.
+VAE: encoder maps x to a DISTRIBUTION (mean + std) in latent space,
+and the decoder samples from it -> we can GENERATE new data.
+
+Input image x (8-dim): [ 1.76  0.4   0.98  2.24  1.87 -0.98  0.95 -0.15]
+
+--- Deterministic Autoencoder (AANN) ---
+  bottleneck code h : [-0.912   0.3283  0.9376]   (one fixed point)
+  reconstruction    : [-0.419  0.456 -0.433  0.344 -0.707 -0.939 -0.034  0.373]
+  reconstruction MSE: 2.2784
+  Sampling a random h gives arbitrary output - the latent space
+  has no structure, so this model is a poor generator.
+
+--- Variational Autoencoder (VAE) ---
+
+Step 1 - encoder outputs a distribution per dimension:
+  mu     = [-1.2316 -2.6813  0.6753]
+  logvar = [0.3487 1.3959 1.5307]
+  sigma  = exp(0.5*logvar) = [1.1905 2.0096 2.1497]
+
+Step 2 - REPARAMETERIZATION TRICK:  z = mu + sigma * epsilon,  eps~N(0,I)
+  (sampling directly from N(mu,sigma) is not differentiable;
+   moving the randomness into eps makes backpropagation possible)
+
+  draw 1: eps = [-1.173  1.944 -0.414] -> z = [-2.6281  1.2247 -0.2139]
+  draw 2: eps = [-0.747  1.923  1.481] -> z = [-2.1214  1.1831  3.8579]
+  draw 3: eps = [ 1.868  0.906 -0.861] -> z = [ 0.9917 -0.8605 -1.1761]
+  Same input x, different z each time -> the decoder generates variety.
+
+Step 3 - VAE loss = reconstruction loss + KL divergence
+
+  Reconstruction loss (MSE)          : 3.3816
+  KL( q(z|x) || N(0,I) )             : 6.4821
+  Total loss = recon + beta*KL       : 9.8637
+
+  The KL term pulls the latent distribution towards N(0,I), which
+  makes the latent space smooth and continuous - so sampling
+  z ~ N(0,I) at test time produces realistic new images.
+
+KL for special cases (per dimension):
+  mu=+0.0, logvar=+0.0 -> KL = -0.0000   (perfect match to N(0,1))
+  mu=+2.0, logvar=+0.0 -> KL = 2.0000   (mean far from 0)
+  mu=+0.0, logvar=+2.0 -> KL = 2.1945   (variance mismatch)
+  mu=+0.0, logvar=-2.0 -> KL = 0.5677   (variance mismatch)
+
+--- Denoising Autoencoder ---
+  Trained on (noisy image, clean image) pairs; at test time a noisy
+  input produces a denoised output. The decoder learns to GENERATE.

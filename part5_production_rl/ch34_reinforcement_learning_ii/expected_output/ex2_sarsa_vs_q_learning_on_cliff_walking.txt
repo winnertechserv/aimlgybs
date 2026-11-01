@@ -1,0 +1,43 @@
+=== SARSA vs Q-Learning: The Cliff-Walking Problem ===
+
+A 4x12 grid. Start S is bottom-left, goal G is bottom-right.
+The cells between them on the bottom row are a CLIFF.
+Every step costs -1. Stepping into the cliff costs -100 and sends you
+back to S. Both agents explore with epsilon-greedy (eps = 0.1).
+
+    . . . . . . . . . . . .
+    . . . . . . . . . . . .
+    . . . . . . . . . . . .
+    S C C C C C C C C C C G      C = cliff
+
+Average reward per episode during training (20 runs averaged):
+
+  episodes         SARSA    Q-learning
+  ------------------------------------
+    1-50          -109.2        -120.2
+   51-100          -34.3         -52.6
+  101-200          -29.1         -46.1
+  201-350          -27.2         -50.5
+  351-500          -26.9         -51.7
+
+SARSA learned path (17 steps):
+    * * * * * * * * * * * *
+    * . . . . . . . . . . *
+    * . . . . . . . . . . *
+    S C C C C C C C C C C G
+
+Q-learning learned path (13 steps):
+    . . . . . . . . . . . .
+    . . . . . . . . . . . .
+    * * * * * * * * * * * *
+    S C C C C C C C C C C G
+
+What this shows:
+  Q-learning learns the SHORTEST path, right along the cliff edge. Its
+  update uses max Q(s',a'), the value of the best action, as if it will
+  never explore again. That is OFF-policy learning.
+  SARSA learns a SAFER path that keeps well away from the edge. Its update uses the
+  action it will actually take next, random exploration included, so it
+  knows a random step near the edge can cost -100. That is ON-policy.
+  So while both are still exploring, SARSA earns MORE reward per episode
+  even though Q-learning's final route is shorter.

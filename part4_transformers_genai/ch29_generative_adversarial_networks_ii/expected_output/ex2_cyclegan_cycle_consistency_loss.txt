@@ -1,0 +1,56 @@
+=== CycleGAN: Unpaired Image-to-Image Translation ===
+
+pix2pix needs PAIRED data (same scene in both domains).
+CycleGAN works with UNPAIRED data using two generators and two
+discriminators, tied together by the cycle-consistency loss.
+
+  G_AB : domain A -> domain B      D_B : judges domain B images
+  G_BA : domain B -> domain A      D_A : judges domain A images
+
+Cycle consistency:  G_BA(G_AB(a)) ~ a    and    G_AB(G_BA(b)) ~ b
+
+Original image a (domain A):
+[[0.42 0.72 0.  ]
+ [0.3  0.15 0.09]
+ [0.19 0.35 0.4 ]]
+
+--- Well-trained CycleGAN (quality = 1.0) ---
+Translated to domain B, G_AB(a):
+[[0.486 0.726 0.15 ]
+ [0.39  0.27  0.222]
+ [0.302 0.43  0.47 ]]
+Cycled back, G_BA(G_AB(a)):
+[[0.42 0.72 0.  ]
+ [0.3  0.15 0.09]
+ [0.19 0.35 0.4 ]]
+Cycle-consistency loss  L1 = mean|a - G_BA(G_AB(a))| = 0.000000
+
+--- Poorly-trained CycleGAN (quality = 0.4) ---
+Cycled back:
+[[0.347 0.925 0.   ]
+ [0.354 0.235 0.115]
+ [0.    0.013 0.217]]
+Cycle-consistency loss  L1 = 0.127930
+
+Loss comparison: good 0.000000  vs  bad 0.127930
+The cycle loss forces the two generators to be near-inverses of each
+other, which is what prevents the network from ignoring the input and
+producing an arbitrary image in the target domain.
+
+=== Full CycleGAN objective ===
+
+  Adversarial loss  G_AB / D_B      : 0.4120
+  Adversarial loss  G_BA / D_A      : 0.3890
+  Cycle-consistency loss (both ways): 0.0031
+  lambda (cycle weight)             : 10.0
+  TOTAL = 0.4120 + 0.3890 + 10.0*0.0031 = 0.8320
+
+=== SuperstarGAN ===
+Combines ACGAN's separate classifier with CycleGAN's cycle loss.
+Reported FID on 10000 CelebA images (lower is better):
+  SuperstarGAN                 FID = 22.7
+  StarGAN                      FID = 27.7
+  SuperstarGAN without DA      FID = 29.1
+  StarGAN + SN + Hinge Loss    FID = 34.0
+  StarGAN + DA                 FID = 38.3
+  (DA = Data Augmentation, SN = Spectral Normalization)

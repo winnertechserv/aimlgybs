@@ -1,0 +1,25 @@
+=== FDA vs PCA for Classification ===
+
+Dataset: 300 samples, 10 features, 2 classes
+
+Step 1: FDA projection direction maximises class separation
+  Class +1 mean in FDA space: 1.0191
+  Class  0 mean in FDA space: -0.9443
+  Separation between means  : 1.9633
+
+Step 2: Classification accuracy comparison (5-NN classifier)
+  Original 10D data      : 82.2%
+  PCA 1D projection      : 73.3%  (max variance, may miss class info)
+  FDA 1D projection      : 80.0%  (max separability)
+
+FDA projection weights per feature:
+  Feature  1: +0.0033
+  Feature  2: -0.1774
+  Feature  3: +0.7178
+  Feature  4: -0.3141
+  Feature  5: +0.6349
+  Feature  6: -0.3084
+  Feature  7: +0.1813
+  Feature  8: -0.4975
+  Feature  9: -1.0280
+  Feature 10: -0.2835

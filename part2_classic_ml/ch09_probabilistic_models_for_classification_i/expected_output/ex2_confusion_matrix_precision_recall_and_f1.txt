@@ -1,0 +1,11 @@
+Samples: 569  (malignant 212, benign 357)
+Train 398 / Test 171; malignant share train 0.37, test 0.37 (stratified = same mix)
+
+Confusion matrix          Actual +   Actual -
+  Predicted + (malignant)   TP= 60     FP=  6
+  Predicted - (benign)      FN=  4     TN=101
+
+By hand : accuracy 0.942  precision 0.909  recall 0.938  F1 0.923
+sklearn : precision 0.909  recall 0.938  F1 0.923
+
+4 cancer case(s) were missed (false negatives). In medicine, recall matters most.

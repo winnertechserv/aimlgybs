@@ -1,0 +1,19 @@
+=== Tree Depth vs Accuracy (Iris Dataset) ===
+
+Max Depth     Train Acc   Test Acc   Leaf Nodes
+------------------------------------------------
+  1               64.8%      71.1%            2
+  2               94.3%      97.8%            3
+  3               95.2%     100.0%            5
+  4               97.1%     100.0%            7
+  5               99.0%     100.0%            9
+  No limit       100.0%     100.0%           10
+
+Insight: Deeper trees memorize training data (Occam's Razor says stop early!)
+
+=== Gini vs Entropy Impurity Criterion ===
+
+  criterion='gini': Test=100.0%  Leaves=5
+  criterion='entropy': Test=97.8%  Leaves=5
+
+Conclusion: Gini and Entropy usually produce very similar trees in practice.

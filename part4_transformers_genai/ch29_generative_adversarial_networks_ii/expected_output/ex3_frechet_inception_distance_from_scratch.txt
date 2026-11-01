@@ -1,0 +1,34 @@
+=== Frechet Inception Distance (FID) ===
+
+FID compares the DISTRIBUTIONS of Inception features for real and
+generated images, modelling each as a multivariate Gaussian:
+
+  FID = ||mu_r - mu_g||^2 + Tr( S_r + S_g - 2*(S_r S_g)^(1/2) )
+
+Lower FID = generated distribution closer to the real one.
+Unlike Inception Score, FID uses the REAL images as reference.
+
+Feature vectors: 500 images x 16 dims (stand-in for Inception features)
+
+Generated-image distribution                     FID  Quality
+------------------------------------------------------------------------
+  Generated = real distribution (ideal)        0.415  excellent
+  Slight mean shift (+0.3)                     2.065  good
+  Large mean shift (+1.5)                     36.850  very poor
+  Correct mean, too little variety (0.4x)      6.011  poor
+  Correct mean, too much variety (2.0x)       16.342  poor
+
+Observations:
+  * Matching the real distribution gives FID near 0.
+  * A shifted mean (wrong content) raises FID sharply.
+  * Too little variety (mode collapse) ALSO raises FID, because the
+    covariance term no longer matches - FID penalises lost diversity.
+
+=== Inception Score vs FID ===
+
+  Aspect                   Inception Score            FID
+  ----------------------------------------------------------------------
+  Uses real images?        No                         Yes (reference set)
+  Direction                Higher is better           Lower is better
+  Detects mode collapse    Partially (marginal)       Yes (covariance term)
+  Based on                 KL divergence              Frechet/Wasserstein-2 distance

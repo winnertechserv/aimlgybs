@@ -1,0 +1,38 @@
+=== Retrieval Augmented Generation (RAG) ===
+
+Problem: an LLM's knowledge is frozen at training time and it may
+hallucinate. RAG fixes this by RETRIEVING relevant documents from a
+document store and putting them into the prompt before generation.
+
+Document store : 6 documents
+Vocabulary size: 56 terms
+Embedding matrix shape: (6, 56)
+
+User query: 'Which model is pre-trained with masked language modelling?'
+
+Step 1 - RETRIEVE: cosine similarity of query with each document
+  0.8367  doc2: BERT is an encoder-only model pre-trained with masked lang...  <-- retrieved
+  0.3586  doc3: GPT is a decoder-only autoregressive model pre-trained on ...  <-- retrieved
+  0.1734  doc1: The Transformer model was introduced in the paper Attentio...
+  0.1260  doc5: K-Means is a partitioning clustering algorithm that minimi...
+  0.0000  doc4: ResNet uses residual skip connections to train very deep C...
+  0.0000  doc6: LSTM cells use forget, input and output gates to avoid van...
+
+Step 2 - AUGMENT: build the prompt with the top-2 documents
+--------------------------------------------------------------------
+Context:
+  [1] BERT is an encoder-only model pre-trained with masked language modelling.
+  [2] GPT is a decoder-only autoregressive model pre-trained on unlabeled text.
+Question: Which model is pre-trained with masked language modelling?
+Answer using only the context above.
+--------------------------------------------------------------------
+
+Step 3 - GENERATE: the LLM answers grounded in the retrieved context
+  Answer: BERT is pre-trained with masked language modelling.
+          (grounded in retrieved document [1], not invented)
+
+=== Why RAG matters ===
+  * Knowledge can be updated by changing the document store,
+    with no model retraining required.
+  * Answers are traceable to source documents (less hallucination).
+  * Retrieval quality sets the ceiling: bad retrieval -> bad answer.

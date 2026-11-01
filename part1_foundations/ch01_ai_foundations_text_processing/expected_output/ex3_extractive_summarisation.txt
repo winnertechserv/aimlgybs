@@ -1,0 +1,15 @@
+Most important words: ['translation', 'text', 'systems', 'sentence', 'machine', 'converts']
+
+Sentence scores:
+  0.50  Machine translation converts text from one language into anoth
+  0.33  It is hard because languages differ in word order and grammar.
+  0.33  German, for example, usually puts the verb in a different plac
+  0.50  Modern translation systems learn from millions of translated s
+  0.33  The weather was pleasant on the day the first system was demon
+  0.41  These systems use neural networks that read the whole sentence
+  0.48  Good translation must keep both the meaning and the style of t
+
+Summary (3 of 7 sentences):
+ - Machine translation converts text from one language into another.
+ - Modern translation systems learn from millions of translated sentence pairs.
+ - Good translation must keep both the meaning and the style of the original text.

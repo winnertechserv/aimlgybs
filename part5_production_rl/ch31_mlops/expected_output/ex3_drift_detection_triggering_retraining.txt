@@ -1,0 +1,42 @@
+=== Monitoring: Detecting Drift and Triggering Retraining ===
+
+A deployed model silently decays when the world changes. Monitoring
+must detect (a) INPUT DATA DRIFT and (b) MODEL PERFORMANCE DROP.
+
+--- Input Data Drift: PSI and Kolmogorov-Smirnov test ---
+
+Production window                  PSI   KS stat    p-value  Verdict
+----------------------------------------------------------------------------
+  Month 1 (same as training)    0.0039    0.0255   5.34e-01  no significant drift
+  Month 2 (slight shift)        0.0249    0.0595   1.68e-03  no significant drift
+  Month 3 (moderate shift)      0.1646    0.1715   4.30e-26  MODERATE drift - watch
+  Month 4 (major shift)         0.6911    0.3435  5.30e-105  MAJOR drift - retrain
+
+--- Model Performance Drift ---
+
+Baseline test accuracy at deployment: 0.912
+Alert threshold: relative drop > 5%
+
+Window        Accuracy      Drop  Action
+--------------------------------------------------------
+  Month 1        0.909      0.3%  continue monitoring
+  Month 2        0.901      1.2%  continue monitoring
+  Month 3        0.874      4.2%  continue monitoring
+  Month 4        0.812     11.0%  TRIGGER RETRAINING
+
+--- Automated Retraining Trigger Logic ---
+
+  Month 1: PSI=0.02, drop=0.3%, 7d since training -> no action
+  Month 3: PSI=0.18, drop=4.2%, 21d since training -> no action
+  Month 4: PSI=0.41, drop=11.0%, 35d since training -> RETRAIN
+      reason: data drift PSI=0.410
+      reason: accuracy drop 11.0%
+      reason: scheduled (35 days)
+
+=== Retraining triggers ===
+  1. Scheduled intervals   - e.g. retail forecasting retrains weekly
+  2. Data / model drift    - ride-sharing model after a big city event
+  3. Performance drop      - fraud detection when errors spike
+
+Tools: Prometheus (infrastructure), Evidently AI (data drift & ML
+metrics), CloudWatch (cloud apps); Airflow / Kubeflow run the pipeline.

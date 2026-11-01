@@ -1,0 +1,17 @@
+Parent Node: 4 C1, 4 C2, 2 C3
+Entropy i(Nd) = 1.5219
+
+Query 1: Left=[3, 1, 0]  Right=[1, 3, 2]
+  i(NdL)=0.8113  i(NdR)=1.4591
+  Information Gain = 0.3219
+
+Query 2: Left=[2, 1, 0]  Right=[2, 3, 2]
+  i(NdL)=0.9183  i(NdR)=1.5567
+  Information Gain = 0.1568
+
+Decision: Query 1 wins (0.3219 > 0.1568) -> SELECT Query 1
+
+--- Entropy for special cases ---
+  Pure node [10, 0]  : entropy = -0.0000  (pure, no uncertainty)
+  50/50 split [5,5]  : entropy = 1.0000  (maximum, 2 classes)
+  Equal [1,1,1]      : entropy = 1.5850  (maximum, 3 classes)

@@ -1,0 +1,13 @@
+M = 1: Phi is 15x2, w = [131.7842  -2.9405]
+       training RMSE = 4.02   test RMSE (5 new days) = 3.56
+       predictions [74.4 64.7 55.3 48.3 40. ]  vs actual [77.5 61.4 50.5 44.8 42.8]
+
+M = 2: Phi is 15x3, w = [271.97   -14.444    0.2282]
+       training RMSE = 0.84   test RMSE (5 new days) = 0.60
+       predictions [77.1 61.3 50.7 45.9 43.5]  vs actual [77.5 61.4 50.5 44.8 42.8]
+
+M = 3: Phi is 15x4, w = [364.8974 -26.0419   0.7014  -0.0063]
+       training RMSE = 0.76   test RMSE (5 new days) = 0.86
+       predictions [77.  60.9 51.  46.4 43.4]  vs actual [77.5 61.4 50.5 44.8 42.8]
+
+M = 2 fits the curve; M = 3 adds flexibility the data does not need.

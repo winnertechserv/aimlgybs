@@ -1,0 +1,16 @@
+Degree M = 9, N = 10 points. Ridge: w = (Phi^T Phi + lambda I)^-1 Phi^T y
+ lambda      train RMSE  test RMSE  size of w (||w||)
+ 0           0.000         0.965      1219209.9
+ 1e-06       0.254         0.362          117.4
+ 0.0001      0.267         0.350           19.5
+ 0.01        0.326         0.440            4.1
+ 1           0.471         0.620            0.6
+A small lambda shrinks the weights and fixes overfitting; too large underfits.
+
+Number of monomials D = (d+M)!/(d! M!):
+  d =  2 inputs, degree M = 2: D = 6
+  d =  2 inputs, degree M = 3: D = 10
+  d =  3 inputs, degree M = 2: D = 10
+  d = 11 inputs, degree M = 3: D = 364
+
+phi([2, 10]) for M = 2: [1, 2, 10, 4, 100, 20]

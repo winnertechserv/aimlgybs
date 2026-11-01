@@ -1,0 +1,50 @@
+=== Transposed Convolution (Up-Convolution / FSCL) ===
+
+The DISCRIMINATOR uses ordinary convolution: image -> smaller feature map.
+The GENERATOR must go the other way: small input -> larger image.
+It uses Transposed Convolution, also called Fractional-Strided
+Convolution (stride S < 1), which is why the layer is named FSCL.
+
+Input image x (4x4):
+[[5 9 3 1]
+ [7 2 6 4]
+ [1 8 5 2]
+ [3 0 7 9]]
+
+Kernel K (2x2):
+[[ 0.2 -0.5]
+ [ 0.7 -0.3]]
+
+Down-convolution output (3x3)  W2 = (W1-F)/S + 1 = (4-2)/1+1 = 3:
+[[ 0.8 -0.1  3.1]
+ [-1.3  1.5  2.1]
+ [-1.7 -3.   2.2]]
+  -> W2 < W1 : the feature map SHRANK
+
+Convolution matrix C shape: (9, 16)  (9 outputs x 16 inputs)
+Verify  e_bar = C x_bar  matches the direct convolution: True
+
+=== Transposed Convolution: x_tilde_bar = C^T e_bar ===
+
+C^T shape: (16, 9)  (16 outputs x 9 inputs) -> UPSAMPLES 3x3 back to 4x4
+Result (4x4):
+[[ 0.16 -0.42  0.67 -1.55]
+ [ 0.3   0.64  1.87 -1.98]
+ [-1.25  1.69  2.96 -1.73]
+ [-1.19 -1.59  2.44 -0.66]]
+
+Is the result equal to the original x? False
+NO - transposed convolution restores the SHAPE, not the VALUES.
+(Note: x_tilde is not the same as x.)
+
+=== Generator in DCGAN ===
+
+A 100-dim noise vector z is progressively upsampled by FSCL layers:
+  Unflattened input    -> 4x4x1024
+  FSCL 1               -> 8x8x512
+  FSCL 2               -> 16x16x256
+  FSCL 3               -> 32x32x128
+  FSCL 4 / Conv        -> 64x64x3  (generated image)
+
+Each FSCL doubles height and width while reducing depth,
+turning random noise z into a full-size synthetic image G(z).

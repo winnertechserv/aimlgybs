@@ -1,0 +1,27 @@
+=== Count-Based Word Embedding: Co-occurrence -> PPMI -> SVD ===
+
+Corpus: the cat sat on the mat . the dog sat on the rug . the cat ran . the dog ran . the cat and the dog play 
+
+Vocabulary (11 words): ['.', 'and', 'cat', 'dog', 'mat', 'on', 'play', 'ran', 'rug', 'sat', 'the']
+
+Co-occurrence counts computed (window=1).
+PPMI matrix computed (negative values clipped to 0).
+
+SVD applied. Keeping top r=2 dimensions.
+PPMI matrix size: (11, 11) -> Word embeddings: (11, 2)
+
+2-D word embeddings (first 6 words):
+       .: [-1.482, -0.853]
+     and: [-1.012, +0.447]
+     cat: [-1.537, -1.275]
+     dog: [-1.982, -2.284]
+     mat: [-0.855, +0.152]
+      on: [-1.257, -1.370]
+
+Cosine similarity between word pairs:
+  sim(cat, dog) = +0.987
+  sim(sat, ran) = +0.994
+  sim(cat, mat) = +0.646
+
+'cat' and 'dog' appear in similar contexts -> similar vectors.
+Count-based methods capture GLOBAL co-occurrence statistics.

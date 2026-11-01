@@ -1,0 +1,15 @@
+g(1, 0) = +0.0  -> on the line
+g(0, 1) = +0.0  -> on the line
+g(0, 0) = -1.0  -> negative side
+g(1, 1) = +1.0  -> positive side
+g(0.2, 0.3) = -0.5  -> negative side
+
+Same covariance (Case 2)
+  Linear boundary accuracy   : 0.802
+  Quadratic boundary accuracy: 0.805
+  Size of quadratic term |W| = 0.05  -> boundary is almost straight
+
+Different covariance (Case 3)
+  Linear boundary accuracy   : 0.875
+  Quadratic boundary accuracy: 0.930
+  Size of quadratic term |W| = 3.08  -> boundary is curved

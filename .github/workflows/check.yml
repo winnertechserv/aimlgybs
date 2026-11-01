@@ -1,0 +1,26 @@
+name: Check all programs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'   # every Monday, to catch problems early
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - name: Install exact library versions
+        run: pip install -r requirements.txt
+      - name: Run every program and compare with the book
+        run: python tools/check_all.py
+      - name: Redraw every figure
+        run: python figures/src/make_all.py

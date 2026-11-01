@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Files written by the example programs
+mlruns.json
+.ipynb_checkpoints/

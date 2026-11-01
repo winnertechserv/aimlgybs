@@ -1,0 +1,33 @@
+Hidden layer output H (3 examples x 4 neurons):
+[[1. 2. 3. 4.]
+ [5. 6. 7. 8.]
+ [2. 4. 6. 8.]]
+
+=== Batch Normalization ===
+Normalize each COLUMN (neuron) across all 3 examples
+
+Column means: [2.6667 4.     5.3333 6.6667]
+Column stds : [1.6997 1.633  1.6997 1.8856]
+BN output:
+[[-0.9806 -1.2247 -1.3728 -1.4142]
+ [ 1.3728  1.2247  0.9806  0.7071]
+ [-0.3922  0.      0.3922  0.7071]]
+Verify: mean per column = [ 0.  0.  0. -0.]  (all ~0)
+        std  per column = [1. 1. 1. 1.]  (all ~1)
+
+=== Layer Normalization ===
+Normalize each ROW (example) across its own 4 neurons
+
+Row means: [2.5 6.5 5. ]
+Row stds : [1.118  1.118  2.2361]
+LN output:
+[[-1.3416 -0.4472  0.4472  1.3416]
+ [-1.3416 -0.4472  0.4472  1.3416]
+ [-1.3416 -0.4472  0.4472  1.3416]]
+Verify: mean per row = [0. 0. 0.]  (all ~0)
+        std  per row = [1. 1. 1.]  (all ~1)
+
+=== Summary ===
+  Batch Norm : normalizes across BATCH (columns) — needs large batch
+  Layer Norm : normalizes across FEATURES (rows) — works with batch=1
+  Use BatchNorm for CNNs and MLPs; LayerNorm for Transformers/RNNs

@@ -1,0 +1,33 @@
+=== Vision Transformer (ViT): 'An image is worth 16x16 words' ===
+
+Idea: split the image into fixed-size patches, flatten each patch,
+linearly project it -> now the image IS a sequence, so a Transformer
+encoder can process it exactly like a sentence.
+
+Input image : 32x32x3
+Patch size  : 8x8
+Number of patches N = (H/P) x (W/P) = 4 x 4 = 16
+Flattened patch dimension = P*P*C = 8*8*3 = 192
+
+Step 1 - patch matrix shape: (16, 192)  (N x patch_dim)
+Step 2 - after linear projection E (192, 16): (16, 16)  (N x d)
+Step 3 - prepend [CLS] token: (17, 16)  (N+1 x d)
+Step 4 - add position embeddings: (17, 16)
+
+Final sequence fed to the Transformer encoder: 17 tokens of dim 16
+  token 0      = [CLS]  (its final output is used for classification)
+  tokens 1..16 = image patches
+
+First 6 dims of [CLS] token : [-0.0059  0.0408 -0.0926  0.0464  0.0997 -0.0908]
+First 6 dims of patch 1     : [-0.3084 -0.2176 -0.3752  0.4417 -0.5824 -0.4827]
+
+=== Sequence length vs patch size ===
+
+ Patch size   #Patches   Patch dim  Note
+--------------------------------------------------------------
+      4x4           64          48  more tokens = finer detail, slower
+      8x8           16         192  balanced
+     16x16           4         768  fewer tokens = faster, coarser
+
+ViT for image captioning: ViT encoder represents the image, then a
+Transformer decoder generates the caption word by word.

@@ -1,0 +1,29 @@
+Numerical columns  : ['age', 'fare', 'pclass']
+Categorical columns: ['sex', 'embarked']
+
+--- Age: centre and spread ---
+Mean   : 29.67
+Median : 29.00
+Mode   : 25
+Var    : 112.60
+Std    : 10.61
+Range  : 61
+
+--- Five-point summary of age ---
+Min    : 4.0
+Q1     : 22.0
+Median : 29.0
+Q3     : 36.2
+Max    : 65.0
+
+Skewness of age: 0.27 -> roughly symmetric
+  mean = 29.67, median = 29.00
+
+Skewness of fare: 3.29 -> right-skewed
+  mean = 31.03, median = 21.21
+
+Passengers per class:
+pclass
+1     50
+2     45
+3    105

@@ -1,0 +1,24 @@
+Dataset: 100 samples | Ground truth: 3 clusters
+
+Linkage                Silhouette     Adj Rand  Notes
+---------------------------------------------------------------------------
+  single                   0.8470       1.0000  nearest-neighbour chaining
+  complete                 0.8470       1.0000  compact clusters
+  average                  0.8470       1.0000  balanced choice
+  ward                     0.8470       1.0000  minimizes within-cluster variance
+
+=== Merge History (AGNES, Ward linkage, first 8 steps) ===
+
+ Step  Cluster A  Cluster B   Distance   New Size
+--------------------------------------------------
+    1        #16        #53     0.0484          2
+    2        #57        #85     0.0570          2
+    3         #7        #32     0.0619          2
+    4        #61        #81     0.0814          2
+    5        #47        #71     0.0865          2
+    6        #97   merged_3     0.1006          3
+    7        #51        #90     0.1042          2
+    8         #9        #56     0.1512          2
+  ...
+
+Total steps: 99  (from 100 singletons -> 1 cluster)

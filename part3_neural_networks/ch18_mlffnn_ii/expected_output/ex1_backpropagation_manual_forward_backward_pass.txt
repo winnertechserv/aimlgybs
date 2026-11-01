@@ -1,0 +1,16 @@
+=== FORWARD PASS ===
+Hidden net inputs a_h : [0.625 0.69 ]
+Hidden outputs s_h    : [0.5546 0.598 ]
+Output net input a_o  : 1.0909
+Network output s_o    : 0.7486
+Target                : 1.0
+Error E               : 0.031612
+
+=== BACKWARD PASS ===
+Output local gradient delta_o: -0.047326
+Updated output weights: [[0.413124 0.46415 ]]
+Hidden local gradients delta_h: [-0.013108 -0.013681]
+
+Error BEFORE update: 0.031612
+Error AFTER  update: 0.029636
+Error reduced by   : 0.001976  <- gradient descent worked!

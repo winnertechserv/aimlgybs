@@ -1,0 +1,17 @@
+Rows: 102 | missing weights: 4 | duplicates: 2
+After drop_duplicates: 100 rows
+
+Filled values for the 4 missing rows:
+  Mean           [70.2 70.2 70.2 70.2]
+  Median         [68.4 68.4 68.4 68.4]
+  Forward fill   [68.7 70.  65.3 73. ]
+  Interpolation  [66.  65.6 66.8 71.2]
+  KNN (k=3)      [63.6 74.2 73.5 70.1]
+  Heights of those rows: [162.9 175.6 170.9 167.1]
+
+Z-score outliers: [250.0]
+IQR fences: [49.4, 88.1]
+IQR outliers: [43.4, 250.0]
+
+Mean weight  raw: 70.20  removed: 68.64  winsorised: 68.61
+Max after log transform: 5.53 (raw max 250)

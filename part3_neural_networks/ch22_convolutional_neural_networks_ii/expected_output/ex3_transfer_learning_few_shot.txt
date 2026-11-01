@@ -1,0 +1,22 @@
+=== Transfer Learning: Reusing a Pretrained Representation ===
+
+Source domain : digits [0, 1, 2, 3, 4, 5, 6, 7]
+                1443 labeled images -> pretrain a deep CNN-like model
+                pretrained source accuracy: 100.0%
+
+Target domain : NEW digits 8 and 9
+                only 10 labeled images (5 per class - few-shot!)
+
+Test set: 344 unseen images of digits 8 and 9
+
+Results:
+  Train from scratch (raw pixels, 10 imgs) : 70.3%
+  Transfer learning (pretrained features)  : 77.0%
+
+Improvement from transfer learning: +6.7 pp
+
+With only 10 labeled images, training a deep model from scratch fails to
+generalize. The pretrained model already learned reusable stroke/edge
+features, so a tiny classifier on top of them generalizes far better.
+This is exactly how a VGGNet pretrained on ImageNet is reused for
+medical images with only a few labeled examples.

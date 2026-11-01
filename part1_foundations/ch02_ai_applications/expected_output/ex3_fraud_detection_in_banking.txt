@@ -1,0 +1,11 @@
+Transactions: 2020  (true frauds hidden inside: 20)
+Flagged as suspicious: 21
+Precision: 0.95   Recall: 1.00
+
+Top 5 most unusual transactions:
+  amount($)  hour  distance(km)  buys/hr  truly fraud?
+        959     5           775        7  yes
+       1041     3          1536        5  yes
+        557     3           711       10  yes
+        918     4           482        8  yes
+        822     4           576        6  yes

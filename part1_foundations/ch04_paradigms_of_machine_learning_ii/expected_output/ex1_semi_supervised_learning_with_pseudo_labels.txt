@@ -1,0 +1,9 @@
+Labelled: 50   Unlabelled: 1207
+Round 0 (labelled data only): test accuracy = 0.826
+Round 1: pseudo-labelled  727 images (pseudo-label accuracy 0.961) -> test accuracy = 0.859
+Round 2: pseudo-labelled 1010 images (pseudo-label accuracy 0.914) -> test accuracy = 0.872
+Round 3: pseudo-labelled 1079 images (pseudo-label accuracy 0.904) -> test accuracy = 0.878
+Round 4: pseudo-labelled 1091 images (pseudo-label accuracy 0.902) -> test accuracy = 0.881
+
+Label spreading (same 50 labels): test accuracy = 0.928
+For reference, with ALL 1257 true labels: 0.963

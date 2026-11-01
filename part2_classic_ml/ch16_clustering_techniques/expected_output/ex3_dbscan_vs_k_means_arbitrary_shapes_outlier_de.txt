@@ -1,0 +1,23 @@
+=== DBSCAN on Blob Data with Outliers ===
+
+Dataset: 150 blob points + 10 random outliers = 160 total
+
+K-Means result (forced to assign every point including outliers):
+  Cluster 0: 54 points (includes outliers!)
+  Cluster 1: 53 points (includes outliers!)
+  Cluster 2: 53 points (includes outliers!)
+
+DBSCAN result (eps=0.35, min_samples=5):
+  Clusters found: 3  |  Noise points: 6
+  NOISE (outliers): 6 points
+  Cluster 0: 51 points
+  Cluster 1: 52 points
+  Cluster 2: 51 points
+
+=== DBSCAN Parameters Explained ===
+  eps         : neighbourhood radius
+  min_samples : min neighbours to be a 'core point'
+  label = -1  : noise/outlier — not assigned to any cluster
+
+K-Means silhouette: 0.8808
+DBSCAN silhouette (excl. noise): 0.9189
