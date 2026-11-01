@@ -9,8 +9,8 @@ Companion code for Chapter 18 of *AI-Machine Learning: Get Your Base Strong*. Th
 - The forward pass computes the output; the backward pass computes gradients using the chain rule.
 - Local gradients (the deltas) are passed backwards layer by layer, which is what makes training deep networks feasible.
 - Pattern, mini-batch and batch modes trade noise against speed; mini-batch is the usual practical choice.
-- Early stopping halts training when validation performance stops improving, saving compute and improving generalisation.
-- Different random initialisations converge to different local minima, so run several seeds and keep the best.
+- Early stopping halts training when validation performance stops improving, saving compute and improving generalization.
+- Different random initializations converge to different local minima, so run several seeds and keep the best.
 
 ## Examples
 

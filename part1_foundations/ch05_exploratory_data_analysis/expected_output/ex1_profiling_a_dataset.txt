@@ -1,7 +1,7 @@
 Numerical columns  : ['age', 'fare', 'pclass']
 Categorical columns: ['sex', 'embarked']
 
---- Age: centre and spread ---
+--- Age: center and spread ---
 Mean   : 29.67
 Median : 29.00
 Mode   : 25

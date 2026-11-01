@@ -88,7 +88,7 @@ print(f"\nBest run: {best['run_id']}  ({best['params']})")
 print(f"  test accuracy = {best['metrics']['test_accuracy']}")
 
 # ---- Overfitting check straight from the logs ----
-print("\n=== Generalisation check from logged metrics ===\n")
+print("\n=== Generalization check from logged metrics ===\n")
 for r in runs:
     gap = r["metrics"]["train_accuracy"] - r["metrics"]["test_accuracy"]
     flag = "OVERFIT" if gap > 0.05 else "ok"

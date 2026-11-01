@@ -8,7 +8,7 @@ Companion code for Chapter 7 of *AI-Machine Learning: Get Your Base Strong*. The
 
 - Regression predicts a continuous output from one or more inputs.
 - Simple linear regression fits a straight line, ŷ = w x + w₀. Multiple regression fits a plane or hyperplane, ŷ = wᵀx.
-- Least squares picks the line that minimises the sum of squared errors, and it has an exact closed-form answer.
+- Least squares picks the line that minimizes the sum of squared errors, and it has an exact closed-form answer.
 - For many inputs, w = (XᵀX)⁻¹Xᵀy, using the pseudo-inverse of the data matrix.
 - Each weight is the change in output for a one-unit change in that input, holding the others fixed.
 - Judge a regression model on test data with squared error and RMSE.
@@ -79,7 +79,7 @@ Meaning of the weights: each extra 1% humidity changes temperature by -0.275 C, 
 
 ### Example 3: Closed Form vs Gradient Descent on Real Data
 
-Scikit-learn's diabetes dataset has 442 patients and 10 measurements each. We fit linear regression two ways. The closed form gives the answer in one step. Gradient descent starts from zero and walks downhill: watch the training error fall from 23,375 to 2,804. Both reach the same test RMSE (about 55.7), and so does scikit-learn. We standardise the features first because gradient descent converges much faster when all inputs are on the same scale.
+Scikit-learn's diabetes dataset has 442 patients and 10 measurements each. We fit linear regression two ways. The closed form gives the answer in one step. Gradient descent starts from zero and walks downhill: watch the training error fall from 23,375 to 2,804. Both reach the same test RMSE (about 55.7), and so does scikit-learn. We standardize the features first because gradient descent converges much faster when all inputs are on the same scale.
 
 <details><summary>Expected output</summary>
 
@@ -101,7 +101,7 @@ Test RMSE as % of the mean target: 36.6%
 
 ## Figures from this chapter
 
-**Figure 7.1.** Least squares on the salary data: the best line minimises the sum of the squared red gaps.
+**Figure 7.1.** Least squares on the salary data: the best line minimizes the sum of the squared red gaps.
 
 ![Figure 7.1](../../figures/png/c07_least_squares.png)
 

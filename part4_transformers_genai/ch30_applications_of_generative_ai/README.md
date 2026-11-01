@@ -6,7 +6,7 @@ Companion code for Chapter 30 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 ## Key ideas
 
-- Generative AI creates new content across text, images, video, speech and code, rather than only analysing data.
+- Generative AI creates new content across text, images, video, speech and code, rather than only analyzing data.
 - A VAE encodes an input into a distribution, and the reparameterization trick keeps that sampling differentiable.
 - The KL term in the VAE loss shapes the latent space so that sampling from it produces realistic outputs.
 - Diffusion models systematically destroy structure with noise and then learn to reverse the process step by step.
@@ -32,7 +32,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: From Autoencoder to Variational Autoencoder
 
-This contrasts the deterministic AANN, which maps an input to a single bottleneck point, with the VAE, whose encoder outputs a mean and log-variance. It then shows the reparameterization trick, z = mu + sigma*eps, showing that the same input yields different latent samples each time, and computes both parts of the VAE loss including the KL term that pulls the latent distribution towards N(0,I).
+This contrasts the deterministic AANN, which maps an input to a single bottleneck point, with the VAE, whose encoder outputs a mean and log-variance. It then shows the reparameterization trick, z = mu + sigma*eps, showing that the same input yields different latent samples each time, and computes both parts of the VAE loss including the KL term that pulls the latent distribution toward N(0,I).
 
 <details><summary>Expected output</summary>
 
@@ -75,7 +75,7 @@ Step 3 - VAE loss = reconstruction loss + KL divergence
   KL( q(z|x) || N(0,I) )             : 6.4821
   Total loss = recon + beta*KL       : 9.8637
 
-  The KL term pulls the latent distribution towards N(0,I), which
+  The KL term pulls the latent distribution toward N(0,I), which
   makes the latent space smooth and continuous - so sampling
   z ~ N(0,I) at test time produces realistic new images.
 

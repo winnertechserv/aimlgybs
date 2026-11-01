@@ -9,9 +9,9 @@ Companion code for Chapter 2 of *AI-Machine Learning: Get Your Base Strong*. The
 - Image tasks include classification, clustering, segmentation, retrieval, captioning, VQA and generation.
 - Image retrieval can work by example (needs a similarity measure) or by keyword (needs annotated images).
 - Video is multimodal: frames, audio and text all carry information.
-- Speech tasks cover recognising words, speakers, languages and emotions, plus synthesis and translation.
-- Recognising who or what is in audio should not depend on the words spoken, the language or the channel.
-- Banking and healthcare are major users of AI: fraud detection, credit scoring, diagnosis and personalised treatment.
+- Speech tasks cover recognizing words, speakers, languages and emotions, plus synthesis and translation.
+- Recognizing who or what is in audio should not depend on the words spoken, the language or the channel.
+- Banking and healthcare are major users of AI: fraud detection, credit scoring, diagnosis and personalized treatment.
 
 ## Examples
 
@@ -58,7 +58,7 @@ Per-digit accuracy: {0: 1.0, 1: 1.0, 2: 1.0, 3: 0.98, 4: 1.0, 5: 1.0, 6: 1.0, 7:
 
 ### Example 2: Image Retrieval by Example
 
-This is query-by-example. We pick eight images as queries and ask the system for the five most similar images in the collection, using cosine similarity between pixel vectors. Precision@5 is the share of those five with the same digit as the query. Most queries score a perfect 1.0. One messy '3' brings back two '8's, which shows that similar-looking digits are the hard cases. The last line shows query-by-semantics: because every image is labelled, we can ask for 'sevens' by keyword.
+This is query-by-example. We pick eight images as queries and ask the system for the five most similar images in the collection, using cosine similarity between pixel vectors. Precision@5 is the share of those five with the same digit as the query. Most queries score a perfect 1.0. One messy '3' brings back two '8's, which shows that similar-looking digits are the hard cases. The last line shows query-by-semantics: because every image is labeled, we can ask for 'sevens' by keyword.
 
 <details><summary>Expected output</summary>
 
@@ -103,11 +103,11 @@ Top 5 most unusual transactions:
 
 ## Figures from this chapter
 
-**Figure 2.1.** One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colours every pixel by what it belongs to.
+**Figure 2.1.** One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colors every pixel by what it belongs to.
 
 ![Figure 2.1](../../figures/png/c02_image_tasks.png)
 
-**Figure 2.2.** Spoken translation: recognise the words, translate the text, then speak it in the new language.
+**Figure 2.2.** Spoken translation: recognize the words, translate the text, then speak it in the new language.
 
 ![Figure 2.2](../../figures/png/c02_s2s.png)
 

@@ -1,4 +1,4 @@
-=== Optimizer Comparison: Minimising E(w) = w1^2 + 10*w2^2 ===
+=== Optimizer Comparison: Minimizing E(w) = w1^2 + 10*w2^2 ===
 
 Starting at w=[5.0, 5.0], optimal = [0.0, 0.0]
 

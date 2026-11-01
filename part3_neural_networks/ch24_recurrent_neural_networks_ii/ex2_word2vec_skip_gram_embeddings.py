@@ -5,7 +5,7 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 This trains a Skip-Gram model with plain SGD on a small corpus with three semantic
-groups (royalty, animals, fruits). After training, the nearest-neighbour words by cosine
+groups (royalty, animals, fruits). After training, the nearest-neighbor words by cosine
 similarity cluster by meaning - the model learned semantics purely from context, with no
 labels. This is the prediction-based alternative to the count method.
 
@@ -76,10 +76,10 @@ def nearest(word, k=3):
     sims = [(w, cossim(v, W_in[idx[w]])) for w in vocab if w != word]
     return sorted(sims, key=lambda x: -x[1])[:k]
 
-print("Nearest neighbours by cosine similarity (learned embeddings):")
+print("Nearest neighbors by cosine similarity (learned embeddings):")
 for w in ['king', 'dog', 'apple']:
-    neighbours = nearest(w)
-    nbr_str = ", ".join(f"{n}({s:.2f})" for n, s in neighbours)
+    neighbors = nearest(w)
+    nbr_str = ", ".join(f"{n}({s:.2f})" for n, s in neighbors)
     print(f"  {w:>6} -> {nbr_str}")
 
 print("\nWords from the same semantic group (royalty / animals / fruits)")

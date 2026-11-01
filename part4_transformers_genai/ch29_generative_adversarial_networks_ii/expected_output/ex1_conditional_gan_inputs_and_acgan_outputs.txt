@@ -31,7 +31,7 @@ The discriminator has TWO outputs:
 ACGAN loss has two parts:
   L_source = log P(real | x)     -> adversarial term
   L_class  = log P(class | x)    -> classification term
-  D maximises L_source + L_class ; G maximises L_class - L_source
+  D maximizes L_source + L_class ; G maximizes L_class - L_source
 
 --- Other conditional variants ---
   BigGAN          : class-conditional GAN on ImageNet, built from ResBlocks

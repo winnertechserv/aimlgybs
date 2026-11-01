@@ -8,7 +8,7 @@ Companion code for Chapter 14 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 - A decision tree is a sequence of questions; each split should leave the child nodes purer than the parent.
 - Entropy and Gini both measure impurity, and information gain picks the split that reduces it most.
-- A tree grown without limits will memorise the training set: stop early using depth or minimum-samples rules.
+- A tree grown without limits will memorize the training set: stop early using depth or minimum-samples rules.
 - Occam's Razor applies — prefer the simpler tree when two trees explain the data equally well.
 - Trees are highly interpretable: you can read the decision rules straight off the diagram.
 

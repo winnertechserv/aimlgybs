@@ -10,7 +10,7 @@ Companion code for Chapter 8 of *AI-Machine Learning: Get Your Base Strong*. The
 - The design matrix Φ holds the powers (monomials) of the inputs, and w = (ΦᵀΦ)⁻¹Φᵀy.
 - Choose the degree M with a validation or test set, never with the training error.
 - Overfitting means low training error, high test error and huge weights.
-- More data and L2 regularisation (ridge regression) both reduce overfitting.
+- More data and L2 regularization (ridge regression) both reduce overfitting.
 - With many inputs the number of polynomial terms explodes: D = (d+M)!/(d!M!).
 
 ## Examples

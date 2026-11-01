@@ -2,7 +2,7 @@ Dataset: 100 samples | Ground truth: 3 clusters
 
 Linkage                Silhouette     Adj Rand  Notes
 ---------------------------------------------------------------------------
-  single                   0.8470       1.0000  nearest-neighbour chaining
+  single                   0.8470       1.0000  nearest-neighbor chaining
   complete                 0.8470       1.0000  compact clusters
   average                  0.8470       1.0000  balanced choice
   ward                     0.8470       1.0000  minimizes within-cluster variance

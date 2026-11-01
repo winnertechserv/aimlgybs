@@ -2,7 +2,7 @@
 
 Dataset: 300 samples, 10 features, 2 classes
 
-Step 1: FDA projection direction maximises class separation
+Step 1: FDA projection direction maximizes class separation
   Class +1 mean in FDA space: 1.0191
   Class  0 mean in FDA space: -0.9443
   Separation between means  : 1.9633

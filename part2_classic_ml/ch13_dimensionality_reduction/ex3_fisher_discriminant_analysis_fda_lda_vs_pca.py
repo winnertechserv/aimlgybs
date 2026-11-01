@@ -7,7 +7,7 @@ What this example shows
 This is the key example that proves WHY FDA beats PCA for classification tasks. We use
 sklearn's LinearDiscriminantAnalysis (which builds FDA) and compare it to PCA on the
 same 10-feature, 2-class dataset. Both reduce to 1 dimension. FDA finds a direction that
-maximises class separation (the class means are 1.96 apart after projection). PCA finds
+maximizes class separation (the class means are 1.96 apart after projection). PCA finds
 the direction of maximum variance — but that direction might not be useful for
 distinguishing classes. The accuracy comparison confirms it: FDA 1D is nearly as good as
 the full 10D dataset, while PCA 1D loses large accuracy.
@@ -36,7 +36,7 @@ lda = LinearDiscriminantAnalysis(n_components=1)
 X_tr_lda = lda.fit_transform(X_train, y_train)
 X_te_lda = lda.transform(X_test)
 
-print("Step 1: FDA projection direction maximises class separation")
+print("Step 1: FDA projection direction maximizes class separation")
 print(f"  Class +1 mean in FDA space: {X_tr_lda[y_train==1].mean():.4f}")
 print(f"  Class  0 mean in FDA space: {X_tr_lda[y_train==0].mean():.4f}")
 print(f"  Separation between means  : {abs(X_tr_lda[y_train==1].mean() - X_tr_lda[y_train==0].mean()):.4f}")

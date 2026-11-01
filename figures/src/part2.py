@@ -20,7 +20,7 @@ ax.scatter([10], [64], c=TEAL, marker='D', s=60, zorder=3, label='Test person (1
 ax.plot([], [], c=RED, label='Errors (residuals)'); ax.set_xlabel('Years of experience'); ax.set_ylabel('Salary ($1000s)'); ax.legend(frameon=False, fontsize=8.5)
 ax.set_title('Least squares makes the red gaps as small as possible')
 save(fig, 'c07_least_squares.png')
-reg(7, "'Best' is defined by the method of least squares", 'c07_least_squares.png', 'Least squares on the salary data: the best line minimises the sum of the squared red gaps.')
+reg(7, "'Best' is defined by the method of least squares", 'c07_least_squares.png', 'Least squares on the salary data: the best line minimizes the sum of the squared red gaps.')
 
 D = np.array([[45.3, 1012.7, 29.3], [46.0, 1017.9, 29.3], [53.7, 1021.4, 25.2], [62.7, 1023.2, 22.0], [81.8, 1023.1, 18.8], [59.8, 1021.6, 23.4],
               [57.2, 1018.5, 23.7], [82.4, 1022.0, 18.6], [81.5, 1028.3, 18.7], [43.5, 1011.0, 32.0], [48.4, 1024.5, 27.1], [68.5, 1027.9, 21.3],
@@ -49,7 +49,7 @@ temp, hum = D[:, 2], D[:, 0]
 tt = np.array([19.5, 22.8, 26.0, 28.4, 31.2]); ht = np.array([77.5, 61.4, 50.5, 44.8, 42.8])
 fig, ax = plt.subplots(figsize=(6.6, 3.8)); xs = np.linspace(18, 32.5, 200)
 ax.scatter(temp, hum, c=NAVY, label='Training days'); ax.scatter(tt, ht, c=RED, marker='x', s=60, label='New test days')
-for M, c, ls in [(1, GREY, '--'), (2, ORANGE, '-'), (3, TEAL, ':')]:
+for M, c, ls in [(1, GRAY, '--'), (2, ORANGE, '-'), (3, TEAL, ':')]:
     wM = np.linalg.pinv(np.vander(temp, M + 1, increasing=True)) @ hum
     ax.plot(xs, np.vander(xs, M + 1, increasing=True) @ wM, c=c, ls=ls, lw=2, label=f'M = {M}')
 ax.set_xlabel('Temperature (C)'); ax.set_ylabel('Humidity (%)'); ax.legend(frameon=False); ax.set_title('A straight line misses the bend; M = 2 follows it')
@@ -94,17 +94,17 @@ fig, ax = plt.subplots(figsize=(6.4, 4.2))
 ax.scatter(*CHILD.T, c=NAVY, label='Child'); ax.scatter(*ADULT.T, c=ORANGE, marker='s', label='Adult')
 ax.scatter(*t, c=RED, marker='*', s=250, zorder=4, label='Test person (140 cm, 46 kg)')
 for K, ls in [(1, '-'), (3, '--'), (5, ':')]:
-    r = d[order[K - 1]]; ax.add_patch(Circle(t, r, fill=False, ec=GREY, ls=ls, lw=1.4)); ax.text(t[0] + r * 0.72, t[1] + r * 0.72, f'K={K}', color=GREY, fontsize=9)
+    r = d[order[K - 1]]; ax.add_patch(Circle(t, r, fill=False, ec=GRAY, ls=ls, lw=1.4)); ax.text(t[0] + r * 0.72, t[1] + r * 0.72, f'K={K}', color=GRAY, fontsize=9)
 ax.set_aspect('equal'); ax.set_xlim(90, 195); ax.set_ylim(5, 95); ax.set_xlabel('Height (cm)'); ax.set_ylabel('Weight (kg)'); ax.legend(frameon=False, loc='upper left', fontsize=8.5)
 ax.set_title('K = 1 and 3 vote Adult; K = 5 votes Child')
 save(fig, 'c09_knn.png')
-reg(9, "The nearest-neighbour method", 'c09_knn.png', 'K-NN for the second test person in Example 1. Each circle holds the K nearest neighbours; changing K changes the vote.')
+reg(9, "The nearest-neighbor method", 'c09_knn.png', 'K-NN for the second test person in Example 1. Each circle holds the K nearest neighbors; changing K changes the vote.')
 
 fig, ax = diagram(7.4, 3.6, xlim=(0, 10), ylim=(0, 5))
 ax.text(6.2, 4.7, 'Actual class', ha='center', fontsize=10, fontweight='bold', color=NAVY); ax.text(0.4, 2.3, 'Predicted', rotation=90, va='center', fontsize=10, fontweight='bold', color=NAVY)
 ax.text(4.8, 4.15, 'Positive', ha='center'); ax.text(7.6, 4.15, 'Negative', ha='center'); ax.text(2.2, 3.1, 'Positive', ha='center'); ax.text(2.2, 1.5, 'Negative', ha='center')
 cells = [(4.8, 3.1, 'TP = 60', '#D4EDDA'), (7.6, 3.1, 'FP = 6\n(false alarm)', '#F8D7DA'), (4.8, 1.5, 'FN = 4\n(missed)', '#F8D7DA'), (7.6, 1.5, 'TN = 101', '#D4EDDA')]
-for cx, cy, tx, fc in cells: box(ax, cx, cy, tx, 2.6, 1.45, fc=fc, ec=GREY, fs=10, bold=True, round_=0.02)
+for cx, cy, tx, fc in cells: box(ax, cx, cy, tx, 2.6, 1.45, fc=fc, ec=GRAY, fs=10, bold=True, round_=0.02)
 ax.text(5, 0.25, 'Precision = TP/(TP+FP) = 0.909      Recall = TP/(TP+FN) = 0.938', ha='center', fontsize=9.5, color=NAVY)
 save(fig, 'c09_confusion.png')
 reg(9, "Accuracy alone can mislead", 'c09_confusion.png', 'The confusion matrix from Example 2 (cancer screening). Green cells are correct; red cells are the two kinds of mistake.')
@@ -137,10 +137,10 @@ reg(10, "Instead of distances, the Bayes classifier", 'c10_bayes_1d.png', 'Bayes
 fig, ax = plt.subplots(figsize=(6.6, 3.2))
 for pr, ls, lab in [(0.5, '-', 'equal priors (0.5 / 0.5)'), (0.9, '--', 'school priors (0.9 child)')]:
     post = pr * pc / (pr * pc + (1 - pr) * pa); ax.plot(xs, post, c=NAVY, ls=ls, lw=2, label=lab)
-    ax.axvline(xs[np.argmin(abs(post - 0.5))], c=GREY, ls=ls, lw=1)
+    ax.axvline(xs[np.argmin(abs(post - 0.5))], c=GRAY, ls=ls, lw=1)
 ax.set_xlabel('Height (cm)'); ax.set_ylabel('P(Child | height)'); ax.legend(frameon=False); ax.set_title('A stronger prior moves the decision boundary')
 save(fig, 'c10_priors.png')
-reg(10, "Priors matter", 'c10_priors.png', 'When children are much more common, the boundary (grey lines, where the probability is 0.5) moves to the right, so more borderline people are called children.')
+reg(10, "Priors matter", 'c10_priors.png', 'When children are much more common, the boundary (gray lines, where the probability is 0.5) moves to the right, so more borderline people are called children.')
 
 rng = np.random.default_rng(0)
 Ad = np.vstack([rng.normal([0, 0], 0.6, (150, 2)), rng.normal([4, 4], 0.6, (150, 2))]); Bd = rng.normal([2, 2], 0.6, (300, 2))
@@ -149,7 +149,7 @@ gg = np.meshgrid(np.linspace(-2, 6, 200), np.linspace(-2, 6, 200)); P = np.c_[gg
 for a, K in zip(axs, (1, 2)):
     g = GaussianMixture(K, random_state=0).fit(Ad); Z = np.exp(g.score_samples(P)).reshape(gg[0].shape)
     a.scatter(*Ad.T, s=8, c=NAVY, alpha=0.6, label='Class A'); a.scatter(*Bd.T, s=8, c=ORANGE, alpha=0.6, label='Class B')
-    a.contour(*gg, Z, levels=6, colors=NAVY, linewidths=1); a.set_title(f'Class A modelled with K = {K} ' + ('Gaussian' if K == 1 else 'Gaussians (GMM)'))
+    a.contour(*gg, Z, levels=6, colors=NAVY, linewidths=1); a.set_title(f'Class A modeled with K = {K} ' + ('Gaussian' if K == 1 else 'Gaussians (GMM)'))
     a.set_aspect('equal')
 axs[0].legend(frameon=False, loc='upper left', fontsize=8.5); fig.tight_layout()
 save(fig, 'c10_gmm.png')
@@ -189,12 +189,12 @@ for epoch in range(5):
 fig, ax = plt.subplots(figsize=(5.4, 4.4)); xs = np.linspace(-2.5, 2.5, 2)
 ax.scatter(*Xp[yp == 1].T, c=ORANGE, marker='s', label='+1'); ax.scatter(*Xp[yp == -1].T, c=NAVY, label='-1')
 for i, L in enumerate(lines):
-    c, lw, a_ = (RED, 1.5, 1) if i == 0 else (GREEN, 2.5, 1) if i == len(lines) - 1 else (GREY, 0.8, 0.5)
+    c, lw, a_ = (RED, 1.5, 1) if i == 0 else (GREEN, 2.5, 1) if i == len(lines) - 1 else (GRAY, 0.8, 0.5)
     ax.plot(xs, -(L[0] + L[1] * xs) / L[2], c=c, lw=lw, alpha=a_)
-ax.plot([], [], c=RED, label='starting line'); ax.plot([], [], c=GREY, label='after each mistake'); ax.plot([], [], c=GREEN, lw=2.5, label='final line')
+ax.plot([], [], c=RED, label='starting line'); ax.plot([], [], c=GRAY, label='after each mistake'); ax.plot([], [], c=GREEN, lw=2.5, label='final line')
 ax.set_xlim(-2.5, 2.5); ax.set_ylim(-2.5, 2.5); ax.legend(frameon=False, fontsize=8, loc='upper left'); ax.set_xlabel('x1'); ax.set_ylabel('x2'); ax.set_title('Perceptron: each mistake nudges the line')
 save(fig, 'c11_perceptron.png')
-reg(11, "The perceptron learns a linear", 'c11_perceptron.png', f'The perceptron from Example 2 starting from a deliberately bad line. Every grey line is one update ({len(lines) - 1} in total) until no point is misclassified.')
+reg(11, "The perceptron learns a linear", 'c11_perceptron.png', f'The perceptron from Example 2 starting from a deliberately bad line. Every gray line is one update ({len(lines) - 1} in total) until no point is misclassified.')
 
 rng = np.random.default_rng(0); cen = [([0, 0], -1), ([1, 1], -1), ([0, 1], 1), ([1, 0], 1)]
 Xx = np.vstack([rng.normal(c, 0.1, (25, 2)) for c, _ in cen]); yx = np.repeat([l for _, l in cen], 25)
@@ -214,7 +214,7 @@ ax.scatter(*Xp[yp == 1].T, c=ORANGE, marker='s', label='+1'); ax.scatter(*Xp[yp 
 for off, ls in [(0, '-'), (1, '--'), (-1, '--')]: ax.plot(xs, (off - b_ - w_[0] * xs) / w_[1], c=GREEN, ls=ls, lw=2 if off == 0 else 1.2)
 ax.fill_between(xs, (1 - b_ - w_[0] * xs) / w_[1], (-1 - b_ - w_[0] * xs) / w_[1], color=GREEN, alpha=0.12)
 ax.scatter(*svm.support_vectors_.T, s=220, facecolors='none', edgecolors=RED, lw=2, label='support vectors')
-ax.plot(xs, -(wp[0] + wp[1] * xs) / wp[2], c=GREY, ls=':', lw=1.5, label='perceptron line')
+ax.plot(xs, -(wp[0] + wp[1] * xs) / wp[2], c=GRAY, ls=':', lw=1.5, label='perceptron line')
 ax.set_xlim(-2.5, 2.5); ax.set_ylim(-2.5, 2.5); ax.legend(frameon=False, fontsize=8, loc='upper left'); ax.set_xlabel('x1'); ax.set_ylabel('x2')
 ax.set_title(f'Margin = 1/||w|| = {1 / np.linalg.norm(w_):.3f}')
 save(fig, 'c12_max_margin.png')

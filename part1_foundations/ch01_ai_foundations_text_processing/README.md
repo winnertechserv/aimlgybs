@@ -7,10 +7,10 @@ Companion code for Chapter 1 of *AI-Machine Learning: Get Your Base Strong*. The
 ## Key ideas
 
 - AI can be defined as acting humanly (the Turing Test), thinking rationally, or automating tasks that need intelligence.
-- Machine learning is pattern recognition from examples. The goal is good generalisation to unseen data.
-- NLP tasks are NLU (understanding), NLG (generating), or both: question answering, summarisation and translation.
+- Machine learning is pattern recognition from examples. The goal is good generalization to unseen data.
+- NLP tasks are NLU (understanding), NLG (generating), or both: question answering, summarization and translation.
 - Sentiment analysis needs context: word order and negation can flip the meaning of the same words.
-- POS tagging labels grammar; NER labels real-world things such as people, places, organisations and dates.
+- POS tagging labels grammar; NER labels real-world things such as people, places, organizations and dates.
 - Extractive summaries pick original sentences; abstractive summaries write new ones.
 - Translation is hard because languages differ in word forms, grammar and word order.
 
@@ -20,7 +20,7 @@ Companion code for Chapter 1 of *AI-Machine Learning: Get Your Base Strong*. The
 |---|---|---|
 | 1 | [`ex1_pattern_recognition_predicting_the_next_numbe.py`](ex1_pattern_recognition_predicting_the_next_numbe.py) | This tiny 'learner' looks at a sequence and tries several kinds of rule: multiply by a constant, add up the previous terms, or a polynomial found by taking differences until they become constant. |
 | 2 | [`ex2_sentiment_analysis_with_tf_idf_and_logistic_r.py`](ex2_sentiment_analysis_with_tf_idf_and_logistic_r.py) | TF-IDF turns each review into a vector of word weights, and logistic regression learns which words point to 'positive' and which to 'negative'. |
-| 3 | [`ex3_extractive_summarisation.py`](ex3_extractive_summarisation.py) | This is the simplest extractive summariser. |
+| 3 | [`ex3_extractive_summarization.py`](ex3_extractive_summarization.py) | This is the simplest extractive summarizer. |
 
 Run any example from this folder:
 
@@ -69,9 +69,9 @@ Strongest POSITIVE signals: ['good', 'was good', 'delicious', 'was delicious', '
 
 </details>
 
-### Example 3: Extractive Summarisation
+### Example 3: Extractive Summarization
 
-This is the simplest extractive summariser. It counts how often each meaningful word appears (ignoring filler words such as 'the'), scores each sentence by the average importance of its words, and keeps the top three in their original order. Notice that the off-topic sentence about the weather gets a low score and is left out.
+This is the simplest extractive summarizer. It counts how often each meaningful word appears (ignoring filler words such as 'the'), scores each sentence by the average importance of its words, and keeps the top three in their original order. Notice that the off-topic sentence about the weather gets a low score and is left out.
 
 <details><summary>Expected output</summary>
 

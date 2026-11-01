@@ -7,10 +7,10 @@ Companion code for Chapter 26 of *AI-Machine Learning: Get Your Base Strong*. Th
 ## Key ideas
 
 - Attention has no built-in notion of order, so position information must be added explicitly to the embeddings.
-- Sinusoidal position encodings stay bounded and generalise to sequences longer than any seen during training.
+- Sinusoidal position encodings stay bounded and generalize to sequences longer than any seen during training.
 - Parameter count grows with the square of the model dimension d and linearly with the number of layers N.
-- Pre-training on huge unlabeled corpora followed by fine-tuning on a small labelled set is the dominant modern recipe.
-- BERT pre-trains the encoder with masked language modelling; GPT pre-trains the decoder to predict the next word.
+- Pre-training on huge unlabeled corpora followed by fine-tuning on a small labeled set is the dominant modern recipe.
+- BERT pre-trains the encoder with masked language modeling; GPT pre-trains the decoder to predict the next word.
 
 ## Examples
 
@@ -74,7 +74,7 @@ Nearby positions have higher similarity -> the model can infer relative order.
 
 === Why sinusoidal (not learned integers)? ===
   * Values stay bounded in [-1, 1] regardless of sequence length
-  * Generalises to sequences longer than those seen in training
+  * Generalizes to sequences longer than those seen in training
   * Relative position is expressible as a linear function of p_t
 ```
 
@@ -131,7 +131,7 @@ Observations:
 
 ### Example 3: BERT Masked LM vs GPT Autoregressive Pre-Training
 
-This contrasts the two pre-training objectives directly. BERT masks about 15% of tokens and predicts them using both left and right context; GPT predicts each next word from the preceding words only. The final section computes the cross-entropy loss for a single prediction, showing how a confident wrong answer is penalised far more heavily than an uncertain one.
+This contrasts the two pre-training objectives directly. BERT masks about 15% of tokens and predicts them using both left and right context; GPT predicts each next word from the preceding words only. The final section computes the cross-entropy loss for a single prediction, showing how a confident wrong answer is penalized far more heavily than an uncertain one.
 
 <details><summary>Expected output</summary>
 
@@ -143,7 +143,7 @@ labeled dataset for a downstream task.
 
 Sentence (9 tokens): the quick brown fox jumps over the lazy dog
 
---- BERT (encoder pre-training): Masked Language Modelling ---
+--- BERT (encoder pre-training): Masked Language Modeling ---
 Randomly mask ~15% of tokens; the model predicts them using BOTH
 left and right context (bidirectional).
 
@@ -156,7 +156,7 @@ left and right context (bidirectional).
     Input : [CLS] the quick brown fox ... [SEP] it was very fast [SEP]
     Target: IsNext = True/False
 
---- GPT (decoder pre-training): Autoregressive Language Modelling ---
+--- GPT (decoder pre-training): Autoregressive Language Modeling ---
 Predict the NEXT word using only the PRECEDING words (unidirectional).
 
    t  Input (context)                               Predict
@@ -177,7 +177,7 @@ True next word  : 'fox' (one-hot target)
 Cross-entropy loss = -log(p_correct) = -log(0.7766) = 0.2528
 
 If the model were confident and WRONG (p_correct = 0.01):
-  loss = -log(0.01) = 4.6052   (heavily penalised)
+  loss = -log(0.01) = 4.6052   (heavily penalized)
 If the model were perfect (p_correct = 1.0):
   loss = -log(1.00) = -0.0000
 

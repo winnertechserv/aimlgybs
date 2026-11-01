@@ -80,7 +80,7 @@ for i, a in enumerate(reg.audit, 1):
 
 print("\n=== Why versioning matters ===")
 print("  * Compare: a model trained in January differs from one trained in March")
-print("  * Roll back quickly to a stable model, minimising downtime")
+print("  * Roll back quickly to a stable model, minimizing downtime")
 print("  * Reproducibility: model + data + code are versioned together")
 print("  * Tools: Git (code), DVC / LakeFS (data), MLflow (models/metrics),")
 print("           SageMaker Model Registry (cloud model versions)")

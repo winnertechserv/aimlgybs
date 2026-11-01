@@ -4,7 +4,7 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-We classify breast tumours as malignant (positive) or benign, using K-NN on a stratified
+We classify breast tumors as malignant (positive) or benign, using K-NN on a stratified
 70/30 split. The program prints the confusion matrix, then works out accuracy,
 precision, recall and F1 by hand and checks them against scikit-learn. Both agree. Look
 at the false negatives: 4 cancers were missed. That number is why recall is the metric

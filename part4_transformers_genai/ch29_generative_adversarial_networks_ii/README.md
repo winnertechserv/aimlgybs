@@ -69,7 +69,7 @@ The discriminator has TWO outputs:
 ACGAN loss has two parts:
   L_source = log P(real | x)     -> adversarial term
   L_class  = log P(class | x)    -> classification term
-  D maximises L_source + L_class ; G maximises L_class - L_source
+  D maximizes L_source + L_class ; G maximizes L_class - L_source
 
 --- Other conditional variants ---
   BigGAN          : class-conditional GAN on ImageNet, built from ResBlocks
@@ -157,7 +157,7 @@ This builds FID directly from its definition, comparing the mean and covariance 
 === Frechet Inception Distance (FID) ===
 
 FID compares the DISTRIBUTIONS of Inception features for real and
-generated images, modelling each as a multivariate Gaussian:
+generated images, modeling each as a multivariate Gaussian:
 
   FID = ||mu_r - mu_g||^2 + Tr( S_r + S_g - 2*(S_r S_g)^(1/2) )
 
@@ -178,7 +178,7 @@ Observations:
   * Matching the real distribution gives FID near 0.
   * A shifted mean (wrong content) raises FID sharply.
   * Too little variety (mode collapse) ALSO raises FID, because the
-    covariance term no longer matches - FID penalises lost diversity.
+    covariance term no longer matches - FID penalizes lost diversity.
 
 === Inception Score vs FID ===
 

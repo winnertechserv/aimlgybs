@@ -10,7 +10,7 @@ Companion code for Chapter 20 of *AI-Machine Learning: Get Your Base Strong*. Th
 - With L nodes, dropout implicitly trains an ensemble of up to 2^L thinned networks at no extra cost.
 - At test time every node is active, but weights are scaled by the retention probability to approximate that ensemble.
 - DropConnect is the same idea applied to individual weights rather than whole nodes.
-- Batch normalization normalises each neuron across the mini-batch; layer normalization normalises each example across its features, which is why it works with a batch size of 1.
+- Batch normalization normalizes each neuron across the mini-batch; layer normalization normalizes each example across its features, which is why it works with a batch size of 1.
 
 ## Examples
 
@@ -184,7 +184,7 @@ Verify: mean per row = [0. 0. 0.]  (all ~0)
 
 ![Figure 20.1](../../figures/png/c20_dropout.png)
 
-**Figure 20.2.** Batch normalisation rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.
+**Figure 20.2.** Batch normalization rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.
 
 ![Figure 20.2](../../figures/png/c20_batchnorm.png)
 

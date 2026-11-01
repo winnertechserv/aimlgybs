@@ -17,7 +17,7 @@ Companion code for Chapter 32 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_autoscaling_simulation.py`](ex1_autoscaling_simulation.py) | This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve: monitor utilisation, compare with the target, and adjust replica count. |
+| 1 | [`ex1_autoscaling_simulation.py`](ex1_autoscaling_simulation.py) | This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve: monitor utilization, compare with the target, and adjust replica count. |
 | 2 | [`ex2_cost_model_on_demand_vs_spot_vs_serverless.py`](ex2_cost_model_on_demand_vs_spot_vs_serverless.py) | This quantifies the cost decisions described above. |
 | 3 | [`ex3_batch_vs_streaming_and_container_reproducibil.py`](ex3_batch_vs_streaming_and_container_reproducibil.py) | The first half compares batch and streaming architectures on latency and throughput and simulates a traffic burst, showing how a backlog forms when arrivals exceed capacity - the exact problem autoscaling solves. |
 
@@ -32,7 +32,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Autoscaling Simulation
 
-This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve: monitor utilisation, compare with the target, and adjust replica count. The comparison at the end quantifies the trade-off - autoscaling holds latency within SLA at 55% of the cost of permanent over-provisioning, whereas fixed capacity is cheaper but breaches the SLA in 14 of 24 hours.
+This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve: monitor utilization, compare with the target, and adjust replica count. The comparison at the end quantifies the trade-off - autoscaling holds latency within SLA at 55% of the cost of permanent over-provisioning, whereas fixed capacity is cheaper but breaches the SLA in 14 of 24 hours.
 
 <details><summary>Expected output</summary>
 
@@ -41,7 +41,7 @@ This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve
 
 Scalability = adjust capacity to match demand while keeping latency
 stable. The control loop:
-  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilise
+  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilize
 
 Config: 100 req/s per replica, target CPU 70%, min=2, max=20 replicas
 
@@ -149,7 +149,7 @@ Workload: 10,000 events arriving at 500/s
   Processing trigger                    every 60 min       per event
   End-to-end latency                       1802.0 s           12 ms
   Throughput                                5,000/s          600/s
-  Compute utilisation                         bursty      continuous
+  Compute utilization                         bursty      continuous
   Relative cost                                lower          higher
 
   Latency difference: 150,167x
@@ -159,7 +159,7 @@ Workload: 10,000 events arriving at 500/s
   Tools for streaming: Pub/Sub, Kinesis, Event Hub
   HYBRID is common: stream for real-time decisions, batch for retraining.
 
---- Streaming queue behaviour during a burst ---
+--- Streaming queue behavior during a burst ---
 
    window  arrivals/s  capacity/s   queue    latency
   ----------------------------------------------------
@@ -175,7 +175,7 @@ Workload: 10,000 events arriving at 500/s
   A sustained burst above capacity builds a backlog and latency grows.
   This is exactly what autoscaling (adding consumers) is meant to fix.
 
-=== Containerisation: solving 'works on my machine' ===
+=== Containerization: solving 'works on my machine' ===
 
 Dockerfile (pins the ENTIRE environment):
     FROM python:3.10-slim

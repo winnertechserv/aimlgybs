@@ -41,7 +41,7 @@ print("  " + "-" * 66)
 print(f"  {'Processing trigger':<34}{'every 60 min':>16}{'per event':>16}")
 print(f"  {'End-to-end latency':<34}{batch_latency:>13.1f} s{stream_latency*1000:>13.0f} ms")
 print(f"  {'Throughput':<34}{BATCH_THROUGHPUT:>13,}/s{STREAM_THROUGHPUT:>13,}/s")
-print(f"  {'Compute utilisation':<34}{'bursty':>16}{'continuous':>16}")
+print(f"  {'Compute utilization':<34}{'bursty':>16}{'continuous':>16}")
 print(f"  {'Relative cost':<34}{'lower':>16}{'higher':>16}")
 
 print(f"\n  Latency difference: {batch_latency/stream_latency:,.0f}x")
@@ -51,7 +51,7 @@ print("  Tools for streaming: Pub/Sub, Kinesis, Event Hub")
 print("  HYBRID is common: stream for real-time decisions, batch for retraining.\n")
 
 # ---- Simulate a streaming queue under a traffic burst ----
-print("--- Streaming queue behaviour during a burst ---\n")
+print("--- Streaming queue behavior during a burst ---\n")
 arrival = np.array([300, 350, 900, 1200, 1100, 400, 320, 300])   # events/s per window
 queue = 0
 print(f"  {'window':>7}{'arrivals/s':>12}{'capacity/s':>12}{'queue':>8}{'latency':>11}")
@@ -65,7 +65,7 @@ print("\n  A sustained burst above capacity builds a backlog and latency grows."
 print("  This is exactly what autoscaling (adding consumers) is meant to fix.\n")
 
 # ---- Container reproducibility ----
-print("=== Containerisation: solving 'works on my machine' ===\n")
+print("=== Containerization: solving 'works on my machine' ===\n")
 dockerfile = """FROM python:3.10-slim
 RUN pip install numpy==2.4.4 scikit-learn==1.8.0 pandas==3.0.2
 COPY model.pkl /app/model.pkl

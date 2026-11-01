@@ -34,7 +34,7 @@ for y1, y2 in [(0.3, 1.2), (2.0, 2.37), (2.92, 3.32), (4.08, 4.42), (4.98, 5.7)]
 arrow(ax, (3.0, 0.95), (1.7, 2.65), rad=-0.5, color=ORANGE, ls='--'); arrow(ax, (3.0, 3.0), (1.7, 4.7), rad=-0.5, color=ORANGE, ls='--')
 ax.text(3.0, 0.1, 'input embeddings + position encoding', ha='center', fontsize=8.5); ax.text(0.15, 3.0, 'residual\nconnections', color=ORANGE, fontsize=8.5)
 save(fig, 'c25_encoder_layer.png')
-reg(25, "An encoder layer contains two sub-layers", 'c25_encoder_layer.png', 'One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalisation. The layer is stacked N times.')
+reg(25, "An encoder layer contains two sub-layers", 'c25_encoder_layer.png', 'One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalization. The layer is stacked N times.')
 
 # ---------------- Chapter 26 ----------------
 d, T = 64, 50; PE = np.zeros((T, d)); pos = np.arange(T)[:, None]; i2 = np.arange(0, d, 2)
@@ -46,7 +46,7 @@ reg(26, "Each position t gets its own vector", 'c26_posenc.png', 'Every row is t
 
 N = np.arange(10, 4001); dm = 512
 fig, ax = plt.subplots(figsize=(6.4, 3.4)); ax.loglog(N, N ** 2 * dm, c=ORANGE, lw=2, label='Self-attention: N² x d'); ax.loglog(N, N * dm ** 2, c=NAVY, lw=2, label='Recurrent layer: N x d²')
-ax.axvline(dm, c=GREY, ls='--'); ax.text(dm * 1.1, 1e7, 'N = d = 512', color=GREY, fontsize=9)
+ax.axvline(dm, c=GRAY, ls='--'); ax.text(dm * 1.1, 1e7, 'N = d = 512', color=GRAY, fontsize=9)
 ax.set_xlabel('Sequence length N (log scale)'); ax.set_ylabel('Operations per layer (log scale)'); ax.legend(frameon=False); ax.set_title('Attention cost grows with the square of length')
 save(fig, 'c26_complexity.png')
 reg(26, "Two engineering details complete the Transformer", 'c26_complexity.png', 'Cost per layer with d = 512. Self-attention is cheaper than a recurrent layer for sentences shorter than d, but its cost grows with the square of the length.')
@@ -83,7 +83,7 @@ reg(27, "It is worth knowing what goes into building one", 'c27_rag.png', 'Retri
 
 # ---------------- Chapter 28 ----------------
 fig, ax = diagram(8.8, 3.2, ylim=(0, 3.6))
-box(ax, 0.9, 2.6, 'Random\nnoise z', 1.3, 0.8, fc='#EEEEEE', ec=GREY); box(ax, 3.0, 2.6, 'Generator G', 1.7, 0.8, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
+box(ax, 0.9, 2.6, 'Random\nnoise z', 1.3, 0.8, fc='#EEEEEE', ec=GRAY); box(ax, 3.0, 2.6, 'Generator G', 1.7, 0.8, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
 box(ax, 5.2, 2.6, 'Fake image', 1.5, 0.7, fc=PALE, ec=ORANGE); box(ax, 5.2, 0.9, 'Real image', 1.5, 0.7, fc='#E3F1EC', ec=TEAL)
 box(ax, 7.5, 1.75, 'Discriminator D', 1.9, 0.8, fc=NAVY, ec=NAVY, tc='white', bold=True)
 arrow(ax, (1.55, 2.6), (2.15, 2.6)); arrow(ax, (3.85, 2.6), (4.45, 2.6)); arrow(ax, (5.95, 2.5), (6.6, 1.95)); arrow(ax, (5.95, 1.0), (6.6, 1.55))
@@ -112,7 +112,7 @@ reg(28, "The generator has a shape problem", 'c28_dcgan.png', 'A DCGAN generator
 
 # ---------------- Chapter 29 ----------------
 fig, ax = diagram(8.8, 3.0, ylim=(0, 3.4))
-box(ax, 0.9, 2.5, 'noise z', 1.2, 0.6, fc='#EEEEEE', ec=GREY); box(ax, 0.9, 1.4, "condition C\n('bird')", 1.3, 0.75, fc=GREEN, ec=GREEN, tc='white', bold=True)
+box(ax, 0.9, 2.5, 'noise z', 1.2, 0.6, fc='#EEEEEE', ec=GRAY); box(ax, 0.9, 1.4, "condition C\n('bird')", 1.3, 0.75, fc=GREEN, ec=GREEN, tc='white', bold=True)
 box(ax, 3.2, 2.0, 'Generator', 1.5, 0.8, fc=ORANGE, ec=ORANGE, tc='white', bold=True); box(ax, 5.4, 2.0, 'fake bird', 1.4, 0.6, fc=PALE, ec=ORANGE)
 box(ax, 7.7, 1.4, 'Discriminator\n(sees C too)', 1.8, 0.85, fc=NAVY, ec=NAVY, tc='white', bold=True)
 arrow(ax, (1.5, 2.5), (2.45, 2.15)); arrow(ax, (1.55, 1.4), (2.45, 1.85)); arrow(ax, (3.95, 2.0), (4.7, 2.0)); arrow(ax, (6.1, 1.95), (6.8, 1.6))
@@ -158,7 +158,7 @@ ang = np.pi / 2 - np.arange(9) * 2 * np.pi / 9; R = 2.6
 for k, (t, a) in enumerate(zip(stages, ang)):
     box(ax, R * np.cos(a), R * np.sin(a), t, 1.55, 0.75, fc=ORANGE if k == 8 else LIGHT, ec=ORANGE if k == 8 else NAVY, fs=8, tc='white' if k == 8 else 'black', bold=k == 8)
     a2 = ang[(k + 1) % 9]; m1, m2 = a - 0.27, a2 + 0.27
-    arrow(ax, (R * np.cos(m1), R * np.sin(m1)), (R * np.cos(m2), R * np.sin(m2)), rad=-0.15, color=GREY)
+    arrow(ax, (R * np.cos(m1), R * np.sin(m1)), (R * np.cos(m2), R * np.sin(m2)), rad=-0.15, color=GRAY)
 ax.text(0, 0, 'The ML\nlifecycle\nis a loop', ha='center', va='center', fontsize=12, fontweight='bold', color=NAVY)
 save(fig, 'c31_lifecycle.png')
 reg(31, "The lifecycle has nine stages", 'c31_lifecycle.png', 'The nine stages of the ML lifecycle. Retraining feeds back into the start, which turns deployment into a loop rather than a one-off task.')
@@ -176,7 +176,7 @@ reg(31, "Why go to all this trouble?", 'c31_drift.png', 'Drift: the live data ha
 fig, ax = diagram(9, 2.6, ylim=(0, 3))
 opts = [('Virtual machine', 'you manage the OS\nany workload'), ('GPU / TPU node', 'heavy training\njobs'), ('Containers +\nKubernetes', 'portable apps\nautoscaling'), ('Serverless\nfunction', 'small, quick calls\npay per call')]
 for i, (t, sub) in enumerate(opts):
-    box(ax, 1.2 + i * 2.4, 1.9, t, 2.0, 0.8, fc=LIGHT, bold=True, fs=8.5); ax.text(1.2 + i * 2.4, 0.95, sub, ha='center', va='center', fontsize=8.5, color=GREY)
+    box(ax, 1.2 + i * 2.4, 1.9, t, 2.0, 0.8, fc=LIGHT, bold=True, fs=8.5); ax.text(1.2 + i * 2.4, 0.95, sub, ha='center', va='center', fontsize=8.5, color=GRAY)
 ax.annotate('', xy=(9.4, 0.2), xytext=(0.2, 0.2), arrowprops=dict(arrowstyle='-|>', color=ORANGE, lw=2)); ax.text(4.8, 0.32, 'less to manage, less control', ha='center', color=ORANGE, fontsize=9)
 save(fig, 'c32_compute.png')
 reg(32, "Pick the compute to match the job", 'c32_compute.png', 'Cloud compute options, from full control (a virtual machine) to almost nothing to manage (serverless).')
@@ -188,7 +188,7 @@ box(ax, 3.2, 2.1, 'Load\nbalancer', 1.3, 0.8)
 ax.add_patch(FancyBboxPatch((4.4, 0.8), 2.3, 2.6, boxstyle='round,pad=0.05', fc='white', ec=NAVY)); ax.text(5.55, 3.15, 'autoscaling group', ha='center', fontsize=8, color=NAVY)
 for k, yy in enumerate([2.6, 1.9, 1.2]): box(ax, 5.55, yy, f'model container {k + 1}', 1.9, 0.5, fc=PALE, ec=ORANGE, fs=8)
 box(ax, 8.2, 2.7, 'Model registry /\nobject storage', 1.7, 0.75, fc='#E3F1EC', ec=TEAL, fs=8); box(ax, 8.2, 1.3, 'Monitoring\n(logs, metrics)', 1.7, 0.75, fc='#E3F1EC', ec=TEAL, fs=8)
-arrow(ax, (1.4, 2.1), (2.55, 2.1)); arrow(ax, (3.85, 2.1), (4.55, 2.1)); arrow(ax, (7.35, 2.7), (6.75, 2.4), ls='--', color=GREY); arrow(ax, (6.75, 1.4), (7.35, 1.3), ls='--', color=GREY)
+arrow(ax, (1.4, 2.1), (2.55, 2.1)); arrow(ax, (3.85, 2.1), (4.55, 2.1)); arrow(ax, (7.35, 2.7), (6.75, 2.4), ls='--', color=GRAY); arrow(ax, (6.75, 1.4), (7.35, 1.3), ls='--', color=GRAY)
 save(fig, 'c32_architecture.png')
 reg(32, "Then there is keeping it safe", 'c32_architecture.png', 'A typical model-serving setup: requests pass through a load balancer to an autoscaling group of model containers, all inside a private network.')
 
@@ -251,7 +251,7 @@ fig, ax = plt.subplots(figsize=(8.4, 3.2))
 for c in range(12):
     for r in range(4):
         fc = '#F8D7DA' if (r == 3 and 1 <= c <= 10) else '#D4EDDA' if (r == 3 and c == 11) else '#E3F1EC' if (r == 3 and c == 0) else 'white'
-        ax.add_patch(Rectangle((c, 3 - r), 1, 1, fc=fc, ec=GREY, lw=0.8))
+        ax.add_patch(Rectangle((c, 3 - r), 1, 1, fc=fc, ec=GRAY, lw=0.8))
 ax.text(0.5, 0.5, 'S', ha='center', va='center', fontweight='bold'); ax.text(11.5, 0.5, 'G', ha='center', va='center', fontweight='bold'); ax.text(6, 0.5, 'THE CLIFF  (-100)', ha='center', va='center', color=RED, fontweight='bold')
 q = [(0.5, 0.5), (0.5, 1.5), (11.5, 1.5), (11.5, 0.5)]; sa = [(0.5, 0.5), (0.5, 3.5), (11.5, 3.5), (11.5, 0.5)]
 ax.plot(*zip(*q), c=ORANGE, lw=3, label='Q-learning: shortest, along the edge (13 steps)'); ax.plot(*zip(*sa), c=NAVY, lw=3, ls='--', label='SARSA: safe, along the top (17 steps)')
@@ -278,10 +278,10 @@ fig, ax = diagram(10, 3.3, ylim=(0, 3.9))
 for i, (t, d) in enumerate([('1. Selection', 'follow promising\nbranches'), ('2. Expansion', 'add a new\nnode'), ('3. Simulation', 'play a random\ngame to the end'), ('4. Backup', 'update win counts\nback up the path')]):
     box(ax, 1.3 + i * 2.5, 2.6, t, 2.0, 0.6, fc=NAVY, ec=NAVY, tc='white', bold=True, fs=9); ax.text(1.3 + i * 2.5, 1.8, d, ha='center', va='center', fontsize=8.5)
     if i < 3: arrow(ax, (2.35 + i * 2.5, 2.6), (2.75 + i * 2.5, 2.6))
-    cx = 1.3 + i * 2.5; ax.add_patch(Circle((cx, 1.15), 0.12, color=GREY)); 
-    for dx in (-0.4, 0.4): ax.plot([cx, cx + dx], [1.15, 0.65], c=GREY); ax.add_patch(Circle((cx + dx, 0.65), 0.1, color=ORANGE if (i == 0 and dx > 0) else GREY))
+    cx = 1.3 + i * 2.5; ax.add_patch(Circle((cx, 1.15), 0.12, color=GRAY)); 
+    for dx in (-0.4, 0.4): ax.plot([cx, cx + dx], [1.15, 0.65], c=GRAY); ax.add_patch(Circle((cx + dx, 0.65), 0.1, color=ORANGE if (i == 0 and dx > 0) else GRAY))
     if i >= 1: ax.plot([cx + 0.4, cx + 0.6], [0.65, 0.25], c=GREEN, lw=2); ax.add_patch(Circle((cx + 0.6, 0.25), 0.09, color=GREEN))
     if i == 2: ax.plot([cx + 0.6, cx + 0.9], [0.25, 0.02], c=GREEN, ls=':', lw=2)
-arrow(ax, (8.8, 2.95), (1.3, 2.95), 'repeat thousands of times', rad=0.15, color=GREY, toff=(0, 0.3))
+arrow(ax, (8.8, 2.95), (1.3, 2.95), 'repeat thousands of times', rad=0.15, color=GRAY, toff=(0, 0.3))
 save(fig, 'c34_mcts.png')
 reg(34, "For big decision trees such as board games", 'c34_mcts.png', 'The four phases of Monte Carlo Tree Search, repeated many times; the move with the best record at the root is then played.')

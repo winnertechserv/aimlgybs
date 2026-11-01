@@ -1,5 +1,5 @@
 """
-Chapter 9, Example 1: Nearest Neighbour and K-NN from Scratch
+Chapter 9, Example 1: Nearest Neighbor and K-NN from Scratch
 Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
@@ -10,10 +10,10 @@ the test person (150 cm, 47 kg) the four nearest examples are all adults, at dis
 'Adult' but K = 5 says 'Child'. The choice of K really can change the answer. The last
 part picks K for the Iris flowers using a validation set.
 
-Run it:           python ex1_nearest_neighbour_and_k_nn_from_scratch.py
-Expected output:  expected_output/ex1_nearest_neighbour_and_k_nn_from_scratch.txt
+Run it:           python ex1_nearest_neighbor_and_k_nn_from_scratch.py
+Expected output:  expected_output/ex1_nearest_neighbor_and_k_nn_from_scratch.txt
 """
-# Chapter 9 - Example 1: Nearest neighbour and K-NN from scratch (adult vs child)
+# Chapter 9 - Example 1: Nearest neighbor and K-NN from scratch (adult vs child)
 import numpy as np
 from collections import Counter
 

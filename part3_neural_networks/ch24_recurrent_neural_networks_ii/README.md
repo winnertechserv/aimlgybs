@@ -69,7 +69,7 @@ Count-based methods capture GLOBAL co-occurrence statistics.
 
 ### Example 2: Word2Vec Skip-Gram Embeddings
 
-This trains a Skip-Gram model with plain SGD on a small corpus with three semantic groups (royalty, animals, fruits). After training, the nearest-neighbour words by cosine similarity cluster by meaning - the model learned semantics purely from context, with no labels. This is the prediction-based alternative to the count method.
+This trains a Skip-Gram model with plain SGD on a small corpus with three semantic groups (royalty, animals, fruits). After training, the nearest-neighbor words by cosine similarity cluster by meaning - the model learned semantics purely from context, with no labels. This is the prediction-based alternative to the count method.
 
 <details><summary>Expected output</summary>
 
@@ -85,7 +85,7 @@ Generated 84 (center, context) training pairs.
 
 Training complete (300 epochs of SGD).
 
-Nearest neighbours by cosine similarity (learned embeddings):
+Nearest neighbors by cosine similarity (learned embeddings):
     king -> crown(0.64), palace(0.64), throne(0.30)
      dog -> animal(0.65), cute(0.31), furry(0.30)
    apple -> sweet(0.67), tasty(0.33), juicy(0.30)

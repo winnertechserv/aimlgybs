@@ -10,27 +10,27 @@ Companion code for Chapter 9 of *AI-Machine Learning: Get Your Base Strong*. The
 - K-NN labels a point by a majority vote of its K nearest training examples. Choose K on validation data.
 - K-NN is a lazy learner: training is instant, but every prediction compares against all stored examples.
 - The confusion matrix gives TP, TN, FP and FN. From these come accuracy, precision, recall and F1.
-- Favour precision when false alarms are costly, and recall when misses are costly.
+- Favor precision when false alarms are costly, and recall when misses are costly.
 - Reference templates compare a point with each class mean. Mahalanobis distance also accounts for each class's spread.
 
 ## Examples
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_nearest_neighbour_and_k_nn_from_scratch.py`](ex1_nearest_neighbour_and_k_nn_from_scratch.py) | This follows the four steps: compute distances, sort, take the first K, then vote. |
-| 2 | [`ex2_confusion_matrix_precision_recall_and_f1.py`](ex2_confusion_matrix_precision_recall_and_f1.py) | We classify breast tumours as malignant (positive) or benign, using K-NN on a stratified 70/30 split. |
+| 1 | [`ex1_nearest_neighbor_and_k_nn_from_scratch.py`](ex1_nearest_neighbor_and_k_nn_from_scratch.py) | This follows the four steps: compute distances, sort, take the first K, then vote. |
+| 2 | [`ex2_confusion_matrix_precision_recall_and_f1.py`](ex2_confusion_matrix_precision_recall_and_f1.py) | We classify breast tumors as malignant (positive) or benign, using K-NN on a stratified 70/30 split. |
 | 3 | [`ex3_reference_templates_euclidean_vs_mahalanobis.py`](ex3_reference_templates_euclidean_vs_mahalanobis.py) | Training is just computing each class's mean and covariance: the child mean is [116.2, 21.85] and the adult mean is [170.1, 68.16]. |
 
 Run any example from this folder:
 
 ```bash
 cd part2_classic_ml/ch09_probabilistic_models_for_classification_i
-python ex1_nearest_neighbour_and_k_nn_from_scratch.py
+python ex1_nearest_neighbor_and_k_nn_from_scratch.py
 ```
 
 The exact output printed in the book is in [`expected_output/`](expected_output). The notebook [`ch09_notebook.ipynb`](ch09_notebook.ipynb) has all three examples with explanations.
 
-### Example 1: Nearest Neighbour and K-NN from Scratch
+### Example 1: Nearest Neighbor and K-NN from Scratch
 
 This follows the four steps: compute distances, sort, take the first K, then vote. For the test person (150 cm, 47 kg) the four nearest examples are all adults, at distances 5.39, 8.73, 18.48 and 19.58. For a second person (140 cm, 46 kg), K = 1 and K = 3 say 'Adult' but K = 5 says 'Child'. The choice of K really can change the answer. The last part picks K for the Iris flowers using a validation set.
 
@@ -73,7 +73,7 @@ Choosing K on a validation set (Iris):
 
 ### Example 2: Confusion Matrix, Precision, Recall and F1
 
-We classify breast tumours as malignant (positive) or benign, using K-NN on a stratified 70/30 split. The program prints the confusion matrix, then works out accuracy, precision, recall and F1 by hand and checks them against scikit-learn. Both agree. Look at the false negatives: 4 cancers were missed. That number is why recall is the metric doctors care about most.
+We classify breast tumors as malignant (positive) or benign, using K-NN on a stratified 70/30 split. The program prints the confusion matrix, then works out accuracy, precision, recall and F1 by hand and checks them against scikit-learn. Both agree. Look at the false negatives: 4 cancers were missed. That number is why recall is the metric doctors care about most.
 
 <details><summary>Expected output</summary>
 
@@ -122,7 +122,7 @@ Test person x2 = [137.  38.] (between the two groups)
 
 ## Figures from this chapter
 
-**Figure 9.1.** K-NN for the second test person in Example 1. Each circle holds the K nearest neighbours; changing K changes the vote.
+**Figure 9.1.** K-NN for the second test person in Example 1. Each circle holds the K nearest neighbors; changing K changes the vote.
 
 ![Figure 9.1](../../figures/png/c09_knn.png)
 

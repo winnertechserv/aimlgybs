@@ -1,17 +1,17 @@
 """
-Chapter 4, Example 2: Active Learning vs Random Labelling
+Chapter 4, Example 2: Active Learning vs Random Labeling
 Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-Both strategies start with 20 labelled images and add 10 labels per round. The random
+Both strategies start with 20 labeled images and add 10 labels per round. The random
 strategy labels any 10 images. The active strategy asks the 'expert' to label the 10
 images where the model's top two guesses are closest, which is uncertainty sampling.
 Averaged over five runs, active learning pulls ahead from the first round. With 100
-labels it scores 92.7% against 88.6%, so the same labelling budget buys a better model.
+labels it scores 92.7% against 88.6%, so the same labeling budget buys a better model.
 
-Run it:           python ex2_active_learning_vs_random_labelling.py
-Expected output:  expected_output/ex2_active_learning_vs_random_labelling.txt
+Run it:           python ex2_active_learning_vs_random_labeling.py
+Expected output:  expected_output/ex2_active_learning_vs_random_labeling.txt
 """
 # Chapter 4 - Example 2: Active learning - ask the expert to label the MOST useful images
 # Uncertainty sampling picks the images the model is least sure about.
@@ -26,19 +26,19 @@ X_pool, X_te, y_pool, y_te = train_test_split(X, y, test_size=0.3, stratify=y, r
 
 def run(strategy, seed=0, start=20, batch=10, rounds=8):
     rng = np.random.default_rng(seed)
-    labelled = list(rng.choice(len(X_pool), start, replace=False))
+    labeled = list(rng.choice(len(X_pool), start, replace=False))
     scores = []
     for _ in range(rounds + 1):
-        m = LogisticRegression(max_iter=2000).fit(X_pool[labelled], y_pool[labelled])
+        m = LogisticRegression(max_iter=2000).fit(X_pool[labeled], y_pool[labeled])
         scores.append(m.score(X_te, y_te))
-        rest = np.setdiff1d(np.arange(len(X_pool)), labelled)
+        rest = np.setdiff1d(np.arange(len(X_pool)), labeled)
         if strategy == "uncertainty":
             p = np.sort(m.predict_proba(X_pool[rest]), axis=1)
             margin = p[:, -1] - p[:, -2]              # small gap = model is unsure
             pick = rest[np.argsort(margin)[:batch]]
         else:
             pick = rng.choice(rest, batch, replace=False)
-        labelled += list(pick)                        # the 'expert' supplies these labels
+        labeled += list(pick)                        # the 'expert' supplies these labels
     return np.array(scores)
 
 active = np.mean([run("uncertainty", s) for s in range(5)], axis=0)

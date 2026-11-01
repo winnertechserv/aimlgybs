@@ -35,7 +35,7 @@ Xl = np.vstack([a, b]); yl = np.r_[np.zeros(150), np.ones(150)]
 p1 = PCA(1).fit_transform(Xl)[:, 0]; l1 = LinearDiscriminantAnalysis(n_components=1).fit_transform(Xl, yl)[:, 0]
 fig, axs = plt.subplots(1, 3, figsize=(11.5, 3.4), gridspec_kw=dict(width_ratios=[1.6, 1, 1]))
 axs[0].scatter(*a.T, s=8, c=NAVY); axs[0].scatter(*b.T, s=8, c=ORANGE); axs[0].set_title('Two classes, long and thin')
-axs[0].annotate('', xy=(7.5, -2.3), xytext=(-7.5, -2.3), arrowprops=dict(arrowstyle='<->', color=GREY, lw=2)); axs[0].text(-7.4, -2.05, 'PCA direction (most spread)', color=GREY, fontsize=8.5)
+axs[0].annotate('', xy=(7.5, -2.3), xytext=(-7.5, -2.3), arrowprops=dict(arrowstyle='<->', color=GRAY, lw=2)); axs[0].text(-7.4, -2.05, 'PCA direction (most spread)', color=GRAY, fontsize=8.5)
 axs[0].annotate('', xy=(8.6, 3.2), xytext=(8.6, -1.6), arrowprops=dict(arrowstyle='<->', color=GREEN, lw=2)); axs[0].text(8.0, 3.4, 'LDA direction', color=GREEN, fontsize=8.5)
 axs[0].set_ylim(-2.8, 4); axs[0].set_xlim(-9, 10)
 for ax_, v, t in [(axs[1], p1, 'Projected onto PCA: classes mixed'), (axs[2], l1, 'Projected onto LDA: classes apart')]:
@@ -50,9 +50,9 @@ names = sorted({n for _, n in FRUIT}); rows = [(c, n) for c, n in FRUIT for _ in
 color, size, shape = np.array([r[0] for r in rows]).T; fruit = np.array([names.index(r[1]) for r in rows])
 Xf = np.column_stack([color, size, shape]); tree = DecisionTreeClassifier(random_state=0).fit(Xf, fruit)
 fig, ax = plt.subplots(figsize=(11, 5.2))
-plot_tree(tree, feature_names=['colour', 'size', 'shape'], class_names=[names[c] for c in tree.classes_],
+plot_tree(tree, feature_names=['color', 'size', 'shape'], class_names=[names[c] for c in tree.classes_],
           filled=True, impurity=False, proportion=False, rounded=True, fontsize=8, label='none', ax=ax)
-ax.set_title('A decision tree is a flowchart of questions\n(colour: 0 green, 1 yellow, 2 red;  size: 0 small, 1 medium, 2 big;  shape: 0 long, 1 round)', color=NAVY, fontweight='bold', fontsize=10)
+ax.set_title('A decision tree is a flowchart of questions\n(color: 0 green, 1 yellow, 2 red;  size: 0 small, 1 medium, 2 big;  shape: 0 long, 1 round)', color=NAVY, fontweight='bold', fontsize=10)
 save(fig, 'c14_tree.png')
 reg(14, "Decision Trees are the go-to", 'c14_tree.png', 'A small fruit-classification tree. Each box asks one question about one feature; the leaves give the predicted fruit.')
 
@@ -79,7 +79,7 @@ for i, yy in enumerate([3.3, 2.0, 0.7]):
     box(ax, 3.5, yy, f'Bootstrap\nsample {i + 1}', 1.6, 0.8); box(ax, 5.9, yy, f'Classifier {i + 1}', 1.6, 0.7, fc=PALE, ec=ORANGE)
     arrow(ax, (1.85, 2), (2.7, yy)); arrow(ax, (4.3, yy), (5.1, yy)); arrow(ax, (6.7, yy), (7.65, 2))
 box(ax, 8.4, 2, 'Majority\nvote', 1.4, 1.0, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
-ax.text(3.5, 0.05, 'each sample: N draws WITH replacement', fontsize=8, color=GREY, ha='center')
+ax.text(3.5, 0.05, 'each sample: N draws WITH replacement', fontsize=8, color=GRAY, ha='center')
 save(fig, 'c15_bagging.png')
 reg(15, "Bagging is short for", 'c15_bagging.png', 'Bagging: train each classifier on a different bootstrap sample, then let them vote.')
 
@@ -90,7 +90,7 @@ for i in range(3):
         big = (i == 1 and j in (1, 4)) or (i == 2 and j in (2, 5))
         ax.add_patch(Circle((x0 - 0.75 + j * 0.3, 0.8), 0.08 + (0.07 if big else 0), color=RED if big else NAVY))
     if i < 2: arrow(ax, (x0 + 0.9, 2.1), (x0 + 2.2, 2.1), 'up-weight\nmistakes', toff=(0, 0.55))
-ax.text(4.3, 0.2, 'examples (bigger dot = more weight)', fontsize=8, color=GREY, ha='center')
+ax.text(4.3, 0.2, 'examples (bigger dot = more weight)', fontsize=8, color=GRAY, ha='center')
 save(fig, 'c15_boosting.png')
 reg(15, "AdaBoost, short for adaptive", 'c15_boosting.png', 'Boosting trains learners one after another. Examples the previous learner got wrong (red) get more weight, so the next learner focuses on them.')
 
@@ -100,7 +100,7 @@ bag = [BaggingClassifier(DecisionTreeClassifier(), n_estimators=n, random_state=
 rf = [RandomForestClassifier(n_estimators=n, random_state=0).fit(Xtr, ytr).score(Xte, yte) for n in ns]
 ada = [AdaBoostClassifier(n_estimators=n, random_state=0).fit(Xtr, ytr).score(Xte, yte) for n in ns]
 fig, ax = plt.subplots(figsize=(6.6, 3.6))
-ax.axhline(single, c=GREY, ls='--', label='Single decision tree')
+ax.axhline(single, c=GRAY, ls='--', label='Single decision tree')
 for v, c, m, lab in [(bag, NAVY, 'o', 'Bagging'), (rf, GREEN, 's', 'Random forest'), (ada, ORANGE, '^', 'AdaBoost')]: ax.plot(ns, v, marker=m, c=c, label=lab)
 ax.set_xscale('log'); ax.set_xlabel('Number of classifiers in the ensemble (log scale)'); ax.set_ylabel('Test accuracy'); ax.legend(frameon=False, fontsize=8.5); ax.set_title('More voters, better accuracy (up to a point)')
 save(fig, 'c15_ensemble_size.png')
@@ -111,15 +111,15 @@ Xb, _ = make_blobs(300, centers=3, cluster_std=0.9, random_state=7); init = Xb[[
 fig, axs = plt.subplots(1, 4, figsize=(12, 3.1)); cols = np.array([NAVY, ORANGE, TEAL]); cen = init.copy()
 for k, ax_ in enumerate(axs):
     lab = np.argmin(((Xb[:, None] - cen) ** 2).sum(2), 1)
-    ax_.scatter(*Xb.T, s=8, c=cols[lab] if k else GREY); ax_.scatter(*cen.T, marker='*', s=260, c='black')
-    ax_.set_title(['Step 1: pick K = 3 centres', 'Assign each point', 'Move centres, reassign', 'Converged'][k]); ax_.set_xticks([]); ax_.set_yticks([])
+    ax_.scatter(*Xb.T, s=8, c=cols[lab] if k else GRAY); ax_.scatter(*cen.T, marker='*', s=260, c='black')
+    ax_.set_title(['Step 1: pick K = 3 centers', 'Assign each point', 'Move centers, reassign', 'Converged'][k]); ax_.set_xticks([]); ax_.set_yticks([])
     for _ in range(1 if k < 3 else 10):
         if k: cen = np.array([Xb[lab == j].mean(0) for j in range(3)]); lab = np.argmin(((Xb[:, None] - cen) ** 2).sum(2), 1)
 fig.tight_layout(); save(fig, 'c16_kmeans_steps.png')
-reg(16, "K-Means works like this", 'c16_kmeans_steps.png', 'K-means in action: assign every point to its nearest centre, move each centre to the mean of its points, and repeat until nothing changes.')
+reg(16, "K-Means works like this", 'c16_kmeans_steps.png', 'K-means in action: assign every point to its nearest center, move each center to the mean of its points, and repeat until nothing changes.')
 
 rng = np.random.default_rng(3); Xh = np.vstack([rng.normal(c, 0.4, (6, 2)) for c in ([0, 0], [3, 3], [0, 4])])
-fig, ax = plt.subplots(figsize=(7, 3.4)); dendrogram(linkage(Xh, 'average'), ax=ax, color_threshold=2.5, above_threshold_color=GREY)
+fig, ax = plt.subplots(figsize=(7, 3.4)); dendrogram(linkage(Xh, 'average'), ax=ax, color_threshold=2.5, above_threshold_color=GRAY)
 ax.axhline(2.5, c=RED, ls='--'); ax.text(1, 2.65, 'cut here -> 3 clusters', color=RED, fontsize=9); ax.set_xlabel('Data points'); ax.set_ylabel('Merge distance'); ax.set_title('A dendrogram records every merge')
 save(fig, 'c16_dendrogram.png')
 reg(16, "Agglomerative hierarchical clustering", 'c16_dendrogram.png', 'A dendrogram from agglomerative clustering. Cutting it at a chosen height gives the clusters, with no need to pick K in advance.')
@@ -127,7 +127,7 @@ reg(16, "Agglomerative hierarchical clustering", 'c16_dendrogram.png', 'A dendro
 Xn, _ = make_moons(400, noise=0.06, random_state=0)
 fig, axs = plt.subplots(1, 2, figsize=(9, 3.4))
 for ax_, (name, lab) in zip(axs, [('K-means (K = 2)', KMeans(2, n_init=10, random_state=0).fit_predict(Xn)), ('DBSCAN', DBSCAN(eps=0.2).fit_predict(Xn))]):
-    ax_.scatter(*Xn.T, s=8, c=np.array([NAVY, ORANGE, GREY])[lab]); ax_.set_title(name); ax_.set_xticks([]); ax_.set_yticks([])
+    ax_.scatter(*Xn.T, s=8, c=np.array([NAVY, ORANGE, GRAY])[lab]); ax_.set_title(name); ax_.set_xticks([]); ax_.set_yticks([])
 fig.tight_layout(); save(fig, 'c16_dbscan.png')
 reg(16, "There are three categories of clustering", 'c16_dbscan.png', 'Two crescent-shaped clusters. K-means can only cut the space into round regions; density-based DBSCAN follows the shapes.')
 
@@ -146,7 +146,7 @@ reg(17, "The design is loosely borrowed", 'c17_neuron.png', 'One artificial neur
 a = np.linspace(-5, 5, 400)
 fig, axs = plt.subplots(1, 4, figsize=(11, 2.6), sharex=True)
 for ax_, (f, t) in zip(axs, [((a >= 0).astype(float), 'Threshold (McCulloch-Pitts)'), (1 / (1 + np.exp(-a)), 'Logistic (sigmoid)'), (np.tanh(a), 'Tanh'), (np.maximum(0, a), 'ReLU')]):
-    ax_.plot(a, f, c=NAVY, lw=2); ax_.axhline(0, c=GREY, lw=0.5); ax_.axvline(0, c=GREY, lw=0.5); ax_.set_title(t); ax_.set_xlabel('a')
+    ax_.plot(a, f, c=NAVY, lw=2); ax_.axhline(0, c=GRAY, lw=0.5); ax_.axvline(0, c=GRAY, lw=0.5); ax_.set_title(t); ax_.set_xlabel('a')
 fig.tight_layout(); save(fig, 'c17_activations.png')
 reg(17, "Sigmoidal activations solve that", 'c17_activations.png', 'Common activation functions. The threshold jumps; sigmoid and tanh bend smoothly; ReLU is zero for negatives and a straight line for positives.')
 
@@ -157,7 +157,7 @@ for x, n, t, fc in layers:
     ys = np.linspace(3.6 - (4 - n) * 0.45, 0.9 + (4 - n) * 0.45, n); pos.append([(x, yy) for yy in ys]); ax.text(x, 0.15, t, ha='center', fontsize=9, color=NAVY)
 for L in range(2):
     for p1 in pos[L]:
-        for p2 in pos[L + 1]: ax.plot([p1[0], p2[0]], [p1[1], p2[1]], c=GREY, lw=0.7, zorder=1)
+        for p2 in pos[L + 1]: ax.plot([p1[0], p2[0]], [p1[1], p2[1]], c=GRAY, lw=0.7, zorder=1)
 for (x, n, t, fc), ps in zip(layers, pos):
     for p_ in ps: ax.add_patch(Circle(p_, 0.27, fc=fc, ec=NAVY, lw=1.3, zorder=2))
 save(fig, 'c17_mlp.png')
@@ -212,7 +212,7 @@ def run(kind, steps=60, lr=0.2):
         path.append(p.copy())
     return np.array(path)
 G = np.meshgrid(np.linspace(-5, 1.5, 200), np.linspace(-2, 2, 200)); Z = 0.1 * G[0] ** 2 + 2 * G[1] ** 2
-fig, ax = plt.subplots(figsize=(7, 3.6)); ax.contour(*G, Z, levels=15, colors=GREY, linewidths=0.6)
+fig, ax = plt.subplots(figsize=(7, 3.6)); ax.contour(*G, Z, levels=15, colors=GRAY, linewidths=0.6)
 for k, c in [('GD', RED), ('Momentum', NAVY), ('Adam', ORANGE)]: P_ = run(k); ax.plot(*P_.T, 'o-', ms=2.5, c=c, lw=1.4, label=k)
 ax.scatter(0, 0, marker='*', s=200, c=GREEN, zorder=4, label='minimum'); ax.legend(frameon=False, fontsize=8.5, loc='lower right'); ax.set_xlabel('w1'); ax.set_ylabel('w2')
 ax.set_title('A long narrow valley: 60 steps from the same start')
@@ -236,11 +236,11 @@ for ax_, use in zip(axs, (False, True)):
         for i, p1 in enumerate(P[l]):
             for j, p2 in enumerate(P[l + 1]):
                 off = use and ((l, i) in drop or (l + 1, j) in drop)
-                ax_.plot([p1[0], p2[0]], [p1[1], p2[1]], c=GREY, lw=0.6, alpha=0.15 if off else 0.8)
+                ax_.plot([p1[0], p2[0]], [p1[1], p2[1]], c=GRAY, lw=0.6, alpha=0.15 if off else 0.8)
     for l in range(3):
         for i, p_ in enumerate(P[l]):
             off = use and (l, i) in drop
-            ax_.add_patch(Circle(p_, 0.2, fc='white' if off else LIGHT, ec=GREY if off else NAVY, ls='--' if off else '-', zorder=3))
+            ax_.add_patch(Circle(p_, 0.2, fc='white' if off else LIGHT, ec=GRAY if off else NAVY, ls='--' if off else '-', zorder=3))
             if off: ax_.text(*p_, 'x', ha='center', va='center', color=RED, fontweight='bold', zorder=4)
     ax_.set_title('Full network' if not use else 'With dropout: random units switched off', color=NAVY, fontweight='bold')
 save(fig, 'c20_dropout.png')
@@ -250,9 +250,9 @@ rng = np.random.default_rng(0); act = rng.normal(0, 1, (64, 3)) * np.array([[3, 
 bn = (act - act.mean(0)) / act.std(0)
 fig, axs = plt.subplots(1, 2, figsize=(9, 3.2)); cs = [NAVY, ORANGE, TEAL]
 for j in range(3): axs[0].hist(act[:, j], bins=15, color=cs[j], histtype='step', lw=2, label=f'neuron {j + 1}'); axs[1].hist(bn[:, j], bins=12, color=cs[j], histtype='step', lw=2)
-axs[0].set_title('Before: each neuron on its own scale'); axs[1].set_title('After batch normalisation: mean 0, std 1'); axs[0].legend(frameon=False, fontsize=8)
+axs[0].set_title('Before: each neuron on its own scale'); axs[1].set_title('After batch normalization: mean 0, std 1'); axs[0].legend(frameon=False, fontsize=8)
 fig.tight_layout(); save(fig, 'c20_batchnorm.png')
-reg(20, "Batch normalisation is the one", 'c20_batchnorm.png', "Batch normalisation rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.")
+reg(20, "Batch normalization is the one", 'c20_batchnorm.png', "Batch normalization rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.")
 
 # ---------------- Chapter 21 ----------------
 img = np.array([[1, 0, 2, 1, 0], [0, 1, 3, 1, 1], [2, 1, 0, 0, 2], [1, 3, 1, 2, 0], [0, 1, 2, 1, 1]]); ker = np.array([[1, 0, -1], [1, 0, -1], [1, 0, -1]])
@@ -274,7 +274,7 @@ for (i, j), v in np.ndenumerate(fm): axs[0].text(j, i, v, ha='center', va='cente
 for (i, j), v in np.ndenumerate(mp): axs[1].text(j, i, v, ha='center', va='center', fontsize=12, fontweight='bold')
 for a_, t in zip(axs, ['4x4 feature map', '2x2 after max pooling']): a_.set_xticks([]); a_.set_yticks([]); a_.set_title(t)
 fig.tight_layout(); save(fig, 'c21_pooling.png')
-reg(21, "After convolution comes pooling", 'c21_pooling.png', 'Max pooling with a 2x2 window and stride 2: each coloured block is replaced by its largest value (in bold).')
+reg(21, "After convolution comes pooling", 'c21_pooling.png', 'Max pooling with a 2x2 window and stride 2: each colored block is replaced by its largest value (in bold).')
 
 fig, ax = diagram(10, 2.6, ylim=(0, 3))
 stages = [('Image\n32x32x3', LIGHT), ('Conv + ReLU\n32x32x16', PALE), ('Max pool\n16x16x16', '#E3F1EC'), ('Conv + ReLU\n16x16x32', PALE), ('Max pool\n8x8x32', '#E3F1EC'), ('Fully\nconnected', LIGHT), ('Softmax\n10 classes', ORANGE)]
@@ -302,10 +302,10 @@ reg(22, "The fix that changed deep learning", 'c22_vanishing.png', 'Illustration
 
 fig, ax = diagram(8.6, 2.8, ylim=(0, 3.2))
 box(ax, 2.6, 2.3, 'Conv layers pre-trained on ImageNet\n(edges, textures, shapes)', 4.2, 0.9, fc=LIGHT, ec=NAVY)
-box(ax, 6.9, 2.3, 'Old head\n1000 classes', 1.8, 0.9, fc='#EEEEEE', ec=GREY, tc=GREY)
+box(ax, 6.9, 2.3, 'Old head\n1000 classes', 1.8, 0.9, fc='#EEEEEE', ec=GRAY, tc=GRAY)
 box(ax, 2.6, 0.8, 'Same conv layers (frozen)', 4.2, 0.9, fc=LIGHT, ec=NAVY)
 box(ax, 6.9, 0.8, 'New head\nyour 3 classes', 1.8, 0.9, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
-arrow(ax, (4.7, 2.3), (6.0, 2.3), color=GREY); arrow(ax, (4.7, 0.8), (6.0, 0.8)); arrow(ax, (2.6, 1.85), (2.6, 1.25), 'reuse', toff=(0.4, 0))
+arrow(ax, (4.7, 2.3), (6.0, 2.3), color=GRAY); arrow(ax, (4.7, 0.8), (6.0, 0.8)); arrow(ax, (2.6, 1.85), (2.6, 1.25), 'reuse', toff=(0.4, 0))
 ax.text(8.95, 0.8, 'train only\nthis part', fontsize=8.5, color=ORANGE, va='center')
 save(fig, 'c22_transfer.png')
 reg(22, "CNNs do far more than classification", 'c22_transfer.png', 'Transfer learning: keep the feature-extracting layers learned on a big dataset and train only a small new head for your task.')
@@ -327,8 +327,8 @@ ax.plot([0.2, 9.0], [2.9, 2.9], c=ORANGE, lw=3); ax.text(0.2, 3.45, 'cell state 
 for x, t, op in [(2.5, 'Forget gate\n(what to erase)', 'x'), (4.6, 'Input gate\n(what to write)', '+'), (6.7, 'Output gate\n(what to show)', '')]:
     box(ax, x, 1.4, t, 1.7, 0.8, fc=TEAL, ec=TEAL, tc='white', fs=8.5)
     if op: ax.add_patch(Circle((x, 2.9), 0.22, fc='white', ec=NAVY, zorder=3)); ax.text(x, 2.9, op, ha='center', va='center', zorder=4, fontweight='bold'); arrow(ax, (x, 1.8), (x, 2.67))
-arrow(ax, (6.7, 2.9), (6.7, 1.82), color=GREY); arrow(ax, (7.55, 1.4), (9.0, 1.4), 'h (output)', toff=(0, 0.25))
-ax.text(4.6, 0.3, 'inputs at each step: x_t and previous h', ha='center', fontsize=8.5, color=GREY)
+arrow(ax, (6.7, 2.9), (6.7, 1.82), color=GRAY); arrow(ax, (7.55, 1.4), (9.0, 1.4), 'h (output)', toff=(0, 0.25))
+ax.text(4.6, 0.3, 'inputs at each step: x_t and previous h', ha='center', fontsize=8.5, color=GRAY)
 save(fig, 'c23_lstm.png')
 reg(23, "Plain RNNs with sigmoid/tanh", 'c23_lstm.png', 'A simplified LSTM cell. Three gates decide what to erase from, add to, and read out of the cell state, which carries information across many steps.')
 

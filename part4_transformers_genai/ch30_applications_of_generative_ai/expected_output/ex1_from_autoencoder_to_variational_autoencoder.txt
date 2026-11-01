@@ -36,7 +36,7 @@ Step 3 - VAE loss = reconstruction loss + KL divergence
   KL( q(z|x) || N(0,I) )             : 6.4821
   Total loss = recon + beta*KL       : 9.8637
 
-  The KL term pulls the latent distribution towards N(0,I), which
+  The KL term pulls the latent distribution toward N(0,I), which
   makes the latent space smooth and continuous - so sampling
   z ~ N(0,I) at test time produces realistic new images.
 

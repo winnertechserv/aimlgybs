@@ -3,9 +3,9 @@ EM iteration  2: log-likelihood =   -749.70
 EM iteration  3: log-likelihood =   -746.14
 EM iteration  4: log-likelihood =   -746.14
 Converged (change < 0.001).
-Learned centres: [[-0.1, 0.06], [4.0, 3.99]]  weights: [0.5, 0.5]
-Class A modelled with K = 1 component(s): test accuracy 0.950
-Class A modelled with K = 2 component(s): test accuracy 0.990
+Learned centers: [[-0.1, 0.06], [4.0, 3.99]]  weights: [0.5, 0.5]
+Class A modeled with K = 1 component(s): test accuracy 0.950
+Class A modeled with K = 2 component(s): test accuracy 0.990
 
 K   total log-likelihood
 1     -1012.4

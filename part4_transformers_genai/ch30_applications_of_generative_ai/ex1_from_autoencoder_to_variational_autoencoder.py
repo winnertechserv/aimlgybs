@@ -8,7 +8,7 @@ This contrasts the deterministic AANN, which maps an input to a single bottlenec
 with the VAE, whose encoder outputs a mean and log-variance. It then shows the
 reparameterization trick, z = mu + sigma*eps, showing that the same input yields
 different latent samples each time, and computes both parts of the VAE loss including
-the KL term that pulls the latent distribution towards N(0,I).
+the KL term that pulls the latent distribution toward N(0,I).
 
 Run it:           python ex1_from_autoencoder_to_variational_autoencoder.py
 Expected output:  expected_output/ex1_from_autoencoder_to_variational_autoencoder.txt
@@ -73,7 +73,7 @@ beta = 1.0
 print(f"  Reconstruction loss (MSE)          : {recon:.4f}")
 print(f"  KL( q(z|x) || N(0,I) )             : {kl:.4f}")
 print(f"  Total loss = recon + beta*KL       : {recon + beta*kl:.4f}")
-print("\n  The KL term pulls the latent distribution towards N(0,I), which")
+print("\n  The KL term pulls the latent distribution toward N(0,I), which")
 print("  makes the latent space smooth and continuous - so sampling")
 print("  z ~ N(0,I) at test time produces realistic new images.\n")
 

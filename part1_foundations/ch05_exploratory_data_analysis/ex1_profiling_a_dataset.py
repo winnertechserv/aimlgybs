@@ -6,14 +6,14 @@ What this example shows
 -----------------------
 This is the first thing you do with any new dataset. The program builds a small
 passenger table, splits the columns into numbers and categories, then measures the
-centre and spread of 'age'. Look at the skewness lines. Age is roughly symmetric, so its
+center and spread of 'age'. Look at the skewness lines. Age is roughly symmetric, so its
 mean and median are close. Fare is strongly right-skewed: its mean (31) is well above
 its median (21) because a few people paid very high fares.
 
 Run it:           python ex1_profiling_a_dataset.py
 Expected output:  expected_output/ex1_profiling_a_dataset.txt
 """
-# Chapter 5 - Example 1: Profiling a dataset (data types, centre, spread, shape)
+# Chapter 5 - Example 1: Profiling a dataset (data types, center, spread, shape)
 import numpy as np
 import pandas as pd
 from scipy.stats import skew
@@ -37,7 +37,7 @@ print("Categorical columns:", cat_cols)
 
 # 2. Central tendency and dispersion for 'age'
 age = df["age"]
-print("\n--- Age: centre and spread ---")
+print("\n--- Age: center and spread ---")
 print(f"Mean   : {age.mean():.2f}")
 print(f"Median : {age.median():.2f}")
 print(f"Mode   : {age.mode()[0]:.0f}")

@@ -17,7 +17,7 @@ Expected output:  expected_output/ex1_sgd_vs_momentum_vs_adam_optimizer_converge
 """
 import numpy as np
 
-print("=== Optimizer Comparison: Minimising E(w) = w1^2 + 10*w2^2 ===\n")
+print("=== Optimizer Comparison: Minimizing E(w) = w1^2 + 10*w2^2 ===\n")
 print("Starting at w=[5.0, 5.0], optimal = [0.0, 0.0]\n")
 
 loss = lambda w: w[0]**2 + 10*w[1]**2

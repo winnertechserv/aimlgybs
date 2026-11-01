@@ -50,8 +50,8 @@ for cl in sorted(set(db_labels)):
     print(f"  {label}: {np.sum(db_labels==cl)} points")
 
 print("\n=== DBSCAN Parameters Explained ===")
-print("  eps         : neighbourhood radius")
-print("  min_samples : min neighbours to be a 'core point'")
+print("  eps         : neighborhood radius")
+print("  min_samples : min neighbors to be a 'core point'")
 print("  label = -1  : noise/outlier — not assigned to any cluster")
 print("\nK-Means silhouette:", round(silhouette_score(X_scaled, km_labels), 4))
 sil_valid = X_scaled[db_labels != -1]

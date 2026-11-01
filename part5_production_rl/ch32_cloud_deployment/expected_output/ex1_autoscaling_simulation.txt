@@ -2,7 +2,7 @@
 
 Scalability = adjust capacity to match demand while keeping latency
 stable. The control loop:
-  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilise
+  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilize
 
 Config: 100 req/s per replica, target CPU 70%, min=2, max=20 replicas
 

@@ -3,8 +3,8 @@
 Training objective:
   1. Encode all images and all captions into the SAME m-dim space
   2. Compute cosine similarity of every (image, caption) pair
-  3. MAXIMISE similarity of the N correct pairs
-     MINIMISE similarity of the N^2 - N incorrect pairs
+  3. MAXIMIZE similarity of the N correct pairs
+     MINIMIZE similarity of the N^2 - N incorrect pairs
 
 Similarity matrix S (rows = images, cols = captions):
 

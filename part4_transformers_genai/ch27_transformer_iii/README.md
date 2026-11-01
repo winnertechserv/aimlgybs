@@ -17,7 +17,7 @@ Companion code for Chapter 27 of *AI-Machine Learning: Get Your Base Strong*. Th
 | # | Program | What it shows |
 |---|---|---|
 | 1 | [`ex1_vision_transformer_patch_embedding.py`](ex1_vision_transformer_patch_embedding.py) | This performs the four steps that turn an image into a sequence: split into patches, flatten and linearly project them, prepend the learnable [CLS] token whose final output is used for classification, and add position embeddings. |
-| 2 | [`ex2_clip_contrastive_image_caption_matching.py`](ex2_clip_contrastive_image_caption_matching.py) | This builds CLIP's training objective: encode images and captions into the same space, compute the cosine similarity of every pair, then maximise the N correct pairs and minimise the N^2 - N incorrect ones. |
+| 2 | [`ex2_clip_contrastive_image_caption_matching.py`](ex2_clip_contrastive_image_caption_matching.py) | This builds CLIP's training objective: encode images and captions into the same space, compute the cosine similarity of every pair, then maximize the N correct pairs and minimize the N^2 - N incorrect ones. |
 | 3 | [`ex3_retrieval_augmented_generation_pipeline.py`](ex3_retrieval_augmented_generation_pipeline.py) | This runs the three RAG stages end to end: RETRIEVE the most similar documents from a document store by cosine similarity, AUGMENT the prompt by inserting them as context, and GENERATE an answer grounded in that context. |
 
 Run any example from this folder:
@@ -75,7 +75,7 @@ Transformer decoder generates the caption word by word.
 
 ### Example 2: CLIP Contrastive Image-Caption Matching
 
-This builds CLIP's training objective: encode images and captions into the same space, compute the cosine similarity of every pair, then maximise the N correct pairs and minimise the N^2 - N incorrect ones. The similarity matrix shows a strong diagonal, retrieval is 100% accurate, and the contrastive loss is computed in both directions.
+This builds CLIP's training objective: encode images and captions into the same space, compute the cosine similarity of every pair, then maximize the N correct pairs and minimize the N^2 - N incorrect ones. The similarity matrix shows a strong diagonal, retrieval is 100% accurate, and the contrastive loss is computed in both directions.
 
 <details><summary>Expected output</summary>
 
@@ -85,8 +85,8 @@ This builds CLIP's training objective: encode images and captions into the same 
 Training objective:
   1. Encode all images and all captions into the SAME m-dim space
   2. Compute cosine similarity of every (image, caption) pair
-  3. MAXIMISE similarity of the N correct pairs
-     MINIMISE similarity of the N^2 - N incorrect pairs
+  3. MAXIMIZE similarity of the N correct pairs
+     MINIMIZE similarity of the N^2 - N incorrect pairs
 
 Similarity matrix S (rows = images, cols = captions):
 
@@ -136,7 +136,7 @@ Document store : 6 documents
 Vocabulary size: 56 terms
 Embedding matrix shape: (6, 56)
 
-User query: 'Which model is pre-trained with masked language modelling?'
+User query: 'Which model is pre-trained with masked language modeling?'
 
 Step 1 - RETRIEVE: cosine similarity of query with each document
   0.8367  doc2: BERT is an encoder-only model pre-trained with masked lang...  <-- retrieved
@@ -149,14 +149,14 @@ Step 1 - RETRIEVE: cosine similarity of query with each document
 Step 2 - AUGMENT: build the prompt with the top-2 documents
 --------------------------------------------------------------------
 Context:
-  [1] BERT is an encoder-only model pre-trained with masked language modelling.
+  [1] BERT is an encoder-only model pre-trained with masked language modeling.
   [2] GPT is a decoder-only autoregressive model pre-trained on unlabeled text.
-Question: Which model is pre-trained with masked language modelling?
+Question: Which model is pre-trained with masked language modeling?
 Answer using only the context above.
 --------------------------------------------------------------------
 
 Step 3 - GENERATE: the LLM answers grounded in the retrieved context
-  Answer: BERT is pre-trained with masked language modelling.
+  Answer: BERT is pre-trained with masked language modeling.
           (grounded in retrieved document [1], not invented)
 
 === Why RAG matters ===

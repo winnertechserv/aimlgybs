@@ -4,10 +4,10 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-Three short supervised tasks, each learned from labelled data. First, a classifier
-learns to tell children from adults using 20 example people, then labels two new people.
+Three short supervised tasks, each learned from labeled data. First, a classifier learns
+to tell children from adults using 20 example people, then labels two new people.
 Second, a K-NN classifier learns the three Iris species and is tested on flowers it
-never saw: the test accuracy is what measures generalisation. Third, a regression line
+never saw: the test accuracy is what measures generalization. Third, a regression line
 predicts salary from experience. The answer, salary = 3.04 x years + 32.52, is the same
 line you will derive by hand in Chapter 7.
 
@@ -15,7 +15,7 @@ Run it:           python ex1_supervised_learning_classification_and_regres.py
 Expected output:  expected_output/ex1_supervised_learning_classification_and_regres.txt
 """
 # Chapter 3 - Example 1: Supervised learning - classification AND regression
-# Both learn a function y = f(x) from LABELLED examples, then predict for new x.
+# Both learn a function y = f(x) from LABELED examples, then predict for new x.
 import numpy as np
 from sklearn.linear_model import LogisticRegression, LinearRegression
 from sklearn.datasets import load_iris
@@ -41,7 +41,7 @@ Xtr, Xte, ytr, yte = train_test_split(iris.data, iris.target, test_size=0.3,
 knn = KNeighborsClassifier(n_neighbors=5).fit(Xtr, ytr)
 print(f"\nIris: trained on {len(ytr)} flowers, tested on {len(yte)} unseen flowers")
 print(f"Train accuracy {knn.score(Xtr, ytr):.3f} | Test accuracy {knn.score(Xte, yte):.3f}"
-      "  <- the test score measures GENERALISATION")
+      "  <- the test score measures GENERALIZATION")
 
 # --- 3. Regression: predict a NUMBER (salary in $1000s) from years of experience
 years = np.array([1, 3, 4, 6, 7, 9, 11, 13, 16, 20]).reshape(-1, 1)

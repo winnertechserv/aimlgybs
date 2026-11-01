@@ -7,7 +7,7 @@ What this example shows
 This contrasts the two pre-training objectives directly. BERT masks about 15% of tokens
 and predicts them using both left and right context; GPT predicts each next word from
 the preceding words only. The final section computes the cross-entropy loss for a single
-prediction, showing how a confident wrong answer is penalised far more heavily than an
+prediction, showing how a confident wrong answer is penalized far more heavily than an
 uncertain one.
 
 Run it:           python ex3_bert_masked_lm_vs_gpt_autoregressive_pre_trai.py
@@ -25,8 +25,8 @@ print("Both pre-train on huge UNLABELED text, then fine-tune on a small")
 print("labeled dataset for a downstream task.\n")
 print(f"Sentence ({T} tokens): {' '.join(sentence)}\n")
 
-# ---------- BERT: Masked Language Modelling ----------
-print("--- BERT (encoder pre-training): Masked Language Modelling ---")
+# ---------- BERT: Masked Language Modeling ----------
+print("--- BERT (encoder pre-training): Masked Language Modeling ---")
 print("Randomly mask ~15% of tokens; the model predicts them using BOTH")
 print("left and right context (bidirectional).\n")
 n_mask = max(1, int(0.15 * T))
@@ -42,7 +42,7 @@ print("    Input : [CLS] the quick brown fox ... [SEP] it was very fast [SEP]")
 print("    Target: IsNext = True/False\n")
 
 # ---------- GPT: Autoregressive LM ----------
-print("--- GPT (decoder pre-training): Autoregressive Language Modelling ---")
+print("--- GPT (decoder pre-training): Autoregressive Language Modeling ---")
 print("Predict the NEXT word using only the PRECEDING words (unidirectional).\n")
 print(f"  {'t':>2}  {'Input (context)':<45} {'Predict'}")
 print("  " + "-" * 66)
@@ -66,7 +66,7 @@ loss = -np.log(probs[target])
 print(f"Cross-entropy loss = -log(p_correct) = -log({probs[target]:.4f}) = {loss:.4f}")
 
 print("\nIf the model were confident and WRONG (p_correct = 0.01):")
-print(f"  loss = -log(0.01) = {-np.log(0.01):.4f}   (heavily penalised)")
+print(f"  loss = -log(0.01) = {-np.log(0.01):.4f}   (heavily penalized)")
 print("If the model were perfect (p_correct = 1.0):")
 print(f"  loss = -log(1.00) = {-np.log(1.0):.4f}")
 

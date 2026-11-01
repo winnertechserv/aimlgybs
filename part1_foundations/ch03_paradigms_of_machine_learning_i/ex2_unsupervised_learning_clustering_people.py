@@ -6,7 +6,7 @@ What this example shows
 -----------------------
 Here K-means gets the same 20 people but no labels at all. The table shows compactness
 (inertia) for 1 to 5 clusters. The big drop from 1 to 2 clusters is the 'elbow', so two
-groups is a natural choice. The two cluster centres come out at exactly the average
+groups is a natural choice. The two cluster centers come out at exactly the average
 child (116.2 cm, 21.85 kg) and the average adult (170.1 cm, 68.16 kg). The model found
 children and adults without ever being told they exist.
 
@@ -31,7 +31,7 @@ for k in range(1, 6):
 print("Compactness drops sharply from k=1 to k=2, then flattens (the 'elbow').")
 
 km = KMeans(n_clusters=2, n_init=10, random_state=0).fit(X)
-print("\nCluster centres (height, weight):")
+print("\nCluster centers (height, weight):")
 for c in km.cluster_centers_:
     print(f"  ({c[0]:.1f} cm, {c[1]:.2f} kg)")
 
@@ -40,5 +40,5 @@ labels = km.labels_
 if np.mean(labels == hidden_truth) < 0.5:
     labels = 1 - labels
 print(f"\nAgreement with the hidden child/adult labels: {np.mean(labels == hidden_truth):.0%}")
-print("New person (130 cm, 30 kg) joins cluster with centre",
+print("New person (130 cm, 30 kg) joins cluster with center",
       np.round(km.cluster_centers_[km.predict([[130, 30]])[0]], 1))

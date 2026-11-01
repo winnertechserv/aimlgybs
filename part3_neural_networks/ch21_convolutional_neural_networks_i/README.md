@@ -143,7 +143,7 @@ Input 32x32x1, Conv layer CL1: 6 kernels of 5x5, stride 1
 
 ![Figure 21.1](../../figures/png/c21_convolution.png)
 
-**Figure 21.2.** Max pooling with a 2x2 window and stride 2: each coloured block is replaced by its largest value (in bold).
+**Figure 21.2.** Max pooling with a 2x2 window and stride 2: each colored block is replaced by its largest value (in bold).
 
 ![Figure 21.2](../../figures/png/c21_pooling.png)
 

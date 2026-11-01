@@ -46,7 +46,7 @@ and code produced it, and how do we roll back if it misbehaves?
 
 === Why versioning matters ===
   * Compare: a model trained in January differs from one trained in March
-  * Roll back quickly to a stable model, minimising downtime
+  * Roll back quickly to a stable model, minimizing downtime
   * Reproducibility: model + data + code are versioned together
   * Tools: Git (code), DVC / LakeFS (data), MLflow (models/metrics),
            SageMaker Model Registry (cloud model versions)

@@ -7,7 +7,7 @@ Companion code for Chapter 6 of *AI-Machine Learning: Get Your Base Strong*. The
 ## Key ideas
 
 - Normalization puts every feature on a comparable scale, so one large-valued column cannot dominate a distance calculation.
-- Min-Max squeezes values into [0,1]; Z-score centres them at mean 0 with standard deviation 1.
+- Min-Max squeezes values into [0,1]; Z-score centers them at mean 0 with standard deviation 1.
 - Always compute the min, max, mean and standard deviation on the TRAINING data and reuse those same numbers at test time.
 - Feature selection drops columns that tell you little about the target; Pearson correlation is the quick screening tool.
 - Fewer, better features mean faster training, less overfitting and a model you can actually explain.
@@ -65,7 +65,7 @@ Norm Score range : [0.0000, 1.0000]
 
 ### Example 2: Z-Score Normalization & Distance Comparison
 
-This example shows z-score normalization and — critically — shows WHY normalization matters for distance-based algorithms. Without normalization, we ask: which salesman is closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated by the Sales column (values in thousands) making the Score column almost irrelevant. After z-score normalization, both columns are on equal footing. See how S001, S002, and S003 get completely different nearest-neighbour rankings before vs after normalization — S002 becomes the closest, which makes intuitive sense since its sales (23500) and score (6) are both close to the query (23000, 6.5).
+This example shows z-score normalization and — critically — shows WHY normalization matters for distance-based algorithms. Without normalization, we ask: which salesman is closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated by the Sales column (values in thousands) making the Score column almost irrelevant. After z-score normalization, both columns are on equal footing. See how S001, S002, and S003 get completely different nearest-neighbor rankings before vs after normalization — S002 becomes the closest, which makes intuitive sense since its sales (23500) and score (6) are both close to the query (23000, 6.5).
 
 <details><summary>Expected output</summary>
 
@@ -99,7 +99,7 @@ Before normalization (Sales dominates):
 After Z-score normalization (both features contribute equally):
   S001: 0.6751   S002: 0.2264   S003: 2.0239
 
-S002 is now correctly identified as nearest neighbour.
+S002 is now correctly identified as nearest neighbor.
 ```
 
 </details>

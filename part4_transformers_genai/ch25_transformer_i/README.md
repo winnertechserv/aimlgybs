@@ -74,7 +74,7 @@ Step 3: context vector  c_t = sum_m a_tm * v_m
 
 Interpretation:
   Key 3 receives the highest attention (0.5666),
-  so the context vector is pulled most towards Value vector 3.
+  so the context vector is pulled most toward Value vector 3.
 
 Why divide by sqrt(d)? Without scaling, large dot products push softmax
 into a saturated region where gradients vanish during training.
@@ -194,7 +194,7 @@ Same input at any position -> same output? True  (confirms shared weights)
 
 ![Figure 25.2](../../figures/png/c25_attention_map.png)
 
-**Figure 25.3.** One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalisation. The layer is stacked N times.
+**Figure 25.3.** One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalization. The layer is stacked N times.
 
 ![Figure 25.3](../../figures/png/c25_encoder_layer.png)
 

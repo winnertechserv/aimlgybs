@@ -15,8 +15,8 @@ DBSCAN result (eps=0.35, min_samples=5):
   Cluster 2: 51 points
 
 === DBSCAN Parameters Explained ===
-  eps         : neighbourhood radius
-  min_samples : min neighbours to be a 'core point'
+  eps         : neighborhood radius
+  min_samples : min neighbors to be a 'core point'
   label = -1  : noise/outlier — not assigned to any cluster
 
 K-Means silhouette: 0.8808

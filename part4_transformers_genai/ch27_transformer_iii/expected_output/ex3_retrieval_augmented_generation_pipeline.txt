@@ -8,7 +8,7 @@ Document store : 6 documents
 Vocabulary size: 56 terms
 Embedding matrix shape: (6, 56)
 
-User query: 'Which model is pre-trained with masked language modelling?'
+User query: 'Which model is pre-trained with masked language modeling?'
 
 Step 1 - RETRIEVE: cosine similarity of query with each document
   0.8367  doc2: BERT is an encoder-only model pre-trained with masked lang...  <-- retrieved
@@ -21,14 +21,14 @@ Step 1 - RETRIEVE: cosine similarity of query with each document
 Step 2 - AUGMENT: build the prompt with the top-2 documents
 --------------------------------------------------------------------
 Context:
-  [1] BERT is an encoder-only model pre-trained with masked language modelling.
+  [1] BERT is an encoder-only model pre-trained with masked language modeling.
   [2] GPT is a decoder-only autoregressive model pre-trained on unlabeled text.
-Question: Which model is pre-trained with masked language modelling?
+Question: Which model is pre-trained with masked language modeling?
 Answer using only the context above.
 --------------------------------------------------------------------
 
 Step 3 - GENERATE: the LLM answers grounded in the retrieved context
-  Answer: BERT is pre-trained with masked language modelling.
+  Answer: BERT is pre-trained with masked language modeling.
           (grounded in retrieved document [1], not invented)
 
 === Why RAG matters ===

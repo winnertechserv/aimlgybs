@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 # ---------------- Chapter 1 ----------------
 fig, ax = diagram(8, 3.2)
 box(ax, 1.4, 2, 'Human\ninterrogator', 2.0, 1.1, fc=PALE, ec=ORANGE, bold=True)
-box(ax, 4.6, 2, 'Typed questions\nand answers\n(screen only)', 2.2, 1.3, fc='white', ec=GREY)
+box(ax, 4.6, 2, 'Typed questions\nand answers\n(screen only)', 2.2, 1.3, fc='white', ec=GRAY)
 box(ax, 8.2, 3.0, 'Hidden person', 2.2, 0.8)
 box(ax, 8.2, 1.0, 'Hidden machine', 2.2, 0.8, fc='#E3F1EC', ec=TEAL)
 arrow(ax, (2.45, 2), (3.45, 2)); arrow(ax, (3.45, 1.75), (2.45, 1.75))
@@ -16,7 +16,7 @@ reg(1, "There is no single definition of AI", 'c01_turing.png', 'The Turing Test
 
 fig, ax = diagram(8.4, 3.4, ylim=(0, 4.2))
 cols = [(1.6, 'Understanding (NLU)', ['Text classification', 'Sentiment analysis', 'POS tagging', 'Named entity recognition'], LIGHT, NAVY),
-        (5.0, 'Both', ['Question answering', 'Summarisation', 'Machine translation'], '#E3F1EC', TEAL),
+        (5.0, 'Both', ['Question answering', 'Summarization', 'Machine translation'], '#E3F1EC', TEAL),
         (8.4, 'Generation (NLG)', ['Image captioning', 'Writing replies', 'Text generation'], PALE, ORANGE)]
 for x, title, items, fc, ec in cols:
     box(ax, x, 3.7, title, 2.9, 0.55, fc=ec, ec=ec, tc='white', bold=True)
@@ -49,7 +49,7 @@ axs[2].set_title('Segmentation')
 axs[2].add_patch(Circle((2.8, 3.3), 1.1, color='#E74C3C', alpha=0.85)); axs[2].add_patch(Rectangle((5.6, 2.2), 2.8, 3.3, color='#8E44AD', alpha=0.85))
 axs[2].add_patch(Rectangle((0, 0), 10, 2.2, color='#27AE60', alpha=0.6))
 fig.tight_layout(); save(fig, 'c02_image_tasks.png')
-reg(2, "Some tasks look inside the picture", 'c02_image_tasks.png', 'One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colours every pixel by what it belongs to.')
+reg(2, "Some tasks look inside the picture", 'c02_image_tasks.png', 'One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colors every pixel by what it belongs to.')
 
 fig, ax = diagram(8.6, 2.6, ylim=(0, 2.8))
 s = ['Speech in\n(Hindi)', 'Speech-to-text', 'Machine\ntranslation', 'Text-to-speech', 'Speech out\n(Telugu)']
@@ -59,7 +59,7 @@ for i, t in enumerate(s):
     if i: arrow(ax, (0.9 + (i - 1) * 2.05 + 0.87, 1.5), (0.9 + i * 2.05 - 0.87, 1.5))
 ax.text(5, 0.35, 'Speech-to-speech translation chains three systems together.', ha='center', fontsize=9, color=NAVY)
 save(fig, 'c02_s2s.png')
-reg(2, "Speech is the third big area", 'c02_s2s.png', 'Spoken translation: recognise the words, translate the text, then speak it in the new language.')
+reg(2, "Speech is the third big area", 'c02_s2s.png', 'Spoken translation: recognize the words, translate the text, then speak it in the new language.')
 
 rng = np.random.default_rng(0)
 normal = np.column_stack([rng.lognormal(3.5, 0.6, 2000), rng.normal(14, 3, 2000) % 24, rng.exponential(5, 2000), rng.poisson(1, 2000)])
@@ -92,20 +92,20 @@ fig.tight_layout(); save(fig, 'c03_class_vs_reg.png')
 reg(3, "Supervised learning has two kinds", 'c03_class_vs_reg.png', 'The two supervised tasks. Left: a classifier splits the space into a child region and an adult region. Right: a regression line predicts salary.')
 
 fig, ax = diagram(8.6, 3.0, ylim=(0, 3.4))
-box(ax, 1.3, 2.4, 'Labelled\ntraining data', 1.9, 0.9, fc=TEAL, ec=TEAL, tc='white', bold=True)
+box(ax, 1.3, 2.4, 'Labeled\ntraining data', 1.9, 0.9, fc=TEAL, ec=TEAL, tc='white', bold=True)
 box(ax, 4.2, 2.4, 'Learning\nalgorithm', 1.8, 0.9); box(ax, 7.3, 2.4, 'Trained model\ny = f(x)', 2.0, 0.9, fc=PALE, ec=ORANGE, bold=True)
 arrow(ax, (2.25, 2.4), (3.3, 2.4)); arrow(ax, (5.1, 2.4), (6.3, 2.4))
-box(ax, 4.2, 0.8, 'New, unseen\nexample x', 1.8, 0.8, fc='white', ec=GREY); box(ax, 9.2, 0.8, 'Prediction', 1.4, 0.7, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
+box(ax, 4.2, 0.8, 'New, unseen\nexample x', 1.8, 0.8, fc='white', ec=GRAY); box(ax, 9.2, 0.8, 'Prediction', 1.4, 0.7, fc=ORANGE, ec=ORANGE, tc='white', bold=True)
 arrow(ax, (5.1, 0.8), (7.3, 1.95), rad=0.25); arrow(ax, (7.6, 1.95), (8.6, 1.1))
 ax.text(1.3, 3.25, 'TRAINING PHASE', fontsize=9, color=TEAL, fontweight='bold', ha='center'); ax.text(1.3, 0.8, 'TESTING PHASE', fontsize=9, color=ORANGE, fontweight='bold', ha='center')
 save(fig, 'c03_two_phases.png')
 reg(3, "Both work in two steps", 'c03_two_phases.png', 'Every supervised model is built in a training phase and judged in a testing phase on data it has never seen.')
 
 fig, axs = plt.subplots(1, 2, figsize=(9, 3.4))
-axs[0].scatter(*X.T, c=GREY); axs[0].set_title('What the algorithm sees: no labels')
+axs[0].scatter(*X.T, c=GRAY); axs[0].set_title('What the algorithm sees: no labels')
 km = KMeans(2, n_init=10, random_state=0).fit(X)
 for k, c in zip(range(2), [NAVY, ORANGE]): axs[1].scatter(*X[km.labels_ == k].T, c=c)
-axs[1].scatter(*km.cluster_centers_.T, c='black', marker='*', s=220, label='Cluster centres'); axs[1].legend(frameon=False, loc='upper left')
+axs[1].scatter(*km.cluster_centers_.T, c='black', marker='*', s=220, label='Cluster centers'); axs[1].legend(frameon=False, loc='upper left')
 axs[1].set_title('What K-means finds: two groups')
 for a in axs: a.set_xlabel('Height (cm)'); a.set_ylabel('Weight (kg)')
 fig.tight_layout(); save(fig, 'c03_clustering.png')
@@ -113,23 +113,23 @@ reg(3, "In unsupervised learning the data", 'c03_clustering.png', 'Unsupervised 
 
 # ---------------- Chapter 4 ----------------
 fig, ax = diagram(8.4, 3.2, ylim=(0, 3.6))
-box(ax, 1.4, 2.6, 'Small labelled\nset', 1.9, 0.85, fc=TEAL, ec=TEAL, tc='white', bold=True)
+box(ax, 1.4, 2.6, 'Small labeled\nset', 1.9, 0.85, fc=TEAL, ec=TEAL, tc='white', bold=True)
 box(ax, 4.4, 2.6, 'Train model', 1.7, 0.75); box(ax, 7.6, 2.6, 'Predict labels for\nunlabelled data', 2.3, 0.85)
 box(ax, 7.6, 0.8, 'Keep only the\nconfident guesses', 2.3, 0.85, fc=PALE, ec=ORANGE)
 box(ax, 4.4, 0.8, 'Add pseudo-labels\nto training set', 2.2, 0.85)
-box(ax, 1.4, 0.8, 'Large\nunlabelled pool', 1.9, 0.85, fc='white', ec=GREY)
+box(ax, 1.4, 0.8, 'Large\nunlabelled pool', 1.9, 0.85, fc='white', ec=GRAY)
 arrow(ax, (2.35, 2.6), (3.55, 2.6)); arrow(ax, (5.25, 2.6), (6.45, 2.6)); arrow(ax, (7.6, 2.15), (7.6, 1.25))
-arrow(ax, (6.45, 0.8), (5.5, 0.8)); arrow(ax, (4.4, 1.25), (4.4, 2.2), 'retrain', toff=(0.45, 0)); arrow(ax, (2.35, 0.95), (6.45, 2.35), ls='--', color=GREY, rad=-0.15)
+arrow(ax, (6.45, 0.8), (5.5, 0.8)); arrow(ax, (4.4, 1.25), (4.4, 2.2), 'retrain', toff=(0.45, 0)); arrow(ax, (2.35, 0.95), (6.45, 2.35), ls='--', color=GRAY, rad=-0.15)
 save(fig, 'c04_self_training.png')
-reg(4, "Semi-supervised learning trains", 'c04_self_training.png', 'The self-training loop: the model labels the unlabelled data itself, keeps only confident guesses, and retrains.')
+reg(4, "Semi-supervised learning trains", 'c04_self_training.png', 'The self-training loop: the model labels the unlabeled data itself, keeps only confident guesses, and retrains.')
 
 labels = [20, 30, 40, 50, 60, 70, 80, 90, 100]
 rand = [0.550, 0.707, 0.758, 0.782, 0.820, 0.845, 0.857, 0.870, 0.886]; act = [0.550, 0.731, 0.824, 0.877, 0.883, 0.901, 0.921, 0.925, 0.927]
 fig, ax = plt.subplots(figsize=(6.4, 3.5))
-ax.plot(labels, rand, 'o-', c=GREY, label='Random labelling'); ax.plot(labels, act, 's-', c=ORANGE, label='Active learning (uncertainty)')
-ax.set_xlabel('Number of labelled images'); ax.set_ylabel('Test accuracy'); ax.legend(frameon=False); ax.set_title('Same labelling budget, better model')
+ax.plot(labels, rand, 'o-', c=GRAY, label='Random labeling'); ax.plot(labels, act, 's-', c=ORANGE, label='Active learning (uncertainty)')
+ax.set_xlabel('Number of labeled images'); ax.set_ylabel('Test accuracy'); ax.legend(frameon=False); ax.set_title('Same labeling budget, better model')
 save(fig, 'c04_active_curve.png')
-reg(4, "Active learning is a smarter", 'c04_active_curve.png', 'Results from Example 2: asking the expert about the most uncertain images beats labelling at random at almost every budget.')
+reg(4, "Active learning is a smarter", 'c04_active_curve.png', 'Results from Example 2: asking the expert about the most uncertain images beats labeling at random at almost every budget.')
 
 from sklearn.linear_model import SGDClassifier
 rng = np.random.default_rng(0)
@@ -142,7 +142,7 @@ X0, y0 = make_batch(0); st.fit(X0, y0); on.partial_fit(X0, y0, classes=[0, 1]); 
 for t in range(1, 20):
     Xb, yb = make_batch(t); S.append(st.score(Xb, yb)); O.append(on.score(Xb, yb)); on.partial_fit(Xb, yb)
 fig, ax = plt.subplots(figsize=(6.4, 3.4))
-ax.plot(range(1, 20), S, 'o-', c=GREY, label='Static model (trained once)'); ax.plot(range(1, 20), O, 's-', c=TEAL, label='Online model (keeps learning)')
+ax.plot(range(1, 20), S, 'o-', c=GRAY, label='Static model (trained once)'); ax.plot(range(1, 20), O, 's-', c=TEAL, label='Online model (keeps learning)')
 ax.axvline(10, c=RED, ls='--'); ax.text(10.2, 0.6, 'concept drift', color=RED, fontsize=9)
 ax.set_xlabel('Batch in the data stream'); ax.set_ylabel('Accuracy'); ax.set_ylim(0.4, 1.02); ax.legend(frameon=False, loc='lower left')
 save(fig, 'c04_online.png')
@@ -161,7 +161,7 @@ rng = np.random.default_rng(42); _age = rng.normal(30, 12, 200); fare = np.round
 fig, ax = plt.subplots(figsize=(6.6, 3.4))
 ax.hist(fare, bins=35, color=LIGHT, ec=NAVY)
 ax.axvline(np.median(fare), c=TEAL, lw=2, label=f'median = {np.median(fare):.1f}'); ax.axvline(fare.mean(), c=ORANGE, lw=2, ls='--', label=f'mean = {fare.mean():.1f}')
-ax.annotate('long right tail', xy=(150, 3), xytext=(110, 25), arrowprops=dict(arrowstyle='->', color=GREY), color=GREY)
+ax.annotate('long right tail', xy=(150, 3), xytext=(110, 25), arrowprops=dict(arrowstyle='->', color=GRAY), color=GRAY)
 ax.set_xlabel('Fare'); ax.set_ylabel('Passengers'); ax.legend(frameon=False); ax.set_title('Right-skewed data: the mean is pulled above the median')
 save(fig, 'c05_skew.png')
 reg(5, "To profile a numeric column", 'c05_skew.png', "The 'fare' column from Example 1. A few very large values stretch the tail, so the mean sits well above the median.")
@@ -205,7 +205,7 @@ for a, (xv, yv, t) in zip(axs, [(agev, inc, 'Raw values'), (mm(agev), mm(inc), '
     a.scatter(xv, yv, s=12, c=NAVY); a.set_title(t); a.set_xlabel('Age'); a.set_ylabel('Income')
 axs[0].ticklabel_format(axis='y', style='plain')
 fig.tight_layout(); save(fig, 'c06_scaling.png')
-reg(6, "Min-Max normalisation squeezes", 'c06_scaling.png', 'The same 80 people before and after scaling. Raw income is in the tens of thousands while age is in tens; after scaling both features are on comparable ranges.')
+reg(6, "Min-Max normalization squeezes", 'c06_scaling.png', 'The same 80 people before and after scaling. Raw income is in the tens of thousands while age is in tens; after scaling both features are on comparable ranges.')
 
 rng = np.random.default_rng(4); A = rng.normal(70, 10, 100); B = rng.normal(65, 12, 100); T = A + B; Hrs = rng.normal(5, 2, 100)
 C = np.corrcoef(np.vstack([A, B, T, Hrs])); nm = ['Marks A', 'Marks B', 'Total marks', 'Sleep hours']

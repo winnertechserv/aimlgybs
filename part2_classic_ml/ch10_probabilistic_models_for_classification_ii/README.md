@@ -73,7 +73,7 @@ Test accuracy  Naive Bayes: 0.963   Full-covariance Bayes: 1.000
 
 ### Example 3: Gaussian Mixture Model with EM
 
-Class A has two separate clusters. We train a 2-component GMM with EM written out in full. Watch the log-likelihood rise and then stop changing after four iterations, and the learned centres land on the two true clusters at (0, 0) and (4, 4). In the Bayes classifier, a single Gaussian for class A scores 95% while a GMM scores 99%. The final table is the elbow: the log-likelihood jumps from K = 1 to K = 2, then barely improves, so K = 2 is the right choice.
+Class A has two separate clusters. We train a 2-component GMM with EM written out in full. Watch the log-likelihood rise and then stop changing after four iterations, and the learned centers land on the two true clusters at (0, 0) and (4, 4). In the Bayes classifier, a single Gaussian for class A scores 95% while a GMM scores 99%. The final table is the elbow: the log-likelihood jumps from K = 1 to K = 2, then barely improves, so K = 2 is the right choice.
 
 <details><summary>Expected output</summary>
 
@@ -83,9 +83,9 @@ EM iteration  2: log-likelihood =   -749.70
 EM iteration  3: log-likelihood =   -746.14
 EM iteration  4: log-likelihood =   -746.14
 Converged (change < 0.001).
-Learned centres: [[-0.1, 0.06], [4.0, 3.99]]  weights: [0.5, 0.5]
-Class A modelled with K = 1 component(s): test accuracy 0.950
-Class A modelled with K = 2 component(s): test accuracy 0.990
+Learned centers: [[-0.1, 0.06], [4.0, 3.99]]  weights: [0.5, 0.5]
+Class A modeled with K = 1 component(s): test accuracy 0.950
+Class A modeled with K = 2 component(s): test accuracy 0.990
 
 K   total log-likelihood
 1     -1012.4
@@ -103,7 +103,7 @@ K   total log-likelihood
 
 ![Figure 10.1](../../figures/png/c10_bayes_1d.png)
 
-**Figure 10.2.** When children are much more common, the boundary (grey lines, where the probability is 0.5) moves to the right, so more borderline people are called children.
+**Figure 10.2.** When children are much more common, the boundary (gray lines, where the probability is 0.5) moves to the right, so more borderline people are called children.
 
 ![Figure 10.2](../../figures/png/c10_priors.png)
 

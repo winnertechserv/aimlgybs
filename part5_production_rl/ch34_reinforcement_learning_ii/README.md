@@ -7,7 +7,7 @@ Companion code for Chapter 34 of *AI-Machine Learning: Get Your Base Strong*. Th
 ## Key ideas
 
 - Policy iteration alternates evaluating the current policy and improving it, and usually converges in very few rounds.
-- Reinforcement learning is needed when the transition model is unknown and labelled examples could never cover the state space.
+- Reinforcement learning is needed when the transition model is unknown and labeled examples could never cover the state space.
 - Model-based agents plan with a model; model-free agents learn Q-values (Q-learning) or a policy (policy search) directly.
 - TD learning updates after every step using the next state's estimate, so it needs no model and no waiting for the episode to end.
 - SARSA is on-policy and plays safe near danger; Q-learning is off-policy and learns the optimal path even while exploring.

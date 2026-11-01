@@ -43,7 +43,7 @@ for t in tests:
     label = clf.classes_[p.argmax()]
     print(f"{t:38s} -> {label}  (P(pos) = {p[list(clf.classes_).index('pos')]:.2f})")
 
-# Which features push hardest towards each class?
+# Which features push hardest toward each class?
 names = vec.get_feature_names_out()
 w = clf.coef_[0]            # positive weight -> class 'pos' (classes_ = ['neg','pos'])
 order = w.argsort()

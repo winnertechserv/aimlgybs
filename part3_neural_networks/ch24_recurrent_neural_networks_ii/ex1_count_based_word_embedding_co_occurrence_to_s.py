@@ -29,7 +29,7 @@ V = len(vocab)
 idx = {w: i for i, w in enumerate(vocab)}
 print(f"Vocabulary ({V} words): {vocab}\n")
 
-# Co-occurrence matrix with context window = 1 (neighbours)
+# Co-occurrence matrix with context window = 1 (neighbors)
 C = np.zeros((V, V))
 window = 1
 for i, w in enumerate(corpus):

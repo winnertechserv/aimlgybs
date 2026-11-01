@@ -13,7 +13,7 @@ at degree 3, and builds φ([2, 10]).
 Run it:           python ex3_ridge_regression_and_counting_monomials.py
 Expected output:  expected_output/ex3_ridge_regression_and_counting_monomials.txt
 """
-# Chapter 8 - Example 3: Ridge regression (L2 regularisation) and polynomial surfaces
+# Chapter 8 - Example 3: Ridge regression (L2 regularization) and polynomial surfaces
 import numpy as np
 from math import factorial
 

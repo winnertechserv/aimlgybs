@@ -7,7 +7,7 @@ What this example shows
 Scikit-learn's diabetes dataset has 442 patients and 10 measurements each. We fit linear
 regression two ways. The closed form gives the answer in one step. Gradient descent
 starts from zero and walks downhill: watch the training error fall from 23,375 to 2,804.
-Both reach the same test RMSE (about 55.7), and so does scikit-learn. We standardise the
+Both reach the same test RMSE (about 55.7), and so does scikit-learn. We standardize the
 features first because gradient descent converges much faster when all inputs are on the
 same scale.
 

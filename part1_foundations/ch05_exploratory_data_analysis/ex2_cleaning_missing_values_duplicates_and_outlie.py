@@ -71,5 +71,5 @@ removed = df[(df["weight"] >= lo) & (df["weight"] <= hi)]
 capped = df["weight"].clip(df["weight"].quantile(0.05), df["weight"].quantile(0.95))
 logged = np.log1p(df["weight"])
 print(f"\nMean weight  raw: {df['weight'].mean():.2f}  removed: {removed['weight'].mean():.2f}"
-      f"  winsorised: {capped.mean():.2f}")
+      f"  winsorized: {capped.mean():.2f}")
 print(f"Max after log transform: {logged.max():.2f} (raw max {df['weight'].max():.0f})")

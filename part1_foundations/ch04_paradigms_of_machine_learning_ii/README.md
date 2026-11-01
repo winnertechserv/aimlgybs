@@ -6,8 +6,8 @@ Companion code for Chapter 4 of *AI-Machine Learning: Get Your Base Strong*. The
 
 ## Key ideas
 
-- Semi-supervised learning adds unlabelled data to a few labels, often through confident pseudo-labels.
-- Active learning spends the labelling budget on the examples the model is least sure about.
+- Semi-supervised learning adds unlabeled data to a few labels, often through confident pseudo-labels.
+- Active learning spends the labeling budget on the examples the model is least sure about.
 - Self-supervised learning creates its own labels from a pretext task, then reuses what it learned downstream.
 - Online learning updates continuously and can adapt when the data drifts.
 - Meta-learning trains on many tasks so that new ones need only a few examples (N-way K-shot, zero-shot).
@@ -18,7 +18,7 @@ Companion code for Chapter 4 of *AI-Machine Learning: Get Your Base Strong*. The
 | # | Program | What it shows |
 |---|---|---|
 | 1 | [`ex1_semi_supervised_learning_with_pseudo_labels.py`](ex1_semi_supervised_learning_with_pseudo_labels.py) | Only 50 of 1,257 digit images keep their labels. |
-| 2 | [`ex2_active_learning_vs_random_labelling.py`](ex2_active_learning_vs_random_labelling.py) | Both strategies start with 20 labelled images and add 10 labels per round. |
+| 2 | [`ex2_active_learning_vs_random_labeling.py`](ex2_active_learning_vs_random_labeling.py) | Both strategies start with 20 labeled images and add 10 labels per round. |
 | 3 | [`ex3_online_learning_when_the_world_changes.py`](ex3_online_learning_when_the_world_changes.py) | This simulates a data stream where the rule suddenly flips at batch 10, which is concept drift. |
 
 Run any example from this folder:
@@ -32,17 +32,17 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Semi-Supervised Learning with Pseudo-Labels
 
-Only 50 of 1,257 digit images keep their labels. A model trained on those 50 scores 82.6%. Then the self-training loop runs. Each round, the model labels the unlabelled images it is at least 90% sure about and retrains on them. Within four rounds it has pseudo-labelled over 1,000 images and test accuracy rises to 88.1%. Label spreading, a second semi-supervised method, passes labels to neighbouring images and reaches 92.8% from the same 50 labels. Compare these with the 96.3% you get when all 1,257 labels are available.
+Only 50 of 1,257 digit images keep their labels. A model trained on those 50 scores 82.6%. Then the self-training loop runs. Each round, the model labels the unlabeled images it is at least 90% sure about and retrains on them. Within four rounds it has pseudo-labeled over 1,000 images and test accuracy rises to 88.1%. Label spreading, a second semi-supervised method, passes labels to neighboring images and reaches 92.8% from the same 50 labels. Compare these with the 96.3% you get when all 1,257 labels are available.
 
 <details><summary>Expected output</summary>
 
 ```text
-Labelled: 50   Unlabelled: 1207
-Round 0 (labelled data only): test accuracy = 0.826
-Round 1: pseudo-labelled  727 images (pseudo-label accuracy 0.961) -> test accuracy = 0.859
-Round 2: pseudo-labelled 1010 images (pseudo-label accuracy 0.914) -> test accuracy = 0.872
-Round 3: pseudo-labelled 1079 images (pseudo-label accuracy 0.904) -> test accuracy = 0.878
-Round 4: pseudo-labelled 1091 images (pseudo-label accuracy 0.902) -> test accuracy = 0.881
+Labeled: 50   Unlabeled: 1207
+Round 0 (labeled data only): test accuracy = 0.826
+Round 1: pseudo-labeled  727 images (pseudo-label accuracy 0.961) -> test accuracy = 0.859
+Round 2: pseudo-labeled 1010 images (pseudo-label accuracy 0.914) -> test accuracy = 0.872
+Round 3: pseudo-labeled 1079 images (pseudo-label accuracy 0.904) -> test accuracy = 0.878
+Round 4: pseudo-labeled 1091 images (pseudo-label accuracy 0.902) -> test accuracy = 0.881
 
 Label spreading (same 50 labels): test accuracy = 0.928
 For reference, with ALL 1257 true labels: 0.963
@@ -50,9 +50,9 @@ For reference, with ALL 1257 true labels: 0.963
 
 </details>
 
-### Example 2: Active Learning vs Random Labelling
+### Example 2: Active Learning vs Random Labeling
 
-Both strategies start with 20 labelled images and add 10 labels per round. The random strategy labels any 10 images. The active strategy asks the 'expert' to label the 10 images where the model's top two guesses are closest, which is uncertainty sampling. Averaged over five runs, active learning pulls ahead from the first round. With 100 labels it scores 92.7% against 88.6%, so the same labelling budget buys a better model.
+Both strategies start with 20 labeled images and add 10 labels per round. The random strategy labels any 10 images. The active strategy asks the 'expert' to label the 10 images where the model's top two guesses are closest, which is uncertainty sampling. Averaged over five runs, active learning pulls ahead from the first round. With 100 labels it scores 92.7% against 88.6%, so the same labeling budget buys a better model.
 
 <details><summary>Expected output</summary>
 
@@ -98,11 +98,11 @@ Batch   Static model   Online model
 
 ## Figures from this chapter
 
-**Figure 4.1.** The self-training loop: the model labels the unlabelled data itself, keeps only confident guesses, and retrains.
+**Figure 4.1.** The self-training loop: the model labels the unlabeled data itself, keeps only confident guesses, and retrains.
 
 ![Figure 4.1](../../figures/png/c04_self_training.png)
 
-**Figure 4.2.** Results from Example 2: asking the expert about the most uncertain images beats labelling at random at almost every budget.
+**Figure 4.2.** Results from Example 2: asking the expert about the most uncertain images beats labeling at random at almost every budget.
 
 ![Figure 4.2](../../figures/png/c04_active_curve.png)
 

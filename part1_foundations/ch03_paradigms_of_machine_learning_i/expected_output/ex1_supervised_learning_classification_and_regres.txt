@@ -2,7 +2,7 @@ Height 150 cm, weight 47.0 kg -> Adult (P(adult) = 0.96)
 Height 110 cm, weight 20.0 kg -> Child (P(adult) = 0.00)
 
 Iris: trained on 105 flowers, tested on 45 unseen flowers
-Train accuracy 0.981 | Test accuracy 0.978  <- the test score measures GENERALISATION
+Train accuracy 0.981 | Test accuracy 0.978  <- the test score measures GENERALIZATION
 
 Salary line: salary = 3.04 x years + 32.52
 Predicted salary for 10 years: 62.94 thousand

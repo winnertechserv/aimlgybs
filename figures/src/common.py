@@ -3,7 +3,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch, Circle, Rectangle
 import numpy as np, os
-NAVY, TEAL, ORANGE, RED, GREY, LIGHT, GREEN, PALE = '#1F497D', '#17575E', '#D9822B', '#C0392B', '#7F7F7F', '#DCE6F1', '#2E8B57', '#FBE9D7'
+NAVY, TEAL, ORANGE, RED, GRAY, LIGHT, GREEN, PALE = '#1F497D', '#17575E', '#D9822B', '#C0392B', '#7F7F7F', '#DCE6F1', '#2E8B57', '#FBE9D7'
 plt.rcParams.update({'font.size': 10, 'axes.titlesize': 11, 'axes.titleweight': 'bold', 'axes.spines.top': False,
                      'axes.spines.right': False, 'figure.dpi': 100, 'axes.titlecolor': NAVY})
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'png')

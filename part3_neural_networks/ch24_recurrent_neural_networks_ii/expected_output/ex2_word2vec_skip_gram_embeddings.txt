@@ -9,7 +9,7 @@ Generated 84 (center, context) training pairs.
 
 Training complete (300 epochs of SGD).
 
-Nearest neighbours by cosine similarity (learned embeddings):
+Nearest neighbors by cosine similarity (learned embeddings):
     king -> crown(0.64), palace(0.64), throne(0.30)
      dog -> animal(0.65), cute(0.31), furry(0.30)
    apple -> sweet(0.67), tasty(0.33), juicy(0.30)

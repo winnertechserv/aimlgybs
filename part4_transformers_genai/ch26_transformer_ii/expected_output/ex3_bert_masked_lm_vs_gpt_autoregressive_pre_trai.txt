@@ -5,7 +5,7 @@ labeled dataset for a downstream task.
 
 Sentence (9 tokens): the quick brown fox jumps over the lazy dog
 
---- BERT (encoder pre-training): Masked Language Modelling ---
+--- BERT (encoder pre-training): Masked Language Modeling ---
 Randomly mask ~15% of tokens; the model predicts them using BOTH
 left and right context (bidirectional).
 
@@ -18,7 +18,7 @@ left and right context (bidirectional).
     Input : [CLS] the quick brown fox ... [SEP] it was very fast [SEP]
     Target: IsNext = True/False
 
---- GPT (decoder pre-training): Autoregressive Language Modelling ---
+--- GPT (decoder pre-training): Autoregressive Language Modeling ---
 Predict the NEXT word using only the PRECEDING words (unidirectional).
 
    t  Input (context)                               Predict
@@ -39,7 +39,7 @@ True next word  : 'fox' (one-hot target)
 Cross-entropy loss = -log(p_correct) = -log(0.7766) = 0.2528
 
 If the model were confident and WRONG (p_correct = 0.01):
-  loss = -log(0.01) = 4.6052   (heavily penalised)
+  loss = -log(0.01) = 4.6052   (heavily penalized)
 If the model were perfect (p_correct = 1.0):
   loss = -log(1.00) = -0.0000
 

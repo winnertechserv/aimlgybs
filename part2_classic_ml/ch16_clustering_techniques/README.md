@@ -79,7 +79,7 @@ Dataset: 100 samples | Ground truth: 3 clusters
 
 Linkage                Silhouette     Adj Rand  Notes
 ---------------------------------------------------------------------------
-  single                   0.8470       1.0000  nearest-neighbour chaining
+  single                   0.8470       1.0000  nearest-neighbor chaining
   complete                 0.8470       1.0000  compact clusters
   average                  0.8470       1.0000  balanced choice
   ward                     0.8470       1.0000  minimizes within-cluster variance
@@ -127,8 +127,8 @@ DBSCAN result (eps=0.35, min_samples=5):
   Cluster 2: 51 points
 
 === DBSCAN Parameters Explained ===
-  eps         : neighbourhood radius
-  min_samples : min neighbours to be a 'core point'
+  eps         : neighborhood radius
+  min_samples : min neighbors to be a 'core point'
   label = -1  : noise/outlier — not assigned to any cluster
 
 K-Means silhouette: 0.8808
@@ -139,7 +139,7 @@ DBSCAN silhouette (excl. noise): 0.9189
 
 ## Figures from this chapter
 
-**Figure 16.1.** K-means in action: assign every point to its nearest centre, move each centre to the mean of its points, and repeat until nothing changes.
+**Figure 16.1.** K-means in action: assign every point to its nearest center, move each center to the mean of its points, and repeat until nothing changes.
 
 ![Figure 16.1](../../figures/png/c16_kmeans_steps.png)
 

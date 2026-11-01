@@ -6,7 +6,7 @@ What this example shows
 -----------------------
 Class A has two separate clusters. We train a 2-component GMM with EM written out in
 full. Watch the log-likelihood rise and then stop changing after four iterations, and
-the learned centres land on the two true clusters at (0, 0) and (4, 4). In the Bayes
+the learned centers land on the two true clusters at (0, 0) and (4, 4). In the Bayes
 classifier, a single Gaussian for class A scores 95% while a GMM scores 99%. The final
 table is the elbow: the log-likelihood jumps from K = 1 to K = 2, then barely improves,
 so K = 2 is the right choice.
@@ -26,7 +26,7 @@ B = rng.normal([2, 2], 0.6, (300, 2))
 
 # --- EM from scratch on class A with K = 2 components
 K = 2
-mu = A[rng.choice(len(A), K, replace=False)]          # random initial centres
+mu = A[rng.choice(len(A), K, replace=False)]          # random initial centers
 cov = np.array([np.eye(2)] * K)
 w = np.full(K, 1 / K)
 prev = -np.inf
@@ -45,7 +45,7 @@ for it in range(1, 50):
         print("Converged (change < 0.001).")
         break
     prev = ll
-print("Learned centres:", np.round(mu, 2).tolist(), " weights:", np.round(w, 2).tolist())
+print("Learned centers:", np.round(mu, 2).tolist(), " weights:", np.round(w, 2).tolist())
 
 # --- Bayes classifier: one density per class, single Gaussian vs GMM
 X_te = np.vstack([rng.normal([0, 0], 0.6, (100, 2)), rng.normal([4, 4], 0.6, (100, 2)),
@@ -55,7 +55,7 @@ for k in (1, 2):
     gA = GaussianMixture(k, random_state=0).fit(A)
     gB = GaussianMixture(1, random_state=0).fit(B)
     pred = (gB.score_samples(X_te) > gA.score_samples(X_te)).astype(int)  # equal priors
-    print(f"Class A modelled with K = {k} component(s): test accuracy {np.mean(pred == y_te):.3f}")
+    print(f"Class A modeled with K = {k} component(s): test accuracy {np.mean(pred == y_te):.3f}")
 
 # --- Elbow: total log-likelihood of class A for different K
 print("\nK   total log-likelihood")

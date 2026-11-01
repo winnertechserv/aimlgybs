@@ -9,7 +9,7 @@ Companion code for Chapter 22 of *AI-Machine Learning: Get Your Base Strong*. Th
 - Stacking many plain layers causes gradients to vanish or explode during backpropagation.
 - Residual (skip) connections add the input to the output, giving gradients a direct path and enabling networks 50 to 152 layers deep.
 - In backpropagation, max pooling sends the gradient only to the winning element, while mean pooling shares it equally.
-- Transfer learning reuses a representation already learned on a large dataset, which is invaluable when labelled data is scarce.
+- Transfer learning reuses a representation already learned on a large dataset, which is invaluable when labeled data is scarce.
 - CNNs extend well beyond classification: U-Net segments images, YOLO and Faster R-CNN detect objects, and 1-D and 3-D CNNs handle signals and video.
 
 ## Examples

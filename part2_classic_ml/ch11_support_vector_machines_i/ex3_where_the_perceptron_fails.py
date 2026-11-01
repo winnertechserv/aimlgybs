@@ -20,9 +20,9 @@ from sklearn.neighbors import KNeighborsClassifier
 
 rng = np.random.default_rng(0)
 # XOR pattern: opposite corners belong to the same class
-centres = [([0, 0], -1), ([1, 1], -1), ([0, 1], 1), ([1, 0], 1)]
-X = np.vstack([rng.normal(c, 0.1, (25, 2)) for c, _ in centres])
-y = np.repeat([lab for _, lab in centres], 25)
+centers = [([0, 0], -1), ([1, 1], -1), ([0, 1], 1), ([1, 0], 1)]
+X = np.vstack([rng.normal(c, 0.1, (25, 2)) for c, _ in centers])
+y = np.repeat([lab for _, lab in centers], 25)
 
 def train_perceptron(X, y, epochs=50, eta=0.1):
     Xh = np.column_stack([np.ones(len(X)), X]); w = np.zeros(3); history = []

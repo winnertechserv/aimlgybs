@@ -36,7 +36,7 @@ Step 3: context vector  c_t = sum_m a_tm * v_m
 
 Interpretation:
   Key 3 receives the highest attention (0.5666),
-  so the context vector is pulled most towards Value vector 3.
+  so the context vector is pulled most toward Value vector 3.
 
 Why divide by sqrt(d)? Without scaling, large dot products push softmax
 into a saturated region where gradients vanish during training.

@@ -68,7 +68,7 @@ for tag, p_real, logits in [
 print("\nACGAN loss has two parts:")
 print("  L_source = log P(real | x)     -> adversarial term")
 print("  L_class  = log P(class | x)    -> classification term")
-print("  D maximises L_source + L_class ; G maximises L_class - L_source")
+print("  D maximizes L_source + L_class ; G maximizes L_class - L_source")
 
 print("\n--- Other conditional variants ---")
 print("  BigGAN          : class-conditional GAN on ImageNet, built from ResBlocks")

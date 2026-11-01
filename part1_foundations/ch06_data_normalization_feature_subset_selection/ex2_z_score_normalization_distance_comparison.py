@@ -9,7 +9,7 @@ matters for distance-based algorithms. Without normalization, we ask: which sale
 closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated
 by the Sales column (values in thousands) making the Score column almost irrelevant.
 After z-score normalization, both columns are on equal footing. See how S001, S002, and
-S003 get completely different nearest-neighbour rankings before vs after normalization —
+S003 get completely different nearest-neighbor rankings before vs after normalization —
 S002 becomes the closest, which makes intuitive sense since its sales (23500) and score
 (6) are both close to the query (23000, 6.5).
 
@@ -53,4 +53,4 @@ print("Before normalization (Sales dominates):")
 print(f"  S001: {d_raw[0]:.2f}   S002: {d_raw[1]:.2f}   S003: {d_raw[2]:.2f}")
 print("After Z-score normalization (both features contribute equally):")
 print(f"  S001: {d_z[0]:.4f}   S002: {d_z[1]:.4f}   S003: {d_z[2]:.4f}")
-print("\nS002 is now correctly identified as nearest neighbour.")
+print("\nS002 is now correctly identified as nearest neighbor.")

@@ -9,7 +9,7 @@ free. After training 100 trees, each tree tells us how much each feature contrib
 reducing impurity across all its splits. We average this across all trees to get a
 robust importance ranking. On the Breast Cancer dataset (30 features, 569 samples), the
 model achieves 97.08% accuracy. The top features (mean concave points, worst concave
-points, worst area) are clinically meaningful — they measure tumour shape irregularity.
+points, worst area) are clinically meaningful — they measure tumor shape irregularity.
 The bottom features (symmetry error, texture error) contribute almost nothing and could
 safely be dropped.
 

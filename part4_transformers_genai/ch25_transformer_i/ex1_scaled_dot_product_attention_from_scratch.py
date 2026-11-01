@@ -58,7 +58,7 @@ print(f"  c_t = {np.round(c, 4)}")
 print("\nInterpretation:")
 top = int(np.argmax(a))
 print(f"  Key {top+1} receives the highest attention ({a[top]:.4f}),")
-print(f"  so the context vector is pulled most towards Value vector {top+1}.")
+print(f"  so the context vector is pulled most toward Value vector {top+1}.")
 print("\nWhy divide by sqrt(d)? Without scaling, large dot products push softmax")
 print("into a saturated region where gradients vanish during training.")
 

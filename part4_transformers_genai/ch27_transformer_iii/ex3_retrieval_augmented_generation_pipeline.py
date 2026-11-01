@@ -25,10 +25,10 @@ print("document store and putting them into the prompt before generation.\n")
 # ---- Document store ----
 documents = [
  "The Transformer model was introduced in the paper Attention Is All You Need in 2017.",
- "BERT is an encoder-only model pre-trained with masked language modelling.",
+ "BERT is an encoder-only model pre-trained with masked language modeling.",
  "GPT is a decoder-only autoregressive model pre-trained on unlabeled text.",
  "ResNet uses residual skip connections to train very deep CNNs.",
- "K-Means is a partitioning clustering algorithm that minimises distortion.",
+ "K-Means is a partitioning clustering algorithm that minimizes distortion.",
  "LSTM cells use forget, input and output gates to avoid vanishing gradients.",
 ]
 
@@ -51,7 +51,7 @@ print(f"Vocabulary size: {len(vocab)} terms")
 print(f"Embedding matrix shape: {doc_emb.shape}\n")
 
 # ---- Query ----
-query = "Which model is pre-trained with masked language modelling?"
+query = "Which model is pre-trained with masked language modeling?"
 q = embed(query)
 print(f"User query: '{query}'\n")
 
@@ -78,7 +78,7 @@ print("-" * 68)
 
 # ---- Step 3: Generate ----
 print("\nStep 3 - GENERATE: the LLM answers grounded in the retrieved context")
-print("  Answer: BERT is pre-trained with masked language modelling.")
+print("  Answer: BERT is pre-trained with masked language modeling.")
 print("          (grounded in retrieved document [1], not invented)")
 
 print("\n=== Why RAG matters ===")

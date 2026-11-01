@@ -9,7 +9,7 @@ Companion code for Chapter 13 of *AI-Machine Learning: Get Your Base Strong*. Th
 - PCA finds new axes (principal components) ordered by how much variance they capture, and you keep enough to reach about 95%.
 - Eigenvalues tell you the variance along each component; eigenvectors give the directions themselves.
 - PCA is unsupervised: it never looks at the class labels, so its best direction may be useless for classification.
-- FDA (LDA) is supervised and maximises class separation, which is why its 1-D projection usually classifies better than PCA's.
+- FDA (LDA) is supervised and maximizes class separation, which is why its 1-D projection usually classifies better than PCA's.
 - Dimensionality reduction is about removing redundancy, not about throwing away data at random.
 
 ## Examples
@@ -96,7 +96,7 @@ Reconstruction MSE     : 0.046914
 
 ### Example 3: Fisher Discriminant Analysis (FDA/LDA) vs PCA
 
-This is the key example that proves WHY FDA beats PCA for classification tasks. We use sklearn's LinearDiscriminantAnalysis (which builds FDA) and compare it to PCA on the same 10-feature, 2-class dataset. Both reduce to 1 dimension. FDA finds a direction that maximises class separation (the class means are 1.96 apart after projection). PCA finds the direction of maximum variance — but that direction might not be useful for distinguishing classes. The accuracy comparison confirms it: FDA 1D is nearly as good as the full 10D dataset, while PCA 1D loses large accuracy.
+This is the key example that proves WHY FDA beats PCA for classification tasks. We use sklearn's LinearDiscriminantAnalysis (which builds FDA) and compare it to PCA on the same 10-feature, 2-class dataset. Both reduce to 1 dimension. FDA finds a direction that maximizes class separation (the class means are 1.96 apart after projection). PCA finds the direction of maximum variance — but that direction might not be useful for distinguishing classes. The accuracy comparison confirms it: FDA 1D is nearly as good as the full 10D dataset, while PCA 1D loses large accuracy.
 
 <details><summary>Expected output</summary>
 
@@ -105,7 +105,7 @@ This is the key example that proves WHY FDA beats PCA for classification tasks. 
 
 Dataset: 300 samples, 10 features, 2 classes
 
-Step 1: FDA projection direction maximises class separation
+Step 1: FDA projection direction maximizes class separation
   Class +1 mean in FDA space: 1.0191
   Class  0 mean in FDA space: -0.9443
   Separation between means  : 1.9633

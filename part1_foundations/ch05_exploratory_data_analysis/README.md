@@ -6,9 +6,9 @@ Companion code for Chapter 5 of *AI-Machine Learning: Get Your Base Strong*. The
 
 ## Key ideas
 
-- EDA has four steps: collect, clean, profile and visualise. Never skip it.
+- EDA has four steps: collect, clean, profile and visualize. Never skip it.
 - Know each column's type. It decides the statistics, the charts and the encoding you can use.
-- Describe numbers by centre (mean, median, mode), spread (variance, std, IQR) and shape (skewness).
+- Describe numbers by center (mean, median, mode), spread (variance, std, IQR) and shape (skewness).
 - Fill missing values in a way that suits the data: mean or median, forward fill, interpolation, or KNN.
 - Find outliers with the Z-score rule (|z| > 3) or the IQR rule (1.5 × IQR), then remove, cap or transform them.
 - Good features are often engineered: bins, interactions, log transforms, date parts and rare-category grouping.
@@ -33,7 +33,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Profiling a Dataset
 
-This is the first thing you do with any new dataset. The program builds a small passenger table, splits the columns into numbers and categories, then measures the centre and spread of 'age'. Look at the skewness lines. Age is roughly symmetric, so its mean and median are close. Fare is strongly right-skewed: its mean (31) is well above its median (21) because a few people paid very high fares.
+This is the first thing you do with any new dataset. The program builds a small passenger table, splits the columns into numbers and categories, then measures the center and spread of 'age'. Look at the skewness lines. Age is roughly symmetric, so its mean and median are close. Fare is strongly right-skewed: its mean (31) is well above its median (21) because a few people paid very high fares.
 
 <details><summary>Expected output</summary>
 
@@ -41,7 +41,7 @@ This is the first thing you do with any new dataset. The program builds a small 
 Numerical columns  : ['age', 'fare', 'pclass']
 Categorical columns: ['sex', 'embarked']
 
---- Age: centre and spread ---
+--- Age: center and spread ---
 Mean   : 29.67
 Median : 29.00
 Mode   : 25
@@ -93,7 +93,7 @@ Z-score outliers: [250.0]
 IQR fences: [49.4, 88.1]
 IQR outliers: [43.4, 250.0]
 
-Mean weight  raw: 70.20  removed: 68.64  winsorised: 68.61
+Mean weight  raw: 70.20  removed: 68.64  winsorized: 68.61
 Max after log transform: 5.53 (raw max 250)
 ```
 

@@ -13,5 +13,5 @@ Z-score outliers: [250.0]
 IQR fences: [49.4, 88.1]
 IQR outliers: [43.4, 250.0]
 
-Mean weight  raw: 70.20  removed: 68.64  winsorised: 68.61
+Mean weight  raw: 70.20  removed: 68.64  winsorized: 68.61
 Max after log transform: 5.53 (raw max 250)

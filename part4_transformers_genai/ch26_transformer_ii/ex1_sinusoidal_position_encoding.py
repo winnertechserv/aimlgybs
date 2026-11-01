@@ -58,5 +58,5 @@ print("Nearby positions have higher similarity -> the model can infer relative o
 
 print("\n=== Why sinusoidal (not learned integers)? ===")
 print("  * Values stay bounded in [-1, 1] regardless of sequence length")
-print("  * Generalises to sequences longer than those seen in training")
+print("  * Generalizes to sequences longer than those seen in training")
 print("  * Relative position is expressible as a linear function of p_t")

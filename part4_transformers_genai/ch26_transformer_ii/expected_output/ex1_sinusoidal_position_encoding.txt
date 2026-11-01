@@ -36,5 +36,5 @@ Nearby positions have higher similarity -> the model can infer relative order.
 
 === Why sinusoidal (not learned integers)? ===
   * Values stay bounded in [-1, 1] regardless of sequence length
-  * Generalises to sequences longer than those seen in training
+  * Generalizes to sequences longer than those seen in training
   * Relative position is expressible as a linear function of p_t

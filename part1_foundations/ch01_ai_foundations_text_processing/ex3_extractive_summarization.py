@@ -1,18 +1,18 @@
 """
-Chapter 1, Example 3: Extractive Summarisation
+Chapter 1, Example 3: Extractive Summarization
 Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-This is the simplest extractive summariser. It counts how often each meaningful word
+This is the simplest extractive summarizer. It counts how often each meaningful word
 appears (ignoring filler words such as 'the'), scores each sentence by the average
 importance of its words, and keeps the top three in their original order. Notice that
 the off-topic sentence about the weather gets a low score and is left out.
 
-Run it:           python ex3_extractive_summarisation.py
-Expected output:  expected_output/ex3_extractive_summarisation.txt
+Run it:           python ex3_extractive_summarization.py
+Expected output:  expected_output/ex3_extractive_summarization.txt
 """
-# Chapter 1 - Example 3: Extractive text summarisation
+# Chapter 1 - Example 3: Extractive text summarization
 # Score each sentence by how many important (frequent, non-filler) words it contains,
 # then keep the top sentences in their original order.
 import re
@@ -33,7 +33,7 @@ sentences = [s.strip() for s in document.split("\n") if s.strip()]
 words = [w for w in re.findall(r"[a-z]+", document.lower()) if w not in STOP]
 freq = Counter(words)
 top = max(freq.values())
-weight = {w: c / top for w, c in freq.items()}          # normalise to 0..1
+weight = {w: c / top for w, c in freq.items()}          # normalize to 0..1
 print("Most important words:", [w for w, _ in freq.most_common(6)])
 
 scores = []

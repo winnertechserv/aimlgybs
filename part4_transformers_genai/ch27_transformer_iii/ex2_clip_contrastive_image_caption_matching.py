@@ -5,8 +5,8 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 This builds CLIP's training objective: encode images and captions into the same space,
-compute the cosine similarity of every pair, then maximise the N correct pairs and
-minimise the N^2 - N incorrect ones. The similarity matrix shows a strong diagonal,
+compute the cosine similarity of every pair, then maximize the N correct pairs and
+minimize the N^2 - N incorrect ones. The similarity matrix shows a strong diagonal,
 retrieval is 100% accurate, and the contrastive loss is computed in both directions.
 
 Run it:           python ex2_clip_contrastive_image_caption_matching.py
@@ -20,8 +20,8 @@ print("=== CLIP: Contrastive Language-Image Pre-training ===\n")
 print("Training objective:")
 print("  1. Encode all images and all captions into the SAME m-dim space")
 print("  2. Compute cosine similarity of every (image, caption) pair")
-print("  3. MAXIMISE similarity of the N correct pairs")
-print("     MINIMISE similarity of the N^2 - N incorrect pairs\n")
+print("  3. MAXIMIZE similarity of the N correct pairs")
+print("     MINIMIZE similarity of the N^2 - N incorrect pairs\n")
 
 N, m = 4, 8
 captions = ["a dog on a beach", "a plate of pasta",

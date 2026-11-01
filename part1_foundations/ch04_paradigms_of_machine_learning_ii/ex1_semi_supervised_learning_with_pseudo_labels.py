@@ -5,10 +5,10 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 Only 50 of 1,257 digit images keep their labels. A model trained on those 50 scores
-82.6%. Then the self-training loop runs. Each round, the model labels the unlabelled
+82.6%. Then the self-training loop runs. Each round, the model labels the unlabeled
 images it is at least 90% sure about and retrains on them. Within four rounds it has
-pseudo-labelled over 1,000 images and test accuracy rises to 88.1%. Label spreading, a
-second semi-supervised method, passes labels to neighbouring images and reaches 92.8%
+pseudo-labeled over 1,000 images and test accuracy rises to 88.1%. Label spreading, a
+second semi-supervised method, passes labels to neighboring images and reaches 92.8%
 from the same 50 labels. Compare these with the 96.3% you get when all 1,257 labels are
 available.
 
@@ -29,18 +29,18 @@ X = X / 16.0
 X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, stratify=y, random_state=0)
 
 rng = np.random.default_rng(0)
-labelled = np.zeros(len(X_tr), bool)
-for d in range(10):                                  # 5 labelled images per digit
-    labelled[rng.choice(np.where(y_tr == d)[0], 5, replace=False)] = True
-X_l, y_l = X_tr[labelled], y_tr[labelled]
-X_u = X_tr[~labelled]                                # unlabelled pool (we ignore y for these)
-print(f"Labelled: {len(X_l)}   Unlabelled: {len(X_u)}")
+labeled = np.zeros(len(X_tr), bool)
+for d in range(10):                                  # 5 labeled images per digit
+    labeled[rng.choice(np.where(y_tr == d)[0], 5, replace=False)] = True
+X_l, y_l = X_tr[labeled], y_tr[labeled]
+X_u = X_tr[~labeled]                                # unlabeled pool (we ignore y for these)
+print(f"Labeled: {len(X_l)}   Unlabeled: {len(X_u)}")
 
 def new_model():
     return LogisticRegression(C=100, max_iter=3000)
 
 model = new_model().fit(X_l, y_l)
-print(f"Round 0 (labelled data only): test accuracy = {model.score(X_te, y_te):.3f}")
+print(f"Round 0 (labeled data only): test accuracy = {model.score(X_te, y_te):.3f}")
 
 for rnd in range(1, 5):
     proba = model.predict_proba(X_u)
@@ -48,13 +48,13 @@ for rnd in range(1, 5):
     pseudo = model.classes_[proba.argmax(axis=1)]
     model = new_model().fit(np.vstack([X_l, X_u[confident]]),
                             np.r_[y_l, pseudo[confident]])
-    true_u = y_tr[~labelled][confident]               # peek ONLY to report pseudo-label quality
-    print(f"Round {rnd}: pseudo-labelled {confident.sum():4d} images "
+    true_u = y_tr[~labeled][confident]               # peek ONLY to report pseudo-label quality
+    print(f"Round {rnd}: pseudo-labeled {confident.sum():4d} images "
           f"(pseudo-label accuracy {np.mean(pseudo[confident] == true_u):.3f}) "
           f"-> test accuracy = {model.score(X_te, y_te):.3f}")
 
-# A second semi-supervised method: label spreading passes labels along to near neighbours
-y_partial = np.where(labelled, y_tr, -1)             # -1 means 'no label'
+# A second semi-supervised method: label spreading passes labels along to near neighbors
+y_partial = np.where(labeled, y_tr, -1)             # -1 means 'no label'
 ls = LabelSpreading(kernel="knn", n_neighbors=10).fit(X_tr, y_partial)
 print(f"\nLabel spreading (same 50 labels): test accuracy = {ls.score(X_te, y_te):.3f}")
 

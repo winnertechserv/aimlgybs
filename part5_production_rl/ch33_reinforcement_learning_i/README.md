@@ -6,11 +6,11 @@ Companion code for Chapter 33 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 ## Key ideas
 
-- Reinforcement learning learns from delayed reward by trial and error, with no labelled examples anywhere.
+- Reinforcement learning learns from delayed reward by trial and error, with no labeled examples anywhere.
 - It suits problems that are easy to evaluate but hard to specify, such as playing chess well.
 - An MDP is defined by states, actions, a transition model and a reward function, and the Markov property keeps it tractable.
 - The discount factor gamma sets how far ahead the agent cares: near 0 is short-sighted, near 1 is patient.
-- The Bellman equation links a state's utility to its neighbours', and value iteration solves it by repeated updates.
+- The Bellman equation links a state's utility to its neighbors', and value iteration solves it by repeated updates.
 - Q-learning reaches the same optimal policy without ever knowing the transition probabilities, learning purely from experience.
 
 ## Examples
@@ -19,7 +19,7 @@ Companion code for Chapter 33 of *AI-Machine Learning: Get Your Base Strong*. Th
 |---|---|---|
 | 1 | [`ex1_value_iteration_on_the_4x3_grid_world.py`](ex1_value_iteration_on_the_4x3_grid_world.py) | This solves the classic 4x3 grid world: wall at (2,2), terminal states +1 and -1, step reward -0.04, and actions succeeding with probability 0.8 while slipping sideways with probability 0.1 each. |
 | 2 | [`ex2_q_learning_on_the_same_grid_world.py`](ex2_q_learning_on_the_same_grid_world.py) | Value iteration needed the transition model; Q-learning does not. |
-| 3 | [`ex3_exploration_vs_exploitation_and_td_0.py`](ex3_exploration_vs_exploitation_and_td_0.py) | The bandit experiment quantifies the central RL dilemma: pure exploitation never finds the best arm, pure exploration never capitalises on what it learns, and a moderate epsilon does best. |
+| 3 | [`ex3_exploration_vs_exploitation_and_td_0.py`](ex3_exploration_vs_exploitation_and_td_0.py) | The bandit experiment quantifies the central RL dilemma: pure exploitation never finds the best arm, pure exploration never capitalizes on what it learns, and a moderate epsilon does best. |
 
 Run any example from this folder:
 
@@ -151,7 +151,7 @@ transition probabilities - it learned them implicitly from experience.
 
 ### Example 3: Exploration vs Exploitation, and TD(0)
 
-The bandit experiment quantifies the central RL dilemma: pure exploitation never finds the best arm, pure exploration never capitalises on what it learns, and a moderate epsilon does best. A decaying epsilon then identifies the optimal arm reliably. The final section runs TD(0) on a chain, showing values propagating backwards from the goal - the bootstrapping idea behind Q-learning and deep RL.
+The bandit experiment quantifies the central RL dilemma: pure exploitation never finds the best arm, pure exploration never capitalizes on what it learns, and a moderate epsilon does best. A decaying epsilon then identifies the optimal arm reliably. The final section runs TD(0) on a chain, showing values propagating backwards from the goal - the bootstrapping idea behind Q-learning and deep RL.
 
 <details><summary>Expected output</summary>
 
@@ -177,7 +177,7 @@ strategy                      avg reward   % optimal action
 
   Best strategy here: eps = 0.10
   Pure exploitation can lock onto a suboptimal arm found early;
-  pure exploration never capitalises on what it has learned.
+  pure exploration never capitalizes on what it has learned.
   A small epsilon (or a decaying one) balances the two.
 
 --- Decaying epsilon: explore early, exploit later ---

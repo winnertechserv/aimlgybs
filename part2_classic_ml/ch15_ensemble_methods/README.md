@@ -85,7 +85,7 @@ Baseline (1 stump): 70.0%
 
 ### Example 3: Random Forest Feature Importance
 
-One powerful bonus of Random Forest is that it gives you feature importance scores for free. After training 100 trees, each tree tells us how much each feature contributed to reducing impurity across all its splits. We average this across all trees to get a robust importance ranking. On the Breast Cancer dataset (30 features, 569 samples), the model achieves 97.08% accuracy. The top features (mean concave points, worst concave points, worst area) are clinically meaningful — they measure tumour shape irregularity. The bottom features (symmetry error, texture error) contribute almost nothing and could safely be dropped.
+One powerful bonus of Random Forest is that it gives you feature importance scores for free. After training 100 trees, each tree tells us how much each feature contributed to reducing impurity across all its splits. We average this across all trees to get a robust importance ranking. On the Breast Cancer dataset (30 features, 569 samples), the model achieves 97.08% accuracy. The top features (mean concave points, worst concave points, worst area) are clinically meaningful — they measure tumor shape irregularity. The bottom features (symmetry error, texture error) contribute almost nothing and could safely be dropped.
 
 <details><summary>Expected output</summary>
 

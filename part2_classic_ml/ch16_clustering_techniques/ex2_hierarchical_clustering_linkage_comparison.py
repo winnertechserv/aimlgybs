@@ -32,7 +32,7 @@ for lnk in ['single', 'complete', 'average', 'ward']:
     labels = agg.fit_predict(X)
     sil    = silhouette_score(X, labels)
     ari    = adjusted_rand_score(y_true, labels)
-    note   = {'single':'nearest-neighbour chaining','complete':'compact clusters',
+    note   = {'single':'nearest-neighbor chaining','complete':'compact clusters',
               'average':'balanced choice','ward':'minimizes within-cluster variance'}[lnk]
     print(f"  {lnk:<18} {sil:>12.4f} {ari:>12.4f}  {note}")
 

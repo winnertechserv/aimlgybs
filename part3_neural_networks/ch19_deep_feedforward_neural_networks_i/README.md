@@ -36,7 +36,7 @@ We minimize a simple 2D quadratic loss E(w) = w1² + 10·w2² starting at w=[5,5
 <details><summary>Expected output</summary>
 
 ```text
-=== Optimizer Comparison: Minimising E(w) = w1^2 + 10*w2^2 ===
+=== Optimizer Comparison: Minimizing E(w) = w1^2 + 10*w2^2 ===
 
 Starting at w=[5.0, 5.0], optimal = [0.0, 0.0]
 

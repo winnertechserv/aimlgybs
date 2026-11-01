@@ -103,7 +103,7 @@ Overlapping data: mistakes in the last 5 epochs [9, 15, 9, 10, 13] - never reach
 
 ![Figure 11.2](../../figures/png/c11_bayes_cases.png)
 
-**Figure 11.3.** The perceptron from Example 2 starting from a deliberately bad line. Every grey line is one update (11 in total) until no point is misclassified.
+**Figure 11.3.** The perceptron from Example 2 starting from a deliberately bad line. Every gray line is one update (11 in total) until no point is misclassified.
 
 ![Figure 11.3](../../figures/png/c11_perceptron.png)
 

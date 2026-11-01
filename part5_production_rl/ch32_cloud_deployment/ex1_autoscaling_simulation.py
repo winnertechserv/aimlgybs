@@ -5,7 +5,7 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 This runs the Kubernetes HPA control loop over a realistic 24-hour traffic curve:
-monitor utilisation, compare with the target, and adjust replica count. The comparison
+monitor utilization, compare with the target, and adjust replica count. The comparison
 at the end quantifies the trade-off - autoscaling holds latency within SLA at 55% of the
 cost of permanent over-provisioning, whereas fixed capacity is cheaper but breaches the
 SLA in 14 of 24 hours.
@@ -20,9 +20,9 @@ np.random.seed(0)
 print("=== Cloud Autoscaling for ML Inference ===\n")
 print("Scalability = adjust capacity to match demand while keeping latency")
 print("stable. The control loop:")
-print("  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilise\n")
+print("  monitor metrics -> evaluate thresholds -> adjust capacity -> stabilize\n")
 
-TARGET_CPU   = 0.70     # target utilisation per replica
+TARGET_CPU   = 0.70     # target utilization per replica
 CAP_PER_POD  = 100      # requests/sec one replica can serve
 MIN_PODS, MAX_PODS = 2, 20
 BASE_LAT     = 40       # ms at low load
@@ -33,7 +33,7 @@ traffic = np.array([120,90,70,60,70,110,220,420,650,780,830,910,
                     1180,980,860,820,900,1150,1320,1080,760,520,320,180])
 
 def latency(load_ratio):
-    """Latency grows sharply as utilisation approaches 1 (queueing)."""
+    """Latency grows sharply as utilization approaches 1 (queueing)."""
     return BASE_LAT / max(1e-3, (1 - min(load_ratio, 0.99)))
 
 print(f"Config: {CAP_PER_POD} req/s per replica, target CPU {TARGET_CPU:.0%}, "

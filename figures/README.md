@@ -17,8 +17,8 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 2 — AI Applications
 
-- **Figure 2.1** — [c02_image_tasks.png](png/c02_image_tasks.png): One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colours every pixel by what it belongs to.
-- **Figure 2.2** — [c02_s2s.png](png/c02_s2s.png): Spoken translation: recognise the words, translate the text, then speak it in the new language.
+- **Figure 2.1** — [c02_image_tasks.png](png/c02_image_tasks.png): One picture, three tasks: classification gives one label, detection draws a box round each object, and segmentation colors every pixel by what it belongs to.
+- **Figure 2.2** — [c02_s2s.png](png/c02_s2s.png): Spoken translation: recognize the words, translate the text, then speak it in the new language.
 - **Figure 2.3** — [c02_fraud.png](png/c02_fraud.png): The data behind Example 3: fraudulent transactions (red) are large and far from home, so an anomaly detector can find them without labels.
 
 ## Chapter 3 — Paradigms of Machine Learning I
@@ -29,8 +29,8 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 4 — Paradigms of Machine Learning II
 
-- **Figure 4.1** — [c04_self_training.png](png/c04_self_training.png): The self-training loop: the model labels the unlabelled data itself, keeps only confident guesses, and retrains.
-- **Figure 4.2** — [c04_active_curve.png](png/c04_active_curve.png): Results from Example 2: asking the expert about the most uncertain images beats labelling at random at almost every budget.
+- **Figure 4.1** — [c04_self_training.png](png/c04_self_training.png): The self-training loop: the model labels the unlabeled data itself, keeps only confident guesses, and retrains.
+- **Figure 4.2** — [c04_active_curve.png](png/c04_active_curve.png): Results from Example 2: asking the expert about the most uncertain images beats labeling at random at almost every budget.
 - **Figure 4.3** — [c04_online.png](png/c04_online.png): From Example 3: when the rule changes at batch 10, the static model collapses while the online model recovers after one batch.
 - **Figure 4.4** — [c04_rl_loop.png](png/c04_rl_loop.png): The reinforcement learning loop: the agent acts, and the environment answers with a new state and a reward.
 
@@ -47,7 +47,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 7 — Regression Methods I
 
-- **Figure 7.1** — [c07_least_squares.png](png/c07_least_squares.png): Least squares on the salary data: the best line minimises the sum of the squared red gaps.
+- **Figure 7.1** — [c07_least_squares.png](png/c07_least_squares.png): Least squares on the salary data: the best line minimizes the sum of the squared red gaps.
 - **Figure 7.2** — [c07_plane.png](png/c07_plane.png): Multiple linear regression on the weather data from Example 2: with two inputs, the fitted model is a flat plane.
 - **Figure 7.3** — [c07_gd.png](png/c07_gd.png): Gradient descent on the diabetes data (Example 3): the error falls step by step until it reaches the exact least-squares solution.
 
@@ -60,21 +60,21 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 9 — Probabilistic Models for Classification I
 
-- **Figure 9.1** — [c09_knn.png](png/c09_knn.png): K-NN for the second test person in Example 1. Each circle holds the K nearest neighbours; changing K changes the vote.
+- **Figure 9.1** — [c09_knn.png](png/c09_knn.png): K-NN for the second test person in Example 1. Each circle holds the K nearest neighbors; changing K changes the vote.
 - **Figure 9.2** — [c09_confusion.png](png/c09_confusion.png): The confusion matrix from Example 2 (cancer screening). Green cells are correct; red cells are the two kinds of mistake.
 - **Figure 9.3** — [c09_mahalanobis.png](png/c09_mahalanobis.png): Why Mahalanobis distance disagrees with plain distance for x2: x2 lies just inside the third adult ring, but well outside the narrow child rings.
 
 ## Chapter 10 — Probabilistic Models for Classification II
 
 - **Figure 10.1** — [c10_bayes_1d.png](png/c10_bayes_1d.png): Bayes classifier using height alone. Top: how well each height fits each class. Bottom: Bayes rule turns these into class probabilities that add up to 1.
-- **Figure 10.2** — [c10_priors.png](png/c10_priors.png): When children are much more common, the boundary (grey lines, where the probability is 0.5) moves to the right, so more borderline people are called children.
+- **Figure 10.2** — [c10_priors.png](png/c10_priors.png): When children are much more common, the boundary (gray lines, where the probability is 0.5) moves to the right, so more borderline people are called children.
 - **Figure 10.3** — [c10_gmm.png](png/c10_gmm.png): Example 3: one Gaussian cannot describe class A, which has two clumps; its single wide bell even covers class B. A two-component GMM fits each clump.
 
 ## Chapter 11 — Support Vector Machines I
 
 - **Figure 11.1** — [c11_line_sides.png](png/c11_line_sides.png): The sign of g(x) tells you which side of the line a point is on.
 - **Figure 11.2** — [c11_bayes_cases.png](png/c11_bayes_cases.png): The three covariance cases. The red line is the Bayes decision boundary; the dotted line joins the two class means.
-- **Figure 11.3** — [c11_perceptron.png](png/c11_perceptron.png): The perceptron from Example 2 starting from a deliberately bad line. Every grey line is one update (11 in total) until no point is misclassified.
+- **Figure 11.3** — [c11_perceptron.png](png/c11_perceptron.png): The perceptron from Example 2 starting from a deliberately bad line. Every gray line is one update (11 in total) until no point is misclassified.
 - **Figure 11.4** — [c11_xor.png](png/c11_xor.png): The XOR pattern from Example 3. Every straight line leaves points on the wrong side, but a nonlinear method separates the classes easily.
 
 ## Chapter 12 — Support Vector Machines II
@@ -104,7 +104,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 16 — Clustering Techniques
 
-- **Figure 16.1** — [c16_kmeans_steps.png](png/c16_kmeans_steps.png): K-means in action: assign every point to its nearest centre, move each centre to the mean of its points, and repeat until nothing changes.
+- **Figure 16.1** — [c16_kmeans_steps.png](png/c16_kmeans_steps.png): K-means in action: assign every point to its nearest center, move each center to the mean of its points, and repeat until nothing changes.
 - **Figure 16.2** — [c16_dendrogram.png](png/c16_dendrogram.png): A dendrogram from agglomerative clustering. Cutting it at a chosen height gives the clusters, with no need to pick K in advance.
 - **Figure 16.3** — [c16_dbscan.png](png/c16_dbscan.png): Two crescent-shaped clusters. K-means can only cut the space into round regions; density-based DBSCAN follows the shapes.
 
@@ -128,12 +128,12 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 ## Chapter 20 — Deep Feedforward Neural Networks II
 
 - **Figure 20.1** — [c20_dropout.png](png/c20_dropout.png): Dropout: on every training step a different random set of neurons is switched off, so no neuron can rely on any one partner.
-- **Figure 20.2** — [c20_batchnorm.png](png/c20_batchnorm.png): Batch normalisation rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.
+- **Figure 20.2** — [c20_batchnorm.png](png/c20_batchnorm.png): Batch normalization rescales each neuron's outputs over a mini-batch to mean 0 and standard deviation 1, before the learned scale and shift are applied.
 
 ## Chapter 21 — Convolutional Neural Networks I
 
 - **Figure 21.1** — [c21_convolution.png](png/c21_convolution.png): Convolution: the kernel sits on the red 3x3 patch, multiplies matching cells and adds them up to give one output value (-2). Then it slides one step and repeats.
-- **Figure 21.2** — [c21_pooling.png](png/c21_pooling.png): Max pooling with a 2x2 window and stride 2: each coloured block is replaced by its largest value (in bold).
+- **Figure 21.2** — [c21_pooling.png](png/c21_pooling.png): Max pooling with a 2x2 window and stride 2: each colored block is replaced by its largest value (in bold).
 - **Figure 21.3** — [c21_cnn_arch.png](png/c21_cnn_arch.png): A typical small CNN. With 'same' padding the convolutions keep the width and height, while each pooling layer halves them; the depth grows as more filters are added.
 
 ## Chapter 22 — Convolutional Neural Networks II
@@ -156,7 +156,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 - **Figure 25.1** — [c25_sdpa.png](png/c25_sdpa.png): Scaled dot-product attention: score each key against the query, scale, turn the scores into weights with softmax, then take the weighted sum of the values.
 - **Figure 25.2** — [c25_attention_map.png](png/c25_attention_map.png): An illustration of self-attention weights. Each row shows how much one word draws on every other word; the word 'it' puts most of its weight on 'animal'.
-- **Figure 25.3** — [c25_encoder_layer.png](png/c25_encoder_layer.png): One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalisation. The layer is stacked N times.
+- **Figure 25.3** — [c25_encoder_layer.png](png/c25_encoder_layer.png): One Transformer encoder layer: self-attention then a feedforward network, each wrapped in a residual connection and layer normalization. The layer is stacked N times.
 
 ## Chapter 26 — Transformer II
 
