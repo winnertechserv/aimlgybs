@@ -114,10 +114,10 @@ reg(3, "In unsupervised learning the data", 'c03_clustering.png', 'Unsupervised 
 # ---------------- Chapter 4 ----------------
 fig, ax = diagram(8.4, 3.2, ylim=(0, 3.6))
 box(ax, 1.4, 2.6, 'Small labeled\nset', 1.9, 0.85, fc=TEAL, ec=TEAL, tc='white', bold=True)
-box(ax, 4.4, 2.6, 'Train model', 1.7, 0.75); box(ax, 7.6, 2.6, 'Predict labels for\nunlabelled data', 2.3, 0.85)
+box(ax, 4.4, 2.6, 'Train model', 1.7, 0.75); box(ax, 7.6, 2.6, 'Predict labels for\nunlabeled data', 2.3, 0.85)
 box(ax, 7.6, 0.8, 'Keep only the\nconfident guesses', 2.3, 0.85, fc=PALE, ec=ORANGE)
 box(ax, 4.4, 0.8, 'Add pseudo-labels\nto training set', 2.2, 0.85)
-box(ax, 1.4, 0.8, 'Large\nunlabelled pool', 1.9, 0.85, fc='white', ec=GRAY)
+box(ax, 1.4, 0.8, 'Large\nunlabeled pool', 1.9, 0.85, fc='white', ec=GRAY)
 arrow(ax, (2.35, 2.6), (3.55, 2.6)); arrow(ax, (5.25, 2.6), (6.45, 2.6)); arrow(ax, (7.6, 2.15), (7.6, 1.25))
 arrow(ax, (6.45, 0.8), (5.5, 0.8)); arrow(ax, (4.4, 1.25), (4.4, 2.2), 'retrain', toff=(0.45, 0)); arrow(ax, (2.35, 0.95), (6.45, 2.35), ls='--', color=GRAY, rad=-0.15)
 save(fig, 'c04_self_training.png')

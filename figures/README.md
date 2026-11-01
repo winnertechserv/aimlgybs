@@ -92,7 +92,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 
 ## Chapter 14 — Decision Trees
 
-- **Figure 14.1** — [c14_tree.png](png/c14_tree.png): A small fruit-classification tree. Each box asks one question about one feature; the leaves give the predicted fruit.
+- **Figure 14.1** — [c14_tree.png](png/c14_tree.png): The fruit-classification tree built in Example 2. Each box asks one question about one feature; the leaves give the predicted fruit.
 - **Figure 14.2** — [c14_impurity.png](png/c14_impurity.png): Three impurity measures for a two-class node. All are zero when the node is pure and largest when the classes are evenly mixed.
 - **Figure 14.3** — [c14_depth.png](png/c14_depth.png): A shallow tree draws a few simple boxes. A fully grown tree carves out tiny regions around single points, which is overfitting; Occam's Razor prefers the simpler tree.
 

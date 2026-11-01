@@ -2,19 +2,19 @@ Original dataset shape : (1797, 64)
   -> 1797 images, each 8x8 = 64 pixel features
 
 Variance explained by top N components:
-  Top   1 PCs -> cumulative variance: 12.03%
-  Top   2 PCs -> cumulative variance: 21.59%
-  Top   3 PCs -> cumulative variance: 30.04%
-  Top   5 PCs -> cumulative variance: 41.40%
-  Top  10 PCs -> cumulative variance: 58.87%
-  Top  20 PCs -> cumulative variance: 79.31%
-  Top  40 PCs -> cumulative variance: 95.08%
-  Top  54 PCs -> cumulative variance: 99.08%
+  Top   1 PCs -> cumulative variance: 14.89%
+  Top   2 PCs -> cumulative variance: 28.51%
+  Top   3 PCs -> cumulative variance: 40.30%
+  Top   5 PCs -> cumulative variance: 54.50%
+  Top  10 PCs -> cumulative variance: 73.82%
+  Top  20 PCs -> cumulative variance: 89.43%
+  Top  29 PCs -> cumulative variance: 95.48%
+  Top  41 PCs -> cumulative variance: 99.01%
 
-95% threshold: keep 40 components
-99% threshold: keep 54 components
-Reduction: 64 -> 40 dims  (37.5% smaller)
+95% threshold: keep 29 components
+99% threshold: keep 41 components
+Reduction: 64 -> 29 dims  (54.7% smaller)
 
-Reduced dataset shape  : (1797, 40)
-Reconstruction MSE     : 0.046914
+Reduced dataset shape  : (1797, 29)
+Reconstruction MSE     : 0.8486  (average pixel variance: 18.77)
 (Small MSE = minimal information lost)

@@ -106,7 +106,7 @@ S002 is now correctly identified as nearest neighbor.
 
 ### Example 3: Pearson Correlation & Feature Selection
 
-This example builds a synthetic weather dataset with three features (Temperature, Humidity, Pressure) and a target (Rain). It then computes the Pearson correlation coefficient between each feature and the target to decide which features to keep. The output confirms the intuition: Temperature and Humidity strongly predict Rain (very strong correlation), while Pressure has a weak relationship and could be dropped. The full correlation matrix also reveals that Temperature and Humidity are highly correlated with each other (ρ = -0.925), meaning they carry redundant information — an advanced practitioner might even drop one of them too.
+This example builds a synthetic weather dataset with three features (Temperature, Humidity, Pressure) and a target (Rain). It then computes the Pearson correlation coefficient between each feature and the target to decide which features to keep. The output confirms the intuition: Temperature and Humidity strongly predict Rain (very strong correlation), while Pressure has only a weak relationship (ρ = −0.153), so it falls below the 0.20 threshold and is dropped. The full correlation matrix also reveals that Temperature and Humidity are highly correlated with each other (ρ = -0.925), meaning they carry redundant information — an advanced practitioner might even drop one of them too.
 
 <details><summary>Expected output</summary>
 
@@ -124,10 +124,10 @@ Humidity          -0.925     1.000    -0.180  0.917
 Pressure           0.115    -0.180     1.000 -0.153
 Rain              -0.948     0.917    -0.153  1.000
 
-=== Feature Selection Decision (drop threshold: |rho| < 0.15) ===
+=== Feature Selection Decision (drop threshold: |rho| < 0.20) ===
   Temperature   : rho = -0.9476  -> KEEP
   Humidity      : rho = +0.9169  -> KEEP
-  Pressure      : rho = -0.1530  -> KEEP
+  Pressure      : rho = -0.1530  -> DROP (weak correlation with target)
 ```
 
 </details>

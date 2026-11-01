@@ -9,7 +9,12 @@ labels at all. An Isolation Forest learns what normal looks like and flags anyth
 unusual. Here, 20 frauds (large amounts, at night, far from home, many purchases in an
 hour) are hidden among 2,000 normal transactions. The model flags 21 transactions and
 catches all 20 frauds, with only one false alarm. We use the true labels only at the
-end, to check the result.
+end, to check the result. Precision (20 of 21 = 0.95) is the share of flagged
+transactions that really are fraud, and recall (20 of 20 = 1.00) is the share of frauds
+caught; Chapter 9 covers both. One caution: contamination=0.01 tells the model to flag
+the most unusual 1% of transactions, which is very close to the true fraud rate. That is
+part of why the result is so clean. In real life you would not know the rate and would
+have to estimate it.
 
 Run it:           python ex3_fraud_detection_in_banking.py
 Expected output:  expected_output/ex3_fraud_detection_in_banking.txt
@@ -30,6 +35,8 @@ fraud = np.column_stack([rng.lognormal(6.5, 0.5, n_fraud), rng.normal(3, 1, n_fr
 X = np.vstack([normal, fraud])
 y = np.r_[np.zeros(n_normal), np.ones(n_fraud)]          # used ONLY to check the result
 
+# contamination = share of points to flag (1%). In real use this is a guess from
+# domain knowledge; here it is close to the true fraud rate, which helps a lot.
 model = IsolationForest(n_estimators=200, contamination=0.01, random_state=0).fit(X)
 flag = (model.predict(X) == -1).astype(int)              # -1 means 'anomaly'
 score = -model.score_samples(X)                          # higher = more unusual

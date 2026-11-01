@@ -24,6 +24,8 @@ X = np.array([[98, 16.4], [104, 15.9], [110, 19.8], [115, 19.1], [119, 23.0],
 y = np.r_[np.zeros(10, int), np.ones(10, int)]
 NAMES = {0: "Child", 1: "Adult"}
 
+# Raw cm and kg are used so the numbers match Figure 9.1. In general, standardize the
+# features before K-NN (Chapter 6), as Example 2 does.
 def knn_predict(x, K):
     d = np.sqrt(((X - x) ** 2).sum(axis=1))        # Step 1: Euclidean distance to all
     order = np.argsort(d)                           # Step 2: sort, nearest first

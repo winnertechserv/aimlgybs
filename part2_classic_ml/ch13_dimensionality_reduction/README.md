@@ -16,8 +16,8 @@ Companion code for Chapter 13 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_pca_step_by_step_from_scratch.py`](ex1_pca_step_by_step_from_scratch.py) | This example builds PCA manually without sklearn — step by step, exactly as described in the overview. |
-| 2 | [`ex2_pca_with_scikit_learn_on_handwritten_digits.py`](ex2_pca_with_scikit_learn_on_handwritten_digits.py) | This is a real-world PCA example on the famous handwritten digits dataset — the same idea scales to larger 28×28 images. |
+| 1 | [`ex1_pca_step_by_step_from_scratch.py`](ex1_pca_step_by_step_from_scratch.py) | This example builds PCA by hand, step by step, exactly as described in the overview. |
+| 2 | [`ex2_pca_with_scikit_learn_on_handwritten_digits.py`](ex2_pca_with_scikit_learn_on_handwritten_digits.py) | This is PCA on real data: scikit-learn's handwritten digits, where each image is 8×8 = 64 pixels (the same idea scales to 28×28 MNIST images). |
 | 3 | [`ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py`](ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py) | This is the key example that proves WHY FDA beats PCA for classification tasks. |
 
 Run any example from this folder:
@@ -31,41 +31,43 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: PCA Step-by-Step from Scratch
 
-This example builds PCA manually without sklearn — step by step, exactly as described in the overview. We have a 20-sample, 5-feature atmospheric dataset. First we compute the covariance matrix, then perform eigendecomposition to find the principal directions. We sort eigenvalues in descending order (most important direction first) and apply the 95% variance criterion to choose how many dimensions to keep. Notice that PC1 alone captures 99.73% of variance — the data is essentially 1-dimensional despite having 5 features! Finally we project the 5D data into 1D and check the output is uncorrelated.
+This example builds PCA by hand, step by step, exactly as described in the overview. We have 20 days of five weather readings, and one hidden weather pattern drives all of them, so they are strongly correlated. Because the readings are in very different units (Rain runs into hundreds of mm), we first standardize them, as Chapter 6 taught. Then we compute the covariance matrix, find its eigenvalues and eigenvectors, sort them and apply the 95% rule. PC1 alone captures about 97% of the variance, and its weights show all five readings contributing almost equally: the five features really do carry one shared signal. Finally we project the data onto PC1 (aₙ = Qᵀxₙ) and check that the variance of the projected scores equals the PC1 eigenvalue.
 
 <details><summary>Expected output</summary>
 
 ```text
 Dataset shape: (20, 5)  (20 samples, 5 features)
 
+Step 0: Features standardized (mean 0, std 1)
 Step 1: Covariance matrix computed (5x5)
+        Correlation of Temperature with the others: [-0.96 -0.96 -0.96 -0.97]
 
 Step 2: Eigenvalues and cumulative variance:
-  PC1:    342787.18  |  99.73%  |  cum 99.73% <- 95% crossed
-  PC2:       790.08  |   0.23%  |  cum 99.96%
-  PC3:       130.23  |   0.04%  |  cum 99.99%
-  PC4:        16.40  |   0.00%  |  cum 100.00%
-  PC5:         2.49  |   0.00%  |  cum 100.00%
+  PC1:  4.8652  |  97.30%  |  cum  97.30% <- 95% crossed
+  PC2:  0.0598  |   1.20%  |  cum  98.50%
+  PC3:  0.0311  |   0.62%  |  cum  99.12%
+  PC4:  0.0266  |   0.53%  |  cum  99.65%
+  PC5:  0.0174  |   0.35%  |  cum 100.00%
 
 Step 3: Keep l = 1 principal component(s) (95% rule)
+        PC1 weights: {'Temperature': 0.45, 'Humidity': -0.45, 'Pressure': -0.45, 'Rain': -0.45, 'Moisture': -0.45}
 Step 4: Original shape (20, 5) -> Projected shape (20, 1)
 
 First 5 projected samples:
-  Sample 1: [-443.26]
-  Sample 2: [-530.7]
-  Sample 3: [452.14]
-  Sample 4: [-480.82]
-  Sample 5: [-375.42]
+  Sample 1: -2.83
+  Sample 2: +0.16
+  Sample 3: -1.37
+  Sample 4: -4.06
+  Sample 5: -3.41
 
-Step 5: Variance of PC1: 325647.8184
-        (equals eigenvalue of PC1 - data is uncorrelated in new space)
+Step 5: Variance of PC1 scores: 4.8652  (eigenvalue of PC1: 4.8652)
 ```
 
 </details>
 
 ### Example 2: PCA with scikit-learn on Handwritten Digits
 
-This is a real-world PCA example on the famous handwritten digits dataset — the same idea scales to larger 28×28 images. Each image is 8×8 = 64 pixels. We use sklearn's PCA to find how many principal components are needed to capture 95% and 99% of the variance. The output shows that just 40 out of 64 dimensions preserve 95% of information — a 37.5% size reduction. The reconstruction error (MSE) is tiny, confirming that the 24 discarded dimensions were mostly noise. This is exactly what the eigenface compression concept shows — you store a few component scores per image instead of all raw pixel values.
+This is PCA on real data: scikit-learn's handwritten digits, where each image is 8×8 = 64 pixels (the same idea scales to 28×28 MNIST images). We use scikit-learn's PCA to find how many components are needed to keep 95% and 99% of the variance. All pixels share one unit (brightness from 0 to 16), so we do not standardize them. Just 29 of the 64 dimensions keep 95% of the variance, matching Figure 13.2, and the images shrink by more than half. The reconstruction error is small next to the average pixel variance, so the 35 dropped directions carried little information. This is the eigenface idea in action: store a few component scores per image instead of every pixel.
 
 <details><summary>Expected output</summary>
 
@@ -74,21 +76,21 @@ Original dataset shape : (1797, 64)
   -> 1797 images, each 8x8 = 64 pixel features
 
 Variance explained by top N components:
-  Top   1 PCs -> cumulative variance: 12.03%
-  Top   2 PCs -> cumulative variance: 21.59%
-  Top   3 PCs -> cumulative variance: 30.04%
-  Top   5 PCs -> cumulative variance: 41.40%
-  Top  10 PCs -> cumulative variance: 58.87%
-  Top  20 PCs -> cumulative variance: 79.31%
-  Top  40 PCs -> cumulative variance: 95.08%
-  Top  54 PCs -> cumulative variance: 99.08%
+  Top   1 PCs -> cumulative variance: 14.89%
+  Top   2 PCs -> cumulative variance: 28.51%
+  Top   3 PCs -> cumulative variance: 40.30%
+  Top   5 PCs -> cumulative variance: 54.50%
+  Top  10 PCs -> cumulative variance: 73.82%
+  Top  20 PCs -> cumulative variance: 89.43%
+  Top  29 PCs -> cumulative variance: 95.48%
+  Top  41 PCs -> cumulative variance: 99.01%
 
-95% threshold: keep 40 components
-99% threshold: keep 54 components
-Reduction: 64 -> 40 dims  (37.5% smaller)
+95% threshold: keep 29 components
+99% threshold: keep 41 components
+Reduction: 64 -> 29 dims  (54.7% smaller)
 
-Reduced dataset shape  : (1797, 40)
-Reconstruction MSE     : 0.046914
+Reduced dataset shape  : (1797, 29)
+Reconstruction MSE     : 0.8486  (average pixel variance: 18.77)
 (Small MSE = minimal information lost)
 ```
 

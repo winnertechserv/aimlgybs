@@ -73,7 +73,7 @@ pclass
 
 ### Example 2: Cleaning — Missing Values, Duplicates and Outliers
 
-We plant three kinds of problem in a clean dataset and then fix them. Compare the five ways of filling the four missing weights. Mean and median give every row the same value. KNN imputation uses each person's height, so a shorter person gets a lower weight, which is the most sensible result. Both the Z-score and IQR tests catch the 250 kg typing error. The IQR test also flags one genuinely light person (43.4 kg), a reminder that not every outlier is a mistake. The last lines show how removing, capping or log-transforming the outliers changes the numbers.
+We plant three kinds of problem in a clean dataset and then fix them. Compare the five ways of filling the four missing weights. Mean and median give every row the same value. KNN imputation uses each person's height, so a shorter person gets a lower weight, which is the most sensible result. Both the Z-score and IQR tests catch the 250 kg typing error. The IQR test also flags one genuinely light person (43.4 kg), a reminder that not every outlier is a mistake. Forward fill and interpolation appear only for comparison: these rows are people in no particular order, so neither makes sense here (see Q8). The last lines show how removing, capping or log-transforming the outliers changes the numbers.
 
 <details><summary>Expected output</summary>
 

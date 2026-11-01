@@ -27,6 +27,7 @@ N = len(baskets)
 items = sorted(set().union(*baskets))
 
 def support(itemset):
+    # For Python sets, a <= b means 'a is a subset of b' (every item of a is in b)
     return sum(itemset <= b for b in baskets) / N   # share of baskets containing ALL items
 
 print("Item supports:", {i: support({i}) for i in items})

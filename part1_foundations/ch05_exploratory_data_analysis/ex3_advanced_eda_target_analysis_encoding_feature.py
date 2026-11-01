@@ -29,6 +29,7 @@ parch = rng.poisson(0.4, n)
 fare = np.round(np.where(pclass == 1, 80, np.where(pclass == 2, 25, 10))
                 * rng.lognormal(0, 0.4, n), 2)
 # survival chance depends on sex, class and age (like the real Titanic)
+# the sigmoid 1 / (1 + e^-logit) turns any score into a probability between 0 and 1
 logit = 1.2 * (sex == "female") - 0.9 * (pclass - 2) - 0.02 * (age - 30) - 0.4
 survived = (rng.random(n) < 1 / (1 + np.exp(-logit))).astype(int)
 df = pd.DataFrame(dict(survived=survived, pclass=pclass, sex=sex, age=age,
@@ -53,7 +54,7 @@ print("\nOne-hot columns:", onehot.columns.tolist())
 df["family_size"] = df["sibsp"] + df["parch"] + 1                  # interaction
 df["age_group"] = pd.cut(df["age"], bins=[0, 12, 18, 60, 100],
                          labels=["child", "teen", "adult", "senior"])  # binning
-df["log_fare"] = np.log1p(df["fare"])                              # transformation
+df["log_fare"] = np.log1p(df["fare"])                              # log(1 + fare)
 print("\nSurvival by age group:")
 print(df.groupby("age_group", observed=True)["survived"].mean().round(2).to_string())
 

@@ -8,10 +8,11 @@ This example builds a synthetic weather dataset with three features (Temperature
 Humidity, Pressure) and a target (Rain). It then computes the Pearson correlation
 coefficient between each feature and the target to decide which features to keep. The
 output confirms the intuition: Temperature and Humidity strongly predict Rain (very
-strong correlation), while Pressure has a weak relationship and could be dropped. The
-full correlation matrix also reveals that Temperature and Humidity are highly correlated
-with each other (ρ = -0.925), meaning they carry redundant information — an advanced
-practitioner might even drop one of them too.
+strong correlation), while Pressure has only a weak relationship (ρ = −0.153), so it
+falls below the 0.20 threshold and is dropped. The full correlation matrix also reveals
+that Temperature and Humidity are highly correlated with each other (ρ = -0.925),
+meaning they carry redundant information — an advanced practitioner might even drop one
+of them too.
 
 Run it:           python ex3_pearson_correlation_feature_selection.py
 Expected output:  expected_output/ex3_pearson_correlation_feature_selection.txt
@@ -42,7 +43,8 @@ print()
 print("=== Full Correlation Matrix ===")
 print(df.corr().round(3).to_string())
 print()
-print("=== Feature Selection Decision (drop threshold: |rho| < 0.15) ===")
+# In a real project, compute these correlations on the training split only.
+print("=== Feature Selection Decision (drop threshold: |rho| < 0.20) ===")
 for feat, val in corr_with_rain.items():
-    action = "KEEP" if abs(val) >= 0.15 else "DROP (weak correlation with target)"
+    action = "KEEP" if abs(val) >= 0.20 else "DROP (weak correlation with target)"
     print(f"  {feat:<14}: rho = {val:+.4f}  -> {action}")

@@ -58,7 +58,7 @@ Per-digit accuracy: {0: 1.0, 1: 1.0, 2: 1.0, 3: 0.98, 4: 1.0, 5: 1.0, 6: 1.0, 7:
 
 ### Example 2: Image Retrieval by Example
 
-This is query-by-example. We pick eight images as queries and ask the system for the five most similar images in the collection, using cosine similarity between pixel vectors. Precision@5 is the share of those five with the same digit as the query. Most queries score a perfect 1.0. One messy '3' brings back two '8's, which shows that similar-looking digits are the hard cases. The last line shows query-by-semantics: because every image is labeled, we can ask for 'sevens' by keyword.
+This is query-by-example. We pick eight images as queries and ask the system for the five most similar images in the collection, using cosine similarity between pixel vectors. Precision@5 is the share of those five with the same digit as the query. Most queries score a perfect 1.0. One messy '3' brings back two '8's, which shows that similar-looking digits are the hard cases. The last line shows query-by-semantics: because every image is labeled, we can ask for 'sevens' by keyword. Cosine similarity compares the direction of two vectors: it is their dot product after each is scaled to length 1, so 1.0 means the same direction. NearestNeighbors reports cosine distance, which is 1 minus the similarity, so the code computes 1 − dist to get the similarity back.
 
 <details><summary>Expected output</summary>
 
@@ -81,7 +81,7 @@ QBS 'show me sevens': 179 annotated images match the keyword '7'
 
 ### Example 3: Fraud Detection in Banking
 
-Banks see millions of normal transactions and very few frauds, often with no fraud labels at all. An Isolation Forest learns what normal looks like and flags anything unusual. Here, 20 frauds (large amounts, at night, far from home, many purchases in an hour) are hidden among 2,000 normal transactions. The model flags 21 transactions and catches all 20 frauds, with only one false alarm. We use the true labels only at the end, to check the result.
+Banks see millions of normal transactions and very few frauds, often with no fraud labels at all. An Isolation Forest learns what normal looks like and flags anything unusual. Here, 20 frauds (large amounts, at night, far from home, many purchases in an hour) are hidden among 2,000 normal transactions. The model flags 21 transactions and catches all 20 frauds, with only one false alarm. We use the true labels only at the end, to check the result. Precision (20 of 21 = 0.95) is the share of flagged transactions that really are fraud, and recall (20 of 20 = 1.00) is the share of frauds caught; Chapter 9 covers both. One caution: contamination=0.01 tells the model to flag the most unusual 1% of transactions, which is very close to the true fraud rate. That is part of why the result is so clean. In real life you would not know the rate and would have to estimate it.
 
 <details><summary>Expected output</summary>
 

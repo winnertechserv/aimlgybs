@@ -5,12 +5,12 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 Hierarchical clustering does not need you to specify K in advance — it builds a full
-tree of merges (a dendrogram) and you cut it at any level you want. We compare all five
+tree of merges (a dendrogram) and you cut it at any level you want. We compare four
 linkage methods on a 3-cluster dataset. All four linkages perfectly recover the true
 clusters here (ARI=1.0). The merge history table shows the actual step-by-step merging
 process: step 1 merges points #16 and #53 (distance 0.0484), step 2 merges #57 and #85,
 and so on, until all 100 points are in one cluster after 99 merges. This is exactly the
-AGNES algorithm from the slides.
+AGNES algorithm described in the overview.
 
 Run it:           python ex2_hierarchical_clustering_linkage_comparison.py
 Expected output:  expected_output/ex2_hierarchical_clustering_linkage_comparison.txt

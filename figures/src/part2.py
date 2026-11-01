@@ -220,7 +220,9 @@ ax.set_title(f'Margin = 1/||w|| = {1 / np.linalg.norm(w_):.3f}')
 save(fig, 'c12_max_margin.png')
 reg(12, "For any point x, its distance", 'c12_max_margin.png', 'The maximum-margin hyperplane from Example 1. The shaded street is as wide as possible; only the two circled support vectors touch it.')
 
+from sklearn.model_selection import train_test_split
 rng = np.random.default_rng(0); Xo = np.vstack([rng.normal([0, 0], 1.0, (150, 2)), rng.normal([2, 2], 1.0, (150, 2))]); yo = np.r_[-np.ones(150), np.ones(150)]
+Xo, _, yo, _ = train_test_split(Xo, yo, test_size=0.4, stratify=yo, random_state=0)   # same 180 training points as Example 2
 fig, axs = plt.subplots(1, 2, figsize=(9.4, 4)); xs = np.linspace(-3.5, 5.5, 2)
 for a, C in zip(axs, (0.01, 100)):
     m = SVC(kernel='linear', C=C).fit(Xo, yo); w_, b_ = m.coef_[0], m.intercept_[0]

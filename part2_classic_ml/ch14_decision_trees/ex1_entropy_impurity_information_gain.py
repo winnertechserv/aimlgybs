@@ -21,7 +21,7 @@ def entropy(counts):
     total = sum(counts)
     if total == 0: return 0
     probs = [c / total for c in counts if c > 0]
-    return -sum(p * np.log2(p) for p in probs)
+    return -sum(p * np.log2(p) for p in probs) + 0.0   # + 0.0 turns -0.0 into 0.0
 
 def info_gain(parent, left, right):
     n = sum(parent); nl = sum(left); nr = sum(right)

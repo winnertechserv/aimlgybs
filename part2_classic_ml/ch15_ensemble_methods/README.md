@@ -16,7 +16,7 @@ Companion code for Chapter 15 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_bagging_weak_classifiers_growing_stronger.py`](ex1_bagging_weak_classifiers_growing_stronger.py) | This example shows the magic of Bagging: taking individually weak decision stumps (depth=2) and combining 50-200 of them into a strong ensemble. |
+| 1 | [`ex1_bagging_weak_classifiers_growing_stronger.py`](ex1_bagging_weak_classifiers_growing_stronger.py) | This example shows the magic of Bagging: taking individually weak shallow trees (depth 2) and combining 10 to 200 of them into a stronger ensemble. |
 | 2 | [`ex2_adaboost_progressive_accuracy_improvement.py`](ex2_adaboost_progressive_accuracy_improvement.py) | AdaBoost is sequential Bagging's smarter cousin. |
 | 3 | [`ex3_random_forest_feature_importance.py`](ex3_random_forest_feature_importance.py) | One powerful bonus of Random Forest is that it gives you feature importance scores for free. |
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Bagging — Weak Classifiers Growing Stronger
 
-This example shows the magic of Bagging: taking individually weak decision stumps (depth=2) and combining 50-200 of them into a strong ensemble. A single stump gets 75.3%, but 50 bagged stumps push to 84.7%. The Random Forest takes this further by also randomizing which features each tree considers at each split — it achieves 91.3%. Notice also that a single deep (unlimited) tree gets 84.0% — similar to bagged stumps but with more risk of overfitting. The visual bar chart makes the improvement instantly obvious.
+This example shows the magic of Bagging: taking individually weak shallow trees (depth 2) and combining 10 to 200 of them into a stronger ensemble. A single shallow tree gets 75.3%, but 50 bagged ones push to 84.7%. The Random Forest takes this further by also randomizing which features each tree considers at each split — it achieves 91.3%. Notice also that a single deep (unlimited) tree gets 84.0% — similar to the bagged shallow trees but with more risk of overfitting. The visual bar chart makes the improvement instantly obvious.
 
 <details><summary>Expected output</summary>
 
@@ -39,14 +39,14 @@ This example shows the magic of Bagging: taking individually weak decision stump
 Model                                    Test Acc
 --------------------------------------------------
   Single Tree (deep)                     84.0%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  Single Stump (depth=2)                 75.3%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  Bagging  10 stumps                     81.3%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  Bagging  50 stumps                     84.7%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  Bagging 100 stumps                     82.7%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-  Bagging 200 stumps                     82.0%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  Single Shallow Tree (depth=2)          75.3%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  Bagging  10 shallow trees              81.3%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  Bagging  50 shallow trees              84.7%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  Bagging 100 shallow trees              82.7%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  Bagging 200 shallow trees              82.0%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
   Random Forest (100 trees)              91.3%  |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Key insight: Weak classifiers (stumps) become strong when bagged together.
+Key insight: Weak classifiers (shallow trees) become strong when bagged together.
 Random Forest adds feature randomness on top of Bagging for even better results.
 ```
 

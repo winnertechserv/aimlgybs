@@ -20,14 +20,17 @@ import numpy as np
 def find_rule(seq):
     s = np.array(seq, dtype=float)
     # Rule 1: constant ratio (geometric, e.g. 1, 2, 4, 8)
+    # s[1:] / s[:-1] divides each term by the one before it: [1, 2, 4, 8] -> [2, 2, 2]
     r = s[1:] / s[:-1]
     if np.allclose(r, r[0]):
         return f"multiply by {r[0]:g}", s[-1] * r[0]
     # Rule 2: each term = sum of previous k terms (Fibonacci-like)
+    # s[i - k:i] is the k terms just before position i
     for k in (2, 3):
         if all(s[i] == s[i - k:i].sum() for i in range(k, len(s))):
             return f"sum of previous {k} terms", s[-k:].sum()
     # Rule 3: polynomial - take differences until they become constant
+    # np.diff subtracts each term from the next one: [1, 4, 9, 16] -> [3, 5, 7]
     diffs, level = [s], 0
     while len(diffs[-1]) > 1 and not np.allclose(diffs[-1], diffs[-1][0]):
         diffs.append(np.diff(diffs[-1])); level += 1

@@ -7,7 +7,7 @@ Companion code for Chapter 11 of *AI-Machine Learning: Get Your Base Strong*. Th
 ## Key ideas
 
 - Every classifier carves the input space into class regions. The border between them is the decision boundary.
-- Non-discriminative methods (K-NN, Bayes) model each class. Discriminative methods (perceptron, SVM) learn the boundary.
+- Non-discriminative methods (K-NN; generative Bayes models) model each class. Discriminative methods (perceptron, logistic regression, SVM) learn the boundary.
 - In a Gaussian Bayes classifier, shared covariances give linear boundaries and different covariances give curved ones.
 - A linear boundary is g(x) = wᵀx + w₀ = 0, and the sign of g(x) gives the class.
 - The perceptron nudges its weights on every mistake and converges if the data is linearly separable.

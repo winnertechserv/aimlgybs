@@ -28,10 +28,8 @@ for epoch in range(1, 101):
     mistakes = 0
     for xn, yn in zip(Xh, y):                        # 2. present each example
         s = w @ xn
-        if yn == 1 and s <= 0:                       # 3. wrong side -> nudge w
-            w += eta * xn; mistakes += 1
-        elif yn == -1 and s > 0:
-            w -= eta * xn; mistakes += 1
+        if yn * s <= 0:                              # 3. wrong side (or on the line) -> nudge w
+            w += eta * yn * xn; mistakes += 1         #    +eta*x for class +1, -eta*x for -1
     print(f"Epoch {epoch}: misclassifications = {mistakes}")
     if mistakes == 0:                                # 5. stop when nothing is wrong
         break

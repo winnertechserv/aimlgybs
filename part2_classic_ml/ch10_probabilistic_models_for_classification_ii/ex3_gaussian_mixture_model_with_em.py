@@ -54,7 +54,8 @@ y_te = np.r_[np.zeros(200), np.ones(200)]
 for k in (1, 2):
     gA = GaussianMixture(k, random_state=0).fit(A)
     gB = GaussianMixture(1, random_state=0).fit(B)
-    pred = (gB.score_samples(X_te) > gA.score_samples(X_te)).astype(int)  # equal priors
+    # score_samples gives log p(x|class); comparing them is Bayes' rule with equal priors
+    pred = (gB.score_samples(X_te) > gA.score_samples(X_te)).astype(int)
     print(f"Class A modeled with K = {k} component(s): test accuracy {np.mean(pred == y_te):.3f}")
 
 # --- Elbow: total log-likelihood of class A for different K

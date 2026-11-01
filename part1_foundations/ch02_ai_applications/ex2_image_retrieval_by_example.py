@@ -9,7 +9,11 @@ five most similar images in the collection, using cosine similarity between pixe
 vectors. Precision@5 is the share of those five with the same digit as the query. Most
 queries score a perfect 1.0. One messy '3' brings back two '8's, which shows that
 similar-looking digits are the hard cases. The last line shows query-by-semantics:
-because every image is labeled, we can ask for 'sevens' by keyword.
+because every image is labeled, we can ask for 'sevens' by keyword. Cosine similarity
+compares the direction of two vectors: it is their dot product after each is scaled to
+length 1, so 1.0 means the same direction. NearestNeighbors reports cosine distance,
+which is 1 minus the similarity, so the code computes 1 − dist to get the similarity
+back.
 
 Run it:           python ex2_image_retrieval_by_example.py
 Expected output:  expected_output/ex2_image_retrieval_by_example.txt

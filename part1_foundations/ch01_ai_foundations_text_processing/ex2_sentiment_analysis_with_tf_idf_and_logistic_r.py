@@ -8,7 +8,11 @@ TF-IDF turns each review into a vector of word weights, and logistic regression 
 which words point to 'positive' and which to 'negative'. We also include word pairs
 (ngram_range=(1, 2)). That lets the model learn 'not good' and 'not bad' as separate
 clues, so it correctly separates the two tricky sentences from the overview. The last
-lines show the strongest signals the model learned for each class.
+lines show the strongest signals the model learned for each class. For now, treat
+logistic regression as a black box that gives each word or word pair a positive or
+negative weight (clf.coef_) and adds them up. C=10 sets a weak penalty on those weights,
+so they can grow large (Chapter 8 explains such penalties). Chapter 11 shows how
+logistic regression works.
 
 Run it:           python ex2_sentiment_analysis_with_tf_idf_and_logistic_r.py
 Expected output:  expected_output/ex2_sentiment_analysis_with_tf_idf_and_logistic_r.txt

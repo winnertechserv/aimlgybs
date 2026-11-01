@@ -44,15 +44,14 @@ fig.tight_layout(); save(fig, 'c13_pca_vs_lda.png')
 reg(13, "There is one catch, and it matters", 'c13_pca_vs_lda.png', 'PCA ignores labels and keeps the long, wide direction, which mixes the classes. Fisher discriminant analysis (LDA) picks the direction that keeps them apart.')
 
 # ---------------- Chapter 14 ----------------
-FRUIT = [((1, 1, 0), 'Banana'), ((1, 2, 0), 'Banana'), ((0, 2, 1), 'Watermelon'), ((2, 0, 1), 'Cherry'),
-         ((2, 1, 1), 'Apple'), ((0, 1, 1), 'Apple'), ((0, 0, 1), 'Grape'), ((1, 0, 1), 'Lemon'), ((1, 1, 1), 'Lemon')]
-names = sorted({n for _, n in FRUIT}); rows = [(c, n) for c, n in FRUIT for _ in range(5)]
-color, size, shape = np.array([r[0] for r in rows]).T; fruit = np.array([names.index(r[1]) for r in rows])
-Xf = np.column_stack([color, size, shape]); tree = DecisionTreeClassifier(random_state=0).fit(Xf, fruit)
-fig, ax = plt.subplots(figsize=(11, 5.2))
-plot_tree(tree, feature_names=['color', 'size', 'shape'], class_names=[names[c] for c in tree.classes_],
+# The same 12 fruits and the same tree as Chapter 14, Example 2
+Xf = np.array([[0,2,0,0],[0,2,0,0],[2,1,0,1],[0,1,0,0],[2,1,0,1],[1,1,0,0],[1,2,0,0],[1,0,1,0],[1,0,1,0],[2,0,0,1],[2,0,0,0],[2,0,1,0]])
+fruit = np.array([6,6, 0,0,0, 5,4, 1,1, 2, 3,3]); names = ['Apple','Banana','Cherry','Grape','Grapefruit','Lemon','Watermelon']
+tree = DecisionTreeClassifier(criterion='entropy', max_depth=4, random_state=42).fit(Xf, fruit)
+fig, ax = plt.subplots(figsize=(11, 5.6))
+plot_tree(tree, feature_names=['Color', 'Size', 'Shape', 'Taste'], class_names=names,
           filled=True, impurity=False, proportion=False, rounded=True, fontsize=8, label='none', ax=ax)
-ax.set_title('A decision tree is a flowchart of questions\n(color: 0 green, 1 yellow, 2 red;  size: 0 small, 1 medium, 2 big;  shape: 0 long, 1 round)', color=NAVY, fontweight='bold', fontsize=10)
+ax.set_title('A decision tree is a flowchart of questions\n(Color: 0 green, 1 yellow, 2 red;  Size: 0 small, 1 medium, 2 big;  Taste: 0 not sweet, 1 sweet)', color=NAVY, fontweight='bold', fontsize=10)
 save(fig, 'c14_tree.png')
 reg(14, "Decision Trees are the go-to", 'c14_tree.png', 'A small fruit-classification tree. Each box asks one question about one feature; the leaves give the predicted fruit.')
 

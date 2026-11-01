@@ -9,8 +9,10 @@ ways of filling the four missing weights. Mean and median give every row the sam
 KNN imputation uses each person's height, so a shorter person gets a lower weight, which
 is the most sensible result. Both the Z-score and IQR tests catch the 250 kg typing
 error. The IQR test also flags one genuinely light person (43.4 kg), a reminder that not
-every outlier is a mistake. The last lines show how removing, capping or log-
-transforming the outliers changes the numbers.
+every outlier is a mistake. Forward fill and interpolation appear only for comparison:
+these rows are people in no particular order, so neither makes sense here (see Q8). The
+last lines show how removing, capping or log-transforming the outliers changes the
+numbers.
 
 Run it:           python ex2_cleaning_missing_values_duplicates_and_outlie.py
 Expected output:  expected_output/ex2_cleaning_missing_values_duplicates_and_outlie.txt
@@ -40,6 +42,9 @@ df = df.drop_duplicates(keep="first").reset_index(drop=True)
 print("After drop_duplicates:", len(df), "rows")
 
 # 2. Compare ways of filling the gaps
+# NOTE: forward fill and interpolation are shown only for comparison. These rows are
+# people in no particular order, so copying a 'previous' row makes no sense (Q8).
+# In a real pipeline, fit the imputer on the training rows only, then apply it to test rows.
 true_missing = df["weight"].isna()
 filled = {
     "Mean":          df["weight"].fillna(df["weight"].mean()),
@@ -69,7 +74,7 @@ print("IQR outliers:", df.loc[(df["weight"] < lo) | (df["weight"] > hi), "weight
 # 5. Three ways to deal with the outlier
 removed = df[(df["weight"] >= lo) & (df["weight"] <= hi)]
 capped = df["weight"].clip(df["weight"].quantile(0.05), df["weight"].quantile(0.95))
-logged = np.log1p(df["weight"])
+logged = np.log1p(df["weight"])          # log1p(x) = log(1 + x), safe even when x = 0
 print(f"\nMean weight  raw: {df['weight'].mean():.2f}  removed: {removed['weight'].mean():.2f}"
       f"  winsorized: {capped.mean():.2f}")
 print(f"Max after log transform: {logged.max():.2f} (raw max {df['weight'].max():.0f})")

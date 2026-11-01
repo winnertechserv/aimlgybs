@@ -5,10 +5,11 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 What this example shows
 -----------------------
 We keep the overfitting degree-9 model and add an L2 penalty λ. With λ = 0 the test RMSE
-is 0.97 and the weights are in the millions. A tiny λ of 0.0001 cuts the test error to
-0.35 and the weight size to about 20. A large λ of 1 overshoots and underfits. The
-second part checks the formula D = (d+M)!/(d!M!), including the 364 terms for 11 inputs
-at degree 3, and builds φ([2, 10]).
+is 0.97 (not the 0.77 of Example 2, because this example draws a fresh set of noisy
+points with a different random seed) and the weights are in the millions. A tiny λ of
+0.0001 cuts the test error to 0.35 and the weight size to about 20. A large λ of 1
+overshoots and underfits. The second part checks the formula D = (d+M)!/(d!M!),
+including the 364 terms for 11 inputs at degree 3, and builds φ([2, 10]).
 
 Run it:           python ex3_ridge_regression_and_counting_monomials.py
 Expected output:  expected_output/ex3_ridge_regression_and_counting_monomials.txt

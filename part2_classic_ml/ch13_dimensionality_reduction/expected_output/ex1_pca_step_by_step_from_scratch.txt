@@ -1,23 +1,25 @@
 Dataset shape: (20, 5)  (20 samples, 5 features)
 
+Step 0: Features standardized (mean 0, std 1)
 Step 1: Covariance matrix computed (5x5)
+        Correlation of Temperature with the others: [-0.96 -0.96 -0.96 -0.97]
 
 Step 2: Eigenvalues and cumulative variance:
-  PC1:    342787.18  |  99.73%  |  cum 99.73% <- 95% crossed
-  PC2:       790.08  |   0.23%  |  cum 99.96%
-  PC3:       130.23  |   0.04%  |  cum 99.99%
-  PC4:        16.40  |   0.00%  |  cum 100.00%
-  PC5:         2.49  |   0.00%  |  cum 100.00%
+  PC1:  4.8652  |  97.30%  |  cum  97.30% <- 95% crossed
+  PC2:  0.0598  |   1.20%  |  cum  98.50%
+  PC3:  0.0311  |   0.62%  |  cum  99.12%
+  PC4:  0.0266  |   0.53%  |  cum  99.65%
+  PC5:  0.0174  |   0.35%  |  cum 100.00%
 
 Step 3: Keep l = 1 principal component(s) (95% rule)
+        PC1 weights: {'Temperature': 0.45, 'Humidity': -0.45, 'Pressure': -0.45, 'Rain': -0.45, 'Moisture': -0.45}
 Step 4: Original shape (20, 5) -> Projected shape (20, 1)
 
 First 5 projected samples:
-  Sample 1: [-443.26]
-  Sample 2: [-530.7]
-  Sample 3: [452.14]
-  Sample 4: [-480.82]
-  Sample 5: [-375.42]
+  Sample 1: -2.83
+  Sample 2: +0.16
+  Sample 3: -1.37
+  Sample 4: -4.06
+  Sample 5: -3.41
 
-Step 5: Variance of PC1: 325647.8184
-        (equals eigenvalue of PC1 - data is uncorrelated in new space)
+Step 5: Variance of PC1 scores: 4.8652  (eigenvalue of PC1: 4.8652)

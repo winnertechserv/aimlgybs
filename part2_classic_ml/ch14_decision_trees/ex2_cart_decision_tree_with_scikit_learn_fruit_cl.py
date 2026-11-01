@@ -9,8 +9,10 @@ is described by 4 categorical features encoded as integers: Color (0=Green, 1=Ye
 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet,
 1=Sweet). The export_text output shows the actual tree that CART built — it's a human-
 readable flowchart you can follow manually. We then test it on three new fruit
-descriptions to check predictions. This is exactly how the slides' decision tree for
-fruit classification works, now implemented in code.
+descriptions to check predictions. Scikit-learn trees need numbers, which is why the
+categories are encoded as integers first. Figure 14.1 draws this same tree. Notice that
+it never asks about Shape: color, size and taste are enough to tell these twelve fruits
+apart.
 
 Run it:           python ex2_cart_decision_tree_with_scikit_learn_fruit_cl.py
 Expected output:  expected_output/ex2_cart_decision_tree_with_scikit_learn_fruit_cl.txt

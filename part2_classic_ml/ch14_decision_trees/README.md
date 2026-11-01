@@ -50,7 +50,7 @@ Query 2: Left=[2, 1, 0]  Right=[2, 3, 2]
 Decision: Query 1 wins (0.3219 > 0.1568) -> SELECT Query 1
 
 --- Entropy for special cases ---
-  Pure node [10, 0]  : entropy = -0.0000  (pure, no uncertainty)
+  Pure node [10, 0]  : entropy = 0.0000  (pure, no uncertainty)
   50/50 split [5,5]  : entropy = 1.0000  (maximum, 2 classes)
   Equal [1,1,1]      : entropy = 1.5850  (maximum, 3 classes)
 ```
@@ -59,7 +59,7 @@ Decision: Query 1 wins (0.3219 > 0.1568) -> SELECT Query 1
 
 ### Example 2: CART Decision Tree with scikit-learn (Fruit Classifier)
 
-We train a real CART decision tree on a small fruit classification example. Each fruit is described by 4 categorical features encoded as integers: Color (0=Green, 1=Yellow, 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet, 1=Sweet). The export_text output shows the actual tree that CART built — it's a human-readable flowchart you can follow manually. We then test it on three new fruit descriptions to check predictions. This is exactly how the slides' decision tree for fruit classification works, now implemented in code.
+We train a real CART decision tree on a small fruit classification example. Each fruit is described by 4 categorical features encoded as integers: Color (0=Green, 1=Yellow, 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet, 1=Sweet). The export_text output shows the actual tree that CART built — it's a human-readable flowchart you can follow manually. We then test it on three new fruit descriptions to check predictions. Scikit-learn trees need numbers, which is why the categories are encoded as integers first. Figure 14.1 draws this same tree. Notice that it never asks about Shape: color, size and taste are enough to tell these twelve fruits apart.
 
 <details><summary>Expected output</summary>
 
@@ -131,7 +131,7 @@ Conclusion: Gini and Entropy usually produce very similar trees in practice.
 
 ## Figures from this chapter
 
-**Figure 14.1.** A small fruit-classification tree. Each box asks one question about one feature; the leaves give the predicted fruit.
+**Figure 14.1.** The fruit-classification tree built in Example 2. Each box asks one question about one feature; the leaves give the predicted fruit.
 
 ![Figure 14.1](../../figures/png/c14_tree.png)
 

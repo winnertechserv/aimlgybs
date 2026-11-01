@@ -6,7 +6,7 @@ Companion code for Chapter 9 of *AI-Machine Learning: Get Your Base Strong*. The
 
 ## Key ideas
 
-- Split data into training, validation and test sets. With imbalanced classes, balance the training set.
+- Split data into training, validation and test sets. With imbalanced classes, split with stratification first, then balance only the training set.
 - K-NN labels a point by a majority vote of its K nearest training examples. Choose K on validation data.
 - K-NN is a lazy learner: training is instant, but every prediction compares against all stored examples.
 - The confusion matrix gives TP, TN, FP and FN. From these come accuracy, precision, recall and F1.

@@ -36,6 +36,9 @@ clf = SVC(kernel="rbf", gamma=0.001, C=10).fit(X_tr, y_tr)
 pred = clf.predict(X_te)
 print(f"\nTest accuracy: {accuracy_score(y_te, pred):.3f} on {len(y_te)} unseen images")
 
+# Confusion matrix (Chapter 9): row = true digit, column = predicted digit.
+# Zeroing the diagonal leaves only the mistakes; unravel_index turns the
+# position of the biggest one into a (row, column) pair.
 cm = confusion_matrix(y_te, pred)
 off = cm.copy(); np.fill_diagonal(off, 0)
 i, j = np.unravel_index(off.argmax(), off.shape)

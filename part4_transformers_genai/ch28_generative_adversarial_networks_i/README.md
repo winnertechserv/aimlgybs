@@ -195,7 +195,7 @@ p(y|x) over class labels. IS = exp( E_x [ KL( p(y|x) || p(y) ) ] )
 
   Sharp + diverse (good GAN)     IS = 3.3864   marginal p(y) = [0.2 0.2 0.2 0.2 0.2]
   Sharp but mode-collapsed       IS = 1.0000   marginal p(y) = [0.92 0.02 0.02 0.02 0.02]
-  Blurry / unrecognisable        IS = 1.0000   marginal p(y) = [0.2 0.2 0.2 0.2 0.2]
+  Blurry / unrecognizable        IS = 1.0000   marginal p(y) = [0.2 0.2 0.2 0.2 0.2]
 
   Maximum possible IS for 5 classes = 5
 

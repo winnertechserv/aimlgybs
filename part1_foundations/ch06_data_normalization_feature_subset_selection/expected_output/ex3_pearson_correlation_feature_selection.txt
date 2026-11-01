@@ -11,7 +11,7 @@ Humidity          -0.925     1.000    -0.180  0.917
 Pressure           0.115    -0.180     1.000 -0.153
 Rain              -0.948     0.917    -0.153  1.000
 
-=== Feature Selection Decision (drop threshold: |rho| < 0.15) ===
+=== Feature Selection Decision (drop threshold: |rho| < 0.20) ===
   Temperature   : rho = -0.9476  -> KEEP
   Humidity      : rho = +0.9169  -> KEEP
-  Pressure      : rho = -0.1530  -> KEEP
+  Pressure      : rho = -0.1530  -> DROP (weak correlation with target)

@@ -80,7 +80,7 @@ More data tames the same complex model (M = 9):
 
 ### Example 3: Ridge Regression and Counting Monomials
 
-We keep the overfitting degree-9 model and add an L2 penalty λ. With λ = 0 the test RMSE is 0.97 and the weights are in the millions. A tiny λ of 0.0001 cuts the test error to 0.35 and the weight size to about 20. A large λ of 1 overshoots and underfits. The second part checks the formula D = (d+M)!/(d!M!), including the 364 terms for 11 inputs at degree 3, and builds φ([2, 10]).
+We keep the overfitting degree-9 model and add an L2 penalty λ. With λ = 0 the test RMSE is 0.97 (not the 0.77 of Example 2, because this example draws a fresh set of noisy points with a different random seed) and the weights are in the millions. A tiny λ of 0.0001 cuts the test error to 0.35 and the weight size to about 20. A large λ of 1 overshoots and underfits. The second part checks the formula D = (d+M)!/(d!M!), including the 364 terms for 11 inputs at degree 3, and builds φ([2, 10]).
 
 <details><summary>Expected output</summary>
 

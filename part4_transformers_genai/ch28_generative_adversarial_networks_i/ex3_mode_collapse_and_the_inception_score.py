@@ -75,7 +75,7 @@ blurry = np.full((100, K), 1.0 / K)
 
 for name, P in [("Sharp + diverse (good GAN)", sharp_diverse),
                 ("Sharp but mode-collapsed",   sharp_collapsed),
-                ("Blurry / unrecognisable",    blurry)]:
+                ("Blurry / unrecognizable",    blurry)]:
     P = P / P.sum(axis=1, keepdims=True)
     score, p_y = inception_score(P)
     print(f"  {name:<30} IS = {score:.4f}   marginal p(y) = {np.round(p_y,3)}")
