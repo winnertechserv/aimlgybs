@@ -85,7 +85,7 @@ Early stopping: fewer epochs, same performance, less compute wasted.
 
 ### Example 3: Local Minima — Effect of Random Initialization
 
-One of the most practically important issues in neural network training is that different random initializations lead to different final models — because gradient descent can get stuck in different local minima. This example trains the same MLFFNN 10 times on the same data with 10 different random seeds. The resulting test accuracies vary noticeably (the range between best and worst is printed). This is why frameworks like PyTorch let you set random seeds for reproducibility, and why practitioners run multiple experiments and pick the best model.
+One of the most practically important issues in neural network training is that different random initializations lead to different final models — because gradient descent can get stuck in different local minima. This example trains the same MLFFNN 10 times on the same data with 10 different random seeds. The resulting test accuracies vary noticeably (the range between best and worst is printed). This is why frameworks like PyTorch let you set random seeds for reproducibility, and why practitioners run multiple experiments and pick the best model. Pick it the right way: the data is split three ways, the best seed is chosen on the validation set, and the test set is used only once, on the chosen model. Notice that the chosen model scores 96% on validation but 91% on test. Picking the best of ten runs flatters the validation score a little, which is exactly why the final number must come from data that played no part in the choice.
 
 <details><summary>Expected output</summary>
 
@@ -94,25 +94,29 @@ One of the most practically important issues in neural network training is that 
 
 Same network, same data, different random seeds -> different results
 Architecture: (3,) | Activation: tanh | Optimizer: SGD
+Split: 300 train / 100 validation / 100 test
 
-  Run   Seed   Train Acc    Test Acc  Status
--------------------------------------------------------
-    1      1       95.1%       91.3%  BEST so far
-    2      2       95.4%       92.0%  BEST so far
-    3      3       87.7%       81.3%  
-    4      4       95.4%       92.0%  BEST so far
-    5      5       95.4%       92.0%  BEST so far
-    6      6       95.7%       92.0%  BEST so far
-    7      7       95.4%       92.0%  BEST so far
-    8      8       88.3%       82.0%  
-    9      9       94.3%       92.7%  BEST so far
-   10     10       95.4%       92.0%  
+  Run   Seed   Train Acc    Val Acc  Status
+----------------------------------------------------
+    1      1       94.0%      96.0%  BEST so far
+    2      2       95.0%      93.0%  
+    3      3       87.0%      88.0%  
+    4      4       95.3%      93.0%  
+    5      5       95.7%      93.0%  
+    6      6       94.0%      94.0%  
+    7      7       94.3%      93.0%  
+    8      8       88.0%      89.0%  
+    9      9       94.3%      93.0%  
+   10     10       95.3%      93.0%  
 
-Best  test accuracy: 92.7%
-Worst test accuracy: 81.3%
-Range              : 11.3%
+Best  validation accuracy: 96.0%  (seed 1)
+Worst validation accuracy: 88.0%
+Range                    : 8.0%
 
-Conclusion: Always run multiple random initializations and pick the best model.
+Test accuracy of the chosen model (reported once): 91.0%
+
+Conclusion: run several random initializations, pick the best on VALIDATION data,
+and touch the test set only once at the end.
 ```
 
 </details>

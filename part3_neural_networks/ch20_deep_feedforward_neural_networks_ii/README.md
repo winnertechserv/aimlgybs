@@ -136,7 +136,7 @@ Both batches normalized to same distribution -> covariate shift eliminated!
 
 ### Example 3: Batch Normalization vs Layer Normalization — Side by Side
 
-The final example clarifies the most commonly confused pair: Batch Normalization vs Layer Normalization. Both normalize to mean=0, std=1 — but they normalize along different axes. BatchNorm normalizes each neuron (column) across the mini-batch — so neuron 1's output across all 3 examples becomes standardized. LayerNorm normalizes each example (row) across its own neurons — so example 1's outputs across all 4 neurons become standardized. The practical implication: BatchNorm needs a large batch to estimate good statistics. LayerNorm works with batch size 1. That's why Transformers use LayerNorm — they process sequences where batch size may be 1.
+The final example clarifies the most commonly confused pair: Batch Normalization vs Layer Normalization. Both normalize to mean=0, std=1 — but they normalize along different axes. BatchNorm normalizes each neuron (column) across the mini-batch — so neuron 1's output across all 3 examples becomes standardized. LayerNorm normalizes each example (row) across its own neurons — so example 1's outputs across all 4 neurons become standardized. Look at the LayerNorm output: rows 1 and 2 come out identical, because row 2 is just row 1 shifted up by 4, and LayerNorm removes each example's own shift and scale. Row 3 has a different shape, so it stays different. The practical implication: BatchNorm needs a large batch to estimate good statistics. LayerNorm works with batch size 1. That's why Transformers use LayerNorm — they process sequences where batch size may be 1.
 
 <details><summary>Expected output</summary>
 
@@ -144,30 +144,30 @@ The final example clarifies the most commonly confused pair: Batch Normalization
 Hidden layer output H (3 examples x 4 neurons):
 [[1. 2. 3. 4.]
  [5. 6. 7. 8.]
- [2. 4. 6. 8.]]
+ [1. 2. 6. 7.]]
 
 === Batch Normalization ===
 Normalize each COLUMN (neuron) across all 3 examples
 
-Column means: [2.6667 4.     5.3333 6.6667]
-Column stds : [1.6997 1.633  1.6997 1.8856]
+Column means: [2.3333 3.3333 5.3333 6.3333]
+Column stds : [1.8856 1.8856 1.6997 1.6997]
 BN output:
-[[-0.9806 -1.2247 -1.3728 -1.4142]
- [ 1.3728  1.2247  0.9806  0.7071]
- [-0.3922  0.      0.3922  0.7071]]
-Verify: mean per column = [ 0.  0.  0. -0.]  (all ~0)
+[[-0.7071 -0.7071 -1.3728 -1.3728]
+ [ 1.4142  1.4142  0.9806  0.9806]
+ [-0.7071 -0.7071  0.3922  0.3922]]
+Verify: mean per column = [-0. -0.  0.  0.]  (all ~0)
         std  per column = [1. 1. 1. 1.]  (all ~1)
 
 === Layer Normalization ===
 Normalize each ROW (example) across its own 4 neurons
 
-Row means: [2.5 6.5 5. ]
-Row stds : [1.118  1.118  2.2361]
+Row means: [2.5 6.5 4. ]
+Row stds : [1.118  1.118  2.5495]
 LN output:
 [[-1.3416 -0.4472  0.4472  1.3416]
  [-1.3416 -0.4472  0.4472  1.3416]
- [-1.3416 -0.4472  0.4472  1.3416]]
-Verify: mean per row = [0. 0. 0.]  (all ~0)
+ [-1.1767 -0.7845  0.7845  1.1767]]
+Verify: mean per row = [ 0.  0. -0.]  (all ~0)
         std  per row = [1. 1. 1.]  (all ~1)
 
 === Summary ===

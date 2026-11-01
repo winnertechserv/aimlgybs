@@ -322,7 +322,7 @@ reg(23, "To train and visualize an RNN", 'c23_unrolled.png', 'An RNN unrolled ov
 
 fig, ax = diagram(8.6, 3.6, ylim=(0, 4.2))
 ax.add_patch(FancyBboxPatch((1.0, 0.7), 7.2, 2.6, boxstyle='round,pad=0.05', fc='#F7F9FC', ec=NAVY, lw=1.5))
-ax.plot([0.2, 9.0], [2.9, 2.9], c=ORANGE, lw=3); ax.text(0.2, 3.45, 'cell state c (long-term memory)', color=ORANGE, fontsize=9, fontweight='bold')
+ax.plot([0.2, 9.0], [2.9, 2.9], c=ORANGE, lw=3); ax.text(0.2, 3.45, 'cell state s_t (long-term memory)', color=ORANGE, fontsize=9, fontweight='bold')
 for x, t, op in [(2.5, 'Forget gate\n(what to erase)', 'x'), (4.6, 'Input gate\n(what to write)', '+'), (6.7, 'Output gate\n(what to show)', '')]:
     box(ax, x, 1.4, t, 1.7, 0.8, fc=TEAL, ec=TEAL, tc='white', fs=8.5)
     if op: ax.add_patch(Circle((x, 2.9), 0.22, fc='white', ec=NAVY, zorder=3)); ax.text(x, 2.9, op, ha='center', va='center', zorder=4, fontweight='bold'); arrow(ax, (x, 1.8), (x, 2.67))

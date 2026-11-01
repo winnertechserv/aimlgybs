@@ -82,7 +82,7 @@ Nearby positions have higher similarity -> the model can infer relative order.
 
 ### Example 2: Transformer Parameter-Count Calculator
 
-This turns the complexity formulas into working code: 3ldhN for each MHA group, 3d^2N for the W_o matrices, 4d^2N for the PWFFNN sub-layers and dV for the decoder's linear layer. Applying it to the original base configuration (d=512, h=8, N=6) gives about 44 million parameters, and the comparison table shows that doubling d roughly quadruples the count while doubling N only doubles it.
+This turns the complexity formulas into working code: 3ldhN for each MHA group, 3d^2N for the W_o matrices, 4d^2N for the PWFFNN sub-layers and dV for the decoder's linear layer. Applying it to the original base configuration (d=512, h=8, N=6) gives about 44 million parameters when the PWFFNN hidden size equals d, and about 63 million with the paper's real hidden size of 2048, close to the 65 million the paper reports, and the comparison table shows that doubling d roughly quadruples the count while doubling N only doubles it.
 
 <details><summary>Expected output</summary>
 
@@ -105,6 +105,9 @@ Configuration: d=512, h=8 heads (l=64), N=6 layers, vocab V=37000
   PWFFNN weight matrices     :    6,291,456
   Decoder linear layer       :   18,944,000
   TOTAL                        44,109,824
+
+With the paper's real PWFFNN size d_ff = 4d = 2048: 62,984,192 parameters
+(The paper reports about 65 million; it also counts biases and layer-norm weights.)
 
 === How parameters scale with each hyperparameter ===
 

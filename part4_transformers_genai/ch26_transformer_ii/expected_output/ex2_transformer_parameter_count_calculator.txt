@@ -17,6 +17,9 @@ Configuration: d=512, h=8 heads (l=64), N=6 layers, vocab V=37000
   Decoder linear layer       :   18,944,000
   TOTAL                        44,109,824
 
+With the paper's real PWFFNN size d_ff = 4d = 2048: 62,984,192 parameters
+(The paper reports about 65 million; it also counts biases and layer-norm weights.)
+
 === How parameters scale with each hyperparameter ===
 
 Config                                     Parameters

@@ -7,8 +7,10 @@ What this example shows
 This turns the complexity formulas into working code: 3ldhN for each MHA group, 3d^2N
 for the W_o matrices, 4d^2N for the PWFFNN sub-layers and dV for the decoder's linear
 layer. Applying it to the original base configuration (d=512, h=8, N=6) gives about 44
-million parameters, and the comparison table shows that doubling d roughly quadruples
-the count while doubling N only doubles it.
+million parameters when the PWFFNN hidden size equals d, and about 63 million with the
+paper's real hidden size of 2048, close to the 65 million the paper reports, and the
+comparison table shows that doubling d roughly quadruples the count while doubling N
+only doubles it.
 
 Run it:           python ex2_transformer_parameter_count_calculator.py
 Expected output:  expected_output/ex2_transformer_parameter_count_calculator.txt
@@ -23,13 +25,14 @@ print("  W_o matrices in 3 MHA sub-layers       : 3*d^2*N")
 print("  Two weight matrices in 2 PWFFNN        : 4*d^2*N")
 print("  Linear layer in decoder                : d*V\n")
 
-def transformer_params(d, h, N, V, verbose=True):
+def transformer_params(d, h, N, V, d_ff=None, verbose=True):
     l = d // h                      # per-head dimension
+    d_ff = d_ff or d                # PWFFNN hidden size (formula above assumes d_ff = d)
     enc_mha   = 3 * l * d * h * N
     dec_mha   = 3 * l * d * h * N
     cross_mha = 3 * l * d * h * N
     wo        = 3 * d * d * N
-    pwffnn    = 4 * d * d * N
+    pwffnn    = 4 * d * d_ff * N    # = 4*d^2*N when d_ff = d
     linear    = d * V
     total = enc_mha + dec_mha + cross_mha + wo + pwffnn + linear
     if verbose:
@@ -45,6 +48,9 @@ def transformer_params(d, h, N, V, verbose=True):
 
 # The original "Attention is all you need" base configuration
 transformer_params(d=512, h=8, N=6, V=37000)
+big_ff = transformer_params(d=512, h=8, N=6, V=37000, d_ff=2048, verbose=False)
+print(f"With the paper's real PWFFNN size d_ff = 4d = 2048: {big_ff:,} parameters")
+print("(The paper reports about 65 million; it also counts biases and layer-norm weights.)\n")
 
 print("=== How parameters scale with each hyperparameter ===\n")
 print(f"{'Config':<38} {'Parameters':>14}")

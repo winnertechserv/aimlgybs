@@ -16,7 +16,7 @@ Companion code for Chapter 19 of *AI-Machine Learning: Get Your Base Strong*. Th
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.py`](ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.py) | We minimize a simple 2D quadratic loss E(w) = w1² + 10·w2² starting at w=[5,5]. |
+| 1 | [`ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.py`](ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.py) | We minimize a 2-D quadratic loss E(w) = w1² + 50·w2² starting at w = [5, 5]. |
 | 2 | [`ex2_l1_vs_l2_regularization_effect_on_weights.py`](ex2_l1_vs_l2_regularization_effect_on_weights.py) | We train a logistic regression model on a 20-feature dataset where only 5 features are truly informative. |
 | 3 | [`ex3_adagrad_vs_rmsprop_learning_rate_decay_compar.py`](ex3_adagrad_vs_rmsprop_learning_rate_decay_compar.py) | This example simulates 30 steps of gradient descent and traces the effective learning rate of AdaGrad vs RMSProp for a single weight. |
 
@@ -31,25 +31,29 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: SGD vs Momentum vs Adam — Optimizer Convergence
 
-We minimize a simple 2D quadratic loss E(w) = w1² + 10·w2² starting at w=[5,5]. The '10x' on w2 creates an elongated bowl — a surface where plain SGD struggles because it takes tiny equal steps in both dimensions. Momentum helps by accumulating velocity in consistent directions. Adam adapts the learning rate per weight — giving w2 a larger effective step size since its gradient is large. Tracking the loss at steps 1, 10, 50, 100 shows how quickly each optimizer reaches the minimum [0,0]. Adam gets there fastest in most real-world scenarios.
+We minimize a 2-D quadratic loss E(w) = w1² + 50·w2² starting at w = [5, 5]. The '50' on w2 makes a narrow ravine: steep across w2, almost flat along w1. Plain SGD uses one step size for both weights, and the steep direction sets the limit. The first row shows that a step of 0.021 makes w2 overshoot further every time and blow up. With a safe step of 0.009, SGD crawls along the flat w1 direction and is still at loss 0.66 after 100 steps. Momentum keeps the same step size but builds up speed along w1 and finishes far ahead (0.0009). Adam divides each weight's step by the size of its recent gradients, so the steep w2 gets a smaller effective step and the flat w1 a larger one, and both move at a similar pace. It beats SGD clearly (0.024), but on this small, smooth bowl a well-tuned momentum wins. Adam's real advantage is that it works well across many problems with little tuning, which is why it is the usual default.
 
 <details><summary>Expected output</summary>
 
 ```text
-=== Optimizer Comparison: Minimizing E(w) = w1^2 + 10*w2^2 ===
+=== Optimizer Comparison: Minimizing E(w) = w1^2 + 50*w2^2 ===
 
 Starting at w=[5.0, 5.0], optimal = [0.0, 0.0]
+A narrow ravine: steep in w2 (gradient 100*w2), almost flat in w1 (gradient 2*w1)
 
 Optimizer                 Step 10    Step 50    Step 100  Final w
 ---------------------------------------------------------------------------
-  SGD                      7.2527     0.0514    0.000106  [+0.0103, +0.0000]
-  Momentum (a=0.9)        40.9711     1.4421    0.007479  [+0.0218, +0.0265]
-  Adam                   176.6696     8.9322    0.016734  [-0.0390, -0.0390]
+  SGD (eta=0.021)            8420  1.723e+07   2.374e+11  [+0.0685, +68903.0617]
+  SGD (eta=0.009)           17.38      4.065      0.6611  [+0.8131, +0.0000]
+  Momentum (a=0.9)          77.41      2.635   0.0009467  [+0.0269, +0.0021]
+  Adam (eta=0.3)            224.2     0.6329     0.02368  [+0.0215, +0.0215]
 
 Observations:
-  SGD      : Slow in w2 direction (large gradient dimension)
-  Momentum : Accelerates in consistent gradient directions
-  Adam     : Per-weight adaptive rates — fastest to optimal
+  SGD      : One step size for both weights. Too big and the steep w2 blows up;
+             small enough for w2, it crawls along the flat w1 direction
+  Momentum : Builds up speed along w1 and finishes far ahead of SGD
+  Adam     : Per-weight scaling moves both weights at a similar pace; it beats SGD
+             here, but a well-tuned momentum can still win on a smooth toy bowl
 ```
 
 </details>
