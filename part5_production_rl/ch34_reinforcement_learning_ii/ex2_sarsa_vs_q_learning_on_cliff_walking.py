@@ -36,6 +36,8 @@ EPS, ALPHA, GAMMA, EPISODES, RUNS = 0.1, 0.5, 1.0, 500, 20
 def step(s, a):
     r, c = s[0] + MOVES[a][0], s[1] + MOVES[a][1]
     r, c = min(max(r, 0), ROWS - 1), min(max(c, 0), COLS - 1)
+    # Falling sends you back to S and the episode continues (as in Sutton & Barto's
+    # original version); some libraries end the episode here instead.
     if r == 3 and 1 <= c <= 10:                      # fell off the cliff
         return START, -100, False
     return (r, c), -1, (r, c) == GOAL

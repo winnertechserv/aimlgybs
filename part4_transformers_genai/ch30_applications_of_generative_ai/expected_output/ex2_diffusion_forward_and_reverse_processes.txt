@@ -4,7 +4,7 @@ Forward diffusion : slowly DESTROY structure by adding noise
 Reverse diffusion : learn to RESTORE structure, turning noise into data
 
 Forward step:
-  x_(t+1) = sqrt(1 - beta_t) * x_t + sqrt(beta_t) * eps ,  eps ~ N(0, I)
+  x_t = sqrt(1 - beta_t) * x_(t-1) + sqrt(beta_t) * eps ,  eps ~ N(0, I)
   As T -> infinity, x_T ~ N(0, I)  (pure noise)
 
 Original data x_0 : [ 1.   0.8 -0.6 -1.   0.4]

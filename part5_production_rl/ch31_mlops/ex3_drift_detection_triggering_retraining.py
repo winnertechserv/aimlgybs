@@ -29,6 +29,7 @@ def psi(expected, actual, bins=10):
     edges[0], edges[-1] = -np.inf, np.inf
     e_pct = np.histogram(expected, edges)[0] / len(expected)
     a_pct = np.histogram(actual,   edges)[0] / len(actual)
+    # an empty bin would give log(0) or a division by zero, so floor every share at 1e-6
     e_pct = np.clip(e_pct, 1e-6, None); a_pct = np.clip(a_pct, 1e-6, None)
     return float(np.sum((a_pct - e_pct) * np.log(a_pct / e_pct)))
 

@@ -20,7 +20,7 @@ Companion code for Chapter 34 of *AI-Machine Learning: Get Your Base Strong*. Th
 |---|---|---|
 | 1 | [`ex1_policy_iteration_on_the_4x3_grid_world.py`](ex1_policy_iteration_on_the_4x3_grid_world.py) | This solves the same grid world as Chapter 33, but with policy iteration. |
 | 2 | [`ex2_sarsa_vs_q_learning_on_cliff_walking.py`](ex2_sarsa_vs_q_learning_on_cliff_walking.py) | This is the classic example that shows why on-policy and off-policy learning behave differently. |
-| 3 | [`ex3_policy_gradient_by_the_finite_difference_meth.py`](ex3_policy_gradient_by_the_finite_difference_meth.py) | This follows the finite-difference recipe exactly. |
+| 3 | [`ex3_policy_gradient_by_the_finite_difference_meth.py`](ex3_policy_gradient_by_the_finite_difference_meth.py) | This follows the finite-difference recipe exactly (modern deep RL computes the same gradient analytically with the log-derivative trick, as the overview notes). |
 
 Run any example from this folder:
 
@@ -138,7 +138,7 @@ What this shows:
 
 ### Example 3: Policy Gradient by the Finite-Difference Method
 
-This follows the finite-difference recipe exactly. A simple policy starts out preferring the wrong direction in a corridor, so its total reward J is negative. Each iteration it tries a dozen small random changes to its weights, measures how the reward moved, fits a gradient with the regression formula (D^T D)^-1 D^T y, and steps uphill. Without ever learning a value function, J climbs from -0.75 to +0.84. The closing note explains how actor-critic methods speed this up.
+This follows the finite-difference recipe exactly (modern deep RL computes the same gradient analytically with the log-derivative trick, as the overview notes). A simple policy starts out preferring the wrong direction in a corridor, so its total reward J is negative. Each iteration it tries a dozen small random changes to its weights, measures how the reward moved, fits a gradient with the regression formula (D^T D)^-1 D^T y, and steps uphill. Without ever learning a value function, J climbs from -0.75 to +0.84. The closing note explains how actor-critic methods speed this up.
 
 <details><summary>Expected output</summary>
 

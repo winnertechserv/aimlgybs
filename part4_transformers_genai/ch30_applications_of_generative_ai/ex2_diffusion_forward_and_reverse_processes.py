@@ -22,7 +22,7 @@ print("=== Diffusion Models: Forward and Reverse Processes ===\n")
 print("Forward diffusion : slowly DESTROY structure by adding noise")
 print("Reverse diffusion : learn to RESTORE structure, turning noise into data\n")
 print("Forward step:")
-print("  x_(t+1) = sqrt(1 - beta_t) * x_t + sqrt(beta_t) * eps ,  eps ~ N(0, I)")
+print("  x_t = sqrt(1 - beta_t) * x_(t-1) + sqrt(beta_t) * eps ,  eps ~ N(0, I)")
 print("  As T -> infinity, x_T ~ N(0, I)  (pure noise)\n")
 
 # A tiny 1-D 'image' with clear structure

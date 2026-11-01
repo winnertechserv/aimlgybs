@@ -4,12 +4,13 @@ Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-This follows the finite-difference recipe exactly. A simple policy starts out preferring
-the wrong direction in a corridor, so its total reward J is negative. Each iteration it
-tries a dozen small random changes to its weights, measures how the reward moved, fits a
-gradient with the regression formula (D^T D)^-1 D^T y, and steps uphill. Without ever
-learning a value function, J climbs from -0.75 to +0.84. The closing note explains how
-actor-critic methods speed this up.
+This follows the finite-difference recipe exactly (modern deep RL computes the same
+gradient analytically with the log-derivative trick, as the overview notes). A simple
+policy starts out preferring the wrong direction in a corridor, so its total reward J is
+negative. Each iteration it tries a dozen small random changes to its weights, measures
+how the reward moved, fits a gradient with the regression formula (D^T D)^-1 D^T y, and
+steps uphill. Without ever learning a value function, J climbs from -0.75 to +0.84. The
+closing note explains how actor-critic methods speed this up.
 
 Run it:           python ex3_policy_gradient_by_the_finite_difference_meth.py
 Expected output:  expected_output/ex3_policy_gradient_by_the_finite_difference_meth.txt

@@ -48,6 +48,8 @@ fixed_breaches = 0
 
 for h, rps in zip(hours, traffic):
     # --- HPA formula: desired = ceil(current * (currentUtil / targetUtil)) ---
+    # (Simplified: real HPA also skips scaling while the ratio is within 10% of 1,
+    #  a tolerance band that stops it flapping when usage hovers near the target.)
     util_now = rps / (pods * CAP_PER_POD)
     desired  = int(np.ceil(pods * (util_now / TARGET_CPU)))
     desired  = max(MIN_PODS, min(MAX_PODS, desired))
