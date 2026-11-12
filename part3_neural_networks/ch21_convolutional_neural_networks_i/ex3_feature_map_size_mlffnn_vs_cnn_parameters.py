@@ -1,6 +1,6 @@
 """
 Chapter 21, Example 3: Feature-Map Size & MLFFNN vs CNN Parameters
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 7, Example 2: Multiple Linear Regression with the Pseudo-Inverse
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

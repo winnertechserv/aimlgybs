@@ -1,6 +1,6 @@
 """
 Chapter 6, Example 1: Min-Max Normalization
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 4, Example 3: Online Learning When the World Changes
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

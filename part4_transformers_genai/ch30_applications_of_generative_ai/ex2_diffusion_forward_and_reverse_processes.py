@@ -1,6 +1,6 @@
 """
 Chapter 30, Example 2: Diffusion Forward and Reverse Processes
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

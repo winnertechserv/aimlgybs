@@ -1,6 +1,6 @@
 """
 Chapter 24, Example 3: BLEU Score from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

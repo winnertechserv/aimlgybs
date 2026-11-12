@@ -1,6 +1,6 @@
 """
 Chapter 9, Example 1: Nearest Neighbor and K-NN from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

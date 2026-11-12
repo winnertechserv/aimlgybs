@@ -1,6 +1,6 @@
 """
 Chapter 8, Example 1: Polynomial Curve Fitting (Degrees 1, 2 and 3)
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 26, Example 3: BERT Masked LM vs GPT Autoregressive Pre-Training
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

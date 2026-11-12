@@ -1,6 +1,6 @@
 """
 Chapter 8, Example 3: Ridge Regression and Counting Monomials
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

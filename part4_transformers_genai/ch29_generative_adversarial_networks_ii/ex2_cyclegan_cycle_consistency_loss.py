@@ -1,6 +1,6 @@
 """
 Chapter 29, Example 2: CycleGAN Cycle-Consistency Loss
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

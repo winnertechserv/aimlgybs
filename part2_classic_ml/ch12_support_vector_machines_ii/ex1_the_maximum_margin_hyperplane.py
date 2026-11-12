@@ -1,6 +1,6 @@
 """
 Chapter 12, Example 1: The Maximum-Margin Hyperplane
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

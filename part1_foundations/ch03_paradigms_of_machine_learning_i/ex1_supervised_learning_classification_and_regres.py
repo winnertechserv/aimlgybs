@@ -1,6 +1,6 @@
 """
 Chapter 3, Example 1: Supervised Learning — Classification and Regression
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

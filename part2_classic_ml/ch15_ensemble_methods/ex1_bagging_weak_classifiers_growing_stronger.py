@@ -1,6 +1,6 @@
 """
 Chapter 15, Example 1: Bagging — Weak Classifiers Growing Stronger
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

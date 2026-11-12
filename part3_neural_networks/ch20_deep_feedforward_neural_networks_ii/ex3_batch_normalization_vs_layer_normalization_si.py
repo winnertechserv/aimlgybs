@@ -1,6 +1,6 @@
 """
 Chapter 20, Example 3: Batch Normalization vs Layer Normalization — Side by Side
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 21, Example 1: 1D Convolution from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

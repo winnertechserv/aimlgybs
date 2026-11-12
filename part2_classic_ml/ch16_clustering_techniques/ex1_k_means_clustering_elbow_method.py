@@ -1,6 +1,6 @@
 """
 Chapter 16, Example 1: K-Means Clustering + Elbow Method
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

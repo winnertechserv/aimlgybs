@@ -1,6 +1,6 @@
 """
 Chapter 10, Example 2: Maximum Likelihood and Naive Bayes
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

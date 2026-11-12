@@ -1,6 +1,6 @@
 """
 Chapter 27, Example 2: CLIP Contrastive Image-Caption Matching
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

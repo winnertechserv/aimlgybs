@@ -1,6 +1,6 @@
 """
 Chapter 25, Example 1: Scaled Dot-Product Attention from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

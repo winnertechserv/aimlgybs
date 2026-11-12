@@ -1,6 +1,6 @@
 """
 Chapter 32, Example 1: Autoscaling Simulation
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

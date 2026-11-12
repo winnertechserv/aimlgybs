@@ -1,6 +1,6 @@
 """
 Chapter 11, Example 2: The Perceptron Learning Algorithm
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

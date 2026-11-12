@@ -1,6 +1,6 @@
 """
 Chapter 13, Example 3: Fisher Discriminant Analysis (FDA/LDA) vs PCA
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

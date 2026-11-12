@@ -1,6 +1,6 @@
 """
 Chapter 31, Example 1: Experiment Tracking (What MLflow Does)
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

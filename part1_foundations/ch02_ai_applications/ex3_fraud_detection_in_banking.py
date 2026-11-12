@@ -1,6 +1,6 @@
 """
 Chapter 2, Example 3: Fraud Detection in Banking
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

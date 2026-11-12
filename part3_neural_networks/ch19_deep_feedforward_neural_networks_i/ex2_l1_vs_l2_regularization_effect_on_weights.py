@@ -1,6 +1,6 @@
 """
 Chapter 19, Example 2: L1 vs L2 Regularization — Effect on Weights
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

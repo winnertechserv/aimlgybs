@@ -1,6 +1,6 @@
 """
 Chapter 13, Example 2: PCA with scikit-learn on Handwritten Digits
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

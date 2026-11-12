@@ -1,6 +1,6 @@
 """
 Chapter 22, Example 1: Residual Connections vs Vanishing Gradients
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

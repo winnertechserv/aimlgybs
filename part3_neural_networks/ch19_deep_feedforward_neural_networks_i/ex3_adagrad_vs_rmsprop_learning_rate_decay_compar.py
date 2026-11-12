@@ -1,6 +1,6 @@
 """
 Chapter 19, Example 3: AdaGrad vs RMSProp — Learning Rate Decay Comparison
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

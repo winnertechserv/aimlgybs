@@ -1,6 +1,6 @@
 """
 Chapter 17, Example 2: Perceptron Learning Algorithm from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

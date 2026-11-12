@@ -1,6 +1,6 @@
 """
 Chapter 4, Example 2: Active Learning vs Random Labeling
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 28, Example 3: Mode Collapse and the Inception Score
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

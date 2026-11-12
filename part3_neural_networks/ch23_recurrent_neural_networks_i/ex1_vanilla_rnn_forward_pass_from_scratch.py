@@ -1,6 +1,6 @@
 """
 Chapter 23, Example 1: Vanilla RNN Forward Pass from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

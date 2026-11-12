@@ -1,6 +1,6 @@
 """
 Chapter 34, Example 3: Policy Gradient by the Finite-Difference Method
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

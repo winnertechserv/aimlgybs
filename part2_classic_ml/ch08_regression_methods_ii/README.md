@@ -2,7 +2,7 @@
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch08_regression_methods_ii/ch08_notebook.ipynb)
 
-Companion code for Chapter 8 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 8 of *AI & Machine Learning: Foundations First*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 

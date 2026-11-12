@@ -1,6 +1,6 @@
 """
 Chapter 18, Example 2: Training Modes Compared + Early Stopping
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

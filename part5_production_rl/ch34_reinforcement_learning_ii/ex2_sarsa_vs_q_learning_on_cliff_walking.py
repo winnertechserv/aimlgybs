@@ -1,6 +1,6 @@
 """
 Chapter 34, Example 2: SARSA vs Q-Learning on Cliff Walking
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

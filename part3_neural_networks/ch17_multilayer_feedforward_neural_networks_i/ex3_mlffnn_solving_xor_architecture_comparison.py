@@ -1,6 +1,6 @@
 """
 Chapter 17, Example 3: MLFFNN Solving XOR + Architecture Comparison
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

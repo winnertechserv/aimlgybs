@@ -1,6 +1,6 @@
 """
 Chapter 12, Example 3: Kernels and Multiclass SVMs
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 25, Example 3: Masked Self-Attention and the PWFFNN
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

@@ -1,6 +1,6 @@
 """
 Chapter 16, Example 3: DBSCAN vs K-Means — Arbitrary Shapes + Outlier Detection
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

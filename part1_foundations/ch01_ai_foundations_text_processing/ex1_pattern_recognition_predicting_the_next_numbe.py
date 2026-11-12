@@ -1,6 +1,6 @@
 """
 Chapter 1, Example 1: Pattern Recognition — Predicting the Next Number
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

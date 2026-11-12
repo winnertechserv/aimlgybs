@@ -1,6 +1,6 @@
 """
 Chapter 2, Example 1: Image Classification on Handwritten Digits
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

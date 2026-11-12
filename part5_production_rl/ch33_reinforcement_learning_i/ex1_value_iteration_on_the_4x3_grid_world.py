@@ -1,6 +1,6 @@
 """
 Chapter 33, Example 1: Value Iteration on the 4x3 Grid World
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

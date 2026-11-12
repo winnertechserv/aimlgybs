@@ -1,6 +1,6 @@
 """
 Chapter 20, Example 1: Dropout — Step-by-Step Manual Demonstration
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

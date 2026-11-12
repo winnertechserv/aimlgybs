@@ -1,6 +1,6 @@
 """
 Chapter 32, Example 3: Batch vs Streaming, and Container Reproducibility
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

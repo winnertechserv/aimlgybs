@@ -1,6 +1,6 @@
 """
 Chapter 28, Example 1: The GAN Minimax Objective
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

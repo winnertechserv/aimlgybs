@@ -1,6 +1,6 @@
 """
 Chapter 10, Example 3: Gaussian Mixture Model with EM
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

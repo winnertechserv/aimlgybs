@@ -1,6 +1,6 @@
 """
 Chapter 7, Example 1: Simple Linear Regression from Scratch
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

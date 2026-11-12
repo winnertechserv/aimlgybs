@@ -1,6 +1,6 @@
 """
 Chapter 31, Example 2: Model Registry with Versioning and Rollback
-Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Foundations First (Abhinav Srivastava)
 
 What this example shows
 -----------------------

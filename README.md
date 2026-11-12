@@ -1,4 +1,4 @@
-# AI & Machine Learning: Get Your Base Strong — Code & Notebooks
+# AI & Machine Learning: Foundations First — Code & Notebooks
 
 [![Check all programs](https://github.com/winnertechserv/aimlgybs/actions/workflows/check.yml/badge.svg)](https://github.com/winnertechserv/aimlgybs/actions/workflows/check.yml)
 ![Python 3.13](https://img.shields.io/badge/python-3.13-blue)
@@ -6,7 +6,7 @@
 ![Figures: 99](https://img.shields.io/badge/figures-99-green)
 [![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](LICENSE)
 
-This is the companion repository for the book **_AI & Machine Learning: Get Your Base Strong_** by **Abhinav Srivastava**.
+This is the companion repository for the book **_AI & Machine Learning: Foundations First_** by **Abhinav Srivastava**.
 
 The book explains machine learning in plain English, from what AI is to Transformers, generative AI, MLOps and reinforcement learning, across 34 chapters. This repository holds everything in the book that you can **run**: all 102 Python programs, a notebook for every chapter, and the code behind all 99 figures.
 
