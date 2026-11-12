@@ -1,6 +1,6 @@
 """
 Chapter 13, Example 1: PCA Step-by-Step from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -17,6 +17,7 @@ variance of the projected scores equals the PC1 eigenvalue.
 Run it:           python ex1_pca_step_by_step_from_scratch.py
 Expected output:  expected_output/ex1_pca_step_by_step_from_scratch.txt
 """
+# Chapter 13 - Example 1: PCA Step-by-Step from Scratch
 import numpy as np
 
 np.random.seed(0)
@@ -56,7 +57,9 @@ cum   = 0
 for i, ev in enumerate(evals):
     cum += ev
     flag = " <- 95% crossed" if cum/total >= 0.95 and (cum-ev)/total < 0.95 else ""
-    print(f"  PC{i+1}: {ev:>7.4f}  |  {ev/total*100:5.2f}%  |  cum {cum/total*100:6.2f}%{flag}")
+    print(
+        f"  PC{i+1}: {ev:>7.4f}  |  {ev/total*100:5.2f}%  |  cum {cum/total*100:6.2f}%{flag}"
+    )
 
 # Step 3: Choose l with 95% criterion
 l = next(i+1 for i in range(len(evals)) if evals[:i+1].sum()/total >= 0.95)

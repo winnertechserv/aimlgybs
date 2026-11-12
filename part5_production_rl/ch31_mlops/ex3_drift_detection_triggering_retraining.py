@@ -1,6 +1,6 @@
 """
 Chapter 31, Example 3: Drift Detection Triggering Retraining
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -29,7 +29,8 @@ def psi(expected, actual, bins=10):
     edges[0], edges[-1] = -np.inf, np.inf
     e_pct = np.histogram(expected, edges)[0] / len(expected)
     a_pct = np.histogram(actual,   edges)[0] / len(actual)
-    # an empty bin would give log(0) or a division by zero, so floor every share at 1e-6
+    # an empty bin would give log(0) or a division by zero, so floor every share at
+    # 1e-6
     e_pct = np.clip(e_pct, 1e-6, None); a_pct = np.clip(a_pct, 1e-6, None)
     return float(np.sum((a_pct - e_pct) * np.log(a_pct / e_pct)))
 
@@ -44,7 +45,9 @@ months = {
 }
 
 print("--- Input Data Drift: PSI and Kolmogorov-Smirnov test ---\n")
-print(f"{'Production window':<30}{'PSI':>8}{'KS stat':>10}{'p-value':>11}  {'Verdict'}")
+print(
+    f"{'Production window':<30}{'PSI':>8}{'KS stat':>10}{'p-value':>11}  {'Verdict'}"
+)
 print("-" * 76)
 drift_flags = {}
 for name, actual in months.items():
@@ -87,7 +90,10 @@ cases = [
 for label, p, drop, days in cases:
     go, why = should_retrain(p, drop, days)
     status = "RETRAIN" if go else "no action"
-    print(f"  {label}: PSI={p:.2f}, drop={drop*100:.1f}%, {days}d since training -> {status}")
+    print(
+        f"  {label}: PSI={p:.2f}, drop={drop*100:.1f}%, {days}d since training -> "
+        f"{status}"
+    )
     for r in why:
         print(f"      reason: {r}")
 

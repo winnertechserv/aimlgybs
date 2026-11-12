@@ -1,21 +1,22 @@
 """
 Chapter 20, Example 2: Batch Normalization — Manual Calculation
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 We compute Batch Normalization step by step on a small hidden layer: 4 neurons, mini-
 batch of 5 examples. Step 1 computes the mean and variance per neuron across all 5
-examples (column-wise). Step 2 subtracts the mean and divides by standard deviation —
+examples (column-wise). Step 2 subtracts the mean and divides by standard deviation,
 producing s_hat with mean=0, std=1 for every neuron. This is verified explicitly. Step 3
 applies the learnable γ and β parameters (scale and shift), giving the final output z.
 The last section proves why BatchNorm is needed: two mini-batches with completely
 different raw distributions (means 2.04 vs 7.88) both become mean=0, std=1 after
-normalization — the internal covariate shift is eliminated.
+normalization, so the internal covariate shift is removed.
 
 Run it:           python ex2_batch_normalization_manual_calculation.py
 Expected output:  expected_output/ex2_batch_normalization_manual_calculation.txt
 """
+# Chapter 20 - Example 2: Batch Normalization - Manual Calculation
 import numpy as np
 
 np.random.seed(42)

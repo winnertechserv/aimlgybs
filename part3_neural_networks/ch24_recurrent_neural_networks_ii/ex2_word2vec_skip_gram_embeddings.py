@@ -1,6 +1,6 @@
 """
 Chapter 24, Example 2: Word2Vec Skip-Gram Embeddings
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

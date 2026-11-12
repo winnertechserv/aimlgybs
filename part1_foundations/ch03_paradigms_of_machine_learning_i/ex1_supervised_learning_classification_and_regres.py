@@ -1,6 +1,6 @@
 """
 Chapter 3, Example 1: Supervised Learning — Classification and Regression
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -40,8 +40,11 @@ Xtr, Xte, ytr, yte = train_test_split(iris.data, iris.target, test_size=0.3,
                                       stratify=iris.target, random_state=1)
 knn = KNeighborsClassifier(n_neighbors=5).fit(Xtr, ytr)
 print(f"\nIris: trained on {len(ytr)} flowers, tested on {len(yte)} unseen flowers")
-print(f"Train accuracy {knn.score(Xtr, ytr):.3f} | Test accuracy {knn.score(Xte, yte):.3f}"
-      "  <- the test score measures GENERALIZATION")
+print(
+    f"Train accuracy {knn.score(Xtr, ytr):.3f} | Test accuracy "
+    f"{knn.score(Xte, yte):.3f}"
+    "  <- the test score measures GENERALIZATION"
+)
 
 # --- 3. Regression: predict a NUMBER (salary in $1000s) from years of experience
 years = np.array([1, 3, 4, 6, 7, 9, 11, 13, 16, 20]).reshape(-1, 1)

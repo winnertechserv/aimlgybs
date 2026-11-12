@@ -1,20 +1,21 @@
 """
 Chapter 14, Example 3: Tree Depth vs Overfitting (Occam's Razor in Action)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-This example shows Occam's Razor in decision trees — the principle that simpler models
+This example shows Occam's Razor in decision trees: the principle that simpler models
 are preferred when they explain the data equally well. We train the same tree on the
 Iris dataset with different maximum depths and compare training vs test accuracy. A very
 deep tree achieves 100% training accuracy (it perfectly memorizes the data) but test
 accuracy may not improve and can drop. The sweet spot is around depth 2-3 for Iris. We
 also compare Gini vs Entropy criteria, confirming they produce nearly identical results
-in practice — the choice rarely matters much.
+in practice, so the choice rarely matters much.
 
 Run it:           python ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.py
 Expected output:  expected_output/ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.txt
 """
+# Chapter 14 - Example 3: Tree Depth vs Overfitting (Occam's Razor in Action)
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
@@ -22,7 +23,9 @@ from sklearn.metrics import accuracy_score
 
 iris = load_iris()
 X, y = iris.data, iris.target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.3, random_state=42
+)
 
 print("=== Tree Depth vs Accuracy (Iris Dataset) ===\n")
 print(f"{'Max Depth':<12} {'Train Acc':>10} {'Test Acc':>10} {'Leaf Nodes':>12}")

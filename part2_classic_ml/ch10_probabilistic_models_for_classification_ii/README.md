@@ -1,8 +1,8 @@
-# Chapter 10 — Probabilistic Models for Classification II: Bayes Classifier, Naive Bayes & Gaussian Mixture Models
+# Chapter 10 — Classification II: Bayes Classifier, Naive Bayes & Gaussian Mixture Models
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch10_probabilistic_models_for_classification_ii/ch10_notebook.ipynb)
 
-Companion code for Chapter 10 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 10 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 

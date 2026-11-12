@@ -1,6 +1,6 @@
 """
 Chapter 25, Example 2: Self-Attention with Multi-Head Attention
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

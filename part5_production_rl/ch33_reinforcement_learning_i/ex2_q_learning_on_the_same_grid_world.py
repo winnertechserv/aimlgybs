@@ -1,6 +1,6 @@
 """
 Chapter 33, Example 2: Q-Learning on the Same Grid World
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -33,7 +33,9 @@ ACTIONS = ["Up", "Down", "Left", "Right"]
 DELTA   = {"Up": (0, 1), "Down": (0, -1), "Left": (-1, 0), "Right": (1, 0)}
 PERP    = {"Up": ["Left","Right"], "Down": ["Left","Right"],
            "Left": ["Up","Down"],  "Right": ["Up","Down"]}
-states  = [(c, r) for c in range(1, cols+1) for r in range(1, rows+1) if (c, r) != WALL]
+states = [
+    (c, r) for c in range(1, cols + 1) for r in range(1, rows + 1) if (c, r) != WALL
+]
 
 def move(s, a):
     dc, dr = DELTA[a]; ns = (s[0]+dc, s[1]+dr)

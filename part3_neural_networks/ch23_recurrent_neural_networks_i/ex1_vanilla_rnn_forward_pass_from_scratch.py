@@ -1,6 +1,6 @@
 """
 Chapter 23, Example 1: Vanilla RNN Forward Pass from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -59,4 +59,6 @@ for t, x in enumerate(sequence, 1):
 
 print("Key insight: h_t depends on x_t AND h_(t-1), so the hidden state")
 print("carries 'memory' of ALL previous inputs in the sequence.")
-print("The SAME weights U, W, V are reused at every timestep (weight sharing in time).")
+print(
+    "The SAME weights U, W, V are reused at every timestep (weight sharing in time)."
+)

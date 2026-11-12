@@ -1,6 +1,6 @@
 """
 Chapter 2, Example 2: Image Retrieval by Example
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -29,7 +29,8 @@ digits = load_digits()
 X, y = digits.data, digits.target
 rng = np.random.default_rng(21)
 query_ids = rng.choice(len(X), 8, replace=False)
-db_mask = np.ones(len(X), bool); db_mask[query_ids] = False   # queries are not in the database
+# queries are not in the database
+db_mask = np.ones(len(X), bool); db_mask[query_ids] = False
 X_db, y_db = X[db_mask], y[db_mask]
 
 # Cosine similarity: compare the 'direction' of the pixel vectors
@@ -42,10 +43,16 @@ for q in query_ids:
     p_at_5 = np.mean(found == y[q])
     precisions.append(p_at_5)
     sims = np.round(1 - dist[0], 3)
-    print(f"Query digit {y[q]} -> top-5 labels {found.tolist()}  similarity {sims.tolist()}  "
-          f"precision@5 = {p_at_5:.1f}")
+    print(
+        f"Query digit {y[q]} -> top-5 labels {found.tolist()}  similarity "
+        f"{sims.tolist()}  "
+        f"precision@5 = {p_at_5:.1f}"
+    )
 print(f"\nMean precision@5 over {len(query_ids)} queries: {np.mean(precisions):.2f}")
 
 # Query-by-semantics (QBS) needs labels/annotations instead of an example picture:
 want = 7
-print(f"\nQBS 'show me sevens': {np.sum(y_db == want)} annotated images match the keyword '{want}'")
+print(
+    f"\nQBS 'show me sevens': {np.sum(y_db == want)} annotated images match the "
+    f"keyword '{want}'"
+)

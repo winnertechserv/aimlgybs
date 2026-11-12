@@ -1,6 +1,6 @@
 """
 Chapter 11, Example 3: Where the Perceptron Fails
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -42,10 +42,14 @@ print(f"Perceptron (scikit-learn) accuracy on XOR: "
       f"{Perceptron(random_state=0).fit(X, y).score(X, y):.2f}")
 
 # A non-linear method handles it easily (K-NN learns a curved boundary implicitly)
-print(f"K-NN (K=5) accuracy on XOR: {KNeighborsClassifier(5).fit(X, y).score(X, y):.2f}")
+print(
+    f"K-NN (K=5) accuracy on XOR: {KNeighborsClassifier(5).fit(X, y).score(X, y):.2f}"
+)
 
 # Overlapping classes: even the best line makes some mistakes
 Xo = np.vstack([rng.normal([0, 0], 1, (100, 2)), rng.normal([1.5, 1.5], 1, (100, 2))])
 yo = np.r_[-np.ones(100), np.ones(100)]
 w, hist = train_perceptron(Xo, yo)
-print(f"\nOverlapping data: mistakes in the last 5 epochs {hist[-5:]} - never reaches 0.")
+print(
+    f"\nOverlapping data: mistakes in the last 5 epochs {hist[-5:]} - never reaches 0."
+)

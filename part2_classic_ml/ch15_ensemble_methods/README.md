@@ -1,8 +1,8 @@
-# Chapter 15 — Ensemble Methods
+# Chapter 15 — Ensemble Methods: Bagging, Random Forests & Boosting
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch15_ensemble_methods/ch15_notebook.ipynb)
 
-Companion code for Chapter 15 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 15 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Bagging — Weak Classifiers Growing Stronger
 
-This example shows the magic of Bagging: taking individually weak shallow trees (depth 2) and combining 10 to 200 of them into a stronger ensemble. A single shallow tree gets 75.3%, but 50 bagged ones push to 84.7%. The Random Forest takes this further by also randomizing which features each tree considers at each split — it achieves 91.3%. Notice also that a single deep (unlimited) tree gets 84.0% — similar to the bagged shallow trees but with more risk of overfitting. The visual bar chart makes the improvement instantly obvious.
+This example shows the magic of Bagging: taking individually weak shallow trees (depth 2) and combining 10 to 200 of them into a stronger ensemble. A single shallow tree gets 75.3%, but 50 bagged ones push to 84.7%. The Random Forest takes this further by also randomizing which features each tree considers at each split, and it reaches 91.3%. Notice also that a single deep (unlimited) tree gets 84.0%, similar to the bagged shallow trees but with more risk of overfitting. The visual bar chart makes the improvement instantly obvious.
 
 <details><summary>Expected output</summary>
 
@@ -54,7 +54,7 @@ Random Forest adds feature randomness on top of Bagging for even better results.
 
 ### Example 2: AdaBoost — Progressive Accuracy Improvement
 
-AdaBoost is sequential Bagging's smarter cousin. Instead of building classifiers in parallel on random subsets, it builds them one after another, always paying extra attention to the examples that were misclassified so far. We track how the ensemble accuracy grows as we add more weak classifiers. A single stump starts at 70%. By round 50 it reaches 85% — a 15 percentage point gain purely from sequentially reweighting examples. The final comparison shows AdaBoost vs Random Forest vs a single tree: the random forest clearly beats the single tree, while AdaBoost with 200 stumps only matches it, because its accuracy dips slightly after round 50. More rounds are not always better.
+AdaBoost is sequential Bagging's smarter cousin. Instead of building classifiers in parallel on random subsets, it builds them one after another, always paying extra attention to the examples that were misclassified so far. We track how the ensemble accuracy grows as we add more weak classifiers. A single stump starts at 70%. By round 50 it reaches 85%, a 15-percentage-point gain purely from sequentially reweighting examples. The final comparison shows AdaBoost vs Random Forest vs a single tree: the random forest clearly beats the single tree, while AdaBoost with 200 stumps only matches it, because its accuracy dips slightly after round 50. More rounds are not always better.
 
 <details><summary>Expected output</summary>
 
@@ -85,7 +85,7 @@ Baseline (1 stump): 70.0%
 
 ### Example 3: Random Forest Feature Importance
 
-One powerful bonus of Random Forest is that it gives you feature importance scores for free. After training 100 trees, each tree tells us how much each feature contributed to reducing impurity across all its splits. We average this across all trees to get a robust importance ranking. On the Breast Cancer dataset (30 features, 569 samples), the model achieves 97.08% accuracy. The top features (mean concave points, worst concave points, worst area) are clinically meaningful — they measure tumor shape irregularity. The bottom features (symmetry error, texture error) contribute almost nothing and could safely be dropped.
+One powerful bonus of Random Forest is that it gives you feature importance scores for free. After training 100 trees, each tree tells us how much each feature contributed to reducing impurity across all its splits. We average this across all trees to get a robust importance ranking. On the Breast Cancer dataset (30 features, 569 samples), the model achieves 97.08% accuracy. The top features (mean concave points, worst concave points, worst area) are clinically meaningful: they measure tumor shape irregularity. The bottom features (symmetry error, texture error) contribute almost nothing and could safely be dropped.
 
 <details><summary>Expected output</summary>
 

@@ -1,19 +1,20 @@
 """
 Chapter 16, Example 1: K-Means Clustering + Elbow Method
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 We run K-Means on a synthetic 4-cluster dataset and use two methods to find the optimal
-K. The Elbow Method plots distortion (J) vs K — the biggest drop is between K=1 and K=4,
-after which improvements become marginal. The Silhouette Score (which measures how well-
-separated clusters are, ranging from -1 to 1) peaks at K=4 with 0.8335, independently
-confirming the elbow. The final K=4 cluster centers and per-cluster counts are also
-printed, showing balanced clusters of 75 points each.
+K. The Elbow Method plots distortion (J) against K. The biggest drop is between K=1 and
+K=4, after which improvements become marginal. The Silhouette Score (which measures how
+well-separated clusters are, ranging from -1 to 1) peaks at K=4 with 0.8335,
+independently confirming the elbow. The final K=4 cluster centers and per-cluster counts
+are also printed, showing balanced clusters of 75 points each.
 
 Run it:           python ex1_k_means_clustering_elbow_method.py
 Expected output:  expected_output/ex1_k_means_clustering_elbow_method.txt
 """
+# Chapter 16 - Example 1: K-Means Clustering + Elbow Method
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 from sklearn.metrics import silhouette_score

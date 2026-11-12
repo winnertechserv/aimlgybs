@@ -1,6 +1,6 @@
 """
 Chapter 3, Example 3: Unsupervised Learning — Association Rules
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -13,7 +13,8 @@ are popular.
 Run it:           python ex3_unsupervised_learning_association_rules.py
 Expected output:  expected_output/ex3_unsupervised_learning_association_rules.txt
 """
-# Chapter 3 - Example 3: Unsupervised learning - association rules (market-basket analysis)
+# Chapter 3 - Example 3: Unsupervised learning - association rules (market-basket
+# analysis)
 # Find products that are bought together, using support, confidence and lift.
 from itertools import combinations
 
@@ -28,7 +29,8 @@ items = sorted(set().union(*baskets))
 
 def support(itemset):
     # For Python sets, a <= b means 'a is a subset of b' (every item of a is in b)
-    return sum(itemset <= b for b in baskets) / N   # share of baskets containing ALL items
+    # share of baskets containing ALL items
+    return sum(itemset <= b for b in baskets) / N
 
 print("Item supports:", {i: support({i}) for i in items})
 
@@ -39,7 +41,8 @@ for a, b in combinations(items, 2):
         continue
     for x, z in ((a, b), (b, a)):
         conf = s_ab / support({x})       # P(z in basket | x in basket)
-        lift = conf / support({z})       # >1 means 'more often together than by chance'
+        # >1 means 'more often together than by chance'
+        lift = conf / support({z})
         rules.append((lift, conf, s_ab, x, z))
 
 print(f"\nRules with support >= 20% (sorted by lift):")

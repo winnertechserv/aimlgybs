@@ -1,6 +1,6 @@
 """
 Chapter 32, Example 1: Autoscaling Simulation
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -75,17 +75,32 @@ fixed_hours = fixed_pods * 24
 over_hours  = MAX_PODS * 24
 print(f"{'Strategy':<34}{'pod-hours':>11}{'cost':>10}{'SLA breaches':>14}")
 print("-" * 70)
-print(f"  {'Autoscaling (2-20 replicas)':<32}{total_pod_hours:>11}${total_pod_hours*POD_HOUR:>9.2f}{sla_breaches:>14}")
-print(f"  {'Fixed 6 replicas':<32}{fixed_hours:>11}${fixed_hours*POD_HOUR:>9.2f}{fixed_breaches:>14}")
-print(f"  {'Over-provisioned 20 replicas':<32}{over_hours:>11}${over_hours*POD_HOUR:>9.2f}{0:>14}")
+print(
+    f"  {'Autoscaling (2-20 replicas)':<32}{total_pod_hours:>11}${total_pod_hours*POD_HOUR:>9.2f}{sla_breaches:>14}"
+)
+print(
+    f"  {'Fixed 6 replicas':<32}{fixed_hours:>11}${fixed_hours*POD_HOUR:>9.2f}{fixed_breaches:>14}"
+)
+print(
+    f"  {'Over-provisioned 20 replicas':<32}{over_hours:>11}${over_hours*POD_HOUR:>9.2f}{0:>14}"
+)
 
 saving = (over_hours - total_pod_hours) / over_hours * 100
 print(f"\nAutoscaling saves {saving:.0f}% versus permanent over-provisioning,")
-print(f"while keeping SLA breaches at {sla_breaches} (fixed capacity: {fixed_breaches}).")
+print(
+    f"while keeping SLA breaches at {sla_breaches} (fixed capacity: {fixed_breaches})."
+)
 
 print("\n=== Types of autoscaling ===")
-print("  Instance autoscaling : VM level - EC2 Auto Scaling Groups, GCE Instance Groups")
-print("  Container autoscaling: pod level - Kubernetes HPA (horizontal) and VPA (vertical)")
-print("  Serverless autoscaling: function level - scales to ZERO when idle, pay per call")
+print(
+    "  Instance autoscaling : VM level - EC2 Auto Scaling Groups, GCE Instance Groups"
+)
+print(
+    "  Container autoscaling: pod level - Kubernetes HPA (horizontal) and VPA "
+    "(vertical)"
+)
+print(
+    "  Serverless autoscaling: function level - scales to ZERO when idle, pay per call"
+)
 print("\nHorizontal scaling adds machines/pods; vertical scaling grows one machine")
 print("(more CPU/RAM/GPU) and is limited by the largest available hardware.")

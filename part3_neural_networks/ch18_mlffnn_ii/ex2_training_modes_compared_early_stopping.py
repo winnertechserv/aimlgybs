@@ -1,6 +1,6 @@
 """
 Chapter 18, Example 2: Training Modes Compared + Early Stopping
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -10,11 +10,12 @@ dataset). The results confirm the theory: Mini-Batch mode converges in far fewer
 than full-batch, and Adam with mini-batch=32 is the fastest of all (only 45 epochs to
 converge). The early stopping demo shows that with n_iter_no_change=10 (stop if no
 improvement for 10 consecutive epochs), training halts at epoch 55 instead of running
-all 300 — a 5x speedup with comparable accuracy.
+all 300, a 5x speedup with comparable accuracy.
 
 Run it:           python ex2_training_modes_compared_early_stopping.py
 Expected output:  expected_output/ex2_training_modes_compared_early_stopping.txt
 """
+# Chapter 18 - Example 2: Training Modes Compared + Early Stopping
 from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
@@ -53,9 +54,16 @@ for name, solver, bs in configs:
 
 print("\n=== Early Stopping Demo ===\n")
 for es in [False, True]:
-    mlp = MLPClassifier(hidden_layer_sizes=(64,32), activation='relu',
-                        solver='adam', max_iter=300, random_state=42,
-                        early_stopping=es, validation_fraction=0.15, n_iter_no_change=10)
+    mlp = MLPClassifier(
+        hidden_layer_sizes=(64, 32),
+        activation='relu',
+        solver='adam',
+        max_iter=300,
+        random_state=42,
+        early_stopping=es,
+        validation_fraction=0.15,
+        n_iter_no_change=10,
+    )
     mlp.fit(X_tr2, y_tr2)
     te = accuracy_score(y_te, mlp.predict(X_te))
     label = "Early Stopping ON " if es else "Early Stopping OFF"

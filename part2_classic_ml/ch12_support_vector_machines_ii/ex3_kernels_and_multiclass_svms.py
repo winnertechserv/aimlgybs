@@ -1,6 +1,6 @@
 """
 Chapter 12, Example 3: Kernels and Multiclass SVMs
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -36,7 +36,10 @@ for name, m in (("linear", SVC(kernel="linear")),
                 ("polynomial (p=2)", SVC(kernel="poly", degree=2, coef0=1)),
                 ("Gaussian / RBF", SVC(kernel="rbf", gamma=1))):
     m.fit(Xtr, ytr)
-    print(f"  {name:17s} test accuracy {m.score(Xte, yte):.3f}   support vectors {len(m.support_)}")
+    print(
+        f"  {name:17s} test accuracy {m.score(Xte, yte):.3f}   support vectors "
+        f"{len(m.support_)}"
+    )
 
 # 3. Multiclass with binary SVMs: one-against-the-rest vs one-against-one
 X, y = make_blobs(n_samples=600, centers=4, cluster_std=1.8, random_state=4)
@@ -45,6 +48,11 @@ ovr = OneVsRestClassifier(SVC(kernel="rbf")).fit(Xtr, ytr)
 ovo = OneVsOneClassifier(SVC(kernel="rbf")).fit(Xtr, ytr)
 C = 4
 print(f"\n{C} classes:")
-print(f"  One-against-the-rest: {len(ovr.estimators_)} SVMs, test accuracy {ovr.score(Xte, yte):.3f}")
-print(f"  One-against-one     : {len(ovo.estimators_)} SVMs (C(C-1)/2 = {C*(C-1)//2}), "
-      f"test accuracy {ovo.score(Xte, yte):.3f}")
+print(
+    f"  One-against-the-rest: {len(ovr.estimators_)} SVMs, test accuracy "
+    f"{ovr.score(Xte, yte):.3f}"
+)
+print(
+    f"  One-against-one     : {len(ovo.estimators_)} SVMs (C(C-1)/2 = {C*(C-1)//2}), "
+    f"test accuracy {ovo.score(Xte, yte):.3f}"
+)

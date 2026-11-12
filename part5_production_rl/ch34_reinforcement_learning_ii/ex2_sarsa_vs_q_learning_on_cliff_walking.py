@@ -1,6 +1,6 @@
 """
 Chapter 34, Example 2: SARSA vs Q-Learning on Cliff Walking
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -46,7 +46,8 @@ def choose(Q, s, rng):
     if rng.random() < EPS:
         return int(rng.integers(4))                  # explore
     q = Q[s]
-    return int(rng.choice(np.flatnonzero(q == q.max())))   # exploit (break ties randomly)
+    # exploit (break ties randomly)
+    return int(rng.choice(np.flatnonzero(q == q.max())))
 
 def train(method, seed):
     rng = np.random.default_rng(seed)
@@ -60,9 +61,11 @@ def train(method, seed):
             total += r
             na = choose(Q, ns, rng)
             if method == "sarsa":
-                target = r + (0 if done else GAMMA * Q[ns][na])        # the action it WILL take
+                # the action it WILL take
+                target = r + (0 if done else GAMMA * Q[ns][na])
             else:
-                target = r + (0 if done else GAMMA * Q[ns].max())      # the BEST action
+                # the BEST action
+                target = r + (0 if done else GAMMA * Q[ns].max())
             Q[s][a] += ALPHA * (target - Q[s][a])
             s, a = ns, na
             if done:
@@ -114,7 +117,10 @@ print("\nWhat this shows:")
 print("  Q-learning learns the SHORTEST path, right along the cliff edge. Its")
 print("  update uses max Q(s',a'), the value of the best action, as if it will")
 print("  never explore again. That is OFF-policy learning.")
-print("  SARSA learns a SAFER path that keeps well away from the edge. Its update uses the")
+print(
+    "  SARSA learns a SAFER path that keeps well away from the edge. Its update uses "
+    "the"
+)
 print("  action it will actually take next, random exploration included, so it")
 print("  knows a random step near the edge can cost -100. That is ON-policy.")
 print("  So while both are still exploring, SARSA earns MORE reward per episode")

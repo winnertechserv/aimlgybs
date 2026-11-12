@@ -1,14 +1,14 @@
 """
 Chapter 17, Example 3: MLFFNN Solving XOR + Architecture Comparison
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 XOR is the canonical example showing why we need hidden layers. A single perceptron (no
-hidden layer) gets only 25% accuracy on XOR — it literally cannot draw a line that
+hidden layer) gets only 25% accuracy on XOR, because it cannot draw a line that
 separates the two classes. Adding one hidden layer of 4 tanh neurons solves it
 instantly: 100% accuracy. We then print out all the learned weights to make the network
-transparent — you can trace how input (0,1) flows through the network and comes out as
+transparent, so you can trace how input (0,1) flows through the network and comes out as
 1. The final section compares three architecture sizes on a real 3-class problem and
 shows how adding more parameters doesn't always improve test accuracy (due to
 overfitting on a small dataset).
@@ -16,6 +16,7 @@ overfitting on a small dataset).
 Run it:           python ex3_mlffnn_solving_xor_architecture_comparison.py
 Expected output:  expected_output/ex3_mlffnn_solving_xor_architecture_comparison.txt
 """
+# Chapter 17 - Example 3: MLFFNN Solving XOR + Architecture Comparison
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.datasets import make_classification
@@ -30,13 +31,19 @@ y_xor = np.array([0, 1, 1, 0])
 perc = MLPClassifier(hidden_layer_sizes=(), activation='logistic',
                      max_iter=1000, random_state=42)
 perc.fit(X_xor, y_xor)
-print(f"Perceptron (0 hidden): acc={accuracy_score(y_xor, perc.predict(X_xor))*100:.0f}%  preds={perc.predict(X_xor)}")
+print(
+    f"Perceptron (0 hidden): acc={accuracy_score(y_xor, perc.predict(X_xor))*100:.0f}% "
+    f" preds={perc.predict(X_xor)}"
+)
 
 # MLFFNN: 1 hidden layer
 mlp = MLPClassifier(hidden_layer_sizes=(4,), activation='tanh',
                     max_iter=3000, random_state=1)
 mlp.fit(X_xor, y_xor)
-print(f"MLFFNN (4 hidden)    : acc={accuracy_score(y_xor, mlp.predict(X_xor))*100:.0f}%  preds={mlp.predict(X_xor)}")
+print(
+    f"MLFFNN (4 hidden)    : acc={accuracy_score(y_xor, mlp.predict(X_xor))*100:.0f}%  "
+    f"preds={mlp.predict(X_xor)}"
+)
 
 print("\nLearned hidden-layer weights (2 inputs -> 4 neurons):")
 for j in range(4):

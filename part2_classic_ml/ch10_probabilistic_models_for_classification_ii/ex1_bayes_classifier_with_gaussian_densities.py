@@ -1,6 +1,6 @@
 """
 Chapter 10, Example 1: Bayes Classifier with Gaussian Densities
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -48,12 +48,18 @@ x = np.array([150, 47.0])
 like, post = classify(x)
 print(f"\nTest person x = {x}")
 for c in classes:
-    print(f"  likelihood p(x | {c}) = {like[c]:.2e}   posterior P({c} | x) = {post[c]:.2e}")
+    print(
+        f"  likelihood p(x | {c}) = {like[c]:.2e}   posterior P({c} | x) = "
+        f"{post[c]:.2e}"
+    )
 print("  Decision:", max(post, key=post.get))
 
 # The prior matters: data collected in a primary school (9 children for every adult)
 x2 = np.array([140, 35.0])
-for label, pri in (("equal priors", None), ("school priors", {"Child": 0.9, "Adult": 0.1})):
+for label, pri in (
+    ("equal priors", None),
+    ("school priors", {"Child": 0.9, "Adult": 0.1}),
+):
     _, post = classify(x2, pri)
     print(f"\nx2 = {x2} with {label}: P(Child|x) = {post['Child']:.3f}, "
           f"P(Adult|x) = {post['Adult']:.3f} -> {max(post, key=post.get)}")

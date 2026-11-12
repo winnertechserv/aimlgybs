@@ -1,20 +1,21 @@
 """
 Chapter 16, Example 2: Hierarchical Clustering & Linkage Comparison
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-Hierarchical clustering does not need you to specify K in advance — it builds a full
-tree of merges (a dendrogram) and you cut it at any level you want. We compare four
-linkage methods on a 3-cluster dataset. All four linkages perfectly recover the true
-clusters here (ARI=1.0). The merge history table shows the actual step-by-step merging
-process: step 1 merges points #16 and #53 (distance 0.0484), step 2 merges #57 and #85,
-and so on, until all 100 points are in one cluster after 99 merges. This is exactly the
-AGNES algorithm described in the overview.
+Hierarchical clustering does not need you to specify K in advance: it builds a full tree
+of merges (a dendrogram) and you cut it at any level you want. We compare four linkage
+methods on a 3-cluster dataset. All four linkages perfectly recover the true clusters
+here (ARI=1.0). The merge history table shows the actual step-by-step merging process:
+step 1 merges points #16 and #53 (distance 0.0484), step 2 merges #57 and #85, and so
+on, until all 100 points are in one cluster after 99 merges. This is exactly the AGNES
+algorithm described in the overview.
 
 Run it:           python ex2_hierarchical_clustering_linkage_comparison.py
 Expected output:  expected_output/ex2_hierarchical_clustering_linkage_comparison.txt
 """
+# Chapter 16 - Example 2: Hierarchical Clustering & Linkage Comparison
 from sklearn.cluster import AgglomerativeClustering
 from sklearn.datasets import make_blobs
 from sklearn.metrics import silhouette_score, adjusted_rand_score
@@ -32,12 +33,19 @@ for lnk in ['single', 'complete', 'average', 'ward']:
     labels = agg.fit_predict(X)
     sil    = silhouette_score(X, labels)
     ari    = adjusted_rand_score(y_true, labels)
-    note   = {'single':'nearest-neighbor chaining','complete':'compact clusters',
-              'average':'balanced choice','ward':'minimizes within-cluster variance'}[lnk]
+    note = {
+        'single': 'nearest-neighbor chaining',
+        'complete': 'compact clusters',
+        'average': 'balanced choice',
+        'ward': 'minimizes within-cluster variance',
+    }[lnk]
     print(f"  {lnk:<18} {sil:>12.4f} {ari:>12.4f}  {note}")
 
 print("\n=== Merge History (AGNES, Ward linkage, first 8 steps) ===\n")
-print(f"{'Step':>5} {'Cluster A':>10} {'Cluster B':>10} {'Distance':>10} {'New Size':>10}")
+print(
+    f"{'Step':>5} {'Cluster A':>10} {'Cluster B':>10} {'Distance':>10} "
+    f"{'New Size':>10}"
+)
 print("-" * 50)
 Z = linkage(X, method='ward')
 n = len(X)

@@ -1,24 +1,25 @@
 """
 Chapter 20, Example 3: Batch Normalization vs Layer Normalization — Side by Side
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 The final example clarifies the most commonly confused pair: Batch Normalization vs
-Layer Normalization. Both normalize to mean=0, std=1 — but they normalize along
-different axes. BatchNorm normalizes each neuron (column) across the mini-batch — so
-neuron 1's output across all 3 examples becomes standardized. LayerNorm normalizes each
-example (row) across its own neurons — so example 1's outputs across all 4 neurons
-become standardized. Look at the LayerNorm output: rows 1 and 2 come out identical,
-because row 2 is just row 1 shifted up by 4, and LayerNorm removes each example's own
-shift and scale. Row 3 has a different shape, so it stays different. The practical
-implication: BatchNorm needs a large batch to estimate good statistics. LayerNorm works
-with batch size 1. That's why Transformers use LayerNorm — they process sequences where
-batch size may be 1.
+Layer Normalization. Both normalize to mean=0, std=1, but they work along different
+axes. BatchNorm normalizes each neuron (column) across the mini-batch, so neuron 1's
+output across all 3 examples becomes standardized. LayerNorm normalizes each example
+(row) across its own neurons, so example 1's outputs across all 4 neurons become
+standardized. Look at the LayerNorm output: rows 1 and 2 come out identical, because row
+2 is just row 1 shifted up by 4, and LayerNorm removes each example's own shift and
+scale. Row 3 has a different shape, so it stays different. The practical implication:
+BatchNorm needs a large batch to estimate good statistics. LayerNorm works with batch
+size 1. That is why Transformers use LayerNorm: they process sequences where batch size
+may be 1.
 
 Run it:           python ex3_batch_normalization_vs_layer_normalization_si.py
 Expected output:  expected_output/ex3_batch_normalization_vs_layer_normalization_si.txt
 """
+# Chapter 20 - Example 3: Batch Normalization vs Layer Normalization - Side by Side
 import numpy as np
 
 H = np.array([[1., 2., 3., 4.],

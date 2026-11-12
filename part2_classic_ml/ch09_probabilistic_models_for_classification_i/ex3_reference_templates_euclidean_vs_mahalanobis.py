@@ -1,6 +1,6 @@
 """
 Chapter 9, Example 3: Reference Templates — Euclidean vs Mahalanobis
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -29,7 +29,8 @@ adult = np.array([[152, 52.0], [158, 50.5], [161, 63.2], [165, 57.8], [168, 71.0
 templates = {}
 for name, data in (("Child", child), ("Adult", adult)):
     mu = data.mean(axis=0)                    # first-order statistic: the mean
-    cov = np.cov(data, rowvar=False)          # second-order: covariance (divides by N-1)
+    # second-order: covariance (divides by N-1)
+    cov = np.cov(data, rowvar=False)
     templates[name] = (mu, cov)
     print(f"{name}: mean = {np.round(mu, 2)}, covariance =\n{np.round(cov, 2)}\n")
 
@@ -38,7 +39,9 @@ print(f"Test person x = {x}")
 for name, (mu, cov) in templates.items():
     ed = np.sqrt(((x - mu) ** 2).sum())
     md = np.sqrt((x - mu) @ np.linalg.inv(cov) @ (x - mu))
-    print(f"  {name:5s}: Euclidean distance {ed:6.2f}   Mahalanobis distance {md:5.2f}")
+    print(
+        f"  {name:5s}: Euclidean distance {ed:6.2f}   Mahalanobis distance {md:5.2f}"
+    )
 
 # A case where the two distances disagree
 x2 = np.array([137, 38.0])

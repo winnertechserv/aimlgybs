@@ -1,6 +1,6 @@
 """
 Chapter 5, Example 1: Profiling a Dataset
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -54,7 +54,11 @@ for name, v in zip(["Min", "Q1", "Median", "Q3", "Max"], q):
 # 4. Skewness tells us which way the tail points
 for col in ["age", "fare"]:
     s = skew(df[col])
-    shape = "right-skewed" if s > 0.5 else "left-skewed" if s < -0.5 else "roughly symmetric"
+    shape = (
+        "right-skewed"
+        if s > 0.5
+        else "left-skewed" if s < -0.5 else "roughly symmetric"
+    )
     print(f"\nSkewness of {col}: {s:.2f} -> {shape}")
     print(f"  mean = {df[col].mean():.2f}, median = {df[col].median():.2f}")
 

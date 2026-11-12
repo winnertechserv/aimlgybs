@@ -1,6 +1,6 @@
 """
 Chapter 30, Example 3: Greedy Search vs Beam Search Decoding
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -49,12 +49,17 @@ for step in range(MAX):
     logp += np.log(probs[i])
     cur = vocab[i]
     seq.append(cur)
-    print(f"  step {step+1}: pick '{cur}' (p={probs[i]:.2f})   sequence so far: {' '.join(seq)}")
+    print(
+        f"  step {step+1}: pick '{cur}' (p={probs[i]:.2f})   sequence so far: "
+        f"{' '.join(seq)}"
+    )
     if cur == "<end>":
         break
 greedy_seq, greedy_logp = seq[:], logp
 print(f"\n  Greedy result : {' '.join(greedy_seq)}")
-print(f"  log-probability: {greedy_logp:.4f}   (probability {np.exp(greedy_logp):.5f})")
+print(
+    f"  log-probability: {greedy_logp:.4f}   (probability {np.exp(greedy_logp):.5f})"
+)
 
 # ---------- Beam search ----------
 print("\n--- Beam Search: keep the B best partial sequences at every step ---\n")

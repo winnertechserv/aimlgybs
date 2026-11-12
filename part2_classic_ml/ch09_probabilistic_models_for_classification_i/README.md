@@ -1,8 +1,8 @@
-# Chapter 9 — Probabilistic Models for Classification I: K-NN, Evaluation Metrics & Reference Templates
+# Chapter 9 — Classification I: K-NN, Evaluation Metrics & Reference Templates
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch09_probabilistic_models_for_classification_i/ch09_notebook.ipynb)
 
-Companion code for Chapter 9 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 9 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 

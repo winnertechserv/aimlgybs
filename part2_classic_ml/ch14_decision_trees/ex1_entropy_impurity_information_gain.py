@@ -1,20 +1,21 @@
 """
 Chapter 14, Example 1: Entropy Impurity & Information Gain
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-This is the most basic calculation in decision tree construction — manual entropy and
-information gain computation. We use a small worked example: a node with 10 examples (4
-from C1, 4 from C2, 2 from C3) and two competing queries. For each query, we compute
-entropy of the parent node and both child nodes, then calculate information gain. Query
-1 wins (ΔI = 0.3219 > 0.1568) so it gets selected. The bottom section shows entropy for
-special cases — a pure node has entropy 0 (no uncertainty), while equal class
-distribution gives maximum entropy.
+This is the most basic calculation in decision tree construction: computing entropy and
+information gain by hand. We use a small worked example: a node with 10 examples (4 from
+C1, 4 from C2, 2 from C3) and two competing queries. For each query, we compute entropy
+of the parent node and both child nodes, then calculate information gain. Query 1 wins
+(ΔI = 0.3219 > 0.1568) so it gets selected. The bottom section shows entropy for special
+cases: a pure node has entropy 0 (no uncertainty), while equal class distribution gives
+maximum entropy.
 
 Run it:           python ex1_entropy_impurity_information_gain.py
 Expected output:  expected_output/ex1_entropy_impurity_information_gain.txt
 """
+# Chapter 14 - Example 1: Entropy Impurity & Information Gain
 import numpy as np
 
 def entropy(counts):
@@ -49,6 +50,8 @@ ig2 = info_gain(parent, left2, right2)
 print(f"\nDecision: Query 1 wins ({ig1:.4f} > {ig2:.4f}) -> SELECT Query 1")
 
 print("\n--- Entropy for special cases ---")
-print(f"  Pure node [10, 0]  : entropy = {entropy([10,0]):.4f}  (pure, no uncertainty)")
+print(
+    f"  Pure node [10, 0]  : entropy = {entropy([10,0]):.4f}  (pure, no uncertainty)"
+)
 print(f"  50/50 split [5,5]  : entropy = {entropy([5,5]):.4f}  (maximum, 2 classes)")
 print(f"  Equal [1,1,1]      : entropy = {entropy([1,1,1]):.4f}  (maximum, 3 classes)")

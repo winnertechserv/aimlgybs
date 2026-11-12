@@ -1,6 +1,6 @@
 """
 Chapter 17, Example 2: Perceptron Learning Algorithm from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -15,6 +15,7 @@ all 6 examples are classified correctly.
 Run it:           python ex2_perceptron_learning_algorithm_from_scratch.py
 Expected output:  expected_output/ex2_perceptron_learning_algorithm_from_scratch.txt
 """
+# Chapter 17 - Example 2: Perceptron Learning Algorithm from Scratch
 import numpy as np
 
 # Augmented inputs [bias=1, x1, x2]
@@ -49,4 +50,6 @@ for xi, yi in zip(X, y):
     dot  = np.dot(w, xi)
     pred = +1 if dot > 0 else -1
     ok   = "OK" if pred == yi else "WRONG"
-    print(f"  ({xi[1]:+d},{xi[2]:+d}) -> w.x={dot:.2f} pred={pred:+d} true={yi:+d} {ok}")
+    print(
+        f"  ({xi[1]:+d},{xi[2]:+d}) -> w.x={dot:.2f} pred={pred:+d} true={yi:+d} {ok}"
+    )

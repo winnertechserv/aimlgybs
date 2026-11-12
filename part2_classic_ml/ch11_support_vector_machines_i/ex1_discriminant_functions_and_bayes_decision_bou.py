@@ -1,6 +1,6 @@
 """
 Chapter 11, Example 1: Discriminant Functions and Bayes Decision Boundaries
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -14,7 +14,8 @@ is clearly non-zero, which means the boundary curves.
 Run it:           python ex1_discriminant_functions_and_bayes_decision_bou.py
 Expected output:  expected_output/ex1_discriminant_functions_and_bayes_decision_bou.txt
 """
-# Chapter 11 - Example 1: Discriminant functions - which side of the line is a point on?
+# Chapter 11 - Example 1: Discriminant functions - which side of the line is a point
+# on?
 # And how the covariance decides whether a Bayes boundary is straight or curved.
 import numpy as np
 from sklearn.discriminant_analysis import (LinearDiscriminantAnalysis,
@@ -38,12 +39,16 @@ cases = {
 for name, (c0, c1) in cases.items():
     X = np.vstack([sample([0, 0], c0), sample([2, 2], c1)])
     y = np.r_[np.zeros(300), np.ones(300)]
-    lda = LinearDiscriminantAnalysis().fit(X, y)       # assumes a shared covariance -> line
-    qda = QuadraticDiscriminantAnalysis().fit(X, y)    # one covariance per class -> curve
+    # assumes a shared covariance -> line
+    lda = LinearDiscriminantAnalysis().fit(X, y)
+    # one covariance per class -> curve
+    qda = QuadraticDiscriminantAnalysis().fit(X, y)
     print(f"\n{name}")
     print(f"  Linear boundary accuracy   : {lda.score(X, y):.3f}")
     print(f"  Quadratic boundary accuracy: {qda.score(X, y):.3f}")
     # Size of the x^T W x term: W = inverse(cov1) - inverse(cov0)
     W = np.linalg.inv(np.cov(X[y == 1].T)) - np.linalg.inv(np.cov(X[y == 0].T))
-    print(f"  Size of quadratic term |W| = {np.abs(W).max():.2f}"
-          f"  -> boundary is {'almost straight' if np.abs(W).max() < 0.3 else 'curved'}")
+    print(
+        f"  Size of quadratic term |W| = {np.abs(W).max():.2f}"
+        f"  -> boundary is {'almost straight' if np.abs(W).max() < 0.3 else 'curved'}"
+    )

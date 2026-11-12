@@ -1,6 +1,6 @@
 """
 Chapter 21, Example 3: Feature-Map Size & MLFFNN vs CNN Parameters
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -41,13 +41,18 @@ n_input  = 16   # 4x4 image flattened
 n_hidden = 4
 mlffnn_weights = n_input * n_hidden
 print(f"MLFFNN (fully connected):")
-print(f"  Connections = {n_input} inputs x {n_hidden} hidden = {mlffnn_weights} weights")
+print(
+    f"  Connections = {n_input} inputs x {n_hidden} hidden = {mlffnn_weights} weights"
+)
 
 # CNN: 2x2 kernel, stride 2 -> 4 output nodes, but SHARED weights
 kernel_size = 2 * 2   # 2x2 kernel
 print(f"\nCNN (convolution, 2x2 kernel, stride 2):")
 print(f"  4 hidden nodes each use the SAME 2x2 kernel (weight sharing)")
-print(f"  Unique weights = {kernel_size} (one shared kernel) + 1 bias = {kernel_size + 1}")
+print(
+    f"  Unique weights = {kernel_size} (one shared kernel) + 1 bias = "
+    f"{kernel_size + 1}"
+)
 print(f"\nParameter reduction: {mlffnn_weights} -> {kernel_size} "
       f"({(1 - kernel_size/mlffnn_weights)*100:.1f}% fewer weights)")
 
@@ -60,5 +65,10 @@ W2, H2 = feature_map_size(32, 32, 5, 1, 0)
 print(f"  Output feature maps: {W2}x{H2}x{n_kernels}")
 print(f"  Learnable parameters: {n_kernels} x (5x5 + 1 bias) = {conv_params}")
 fc_equiv = (32*32) * (W2*H2*n_kernels)
-print(f"  A fully-connected layer for the same output would need ~{fc_equiv:,} weights")
-print(f"  CNN uses {conv_params} -- that's the power of weight sharing + sparse connections!")
+print(
+    f"  A fully-connected layer for the same output would need ~{fc_equiv:,} weights"
+)
+print(
+    f"  CNN uses {conv_params} -- that's the power of weight sharing + sparse "
+    f"connections!"
+)

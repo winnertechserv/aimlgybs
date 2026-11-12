@@ -1,24 +1,24 @@
-# Chapter 14 — Decision Trees
+# Chapter 14 — Decision Trees: Impurity, Information Gain & Overfitting
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch14_decision_trees/ch14_notebook.ipynb)
 
-Companion code for Chapter 14 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 14 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
 - A decision tree is a sequence of questions; each split should leave the child nodes purer than the parent.
 - Entropy and Gini both measure impurity, and information gain picks the split that reduces it most.
 - A tree grown without limits will memorize the training set: stop early using depth or minimum-samples rules.
-- Occam's Razor applies — prefer the simpler tree when two trees explain the data equally well.
+- Occam's Razor applies: prefer the simpler tree when two trees explain the data equally well.
 - Trees are highly interpretable: you can read the decision rules straight off the diagram.
 
 ## Examples
 
 | # | Program | What it shows |
 |---|---|---|
-| 1 | [`ex1_entropy_impurity_information_gain.py`](ex1_entropy_impurity_information_gain.py) | This is the most basic calculation in decision tree construction — manual entropy and information gain computation. |
+| 1 | [`ex1_entropy_impurity_information_gain.py`](ex1_entropy_impurity_information_gain.py) | This is the most basic calculation in decision tree construction: computing entropy and information gain by hand. |
 | 2 | [`ex2_cart_decision_tree_with_scikit_learn_fruit_cl.py`](ex2_cart_decision_tree_with_scikit_learn_fruit_cl.py) | We train a real CART decision tree on a small fruit classification example. |
-| 3 | [`ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.py`](ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.py) | This example shows Occam's Razor in decision trees — the principle that simpler models are preferred when they explain the data equally well. |
+| 3 | [`ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.py`](ex3_tree_depth_vs_overfitting_occam_s_razor_in_ac.py) | This example shows Occam's Razor in decision trees: the principle that simpler models are preferred when they explain the data equally well. |
 
 Run any example from this folder:
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Entropy Impurity & Information Gain
 
-This is the most basic calculation in decision tree construction — manual entropy and information gain computation. We use a small worked example: a node with 10 examples (4 from C1, 4 from C2, 2 from C3) and two competing queries. For each query, we compute entropy of the parent node and both child nodes, then calculate information gain. Query 1 wins (ΔI = 0.3219 > 0.1568) so it gets selected. The bottom section shows entropy for special cases — a pure node has entropy 0 (no uncertainty), while equal class distribution gives maximum entropy.
+This is the most basic calculation in decision tree construction: computing entropy and information gain by hand. We use a small worked example: a node with 10 examples (4 from C1, 4 from C2, 2 from C3) and two competing queries. For each query, we compute entropy of the parent node and both child nodes, then calculate information gain. Query 1 wins (ΔI = 0.3219 > 0.1568) so it gets selected. The bottom section shows entropy for special cases: a pure node has entropy 0 (no uncertainty), while equal class distribution gives maximum entropy.
 
 <details><summary>Expected output</summary>
 
@@ -59,7 +59,7 @@ Decision: Query 1 wins (0.3219 > 0.1568) -> SELECT Query 1
 
 ### Example 2: CART Decision Tree with scikit-learn (Fruit Classifier)
 
-We train a real CART decision tree on a small fruit classification example. Each fruit is described by 4 categorical features encoded as integers: Color (0=Green, 1=Yellow, 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet, 1=Sweet). The export_text output shows the actual tree that CART built — it's a human-readable flowchart you can follow manually. We then test it on three new fruit descriptions to check predictions. Scikit-learn trees need numbers, which is why the categories are encoded as integers first. Figure 14.1 draws this same tree. Notice that it never asks about Shape: color, size and taste are enough to tell these twelve fruits apart.
+We train a real CART decision tree on a small fruit classification example. Each fruit is described by 4 categorical features encoded as integers: Color (0=Green, 1=Yellow, 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet, 1=Sweet). The export_text output shows the actual tree that CART built. It is a human-readable flowchart you can follow manually. We then test it on three new fruit descriptions to check predictions. Scikit-learn trees need numbers, which is why the categories are encoded as integers first. Figure 14.1 draws this same tree. Notice that it never asks about Shape: color, size and taste are enough to tell these twelve fruits apart.
 
 <details><summary>Expected output</summary>
 
@@ -101,7 +101,7 @@ Training Accuracy: 100.0%
 
 ### Example 3: Tree Depth vs Overfitting (Occam's Razor in Action)
 
-This example shows Occam's Razor in decision trees — the principle that simpler models are preferred when they explain the data equally well. We train the same tree on the Iris dataset with different maximum depths and compare training vs test accuracy. A very deep tree achieves 100% training accuracy (it perfectly memorizes the data) but test accuracy may not improve and can drop. The sweet spot is around depth 2-3 for Iris. We also compare Gini vs Entropy criteria, confirming they produce nearly identical results in practice — the choice rarely matters much.
+This example shows Occam's Razor in decision trees: the principle that simpler models are preferred when they explain the data equally well. We train the same tree on the Iris dataset with different maximum depths and compare training vs test accuracy. A very deep tree achieves 100% training accuracy (it perfectly memorizes the data) but test accuracy may not improve and can drop. The sweet spot is around depth 2-3 for Iris. We also compare Gini vs Entropy criteria, confirming they produce nearly identical results in practice, so the choice rarely matters much.
 
 <details><summary>Expected output</summary>
 

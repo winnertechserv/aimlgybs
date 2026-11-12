@@ -1,6 +1,6 @@
 """
 Chapter 30, Example 2: Diffusion Forward and Reverse Processes
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -31,7 +31,9 @@ T = 12
 betas = np.linspace(0.05, 0.35, T)      # variance schedule
 
 print(f"Original data x_0 : {np.round(x0, 3)}")
-print(f"Noise schedule beta_t from {betas[0]:.2f} to {betas[-1]:.2f} over T={T} steps\n")
+print(
+    f"Noise schedule beta_t from {betas[0]:.2f} to {betas[-1]:.2f} over T={T} steps\n"
+)
 
 # ---- Forward process ----
 print("--- Forward Diffusion Process (adding noise step by step) ---\n")
@@ -59,7 +61,10 @@ print("  x_t = sqrt(alpha_bar_t) * x_0 + sqrt(1 - alpha_bar_t) * eps\n")
 print(f"{'t':>3}  {'alpha_bar_t':>12}  {'signal kept':>12}  {'noise added':>12}")
 print("-" * 46)
 for t in [0, 3, 6, 9, T-1]:
-    print(f"{t+1:>3}  {alpha_bar[t]:>12.4f}  {np.sqrt(alpha_bar[t]):>12.4f}  {np.sqrt(1-alpha_bar[t]):>12.4f}")
+    print(
+        f"{t+1:>3}  {alpha_bar[t]:>12.4f}  {np.sqrt(alpha_bar[t]):>12.4f}  "
+        f"{np.sqrt(1-alpha_bar[t]):>12.4f}"
+    )
 print("\nSignal decays and noise grows monotonically - that is the whole schedule.")
 
 # ---- Reverse process ----
@@ -83,7 +88,10 @@ for t in reversed(range(T)):
     # one reverse step: remove predicted noise, keep the schedule scaling
     x0_hat = (x - np.sqrt(1 - alpha_bar[t]) * eps_hat) / np.sqrt(alpha_bar[t])
     if t > 0:
-        x = np.sqrt(alpha_bar[t-1]) * x0_hat + np.sqrt(1 - alpha_bar[t-1]) * np.random.randn(*x.shape) * 0.3
+        x = (
+            np.sqrt(alpha_bar[t - 1]) * x0_hat
+            + np.sqrt(1 - alpha_bar[t - 1]) * np.random.randn(*x.shape) * 0.3
+        )
     else:
         x = x0_hat
     if t in (11, 8, 5, 2, 0):

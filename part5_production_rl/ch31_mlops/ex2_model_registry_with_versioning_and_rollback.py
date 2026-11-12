@@ -1,6 +1,6 @@
 """
 Chapter 31, Example 2: Model Registry with Versioning and Rollback
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -42,14 +42,21 @@ class ModelRegistry:
             self.versions[prev-1]["stage"] = "Archived"
         self.versions[version-1]["stage"] = stage
         self.stages[stage] = version
-        self.audit.append(f"v{version} -> {stage}" + (f" (v{prev} archived)" if prev else ""))
+        self.audit.append(
+            f"v{version} -> {stage}" + (f" (v{prev} archived)" if prev else "")
+        )
 
     def show(self):
-        print(f"  {'ver':<5}{'registered':<13}{'test_acc':>9}{'latency_ms':>12}  {'stage':<12}{'data':<10}{'commit'}")
+        print(
+            f"  {'ver':<5}{'registered':<13}{'test_acc':>9}{'latency_ms':>12}  "
+            f"{'stage':<12}{'data':<10}{'commit'}"
+        )
         print("  " + "-" * 78)
         for e in self.versions:
-            print(f"  v{e['version']:<4}{e['registered']:<13}{e['metrics']['test_acc']:>9}"
-                  f"{e['metrics']['latency_ms']:>12}  {e['stage']:<12}{e['data_hash']:<10}{e['code_commit']}")
+            print(
+                f"  v{e['version']:<4}{e['registered']:<13}{e['metrics']['test_acc']:>9}"
+                f"{e['metrics']['latency_ms']:>12}  {e['stage']:<12}{e['data_hash']:<10}{e['code_commit']}"
+            )
 
 reg = ModelRegistry()
 

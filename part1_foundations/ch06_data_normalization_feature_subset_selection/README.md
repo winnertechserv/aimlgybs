@@ -2,7 +2,7 @@
 
 **Part I — Foundations** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part1_foundations/ch06_data_normalization_feature_subset_selection/ch06_notebook.ipynb)
 
-Companion code for Chapter 6 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 6 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -17,7 +17,7 @@ Companion code for Chapter 6 of *AI-Machine Learning: Get Your Base Strong*. The
 | # | Program | What it shows |
 |---|---|---|
 | 1 | [`ex1_min_max_normalization.py`](ex1_min_max_normalization.py) | This example walks through Min-Max normalization on a small salesman dataset. |
-| 2 | [`ex2_z_score_normalization_distance_comparison.py`](ex2_z_score_normalization_distance_comparison.py) | This example shows z-score normalization and — critically — shows WHY normalization matters for distance-based algorithms. |
+| 2 | [`ex2_z_score_normalization_distance_comparison.py`](ex2_z_score_normalization_distance_comparison.py) | This example shows z-score normalization and, more importantly, shows why normalization matters for distance-based algorithms. |
 | 3 | [`ex3_pearson_correlation_feature_selection.py`](ex3_pearson_correlation_feature_selection.py) | This example builds a synthetic weather dataset with three features (Temperature, Humidity, Pressure) and a target (Rain). |
 
 Run any example from this folder:
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Min-Max Normalization
 
-This example walks through Min-Max normalization on a small salesman dataset. We define a simple function that takes an array, finds its minimum and maximum, then scales every value proportionally into the [0, 1] range. Notice how the raw sales values (₹2,300 to ₹73,567) and scores (2 to 8) are completely different scales — after normalization, both live in [0, 1]. The last two rows confirm that the range constraint is satisfied. Remember: you MUST save the min and max from training and apply them at test time too — never recompute from test data.
+This example walks through Min-Max normalization on a small salesman dataset. We define a simple function that takes an array, finds its minimum and maximum, then scales every value proportionally into the [0, 1] range. Notice how the raw sales values (₹2,300 to ₹73,567) and scores (2 to 8) are completely different scales; after normalization, both live in [0, 1]. The last two rows confirm that the range constraint is satisfied. Remember to save the min and max from training and apply them at test time too; never recompute them from test data.
 
 <details><summary>Expected output</summary>
 
@@ -65,7 +65,7 @@ Norm Score range : [0.0000, 1.0000]
 
 ### Example 2: Z-Score Normalization & Distance Comparison
 
-This example shows z-score normalization and — critically — shows WHY normalization matters for distance-based algorithms. Without normalization, we ask: which salesman is closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated by the Sales column (values in thousands) making the Score column almost irrelevant. After z-score normalization, both columns are on equal footing. See how S001, S002, and S003 get completely different nearest-neighbor rankings before vs after normalization — S002 becomes the closest, which makes intuitive sense since its sales (23500) and score (6) are both close to the query (23000, 6.5).
+This example shows z-score normalization and, more importantly, shows why normalization matters for distance-based algorithms. Without normalization, we ask: which salesman is closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated by the Sales column (values in thousands) making the Score column almost irrelevant. After z-score normalization, both columns are on equal footing. See how S001, S002, and S003 get completely different nearest-neighbor rankings before and after normalization. S002 becomes the closest, which makes intuitive sense since its sales (23500) and score (6) are both close to the query (23000, 6.5).
 
 <details><summary>Expected output</summary>
 
@@ -106,7 +106,7 @@ S002 is now correctly identified as nearest neighbor.
 
 ### Example 3: Pearson Correlation & Feature Selection
 
-This example builds a synthetic weather dataset with three features (Temperature, Humidity, Pressure) and a target (Rain). It then computes the Pearson correlation coefficient between each feature and the target to decide which features to keep. The output confirms the intuition: Temperature and Humidity strongly predict Rain (very strong correlation), while Pressure has only a weak relationship (ρ = −0.153), so it falls below the 0.20 threshold and is dropped. The full correlation matrix also reveals that Temperature and Humidity are highly correlated with each other (ρ = -0.925), meaning they carry redundant information — an advanced practitioner might even drop one of them too.
+This example builds a synthetic weather dataset with three features (Temperature, Humidity, Pressure) and a target (Rain). It then computes the Pearson correlation coefficient between each feature and the target to decide which features to keep. The output confirms the intuition: Temperature and Humidity strongly predict Rain (very strong correlation), while Pressure has only a weak relationship (ρ = −0.153), so it falls below the 0.20 threshold and is dropped. The full correlation matrix also reveals that Temperature and Humidity are highly correlated with each other (ρ = -0.925), meaning they carry redundant information, so an experienced practitioner might drop one of them too.
 
 <details><summary>Expected output</summary>
 

@@ -1,6 +1,6 @@
 """
 Chapter 6, Example 3: Pearson Correlation & Feature Selection
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -11,12 +11,13 @@ output confirms the intuition: Temperature and Humidity strongly predict Rain (v
 strong correlation), while Pressure has only a weak relationship (ρ = −0.153), so it
 falls below the 0.20 threshold and is dropped. The full correlation matrix also reveals
 that Temperature and Humidity are highly correlated with each other (ρ = -0.925),
-meaning they carry redundant information — an advanced practitioner might even drop one
+meaning they carry redundant information, so an experienced practitioner might drop one
 of them too.
 
 Run it:           python ex3_pearson_correlation_feature_selection.py
 Expected output:  expected_output/ex3_pearson_correlation_feature_selection.txt
 """
+# Chapter 6 - Example 3: Pearson Correlation & Feature Selection
 import numpy as np
 import pandas as pd
 

@@ -1,6 +1,6 @@
 """
 Chapter 5, Example 3: Advanced EDA — Target Analysis, Encoding, Features and Leakage
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -35,7 +35,9 @@ survived = (rng.random(n) < 1 / (1 + np.exp(-logit))).astype(int)
 df = pd.DataFrame(dict(survived=survived, pclass=pclass, sex=sex, age=age,
                        sibsp=sibsp, parch=parch, fare=fare))
 # A leaky column: recorded AFTER the voyage, so it secretly contains the answer
-df["lifeboat_assigned"] = np.where(survived == 1, 1, (rng.random(n) < 0.03).astype(int))
+df["lifeboat_assigned"] = np.where(
+    survived == 1, 1, (rng.random(n) < 0.03).astype(int)
+)
 
 # 1. Target-wise EDA: survival rate by group
 print("Survival rate by class:")
@@ -61,10 +63,18 @@ print(df.groupby("age_group", observed=True)["survived"].mean().round(2).to_stri
 # 4. Correlation with the target - and a leakage warning
 num = df[["survived", "pclass", "sex_label", "age", "family_size",
           "log_fare", "lifeboat_assigned"]]
-corr = num.corr()["survived"].drop("survived").round(2).sort_values(key=abs, ascending=False)
+corr = (
+    num.corr()["survived"]
+    .drop("survived")
+    .round(2)
+    .sort_values(key=abs, ascending=False)
+)
 print("\nCorrelation with 'survived':")
 print(corr.to_string())
 for col, r in corr.items():
     if abs(r) > 0.8:
-        print(f"\nWARNING: '{col}' has r = {r} with the target. Is it known at prediction"
-              " time? If not, it is DATA LEAKAGE - drop it.")
+        print(
+            f"\nWARNING: '{col}' has r = {r} with the target. Is it known at "
+            f"prediction"
+            " time? If not, it is DATA LEAKAGE - drop it."
+        )

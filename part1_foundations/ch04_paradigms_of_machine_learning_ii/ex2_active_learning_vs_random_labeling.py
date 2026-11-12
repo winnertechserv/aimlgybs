@@ -1,6 +1,6 @@
 """
 Chapter 4, Example 2: Active Learning vs Random Labeling
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -13,7 +13,8 @@ labels it scores 92.7% against 88.6%, so the same labeling budget buys a better 
 Run it:           python ex2_active_learning_vs_random_labeling.py
 Expected output:  expected_output/ex2_active_learning_vs_random_labeling.txt
 """
-# Chapter 4 - Example 2: Active learning - ask the expert to label the MOST useful images
+# Chapter 4 - Example 2: Active learning - ask the expert to label the MOST useful
+# images
 # Uncertainty sampling picks the images the model is least sure about.
 import numpy as np
 from sklearn.datasets import load_digits
@@ -22,7 +23,9 @@ from sklearn.linear_model import LogisticRegression
 
 X, y = load_digits(return_X_y=True)
 X = X / 16.0
-X_pool, X_te, y_pool, y_te = train_test_split(X, y, test_size=0.3, stratify=y, random_state=1)
+X_pool, X_te, y_pool, y_te = train_test_split(
+    X, y, test_size=0.3, stratify=y, random_state=1
+)
 
 def run(strategy, seed=0, start=20, batch=10, rounds=8):
     rng = np.random.default_rng(seed)
@@ -38,7 +41,8 @@ def run(strategy, seed=0, start=20, batch=10, rounds=8):
             pick = rest[np.argsort(margin)[:batch]]
         else:
             pick = rng.choice(rest, batch, replace=False)
-        labeled += list(pick)                        # the 'expert' supplies these labels
+        # the 'expert' supplies these labels
+        labeled += list(pick)
     return np.array(scores)
 
 active = np.mean([run("uncertainty", s) for s in range(5)], axis=0)

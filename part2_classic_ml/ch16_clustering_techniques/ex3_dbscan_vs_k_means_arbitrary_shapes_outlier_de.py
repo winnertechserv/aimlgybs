@@ -1,20 +1,21 @@
 """
 Chapter 16, Example 3: DBSCAN vs K-Means — Arbitrary Shapes + Outlier Detection
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 This is the definitive example showing K-Means' biggest weakness: it assumes spherical
 clusters. On crescent-shaped data (Two Moons) or ring-shaped data (Two Circles), K-Means
-splits the shapes incorrectly. DBSCAN doesn't care about shape — it groups by density.
-We also show DBSCAN's noise detection: when 10 random outlier points are added to a
-clean blob dataset, DBSCAN correctly identifies them as noise (label -1) rather than
-forcing them into any cluster. This is the key practical advantage of DBSCAN over
+splits the shapes incorrectly. DBSCAN does not care about shape; it groups points by
+density. We also show DBSCAN's noise detection: when 10 random outlier points are added
+to a clean blob dataset, DBSCAN correctly identifies them as noise (label -1) rather
+than forcing them into any cluster. This is the key practical advantage of DBSCAN over
 K-Means in real-world messy data.
 
 Run it:           python ex3_dbscan_vs_k_means_arbitrary_shapes_outlier_de.py
 Expected output:  expected_output/ex3_dbscan_vs_k_means_arbitrary_shapes_outlier_de.txt
 """
+# Chapter 16 - Example 3: DBSCAN vs K-Means - Arbitrary Shapes + Outlier Detection
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.datasets import make_blobs
 from sklearn.preprocessing import StandardScaler
@@ -56,4 +57,7 @@ print("  label = -1  : noise/outlier — not assigned to any cluster")
 print("\nK-Means silhouette:", round(silhouette_score(X_scaled, km_labels), 4))
 sil_valid = X_scaled[db_labels != -1]
 lab_valid = db_labels[db_labels != -1]
-print("DBSCAN silhouette (excl. noise):", round(silhouette_score(sil_valid, lab_valid), 4))
+print(
+    "DBSCAN silhouette (excl. noise):",
+    round(silhouette_score(sil_valid, lab_valid), 4),
+)

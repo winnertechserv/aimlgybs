@@ -2,7 +2,7 @@
 
 **Part III — Neural Networks & Deep Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part3_neural_networks/ch20_deep_feedforward_neural_networks_ii/ch20_notebook.ipynb)
 
-Companion code for Chapter 20 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 20 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Dropout — Step-by-Step Manual Demonstration
 
-We build dropout from scratch to show exactly what happens during training and testing. During training, a random binary mask is applied to the layer — zeroing out randomly chosen nodes for each mini-batch. Each mini-batch gets a different thinned network. With L=6 nodes, there are 2^6=64 possible thinned networks — we're implicitly training an ensemble of 64 models in parallel! At test time, all nodes are active but weights are multiplied by p_keep (the retention probability) to approximate the average of all 64 networks. We also show the key difference from DropConnect: Dropout zeros entire node rows; DropConnect zeros individual weight connections.
+We build dropout from scratch to show exactly what happens during training and testing. During training, a random binary mask is applied to the layer, zeroing out randomly chosen nodes for each mini-batch. Each mini-batch gets a different thinned network. With L=6 nodes, there are 2^6=64 possible thinned networks, so we are implicitly training an ensemble of 64 models at once. At test time, all nodes are active but weights are multiplied by p_keep (the retention probability) to approximate the average of all 64 networks. We also show the key difference from DropConnect: Dropout zeros entire node rows; DropConnect zeros individual weight connections.
 
 <details><summary>Expected output</summary>
 
@@ -87,7 +87,7 @@ Key: Dropout removes NODES; DropConnect removes individual WEIGHTS.
 
 ### Example 2: Batch Normalization — Manual Calculation
 
-We compute Batch Normalization step by step on a small hidden layer: 4 neurons, mini-batch of 5 examples. Step 1 computes the mean and variance per neuron across all 5 examples (column-wise). Step 2 subtracts the mean and divides by standard deviation — producing s_hat with mean=0, std=1 for every neuron. This is verified explicitly. Step 3 applies the learnable γ and β parameters (scale and shift), giving the final output z. The last section proves why BatchNorm is needed: two mini-batches with completely different raw distributions (means 2.04 vs 7.88) both become mean=0, std=1 after normalization — the internal covariate shift is eliminated.
+We compute Batch Normalization step by step on a small hidden layer: 4 neurons, mini-batch of 5 examples. Step 1 computes the mean and variance per neuron across all 5 examples (column-wise). Step 2 subtracts the mean and divides by standard deviation, producing s_hat with mean=0, std=1 for every neuron. This is verified explicitly. Step 3 applies the learnable γ and β parameters (scale and shift), giving the final output z. The last section proves why BatchNorm is needed: two mini-batches with completely different raw distributions (means 2.04 vs 7.88) both become mean=0, std=1 after normalization, so the internal covariate shift is removed.
 
 <details><summary>Expected output</summary>
 
@@ -136,7 +136,7 @@ Both batches normalized to same distribution -> covariate shift eliminated!
 
 ### Example 3: Batch Normalization vs Layer Normalization — Side by Side
 
-The final example clarifies the most commonly confused pair: Batch Normalization vs Layer Normalization. Both normalize to mean=0, std=1 — but they normalize along different axes. BatchNorm normalizes each neuron (column) across the mini-batch — so neuron 1's output across all 3 examples becomes standardized. LayerNorm normalizes each example (row) across its own neurons — so example 1's outputs across all 4 neurons become standardized. Look at the LayerNorm output: rows 1 and 2 come out identical, because row 2 is just row 1 shifted up by 4, and LayerNorm removes each example's own shift and scale. Row 3 has a different shape, so it stays different. The practical implication: BatchNorm needs a large batch to estimate good statistics. LayerNorm works with batch size 1. That's why Transformers use LayerNorm — they process sequences where batch size may be 1.
+The final example clarifies the most commonly confused pair: Batch Normalization vs Layer Normalization. Both normalize to mean=0, std=1, but they work along different axes. BatchNorm normalizes each neuron (column) across the mini-batch, so neuron 1's output across all 3 examples becomes standardized. LayerNorm normalizes each example (row) across its own neurons, so example 1's outputs across all 4 neurons become standardized. Look at the LayerNorm output: rows 1 and 2 come out identical, because row 2 is just row 1 shifted up by 4, and LayerNorm removes each example's own shift and scale. Row 3 has a different shape, so it stays different. The practical implication: BatchNorm needs a large batch to estimate good statistics. LayerNorm works with batch size 1. That is why Transformers use LayerNorm: they process sequences where batch size may be 1.
 
 <details><summary>Expected output</summary>
 

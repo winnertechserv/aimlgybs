@@ -1,6 +1,6 @@
 """
 Chapter 7, Example 3: Closed Form vs Gradient Descent on Real Data
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -49,4 +49,7 @@ print(f"\nTest RMSE  closed form     : {rmse(add1(X_te) @ w_cf):.2f}")
 print(f"Test RMSE  gradient descent: {rmse(add1(X_te) @ w_gd):.2f}")
 print(f"Test RMSE  scikit-learn    : {rmse(sk.predict(X_te)):.2f}")
 print(f"Largest weight difference, closed form vs GD: {np.abs(w_cf - w_gd).max():.3f}")
-print(f"Test RMSE as % of the mean target: {100 * rmse(add1(X_te) @ w_cf) / y_te.mean():.1f}%")
+print(
+    f"Test RMSE as % of the mean target: "
+    f"{100 * rmse(add1(X_te) @ w_cf) / y_te.mean():.1f}%"
+)

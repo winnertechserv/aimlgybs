@@ -1,21 +1,22 @@
 """
 Chapter 6, Example 2: Z-Score Normalization & Distance Comparison
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
-This example shows z-score normalization and — critically — shows WHY normalization
+This example shows z-score normalization and, more importantly, shows why normalization
 matters for distance-based algorithms. Without normalization, we ask: which salesman is
 closest to a query point of (23000 Rs, 6.5 score)? The Euclidean distance is dominated
 by the Sales column (values in thousands) making the Score column almost irrelevant.
 After z-score normalization, both columns are on equal footing. See how S001, S002, and
-S003 get completely different nearest-neighbor rankings before vs after normalization —
+S003 get completely different nearest-neighbor rankings before and after normalization.
 S002 becomes the closest, which makes intuitive sense since its sales (23500) and score
 (6) are both close to the query (23000, 6.5).
 
 Run it:           python ex2_z_score_normalization_distance_comparison.py
 Expected output:  expected_output/ex2_z_score_normalization_distance_comparison.txt
 """
+# Chapter 6 - Example 2: Z-Score Normalization & Distance Comparison
 import numpy as np
 
 sales  = np.array([23500, 23500, 22879, 2300, 34678,

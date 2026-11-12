@@ -1,6 +1,6 @@
 """
 Chapter 11, Example 2: The Perceptron Learning Algorithm
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -20,16 +20,19 @@ import numpy as np
 rng = np.random.default_rng(1)
 X = np.vstack([rng.normal([1, 1], 0.5, (20, 2)), rng.normal([-1, -1], 0.5, (20, 2))])
 y = np.r_[np.ones(20), -np.ones(20)]                 # labels +1 and -1
-Xh = np.column_stack([np.ones(len(X)), X])           # x_hat = [1, x1, x2] so w0 is the bias
+# x_hat = [1, x1, x2] so w0 is the bias
+Xh = np.column_stack([np.ones(len(X)), X])
 
-w = np.array([2.0, -1.0, 0.5])                       # 1. start from a deliberately bad line
+# 1. start from a deliberately bad line
+w = np.array([2.0, -1.0, 0.5])
 eta = 0.1
 for epoch in range(1, 101):
     mistakes = 0
     for xn, yn in zip(Xh, y):                        # 2. present each example
         s = w @ xn
-        if yn * s <= 0:                              # 3. wrong side (or on the line) -> nudge w
-            w += eta * yn * xn; mistakes += 1         #    +eta*x for class +1, -eta*x for -1
+        if yn * s <= 0:  # 3. wrong side (or on the line) -> nudge w
+            #    +eta*x for class +1, -eta*x for -1
+            w += eta * yn * xn; mistakes += 1
     print(f"Epoch {epoch}: misclassifications = {mistakes}")
     if mistakes == 0:                                # 5. stop when nothing is wrong
         break

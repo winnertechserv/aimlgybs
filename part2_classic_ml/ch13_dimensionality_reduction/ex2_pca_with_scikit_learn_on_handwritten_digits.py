@@ -1,6 +1,6 @@
 """
 Chapter 13, Example 2: PCA with scikit-learn on Handwritten Digits
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -16,6 +16,7 @@ action: store a few component scores per image instead of every pixel.
 Run it:           python ex2_pca_with_scikit_learn_on_handwritten_digits.py
 Expected output:  expected_output/ex2_pca_with_scikit_learn_on_handwritten_digits.txt
 """
+# Chapter 13 - Example 2: PCA with scikit-learn on Handwritten Digits
 from sklearn.decomposition import PCA
 from sklearn.datasets import load_digits
 import numpy as np
@@ -29,7 +30,8 @@ print(f"  -> 1797 images, each 8x8 = 64 pixel features\n")
 # All pixels share one unit (brightness 0-16), so we do NOT standardize here.
 # Standardizing would blow up the near-constant border pixels to the same weight
 # as the useful ones. (Note: we fit on all images because this is unsupervised
-# compression; before a classifier, fit PCA on the training images only, as in Example 3.)
+# compression; before a classifier, fit PCA on the training images only, as in Example
+# 3.)
 pca_full = PCA()
 pca_full.fit(X)
 cumvar = np.cumsum(pca_full.explained_variance_ratio_) * 100
@@ -51,5 +53,8 @@ X_recon   = pca.inverse_transform(X_reduced)
 mse = np.mean((X - X_recon) ** 2)
 
 print(f"\nReduced dataset shape  : {X_reduced.shape}")
-print(f"Reconstruction MSE     : {mse:.4f}  (average pixel variance: {X.var(axis=0).mean():.2f})")
+print(
+    f"Reconstruction MSE     : {mse:.4f}  (average pixel variance: "
+    f"{X.var(axis=0).mean():.2f})"
+)
 print("(Small MSE = minimal information lost)")

@@ -1,6 +1,6 @@
 """
 Chapter 29, Example 3: Frechet Inception Distance from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -65,9 +65,11 @@ print("    covariance term no longer matches - FID penalizes lost diversity.")
 print("\n=== Inception Score vs FID ===\n")
 print(f"  {'Aspect':<24} {'Inception Score':<26} {'FID'}")
 print("  " + "-" * 70)
-rows = [("Uses real images?",  "No",                    "Yes (reference set)"),
-        ("Direction",          "Higher is better",      "Lower is better"),
-        ("Detects mode collapse","Partially (marginal)", "Yes (covariance term)"),
-        ("Based on",           "KL divergence",         "Frechet/Wasserstein-2 distance")]
+rows = [
+    ("Uses real images?", "No", "Yes (reference set)"),
+    ("Direction", "Higher is better", "Lower is better"),
+    ("Detects mode collapse", "Partially (marginal)", "Yes (covariance term)"),
+    ("Based on", "KL divergence", "Frechet/Wasserstein-2 distance"),
+]
 for a, b, c in rows:
     print(f"  {a:<24} {b:<26} {c}")

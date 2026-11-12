@@ -2,7 +2,7 @@
 
 **Part IV — Transformers & Generative AI** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part4_transformers_genai/ch28_generative_adversarial_networks_i/ch28_notebook.ipynb)
 
-Companion code for Chapter 28 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 28 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: The GAN Minimax Objective
 
-This computes the GAN objective V(D,G) numerically for several scenarios, showing it is high when the discriminator wins and low when the generator wins, with the theoretical equilibrium at 2*log(0.5) = -1.386. The second half walks through one mini-batch training step exactly as the algorithm slide describes, verifying that the discriminator's gradient ascent raises V and the generator's gradient descent lowers it.
+This computes the GAN objective V(D,G) numerically for several scenarios, showing it is high when the discriminator wins and low when the generator wins, with the theoretical equilibrium at 2*log(0.5) = -1.386. The second half walks through one mini-batch training step exactly as the training algorithm in the overview describes, verifying that the discriminator's gradient ascent raises V and the generator's gradient descent lowers it.
 
 <details><summary>Expected output</summary>
 

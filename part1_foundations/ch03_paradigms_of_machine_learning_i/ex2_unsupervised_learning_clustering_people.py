@@ -1,6 +1,6 @@
 """
 Chapter 3, Example 2: Unsupervised Learning — Clustering People
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -14,7 +14,8 @@ Run it:           python ex2_unsupervised_learning_clustering_people.py
 Expected output:  expected_output/ex2_unsupervised_learning_clustering_people.txt
 """
 # Chapter 3 - Example 2: Unsupervised learning - clustering WITHOUT labels
-# K-means groups people by height and weight. We never show it who is a child or an adult.
+# K-means groups people by height and weight. We never show it who is a child or an
+# adult.
 import numpy as np
 from sklearn.cluster import KMeans
 
@@ -22,7 +23,8 @@ X = np.array([[98, 16.4], [104, 15.9], [110, 19.8], [115, 19.1], [119, 23.0],
               [123, 22.4], [127, 27.1], [131, 26.3], [134, 31.0], [101, 17.5],
               [152, 52.0], [158, 50.5], [161, 63.2], [165, 57.8], [168, 71.0],
               [172, 64.5], [175, 80.3], [179, 72.9], [183, 88.0], [188, 81.4]])
-hidden_truth = np.r_[np.zeros(10, int), np.ones(10, int)]   # only used to CHECK at the end
+# only used to CHECK at the end
+hidden_truth = np.r_[np.zeros(10, int), np.ones(10, int)]
 
 print(" k   compactness (inertia)")
 for k in range(1, 6):
@@ -39,6 +41,9 @@ for c in km.cluster_centers_:
 labels = km.labels_
 if np.mean(labels == hidden_truth) < 0.5:
     labels = 1 - labels
-print(f"\nAgreement with the hidden child/adult labels: {np.mean(labels == hidden_truth):.0%}")
+print(
+    f"\nAgreement with the hidden child/adult labels: "
+    f"{np.mean(labels == hidden_truth):.0%}"
+)
 print("New person (130 cm, 30 kg) joins cluster with center",
       np.round(km.cluster_centers_[km.predict([[130, 30]])[0]], 1))

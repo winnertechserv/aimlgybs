@@ -1,6 +1,6 @@
 """
 Chapter 10, Example 3: Gaussian Mixture Model with EM
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -14,7 +14,8 @@ so K = 2 is the right choice.
 Run it:           python ex3_gaussian_mixture_model_with_em.py
 Expected output:  expected_output/ex3_gaussian_mixture_model_with_em.txt
 """
-# Chapter 10 - Example 3: Gaussian Mixture Model trained with EM, used in a Bayes classifier
+# Chapter 10 - Example 3: Gaussian Mixture Model trained with EM, used in a Bayes
+# classifier
 import numpy as np
 from sklearn.mixture import GaussianMixture
 from scipy.stats import multivariate_normal
@@ -31,7 +32,9 @@ cov = np.array([np.eye(2)] * K)
 w = np.full(K, 1 / K)
 prev = -np.inf
 for it in range(1, 50):
-    dens = np.column_stack([w[k] * multivariate_normal(mu[k], cov[k]).pdf(A) for k in range(K)])
+    dens = np.column_stack(
+        [w[k] * multivariate_normal(mu[k], cov[k]).pdf(A) for k in range(K)]
+    )
     ll = np.log(dens.sum(axis=1)).sum()                # total data log-likelihood
     gamma = dens / dens.sum(axis=1, keepdims=True)     # E-step: responsibilities
     Nk = gamma.sum(axis=0)                             # M-step: re-estimate parameters
@@ -45,7 +48,9 @@ for it in range(1, 50):
         print("Converged (change < 0.001).")
         break
     prev = ll
-print("Learned centers:", np.round(mu, 2).tolist(), " weights:", np.round(w, 2).tolist())
+print(
+    "Learned centers:", np.round(mu, 2).tolist(), " weights:", np.round(w, 2).tolist()
+)
 
 # --- Bayes classifier: one density per class, single Gaussian vs GMM
 X_te = np.vstack([rng.normal([0, 0], 0.6, (100, 2)), rng.normal([4, 4], 0.6, (100, 2)),
@@ -54,9 +59,13 @@ y_te = np.r_[np.zeros(200), np.ones(200)]
 for k in (1, 2):
     gA = GaussianMixture(k, random_state=0).fit(A)
     gB = GaussianMixture(1, random_state=0).fit(B)
-    # score_samples gives log p(x|class); comparing them is Bayes' rule with equal priors
+    # score_samples gives log p(x|class); comparing them is Bayes' rule with equal
+    # priors
     pred = (gB.score_samples(X_te) > gA.score_samples(X_te)).astype(int)
-    print(f"Class A modeled with K = {k} component(s): test accuracy {np.mean(pred == y_te):.3f}")
+    print(
+        f"Class A modeled with K = {k} component(s): test accuracy "
+        f"{np.mean(pred == y_te):.3f}"
+    )
 
 # --- Elbow: total log-likelihood of class A for different K
 print("\nK   total log-likelihood")

@@ -2,15 +2,17 @@
 
 **Part IV — Transformers & Generative AI** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part4_transformers_genai/ch27_transformer_iii/ch27_notebook.ipynb)
 
-Companion code for Chapter 27 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 27 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
 - Cut an image into fixed-size patches and it becomes a sequence, which is all a Transformer needs (the Vision Transformer).
 - Visual question answering combines an image encoder, a question encoder, a fusion step and an answer generator.
-- Large language models are simply pre-trained language models scaled to billions of parameters.
+- Large language models are Transformers pre-trained on trillions of tokens, then instruction-tuned and aligned with human preferences (RLHF or DPO).
 - A foundation model is pre-trained once and fine-tuned many times for different downstream tasks.
 - Retrieval Augmented Generation retrieves supporting documents and places them in the prompt, which grounds answers and reduces hallucination.
+- Temperature and top-p decide how varied an LLM's answers are; tool calling and RAG let it act and use fresh knowledge.
+- Mixture of experts, quantization and LoRA make large models affordable to run and to fine-tune.
 
 ## Examples
 

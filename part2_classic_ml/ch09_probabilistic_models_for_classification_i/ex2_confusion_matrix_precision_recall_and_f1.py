@@ -1,6 +1,6 @@
 """
 Chapter 9, Example 2: Confusion Matrix, Precision, Recall and F1
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -23,10 +23,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, precision_score, recall_score, f1_score
 
 data = load_breast_cancer()
-X, y = data.data, 1 - data.target        # make 1 = malignant (the 'positive' class we must catch)
+# make 1 = malignant (the 'positive' class we must catch)
+X, y = data.data, 1 - data.target
 print(f"Samples: {len(y)}  (malignant {y.sum()}, benign {len(y) - y.sum()})")
 
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, stratify=y, random_state=0)
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.3, stratify=y, random_state=0
+)
 print(f"Train {len(y_tr)} / Test {len(y_te)}; malignant share train "
       f"{y_tr.mean():.2f}, test {y_te.mean():.2f} (stratified = same mix)")
 
@@ -43,7 +46,13 @@ acc = (tp + tn) / (tp + tn + fp + fn)
 prec = tp / (tp + fp)
 rec = tp / (tp + fn)
 f1 = 2 * prec * rec / (prec + rec)
-print(f"\nBy hand : accuracy {acc:.3f}  precision {prec:.3f}  recall {rec:.3f}  F1 {f1:.3f}")
+print(
+    f"\nBy hand : accuracy {acc:.3f}  precision {prec:.3f}  recall {rec:.3f}  F1 "
+    f"{f1:.3f}"
+)
 print(f"sklearn : precision {precision_score(y_te, pred):.3f}  recall "
       f"{recall_score(y_te, pred):.3f}  F1 {f1_score(y_te, pred):.3f}")
-print(f"\n{fn} cancer case(s) were missed (false negatives). In medicine, recall matters most.")
+print(
+    f"\n{fn} cancer case(s) were missed (false negatives). In medicine, recall matters "
+    f"most."
+)

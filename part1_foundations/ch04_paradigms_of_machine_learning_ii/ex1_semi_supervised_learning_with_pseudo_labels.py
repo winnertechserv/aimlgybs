@@ -1,6 +1,6 @@
 """
 Chapter 4, Example 1: Semi-Supervised Learning with Pseudo-Labels
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -26,14 +26,17 @@ from sklearn.semi_supervised import LabelSpreading
 
 X, y = load_digits(return_X_y=True)
 X = X / 16.0
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.3, stratify=y, random_state=0)
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.3, stratify=y, random_state=0
+)
 
 rng = np.random.default_rng(0)
 labeled = np.zeros(len(X_tr), bool)
 for d in range(10):                                  # 5 labeled images per digit
     labeled[rng.choice(np.where(y_tr == d)[0], 5, replace=False)] = True
 X_l, y_l = X_tr[labeled], y_tr[labeled]
-X_u = X_tr[~labeled]                                # unlabeled pool (we ignore y for these)
+# unlabeled pool (we ignore y for these)
+X_u = X_tr[~labeled]
 print(f"Labeled: {len(X_l)}   Unlabeled: {len(X_u)}")
 
 def new_model():
@@ -48,15 +51,19 @@ for rnd in range(1, 5):
     pseudo = model.classes_[proba.argmax(axis=1)]
     model = new_model().fit(np.vstack([X_l, X_u[confident]]),
                             np.r_[y_l, pseudo[confident]])
-    true_u = y_tr[~labeled][confident]               # peek ONLY to report pseudo-label quality
+    # peek ONLY to report pseudo-label quality
+    true_u = y_tr[~labeled][confident]
     print(f"Round {rnd}: pseudo-labeled {confident.sum():4d} images "
           f"(pseudo-label accuracy {np.mean(pseudo[confident] == true_u):.3f}) "
           f"-> test accuracy = {model.score(X_te, y_te):.3f}")
 
-# A second semi-supervised method: label spreading passes labels along to near neighbors
+# A second semi-supervised method: label spreading passes labels along to near
+# neighbors
 y_partial = np.where(labeled, y_tr, -1)             # -1 means 'no label'
 ls = LabelSpreading(kernel="knn", n_neighbors=10).fit(X_tr, y_partial)
-print(f"\nLabel spreading (same 50 labels): test accuracy = {ls.score(X_te, y_te):.3f}")
+print(
+    f"\nLabel spreading (same 50 labels): test accuracy = {ls.score(X_te, y_te):.3f}"
+)
 
 full = new_model().fit(X_tr, y_tr)
 print(f"For reference, with ALL {len(X_tr)} true labels: {full.score(X_te, y_te):.3f}")

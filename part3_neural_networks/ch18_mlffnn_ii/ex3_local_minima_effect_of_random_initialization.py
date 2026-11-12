@@ -1,11 +1,11 @@
 """
 Chapter 18, Example 3: Local Minima — Effect of Random Initialization
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 One of the most practically important issues in neural network training is that
-different random initializations lead to different final models — because gradient
+different random initializations lead to different final models, because gradient
 descent can get stuck in different local minima. This example trains the same MLFFNN 10
 times on the same data with 10 different random seeds. The resulting test accuracies
 vary noticeably (the range between best and worst is printed). This is why frameworks
@@ -19,6 +19,7 @@ exactly why the final number must come from data that played no part in the choi
 Run it:           python ex3_local_minima_effect_of_random_initialization.py
 Expected output:  expected_output/ex3_local_minima_effect_of_random_initialization.txt
 """
+# Chapter 18 - Example 3: Local Minima - Effect of Random Initialization
 from sklearn.neural_network import MLPClassifier
 from sklearn.datasets import make_moons
 from sklearn.model_selection import train_test_split
@@ -27,12 +28,18 @@ from sklearn.preprocessing import StandardScaler
 import numpy as np
 import warnings
 from sklearn.exceptions import ConvergenceWarning
-warnings.filterwarnings('ignore', category=ConvergenceWarning)   # some seeds need more than 500 epochs
+# some seeds need more than 500 epochs
+warnings.filterwarnings('ignore', category=ConvergenceWarning)
 
 X, y = make_moons(n_samples=500, noise=0.25, random_state=0)
-# Three-way split: train (60%) to fit, validation (20%) to choose, test (20%) to report once
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.25, random_state=0)
+# Three-way split: train (60%) to fit, validation (20%) to choose, test (20%) to report
+# once
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0
+)
+X_train, X_val, y_train, y_val = train_test_split(
+    X_train, y_train, test_size=0.25, random_state=0
+)
 scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_val   = scaler.transform(X_val)
@@ -64,5 +71,8 @@ print(f"Range                    : {(max(val_accs)-min(val_accs))*100:.1f}%")
 # The test set is used exactly once, on the model chosen by validation accuracy
 test_acc = accuracy_score(y_test, models[best].predict(X_test))
 print(f"\nTest accuracy of the chosen model (reported once): {test_acc*100:.1f}%")
-print("\nConclusion: run several random initializations, pick the best on VALIDATION data,")
+print(
+    "\nConclusion: run several random initializations, pick the best on VALIDATION "
+    "data,"
+)
 print("and touch the test set only once at the end.")

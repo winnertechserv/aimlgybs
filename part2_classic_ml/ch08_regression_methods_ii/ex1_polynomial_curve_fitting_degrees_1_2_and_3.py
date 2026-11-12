@@ -1,6 +1,6 @@
 """
 Chapter 8, Example 1: Polynomial Curve Fitting (Degrees 1, 2 and 3)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -34,6 +34,9 @@ for M in (1, 2, 3):
     pred = np.vander(t_test, M + 1, increasing=True) @ w
     test_rmse = np.sqrt(np.mean((pred - h_test) ** 2))
     print(f"M = {M}: Phi is {Phi.shape[0]}x{Phi.shape[1]}, w = {np.round(w, 4)}")
-    print(f"       training RMSE = {train_rmse:.2f}   test RMSE (5 new days) = {test_rmse:.2f}")
+    print(
+        f"       training RMSE = {train_rmse:.2f}   test RMSE (5 new days) = "
+        f"{test_rmse:.2f}"
+    )
     print(f"       predictions {np.round(pred, 1)}  vs actual {h_test}\n")
 print("M = 2 fits the curve; M = 3 adds flexibility the data does not need.")

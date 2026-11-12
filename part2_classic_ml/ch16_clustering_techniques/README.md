@@ -1,8 +1,8 @@
-# Chapter 16 — Clustering Techniques
+# Chapter 16 — Clustering: K-Means, Hierarchical Clustering & DBSCAN
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch16_clustering_techniques/ch16_notebook.ipynb)
 
-Companion code for Chapter 16 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 16 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -10,14 +10,14 @@ Companion code for Chapter 16 of *AI-Machine Learning: Get Your Base Strong*. Th
 - K-Means needs K in advance; the elbow method and silhouette score help you choose it, and they usually agree.
 - Hierarchical clustering builds a full tree of merges, so you can cut it at whatever number of clusters you want.
 - DBSCAN groups by density, so it handles arbitrary shapes and explicitly labels outliers as noise.
-- K-Means assumes roughly spherical clusters — on crescents or rings it fails, and that is not a bug but an assumption.
+- K-Means assumes roughly spherical clusters. On crescents or rings it fails, and that is not a bug but an assumption.
 
 ## Examples
 
 | # | Program | What it shows |
 |---|---|---|
 | 1 | [`ex1_k_means_clustering_elbow_method.py`](ex1_k_means_clustering_elbow_method.py) | We run K-Means on a synthetic 4-cluster dataset and use two methods to find the optimal K. |
-| 2 | [`ex2_hierarchical_clustering_linkage_comparison.py`](ex2_hierarchical_clustering_linkage_comparison.py) | Hierarchical clustering does not need you to specify K in advance — it builds a full tree of merges (a dendrogram) and you cut it at any level you want. |
+| 2 | [`ex2_hierarchical_clustering_linkage_comparison.py`](ex2_hierarchical_clustering_linkage_comparison.py) | Hierarchical clustering does not need you to specify K in advance: it builds a full tree of merges (a dendrogram) and you cut it at any level you want. |
 | 3 | [`ex3_dbscan_vs_k_means_arbitrary_shapes_outlier_de.py`](ex3_dbscan_vs_k_means_arbitrary_shapes_outlier_de.py) | This is the definitive example showing K-Means' biggest weakness: it assumes spherical clusters. |
 
 Run any example from this folder:
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: K-Means Clustering + Elbow Method
 
-We run K-Means on a synthetic 4-cluster dataset and use two methods to find the optimal K. The Elbow Method plots distortion (J) vs K — the biggest drop is between K=1 and K=4, after which improvements become marginal. The Silhouette Score (which measures how well-separated clusters are, ranging from -1 to 1) peaks at K=4 with 0.8335, independently confirming the elbow. The final K=4 cluster centers and per-cluster counts are also printed, showing balanced clusters of 75 points each.
+We run K-Means on a synthetic 4-cluster dataset and use two methods to find the optimal K. The Elbow Method plots distortion (J) against K. The biggest drop is between K=1 and K=4, after which improvements become marginal. The Silhouette Score (which measures how well-separated clusters are, ranging from -1 to 1) peaks at K=4 with 0.8335, independently confirming the elbow. The final K=4 cluster centers and per-cluster counts are also printed, showing balanced clusters of 75 points each.
 
 <details><summary>Expected output</summary>
 
@@ -70,7 +70,7 @@ Silhouette Score   = 0.8335
 
 ### Example 2: Hierarchical Clustering & Linkage Comparison
 
-Hierarchical clustering does not need you to specify K in advance — it builds a full tree of merges (a dendrogram) and you cut it at any level you want. We compare four linkage methods on a 3-cluster dataset. All four linkages perfectly recover the true clusters here (ARI=1.0). The merge history table shows the actual step-by-step merging process: step 1 merges points #16 and #53 (distance 0.0484), step 2 merges #57 and #85, and so on, until all 100 points are in one cluster after 99 merges. This is exactly the AGNES algorithm described in the overview.
+Hierarchical clustering does not need you to specify K in advance: it builds a full tree of merges (a dendrogram) and you cut it at any level you want. We compare four linkage methods on a 3-cluster dataset. All four linkages perfectly recover the true clusters here (ARI=1.0). The merge history table shows the actual step-by-step merging process: step 1 merges points #16 and #53 (distance 0.0484), step 2 merges #57 and #85, and so on, until all 100 points are in one cluster after 99 merges. This is exactly the AGNES algorithm described in the overview.
 
 <details><summary>Expected output</summary>
 
@@ -105,7 +105,7 @@ Total steps: 99  (from 100 singletons -> 1 cluster)
 
 ### Example 3: DBSCAN vs K-Means — Arbitrary Shapes + Outlier Detection
 
-This is the definitive example showing K-Means' biggest weakness: it assumes spherical clusters. On crescent-shaped data (Two Moons) or ring-shaped data (Two Circles), K-Means splits the shapes incorrectly. DBSCAN doesn't care about shape — it groups by density. We also show DBSCAN's noise detection: when 10 random outlier points are added to a clean blob dataset, DBSCAN correctly identifies them as noise (label -1) rather than forcing them into any cluster. This is the key practical advantage of DBSCAN over K-Means in real-world messy data.
+This is the definitive example showing K-Means' biggest weakness: it assumes spherical clusters. On crescent-shaped data (Two Moons) or ring-shaped data (Two Circles), K-Means splits the shapes incorrectly. DBSCAN does not care about shape; it groups points by density. We also show DBSCAN's noise detection: when 10 random outlier points are added to a clean blob dataset, DBSCAN correctly identifies them as noise (label -1) rather than forcing them into any cluster. This is the key practical advantage of DBSCAN over K-Means in real-world messy data.
 
 <details><summary>Expected output</summary>
 

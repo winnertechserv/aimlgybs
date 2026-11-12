@@ -1,6 +1,6 @@
 """
 Chapter 19, Example 1: SGD vs Momentum vs Adam — Optimizer Convergence
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -19,11 +19,15 @@ little tuning, which is why it is the usual default.
 Run it:           python ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.py
 Expected output:  expected_output/ex1_sgd_vs_momentum_vs_adam_optimizer_convergence.txt
 """
+# Chapter 19 - Example 1: SGD vs Momentum vs Adam - Optimizer Convergence
 import numpy as np
 
 print("=== Optimizer Comparison: Minimizing E(w) = w1^2 + 50*w2^2 ===\n")
 print("Starting at w=[5.0, 5.0], optimal = [0.0, 0.0]")
-print("A narrow ravine: steep in w2 (gradient 100*w2), almost flat in w1 (gradient 2*w1)\n")
+print(
+    "A narrow ravine: steep in w2 (gradient 100*w2), almost flat in w1 (gradient "
+    "2*w1)\n"
+)
 
 loss = lambda w: w[0]**2 + 50*w[1]**2
 grad = lambda w: np.array([2*w[0], 100*w[1]])
@@ -56,7 +60,9 @@ def make_adam(eta=0.3, r1=0.9, r2=0.999, eps=1e-8):
         return w - eta * mh / (np.sqrt(vh) + eps)
     return update
 
-print(f"{'Optimizer':<22} {'Step 10':>10} {'Step 50':>10} {'Step 100':>11}  {'Final w'}")
+print(
+    f"{'Optimizer':<22} {'Step 10':>10} {'Step 50':>10} {'Step 100':>11}  {'Final w'}"
+)
 print("-" * 75)
 for name, updater in [('SGD (eta=0.021)',  make_sgd(0.021)),
                       ('SGD (eta=0.009)',  make_sgd()),
@@ -67,13 +73,22 @@ for name, updater in [('SGD (eta=0.021)',  make_sgd(0.021)),
     for _ in range(100):
         w = updater(w, grad(w))
         losses.append(loss(w))
-    print(f"  {name:<20} {losses[10]:>10.4g} {losses[50]:>10.4g} {losses[100]:>11.4g}  "
-          f"[{w[0]:+.4f}, {w[1]:+.4f}]")
+    print(
+        f"  {name:<20} {losses[10]:>10.4g} {losses[50]:>10.4g} {losses[100]:>11.4g}  "
+        f"[{w[0]:+.4f}, {w[1]:+.4f}]"
+    )
 
 print()
 print("Observations:")
-print("  SGD      : One step size for both weights. Too big and the steep w2 blows up;")
+print(
+    "  SGD      : One step size for both weights. Too big and the steep w2 blows up;"
+)
 print("             small enough for w2, it crawls along the flat w1 direction")
 print("  Momentum : Builds up speed along w1 and finishes far ahead of SGD")
-print("  Adam     : Per-weight scaling moves both weights at a similar pace; it beats SGD")
-print("             here, but a well-tuned momentum can still win on a smooth toy bowl")
+print(
+    "  Adam     : Per-weight scaling moves both weights at a similar pace; it beats "
+    "SGD"
+)
+print(
+    "             here, but a well-tuned momentum can still win on a smooth toy bowl"
+)

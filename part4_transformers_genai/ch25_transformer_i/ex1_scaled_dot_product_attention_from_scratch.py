@@ -1,6 +1,6 @@
 """
 Chapter 25, Example 1: Scaled Dot-Product Attention from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -66,5 +66,8 @@ print("into a saturated region where gradients vanish during training.")
 print("\n=== Effect of the 1/sqrt(d) scaling ===")
 big = np.array([10.0, 8.0, 6.0, 4.0, 2.0])
 print(f"  Unscaled logits {big} -> softmax {np.round(softmax(big), 4)}")
-print(f"  Scaled by sqrt({d})            -> softmax {np.round(softmax(big/np.sqrt(d)), 4)}")
+print(
+    f"  Scaled by sqrt({d})            -> softmax "
+    f"{np.round(softmax(big/np.sqrt(d)), 4)}"
+)
 print("  Scaling keeps the distribution smoother (non-saturated gradients).")

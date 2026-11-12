@@ -1,13 +1,13 @@
 """
 Chapter 19, Example 3: AdaGrad vs RMSProp — Learning Rate Decay Comparison
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 This example simulates 30 steps of gradient descent and traces the effective learning
 rate of AdaGrad vs RMSProp for a single weight. The first 10 steps have large gradients
 (simulating early training); the last 20 have small gradients (simulating late training
-near convergence). AdaGrad accumulates ALL squared gradients — so by step 11, its
+near convergence). AdaGrad accumulates all squared gradients, so by step 11, its
 effective learning rate has already decayed to 0.00389 and keeps shrinking even as
 gradients become small. RMSProp only keeps a moving average (ρ=0.9), so when gradients
 become small, its denominator shrinks too, keeping the learning rate healthy. The Ratio
@@ -16,6 +16,7 @@ column shows RMSProp learning 11x faster than AdaGrad by step 30.
 Run it:           python ex3_adagrad_vs_rmsprop_learning_rate_decay_compar.py
 Expected output:  expected_output/ex3_adagrad_vs_rmsprop_learning_rate_decay_compar.txt
 """
+# Chapter 19 - Example 3: AdaGrad vs RMSProp - Learning Rate Decay Comparison
 import numpy as np
 
 np.random.seed(0)

@@ -1,6 +1,6 @@
 """
 Chapter 34, Example 1: Policy Iteration on the 4x3 Grid World
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -33,7 +33,9 @@ SIDE = {"Up": ["Left", "Right"], "Down": ["Left", "Right"],
         "Left": ["Up", "Down"], "Right": ["Up", "Down"]}
 ARROW = {"Up": "^", "Down": "v", "Left": "<", "Right": ">"}
 
-states = [(c, r) for c in range(1, cols + 1) for r in range(1, rows + 1) if (c, r) != WALL]
+states = [
+    (c, r) for c in range(1, cols + 1) for r in range(1, rows + 1) if (c, r) != WALL
+]
 nonterm = [s for s in states if s not in TERMINALS]
 idx = {s: i for i, s in enumerate(nonterm)}
 

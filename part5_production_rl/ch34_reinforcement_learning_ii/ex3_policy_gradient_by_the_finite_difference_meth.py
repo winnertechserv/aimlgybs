@@ -1,6 +1,6 @@
 """
 Chapter 34, Example 3: Policy Gradient by the Finite-Difference Method
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -56,7 +56,8 @@ print("Environment: a corridor of 7 cells, start in the middle (cell 3).")
 print("Right end = +1, left end = -1, every other step = -0.01, horizon H=20.")
 print("Policy: P(move right | s) = sigmoid(theta_0 + theta_1 * position)\n")
 
-theta = np.array([-1.0, 0.0])                   # starts out preferring LEFT (wrong way)
+# starts out preferring LEFT (wrong way)
+theta = np.array([-1.0, 0.0])
 m, sigma, eta = 12, 0.3, 0.8
 
 print(f"{'iter':>5}{'theta_0':>10}{'theta_1':>10}{'P(right) at start':>20}{'J':>10}")
@@ -64,7 +65,9 @@ print("-" * 57)
 for it in range(13):
     J0 = J_estimate(theta)
     if it % 2 == 0 or it == 12:
-        print(f"{it:>5}{theta[0]:>10.3f}{theta[1]:>10.3f}{p_right(theta, START):>20.3f}{J0:>10.3f}")
+        print(
+            f"{it:>5}{theta[0]:>10.3f}{theta[1]:>10.3f}{p_right(theta, START):>20.3f}{J0:>10.3f}"
+        )
     D = sigma * rng.standard_normal((m, 2))            # m perturbations (rows of D)
     y = np.array([J_estimate(theta + d) - J0 for d in D])
     grad = np.linalg.solve(D.T @ D, D.T @ y)           # (D^T D)^-1 D^T y
@@ -84,4 +87,6 @@ print("    the ACTOR  (policy network) chooses actions,")
 print("    the CRITIC (Q-network) scores them using the TD error")
 print("        delta_t = R_t + gamma*Q(s_t+1, a_t+1) - Q(s_t, a_t).")
 print("  The critic's score tells the actor which way to move, one step at a time,")
-print("  without waiting for whole roll-outs. AlphaGo and walking robots use this idea.")
+print(
+    "  without waiting for whole roll-outs. AlphaGo and walking robots use this idea."
+)

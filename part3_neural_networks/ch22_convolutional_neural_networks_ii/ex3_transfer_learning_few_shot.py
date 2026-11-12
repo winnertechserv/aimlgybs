@@ -1,6 +1,6 @@
 """
 Chapter 22, Example 3: Transfer Learning (Few-Shot)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -36,7 +36,9 @@ print(f"Source domain : digits {src_classes}")
 print(f"                {len(Xs)} labeled images -> pretrain a deep CNN-like model")
 pretrained = MLPClassifier(hidden_layer_sizes=(120, 64), max_iter=600, random_state=0)
 pretrained.fit(Xs, ys)
-print(f"                pretrained source accuracy: {pretrained.score(Xs, ys)*100:.1f}%\n")
+print(
+    f"                pretrained source accuracy: {pretrained.score(Xs, ys)*100:.1f}%\n"
+)
 
 # Target domain: NEW classes (8, 9) with only a handful of labels each
 tgt = np.isin(y, [8, 9])
@@ -45,7 +47,9 @@ Xt, yt = X[tgt], y[tgt]
 Xt_train, Xt_test, yt_train, yt_test = train_test_split(
     Xt, yt, train_size=10, random_state=0, stratify=yt)
 print(f"Target domain : NEW digits 8 and 9")
-print(f"                only {len(Xt_train)} labeled images (5 per class - few-shot!)\n")
+print(
+    f"                only {len(Xt_train)} labeled images (5 per class - few-shot!)\n"
+)
 
 # Pretrained feature extractor (hidden activations)
 def extract_features(model, Xin):
@@ -71,7 +75,9 @@ print(f"Test set: {len(yt_test)} unseen images of digits 8 and 9\n")
 print("Results:")
 print(f"  Train from scratch (raw pixels, 10 imgs) : {acc_scratch*100:.1f}%")
 print(f"  Transfer learning (pretrained features)  : {acc_transfer*100:.1f}%")
-print(f"\nImprovement from transfer learning: {(acc_transfer-acc_scratch)*100:+.1f} pp")
+print(
+    f"\nImprovement from transfer learning: {(acc_transfer-acc_scratch)*100:+.1f} pp"
+)
 print("\nWith only 10 labeled images, training a deep model from scratch fails to")
 print("generalize. The pretrained model already learned reusable stroke/edge")
 print("features, so a tiny classifier on top of them generalizes far better.")

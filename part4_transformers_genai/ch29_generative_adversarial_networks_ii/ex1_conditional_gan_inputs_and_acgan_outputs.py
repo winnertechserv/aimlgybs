@@ -1,6 +1,6 @@
 """
 Chapter 29, Example 1: Conditional GAN Inputs and ACGAN Outputs
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

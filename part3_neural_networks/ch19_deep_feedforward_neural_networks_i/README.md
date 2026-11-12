@@ -2,7 +2,7 @@
 
 **Part III — Neural Networks & Deep Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part3_neural_networks/ch19_deep_feedforward_neural_networks_i/ch19_notebook.ipynb)
 
-Companion code for Chapter 19 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 19 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -60,7 +60,7 @@ Observations:
 
 ### Example 2: L1 vs L2 Regularization — Effect on Weights
 
-We train a logistic regression model on a 20-feature dataset where only 5 features are truly informative. Without regularization, all 20 weights are non-zero — the model uses noise features. L2 regularization shrinks all weights toward zero proportionally. L1 regularization does something smarter: it pushes weights to exactly zero (sparse solution). With strong L1 (C=0.1), 15 features get zeroed out — the model correctly identifies the informative features! This is the key practical difference: L2 shrinks, L1 selects.
+We train a logistic regression model on a 20-feature dataset where only 5 features are truly informative. Without regularization, all 20 weights are non-zero, so the model also uses the noise features. L2 regularization shrinks all weights toward zero proportionally. L1 regularization does something smarter: it pushes weights to exactly zero (sparse solution). With strong L1 (C=0.1), 15 features are zeroed out and the model keeps only the informative ones. This is the key practical difference: L2 shrinks, L1 selects.
 
 <details><summary>Expected output</summary>
 
@@ -107,7 +107,7 @@ Regularization          Test Acc    ||w||   Zero weights
 
 ### Example 3: AdaGrad vs RMSProp — Learning Rate Decay Comparison
 
-This example simulates 30 steps of gradient descent and traces the effective learning rate of AdaGrad vs RMSProp for a single weight. The first 10 steps have large gradients (simulating early training); the last 20 have small gradients (simulating late training near convergence). AdaGrad accumulates ALL squared gradients — so by step 11, its effective learning rate has already decayed to 0.00389 and keeps shrinking even as gradients become small. RMSProp only keeps a moving average (ρ=0.9), so when gradients become small, its denominator shrinks too, keeping the learning rate healthy. The Ratio column shows RMSProp learning 11x faster than AdaGrad by step 30.
+This example simulates 30 steps of gradient descent and traces the effective learning rate of AdaGrad vs RMSProp for a single weight. The first 10 steps have large gradients (simulating early training); the last 20 have small gradients (simulating late training near convergence). AdaGrad accumulates all squared gradients, so by step 11, its effective learning rate has already decayed to 0.00389 and keeps shrinking even as gradients become small. RMSProp only keeps a moving average (ρ=0.9), so when gradients become small, its denominator shrinks too, keeping the learning rate healthy. The Ratio column shows RMSProp learning 11x faster than AdaGrad by step 30.
 
 <details><summary>Expected output</summary>
 

@@ -1,6 +1,6 @@
 """
 Chapter 9, Example 1: Nearest Neighbor and K-NN from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -38,7 +38,10 @@ for test in ([150, 47.0], [140, 46.0]):
     _, d, order = knn_predict(np.array(test), 1)
     print("  5 nearest training examples:")
     for i in order[:5]:
-        print(f"    ({X[i, 0]:.0f}, {X[i, 1]:5.2f})  distance {d[i]:6.2f}  class {NAMES[y[i]]}")
+        print(
+            f"    ({X[i, 0]:.0f}, {X[i, 1]:5.2f})  distance {d[i]:6.2f}  class "
+            f"{NAMES[y[i]]}"
+        )
     for K in (1, 3, 5):
         print(f"  K = {K}: predicted {NAMES[knn_predict(np.array(test), K)[0]]}")
     print()
@@ -48,7 +51,9 @@ from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 Xi, yi = load_iris(return_X_y=True)
-X_tr, X_val, y_tr, y_val = train_test_split(Xi, yi, test_size=0.4, stratify=yi, random_state=3)
+X_tr, X_val, y_tr, y_val = train_test_split(
+    Xi, yi, test_size=0.4, stratify=yi, random_state=3
+)
 print("Choosing K on a validation set (Iris):")
 for K in (1, 3, 5, 7, 9, 15, 25):
     acc = KNeighborsClassifier(n_neighbors=K).fit(X_tr, y_tr).score(X_val, y_val)

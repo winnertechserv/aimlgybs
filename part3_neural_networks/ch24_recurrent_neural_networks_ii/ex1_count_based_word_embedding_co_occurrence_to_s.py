@@ -1,6 +1,6 @@
 """
 Chapter 24, Example 1: Count-Based Word Embedding (Co-occurrence to SVD)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

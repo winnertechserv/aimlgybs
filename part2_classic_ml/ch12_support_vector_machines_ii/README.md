@@ -1,8 +1,8 @@
-# Chapter 12 — Support Vector Machines II: Maximum Margin, Soft Margin, Kernels & Multiclass SVMs
+# Chapter 12 — Support Vector Machines: Maximum Margin, Soft Margin, Kernels & Multiclass SVMs
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch12_support_vector_machines_ii/ch12_notebook.ipynb)
 
-Companion code for Chapter 12 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 12 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 

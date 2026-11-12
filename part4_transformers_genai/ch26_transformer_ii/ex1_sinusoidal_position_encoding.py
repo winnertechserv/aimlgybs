@@ -1,6 +1,6 @@
 """
 Chapter 26, Example 1: Sinusoidal Position Encoding
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

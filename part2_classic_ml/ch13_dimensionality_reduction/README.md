@@ -2,7 +2,7 @@
 
 **Part II — Classic Machine Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part2_classic_ml/ch13_dimensionality_reduction/ch13_notebook.ipynb)
 
-Companion code for Chapter 13 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 13 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -18,7 +18,7 @@ Companion code for Chapter 13 of *AI-Machine Learning: Get Your Base Strong*. Th
 |---|---|---|
 | 1 | [`ex1_pca_step_by_step_from_scratch.py`](ex1_pca_step_by_step_from_scratch.py) | This example builds PCA by hand, step by step, exactly as described in the overview. |
 | 2 | [`ex2_pca_with_scikit_learn_on_handwritten_digits.py`](ex2_pca_with_scikit_learn_on_handwritten_digits.py) | This is PCA on real data: scikit-learn's handwritten digits, where each image is 8×8 = 64 pixels (the same idea scales to 28×28 MNIST images). |
-| 3 | [`ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py`](ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py) | This is the key example that proves WHY FDA beats PCA for classification tasks. |
+| 3 | [`ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py`](ex3_fisher_discriminant_analysis_fda_lda_vs_pca.py) | This example shows why FDA beats PCA for classification tasks. |
 
 Run any example from this folder:
 
@@ -98,7 +98,7 @@ Reconstruction MSE     : 0.8486  (average pixel variance: 18.77)
 
 ### Example 3: Fisher Discriminant Analysis (FDA/LDA) vs PCA
 
-This is the key example that proves WHY FDA beats PCA for classification tasks. We use sklearn's LinearDiscriminantAnalysis (which builds FDA) and compare it to PCA on the same 10-feature, 2-class dataset. Both reduce to 1 dimension. FDA finds a direction that maximizes class separation (the class means are 1.96 apart after projection). PCA finds the direction of maximum variance — but that direction might not be useful for distinguishing classes. The accuracy comparison confirms it: FDA 1D is nearly as good as the full 10D dataset, while PCA 1D loses large accuracy.
+This example shows why FDA beats PCA for classification tasks. We use sklearn's LinearDiscriminantAnalysis (which builds FDA) and compare it to PCA on the same 10-feature, 2-class dataset. Both reduce to 1 dimension. FDA finds a direction that maximizes class separation (the class means are 1.96 apart after projection). PCA finds the direction of maximum variance, but that direction might not be useful for distinguishing classes. The accuracy comparison confirms it: FDA 1D is nearly as good as the full 10D dataset, while PCA 1D loses large accuracy.
 
 <details><summary>Expected output</summary>
 

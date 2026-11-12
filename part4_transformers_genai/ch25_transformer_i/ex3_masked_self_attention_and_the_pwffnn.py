@@ -1,6 +1,6 @@
 """
 Chapter 25, Example 3: Masked Self-Attention and the PWFFNN
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -48,7 +48,10 @@ print("\nAttention scores WITHOUT mask (token 2 can see the future - wrong!):")
 print(np.round(scores_unmasked, 3))
 print("\nAttention scores WITH causal mask (upper triangle is exactly 0):")
 print(np.round(scores_masked, 3))
-print(f"\nRow sums with mask: {np.round(scores_masked.sum(axis=1), 4)} (still valid distributions)")
+print(
+    f"\nRow sums with mask: {np.round(scores_masked.sum(axis=1), 4)} (still valid "
+    f"distributions)"
+)
 print("Token 1 attends only to itself; token 5 can attend to all 5 positions.")
 
 # ---- PWFFNN: same weights applied at every position ----
@@ -66,7 +69,9 @@ out = np.vstack([pwffnn(Z[t]) for t in range(T)])
 
 print(f"There are T={T} MLFFNNs (one per position), but the weight matrices")
 print(f"W_FF1 {W1.shape} and W_FF2 {W2.shape} are SHARED across all positions.")
-print(f"Parameters if NOT shared : {T} x ({W1.size + W2.size}) = {T*(W1.size+W2.size)}")
+print(
+    f"Parameters if NOT shared : {T} x ({W1.size + W2.size}) = {T*(W1.size+W2.size)}"
+)
 print(f"Parameters WITH sharing  : {W1.size + W2.size}")
 print(f"Reduction                : {(1 - 1/T)*100:.0f}% fewer parameters\n")
 print(f"Input to PWFFNN  (position 1): {np.round(Z[0], 4)}")
@@ -75,4 +80,6 @@ print(f"Output sequence shape: {out.shape}  (same length and dimension as input)
 
 # Verify weight sharing: feeding the same vector at 2 positions gives same output
 same = np.allclose(pwffnn(Z[0]), pwffnn(Z[0].copy()))
-print(f"\nSame input at any position -> same output? {same}  (confirms shared weights)")
+print(
+    f"\nSame input at any position -> same output? {same}  (confirms shared weights)"
+)

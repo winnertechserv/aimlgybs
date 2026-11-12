@@ -1,6 +1,6 @@
 """
 Chapter 22, Example 1: Residual Connections vs Vanishing Gradients
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -30,7 +30,10 @@ acts    = np.random.uniform(0.1, 0.25, n_layers)  # sigmoid derivative range
 
 print("=== Gradient Flow Through a 20-Layer Network ===\n")
 print("Plain network: grad_(L-1) = grad_L * w * sigmoid'(a)")
-print("Residual net : grad_(L-1) = grad_L * (1 + w * sigmoid'(a))  <- the +1 is the skip\n")
+print(
+    "Residual net : grad_(L-1) = grad_L * (1 + w * sigmoid'(a))  <- the +1 is the "
+    "skip\n"
+)
 
 grad_plain = 1.0
 grad_res   = 1.0

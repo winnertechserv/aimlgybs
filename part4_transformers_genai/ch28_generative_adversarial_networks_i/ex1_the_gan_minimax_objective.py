@@ -1,14 +1,15 @@
 """
 Chapter 28, Example 1: The GAN Minimax Objective
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 This computes the GAN objective V(D,G) numerically for several scenarios, showing it is
 high when the discriminator wins and low when the generator wins, with the theoretical
 equilibrium at 2*log(0.5) = -1.386. The second half walks through one mini-batch
-training step exactly as the algorithm slide describes, verifying that the
-discriminator's gradient ascent raises V and the generator's gradient descent lowers it.
+training step exactly as the training algorithm in the overview describes, verifying
+that the discriminator's gradient ascent raises V and the generator's gradient descent
+lowers it.
 
 Run it:           python ex1_the_gan_minimax_objective.py
 Expected output:  expected_output/ex1_the_gan_minimax_objective.txt

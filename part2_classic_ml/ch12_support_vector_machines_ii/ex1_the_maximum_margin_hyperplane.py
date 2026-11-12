@@ -1,6 +1,6 @@
 """
 Chapter 12, Example 1: The Maximum-Margin Hyperplane
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -31,14 +31,26 @@ for sv, a in zip(svm.support_vectors_, svm.dual_coef_[0]):
     g = sv @ w + w0
     print(f"  support vector {np.round(sv, 3)}  y*g(x) = {np.sign(a) * g:.3f}  "
           f"alpha*y = {a:+.3f}")
-print(f"\nMargin (distance from boundary to nearest point) = 1/||w|| = {1 / np.linalg.norm(w):.3f}")
-print(f"Width of the empty 'street' between the classes  = 2/||w|| = {2 / np.linalg.norm(w):.3f}")
+print(
+    f"\nMargin (distance from boundary to nearest point) = 1/||w|| = "
+    f"{1 / np.linalg.norm(w):.3f}"
+)
+print(
+    f"Width of the empty 'street' between the classes  = 2/||w|| = "
+    f"{2 / np.linalg.norm(w):.3f}"
+)
 
 # Rebuild w from the support vectors only: w = sum(alpha_n * y_n * x_n)
 w_from_sv = (svm.dual_coef_[0][:, None] * svm.support_vectors_).sum(axis=0)
 print("w rebuilt from support vectors:", np.round(w_from_sv, 3), "(matches w)")
 
 # Compare with the perceptron line learned in Chapter 11 on this exact data
-w_perc = np.array([0.9, 0.066, 1.635])              # [w0, w1, w2] from Chapter 11, Example 2
-d_perc = np.abs(np.column_stack([np.ones(40), X]) @ w_perc).min() / np.linalg.norm(w_perc[1:])
-print(f"\nClosest point to the PERCEPTRON line: {d_perc:.3f}  vs  SVM: {1 / np.linalg.norm(w):.3f}")
+# [w0, w1, w2] from Chapter 11, Example 2
+w_perc = np.array([0.9, 0.066, 1.635])
+d_perc = np.abs(np.column_stack([np.ones(40), X]) @ w_perc).min() / np.linalg.norm(
+    w_perc[1:]
+)
+print(
+    f"\nClosest point to the PERCEPTRON line: {d_perc:.3f}  vs  SVM: "
+    f"{1 / np.linalg.norm(w):.3f}"
+)

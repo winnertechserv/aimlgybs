@@ -1,20 +1,21 @@
 """
 Chapter 18, Example 1: Backpropagation — Manual Forward & Backward Pass
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 This is the most important code in the entire book. We build backpropagation completely
-from scratch — no sklearn, no PyTorch, just numpy and math. The network has 2 inputs, 2
-hidden tanh neurons, and 1 logistic output neuron. Given one training example (x=[0.5,
-0.8], target=1.0), we trace the full forward pass (computing activations step by step),
-then the full backward pass (computing all gradients using the chain rule). The final
-check confirms the error decreased after the weight update — proving that one step of
-gradient descent worked correctly.
+from scratch, with no scikit-learn or PyTorch, just NumPy and math. The network has 2
+inputs, 2 hidden tanh neurons, and 1 logistic output neuron. Given one training example
+(x=[0.5, 0.8], target=1.0), we trace the full forward pass (computing activations step
+by step), then the full backward pass (computing all gradients using the chain rule).
+The final check confirms the error decreased after the weight update, showing that one
+step of gradient descent worked correctly.
 
 Run it:           python ex1_backpropagation_manual_forward_backward_pass.py
 Expected output:  expected_output/ex1_backpropagation_manual_forward_backward_pass.txt
 """
+# Chapter 18 - Example 1: Backpropagation - Manual Forward & Backward Pass
 import numpy as np
 
 np.random.seed(42)

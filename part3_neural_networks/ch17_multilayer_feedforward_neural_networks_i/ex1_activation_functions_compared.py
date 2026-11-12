@@ -1,20 +1,21 @@
 """
 Chapter 17, Example 1: Activation Functions Compared
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 Before building a neural network, you need to understand what each activation function
 does. This example computes and compares Logistic, Tanh, ReLU, and Softmax over a range
 of inputs. The key insight is in the derivative table at the bottom: for logistic at
-a=±4, the gradient is only 0.0177 — nearly zero. In a deep network with 10 sigmoid
+a=±4, the gradient is only 0.0177, nearly zero. In a deep network with 10 sigmoid
 layers, the gradient shrinks by 0.0177^10 ≈ 10^-17 by the time it reaches the first
 layer. That's the vanishing gradient problem. ReLU has a derivative of exactly 1 for all
-positive inputs — no shrinkage.
+positive inputs, so nothing shrinks.
 
 Run it:           python ex1_activation_functions_compared.py
 Expected output:  expected_output/ex1_activation_functions_compared.txt
 """
+# Chapter 17 - Example 1: Activation Functions Compared
 import numpy as np
 
 def logistic(a): return 1 / (1 + np.exp(-a))

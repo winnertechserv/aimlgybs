@@ -1,6 +1,6 @@
 """
 Chapter 27, Example 3: Retrieval Augmented Generation Pipeline
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -24,12 +24,13 @@ print("document store and putting them into the prompt before generation.\n")
 
 # ---- Document store ----
 documents = [
- "The Transformer model was introduced in the paper Attention Is All You Need in 2017.",
- "BERT is an encoder-only model pre-trained with masked language modeling.",
- "GPT is a decoder-only autoregressive model pre-trained on unlabeled text.",
- "ResNet uses residual skip connections to train very deep CNNs.",
- "K-Means is a partitioning clustering algorithm that minimizes distortion.",
- "LSTM cells use forget, input and output gates to avoid vanishing gradients.",
+    "The Transformer model was introduced in the paper Attention Is All You Need in "
+    "2017.",
+    "BERT is an encoder-only model pre-trained with masked language modeling.",
+    "GPT is a decoder-only autoregressive model pre-trained on unlabeled text.",
+    "ResNet uses residual skip connections to train very deep CNNs.",
+    "K-Means is a partitioning clustering algorithm that minimizes distortion.",
+    "LSTM cells use forget, input and output gates to avoid vanishing gradients.",
 ]
 
 # ---- Tiny bag-of-words embedder (stands in for a real sentence encoder) ----

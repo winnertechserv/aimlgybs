@@ -1,14 +1,14 @@
 """
 Chapter 20, Example 1: Dropout — Step-by-Step Manual Demonstration
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 We build dropout from scratch to show exactly what happens during training and testing.
-During training, a random binary mask is applied to the layer — zeroing out randomly
+During training, a random binary mask is applied to the layer, zeroing out randomly
 chosen nodes for each mini-batch. Each mini-batch gets a different thinned network. With
-L=6 nodes, there are 2^6=64 possible thinned networks — we're implicitly training an
-ensemble of 64 models in parallel! At test time, all nodes are active but weights are
+L=6 nodes, there are 2^6=64 possible thinned networks, so we are implicitly training an
+ensemble of 64 models at once. At test time, all nodes are active but weights are
 multiplied by p_keep (the retention probability) to approximate the average of all 64
 networks. We also show the key difference from DropConnect: Dropout zeros entire node
 rows; DropConnect zeros individual weight connections.
@@ -16,6 +16,7 @@ rows; DropConnect zeros individual weight connections.
 Run it:           python ex1_dropout_step_by_step_manual_demonstration.py
 Expected output:  expected_output/ex1_dropout_step_by_step_manual_demonstration.txt
 """
+# Chapter 20 - Example 1: Dropout - Step-by-Step Manual Demonstration
 import numpy as np
 np.random.seed(42)
 

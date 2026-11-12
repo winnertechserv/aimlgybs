@@ -1,8 +1,8 @@
-# Chapter 17 — Multilayer Feedforward Neural Networks I
+# Chapter 17 — Multilayer Feedforward Neural Networks I: Neurons, Activations & Architecture
 
 **Part III — Neural Networks & Deep Learning** · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/winnertechserv/aimlgybs/blob/main/part3_neural_networks/ch17_multilayer_feedforward_neural_networks_i/ch17_notebook.ipynb)
 
-Companion code for Chapter 17 of *AI-Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
+Companion code for Chapter 17 of *AI & Machine Learning: Get Your Base Strong*. The book explains the ideas; this folder lets you run them.
 
 ## Key ideas
 
@@ -10,7 +10,7 @@ Companion code for Chapter 17 of *AI-Machine Learning: Get Your Base Strong*. Th
 - The activation choice matters: sigmoid and tanh saturate at the extremes, while ReLU has gradient 1 for all positive inputs.
 - Softmax converts output scores into class probabilities that sum to exactly 1.
 - A single perceptron can only draw a straight boundary, which is why it fails on XOR.
-- Adding one hidden layer solves XOR — nonlinearity in the hidden layer is what buys the extra power.
+- Adding one hidden layer solves XOR; nonlinearity in the hidden layer is what buys the extra power.
 
 ## Examples
 
@@ -31,7 +31,7 @@ The exact output printed in the book is in [`expected_output/`](expected_output)
 
 ### Example 1: Activation Functions Compared
 
-Before building a neural network, you need to understand what each activation function does. This example computes and compares Logistic, Tanh, ReLU, and Softmax over a range of inputs. The key insight is in the derivative table at the bottom: for logistic at a=±4, the gradient is only 0.0177 — nearly zero. In a deep network with 10 sigmoid layers, the gradient shrinks by 0.0177^10 ≈ 10^-17 by the time it reaches the first layer. That's the vanishing gradient problem. ReLU has a derivative of exactly 1 for all positive inputs — no shrinkage.
+Before building a neural network, you need to understand what each activation function does. This example computes and compares Logistic, Tanh, ReLU, and Softmax over a range of inputs. The key insight is in the derivative table at the bottom: for logistic at a=±4, the gradient is only 0.0177, nearly zero. In a deep network with 10 sigmoid layers, the gradient shrinks by 0.0177^10 ≈ 10^-17 by the time it reaches the first layer. That's the vanishing gradient problem. ReLU has a derivative of exactly 1 for all positive inputs, so nothing shrinks.
 
 <details><summary>Expected output</summary>
 
@@ -109,7 +109,7 @@ Verification:
 
 ### Example 3: MLFFNN Solving XOR + Architecture Comparison
 
-XOR is the canonical example showing why we need hidden layers. A single perceptron (no hidden layer) gets only 25% accuracy on XOR — it literally cannot draw a line that separates the two classes. Adding one hidden layer of 4 tanh neurons solves it instantly: 100% accuracy. We then print out all the learned weights to make the network transparent — you can trace how input (0,1) flows through the network and comes out as 1. The final section compares three architecture sizes on a real 3-class problem and shows how adding more parameters doesn't always improve test accuracy (due to overfitting on a small dataset).
+XOR is the canonical example showing why we need hidden layers. A single perceptron (no hidden layer) gets only 25% accuracy on XOR, because it cannot draw a line that separates the two classes. Adding one hidden layer of 4 tanh neurons solves it instantly: 100% accuracy. We then print out all the learned weights to make the network transparent, so you can trace how input (0,1) flows through the network and comes out as 1. The final section compares three architecture sizes on a real 3-class problem and shows how adding more parameters doesn't always improve test accuracy (due to overfitting on a small dataset).
 
 <details><summary>Expected output</summary>
 

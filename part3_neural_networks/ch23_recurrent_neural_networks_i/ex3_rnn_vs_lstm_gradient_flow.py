@@ -1,6 +1,6 @@
 """
 Chapter 23, Example 3: RNN vs LSTM Gradient Flow
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

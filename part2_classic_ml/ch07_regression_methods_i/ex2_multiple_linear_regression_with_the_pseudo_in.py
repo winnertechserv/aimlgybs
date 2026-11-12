@@ -1,6 +1,6 @@
 """
 Chapter 7, Example 2: Multiple Linear Regression with the Pseudo-Inverse
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -42,6 +42,9 @@ print(f"\nTest: humidity 66.0, pressure 1020.0 -> predicted {pred:.2f} C "
 
 y_hat = X @ w
 rmse = np.sqrt(np.mean((y_hat - y) ** 2))
-print(f"Training RMSE = {rmse:.3f} C  ({100 * rmse / y.mean():.1f}% of the mean temperature)")
+print(
+    f"Training RMSE = {rmse:.3f} C  ({100 * rmse / y.mean():.1f}% of the mean "
+    f"temperature)"
+)
 print("Meaning of the weights: each extra 1% humidity changes temperature by "
       f"{w[1]:+.3f} C, holding pressure fixed.")

@@ -1,6 +1,6 @@
 """
 Chapter 21, Example 2: 2D Convolution + Max/Mean Pooling
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------

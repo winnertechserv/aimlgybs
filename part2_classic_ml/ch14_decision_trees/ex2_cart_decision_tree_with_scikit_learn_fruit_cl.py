@@ -1,13 +1,13 @@
 """
 Chapter 14, Example 2: CART Decision Tree with scikit-learn (Fruit Classifier)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 We train a real CART decision tree on a small fruit classification example. Each fruit
 is described by 4 categorical features encoded as integers: Color (0=Green, 1=Yellow,
 2=Red), Size (0=Small, 1=Medium, 2=Big), Shape (0=Round, 1=NonRound), Taste (0=NonSweet,
-1=Sweet). The export_text output shows the actual tree that CART built — it's a human-
+1=Sweet). The export_text output shows the actual tree that CART built. It is a human-
 readable flowchart you can follow manually. We then test it on three new fruit
 descriptions to check predictions. Scikit-learn trees need numbers, which is why the
 categories are encoded as integers first. Figure 14.1 draws this same tree. Notice that
@@ -17,6 +17,7 @@ apart.
 Run it:           python ex2_cart_decision_tree_with_scikit_learn_fruit_cl.py
 Expected output:  expected_output/ex2_cart_decision_tree_with_scikit_learn_fruit_cl.txt
 """
+# Chapter 14 - Example 2: CART Decision Tree with scikit-learn (Fruit Classifier)
 from sklearn.tree import DecisionTreeClassifier, export_text
 from sklearn.metrics import accuracy_score
 import numpy as np

@@ -1,6 +1,6 @@
 """
 Chapter 2, Example 3: Fraud Detection in Banking
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -19,8 +19,10 @@ have to estimate it.
 Run it:           python ex3_fraud_detection_in_banking.py
 Expected output:  expected_output/ex3_fraud_detection_in_banking.txt
 """
-# Chapter 2 - Example 3: AI in banking - spotting fraudulent transactions (anomaly detection)
-# No fraud labels are used for training: Isolation Forest learns what 'normal' looks like.
+# Chapter 2 - Example 3: AI in banking - spotting fraudulent transactions (anomaly
+# detection)
+# No fraud labels are used for training: Isolation Forest learns what 'normal' looks
+# like.
 import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.metrics import precision_score, recall_score
@@ -28,12 +30,25 @@ from sklearn.metrics import precision_score, recall_score
 rng = np.random.default_rng(0)
 n_normal, n_fraud = 2000, 20
 # Features: amount ($), hour of day, distance from home (km), purchases in last hour
-normal = np.column_stack([rng.lognormal(3.5, 0.6, n_normal), rng.normal(14, 3, n_normal) % 24,
-                          rng.exponential(5, n_normal), rng.poisson(1, n_normal)])
-fraud = np.column_stack([rng.lognormal(6.5, 0.5, n_fraud), rng.normal(3, 1, n_fraud) % 24,
-                         rng.exponential(400, n_fraud), rng.poisson(6, n_fraud)])
+normal = np.column_stack(
+    [
+        rng.lognormal(3.5, 0.6, n_normal),
+        rng.normal(14, 3, n_normal) % 24,
+        rng.exponential(5, n_normal),
+        rng.poisson(1, n_normal),
+    ]
+)
+fraud = np.column_stack(
+    [
+        rng.lognormal(6.5, 0.5, n_fraud),
+        rng.normal(3, 1, n_fraud) % 24,
+        rng.exponential(400, n_fraud),
+        rng.poisson(6, n_fraud),
+    ]
+)
 X = np.vstack([normal, fraud])
-y = np.r_[np.zeros(n_normal), np.ones(n_fraud)]          # used ONLY to check the result
+# used ONLY to check the result
+y = np.r_[np.zeros(n_normal), np.ones(n_fraud)]
 
 # contamination = share of points to flag (1%). In real use this is a guess from
 # domain knowledge; here it is close to the true fraud rate, which helps a lot.
@@ -43,7 +58,9 @@ score = -model.score_samples(X)                          # higher = more unusual
 
 print(f"Transactions: {len(X)}  (true frauds hidden inside: {n_fraud})")
 print(f"Flagged as suspicious: {flag.sum()}")
-print(f"Precision: {precision_score(y, flag):.2f}   Recall: {recall_score(y, flag):.2f}")
+print(
+    f"Precision: {precision_score(y, flag):.2f}   Recall: {recall_score(y, flag):.2f}"
+)
 
 print("\nTop 5 most unusual transactions:")
 print("  amount($)  hour  distance(km)  buys/hr  truly fraud?")

@@ -1,20 +1,21 @@
 """
 Chapter 19, Example 2: L1 vs L2 Regularization — Effect on Weights
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 We train a logistic regression model on a 20-feature dataset where only 5 features are
-truly informative. Without regularization, all 20 weights are non-zero — the model uses
-noise features. L2 regularization shrinks all weights toward zero proportionally. L1
-regularization does something smarter: it pushes weights to exactly zero (sparse
-solution). With strong L1 (C=0.1), 15 features get zeroed out — the model correctly
-identifies the informative features! This is the key practical difference: L2 shrinks,
-L1 selects.
+truly informative. Without regularization, all 20 weights are non-zero, so the model
+also uses the noise features. L2 regularization shrinks all weights toward zero
+proportionally. L1 regularization does something smarter: it pushes weights to exactly
+zero (sparse solution). With strong L1 (C=0.1), 15 features are zeroed out and the model
+keeps only the informative ones. This is the key practical difference: L2 shrinks, L1
+selects.
 
 Run it:           python ex2_l1_vs_l2_regularization_effect_on_weights.py
 Expected output:  expected_output/ex2_l1_vs_l2_regularization_effect_on_weights.txt
 """
+# Chapter 19 - Example 2: L1 vs L2 Regularization - Effect on Weights
 from sklearn.linear_model import LogisticRegression
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split

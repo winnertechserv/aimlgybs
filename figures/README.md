@@ -58,26 +58,26 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 - **Figure 8.3** — [c08_rmse_vs_m.png](png/c08_rmse_vs_m.png): Choosing M: always judge on test (or validation) data, because training error falls no matter what.
 - **Figure 8.4** — [c08_ridge.png](png/c08_ridge.png): Ridge regression on the same degree-9 model (Example 3): a small penalty tames the wiggles, a large one flattens the curve.
 
-## Chapter 9 — Probabilistic Models for Classification I
+## Chapter 9 — Classification I
 
 - **Figure 9.1** — [c09_knn.png](png/c09_knn.png): K-NN for the second test person in Example 1. Each circle holds the K nearest neighbors; changing K changes the vote.
 - **Figure 9.2** — [c09_confusion.png](png/c09_confusion.png): The confusion matrix from Example 2 (cancer screening). Green cells are correct; red cells are the two kinds of mistake.
 - **Figure 9.3** — [c09_mahalanobis.png](png/c09_mahalanobis.png): Why Mahalanobis distance disagrees with plain distance for x2: x2 lies just inside the third adult ring, but well outside the narrow child rings.
 
-## Chapter 10 — Probabilistic Models for Classification II
+## Chapter 10 — Classification II
 
 - **Figure 10.1** — [c10_bayes_1d.png](png/c10_bayes_1d.png): Bayes classifier using height alone. Top: how well each height fits each class. Bottom: Bayes rule turns these into class probabilities that add up to 1.
 - **Figure 10.2** — [c10_priors.png](png/c10_priors.png): When children are much more common, the boundary (gray lines, where the probability is 0.5) moves to the right, so more borderline people are called children.
 - **Figure 10.3** — [c10_gmm.png](png/c10_gmm.png): Example 3: one Gaussian cannot describe class A, which has two clumps; its single wide bell even covers class B. A two-component GMM fits each clump.
 
-## Chapter 11 — Support Vector Machines I
+## Chapter 11 — Linear Classifiers
 
 - **Figure 11.1** — [c11_line_sides.png](png/c11_line_sides.png): The sign of g(x) tells you which side of the line a point is on.
 - **Figure 11.2** — [c11_bayes_cases.png](png/c11_bayes_cases.png): The three covariance cases. The red line is the Bayes decision boundary; the dotted line joins the two class means.
 - **Figure 11.3** — [c11_perceptron.png](png/c11_perceptron.png): The perceptron from Example 2 starting from a deliberately bad line. Every gray line is one update (11 in total) until no point is misclassified.
 - **Figure 11.4** — [c11_xor.png](png/c11_xor.png): The XOR pattern from Example 3. Every straight line leaves points on the wrong side, but a nonlinear method separates the classes easily.
 
-## Chapter 12 — Support Vector Machines II
+## Chapter 12 — Support Vector Machines
 
 - **Figure 12.1** — [c12_max_margin.png](png/c12_max_margin.png): The maximum-margin hyperplane from Example 1. The shaded street is as wide as possible; only the two circled support vectors touch it.
 - **Figure 12.2** — [c12_soft_margin.png](png/c12_soft_margin.png): Soft margin: a small C gives a wide street with many support vectors (circled); a large C squeezes the street to make fewer training errors.
@@ -102,7 +102,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 - **Figure 15.2** — [c15_boosting.png](png/c15_boosting.png): Boosting trains learners one after another. Examples the previous learner got wrong (red) get more weight, so the next learner focuses on them.
 - **Figure 15.3** — [c15_ensemble_size.png](png/c15_ensemble_size.png): Test accuracy on a synthetic 20-feature problem as the ensemble grows. All three ensembles beat a single tree.
 
-## Chapter 16 — Clustering Techniques
+## Chapter 16 — Clustering
 
 - **Figure 16.1** — [c16_kmeans_steps.png](png/c16_kmeans_steps.png): K-means in action: assign every point to its nearest center, move each center to the mean of its points, and repeat until nothing changes.
 - **Figure 16.2** — [c16_dendrogram.png](png/c16_dendrogram.png): A dendrogram from agglomerative clustering. Cutting it at a chosen height gives the clusters, with no need to pick K in advance.
@@ -114,7 +114,7 @@ All 99 figures from the book, grouped by chapter. Every figure is drawn by the P
 - **Figure 17.2** — [c17_activations.png](png/c17_activations.png): Common activation functions. The threshold jumps; sigmoid and tanh bend smoothly; ReLU is zero for negatives and a straight line for positives.
 - **Figure 17.3** — [c17_mlp.png](png/c17_mlp.png): A multilayer feedforward network. Every neuron in one layer connects to every neuron in the next, and signals flow only forward.
 
-## Chapter 18 — MLFFNN II
+## Chapter 18 — Multilayer Feedforward Neural Networks II
 
 - **Figure 18.1** — [c18_backprop.png](png/c18_backprop.png): Backpropagation: signals go forward to produce an error, then the error gradient flows backward so every weight knows which way to move.
 - **Figure 18.2** — [c18_modes.png](png/c18_modes.png): Training loss per epoch for a simple model. Smaller batches make many more updates per epoch, so the loss falls faster per epoch, though each step is noisier.

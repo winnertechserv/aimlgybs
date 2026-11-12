@@ -1,20 +1,21 @@
 """
 Chapter 6, Example 1: Min-Max Normalization
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
 This example walks through Min-Max normalization on a small salesman dataset. We define
 a simple function that takes an array, finds its minimum and maximum, then scales every
 value proportionally into the [0, 1] range. Notice how the raw sales values (₹2,300 to
-₹73,567) and scores (2 to 8) are completely different scales — after normalization, both
+₹73,567) and scores (2 to 8) are completely different scales; after normalization, both
 live in [0, 1]. The last two rows confirm that the range constraint is satisfied.
-Remember: you MUST save the min and max from training and apply them at test time too —
-never recompute from test data.
+Remember to save the min and max from training and apply them at test time too; never
+recompute them from test data.
 
 Run it:           python ex1_min_max_normalization.py
 Expected output:  expected_output/ex1_min_max_normalization.txt
 """
+# Chapter 6 - Example 1: Min-Max Normalization
 import numpy as np
 
 # Salesman dataset: Total Sales (Rs) and Score for Sale
@@ -33,7 +34,9 @@ print("=== Min-Max Normalization ===")
 print(f"Sales  → min: {sales.min():.0f}, max: {sales.max():.0f}")
 print(f"Scores → min: {scores.min():.0f}, max: {scores.max():.0f}")
 print()
-print(f"{'ID':<6} {'Sales (Rs)':>12} {'Score':>8} {'Norm Sales':>12} {'Norm Score':>12}")
+print(
+    f"{'ID':<6} {'Sales (Rs)':>12} {'Score':>8} {'Norm Sales':>12} {'Norm Score':>12}"
+)
 print("-" * 55)
 for i, (s, sc, sn, scn) in enumerate(zip(sales, scores, sales_norm, scores_norm), 1):
     print(f"S{i:03d}   {s:>12.0f} {sc:>8.0f} {sn:>12.4f} {scn:>12.4f}")

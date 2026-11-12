@@ -1,6 +1,6 @@
 """
 Chapter 8, Example 2: Watching Overfitting Happen
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -14,20 +14,24 @@ Run it:           python ex2_watching_overfitting_happen.py
 Expected output:  expected_output/ex2_watching_overfitting_happen.txt
 """
 # Chapter 8 - Example 2: Model complexity vs overfitting
-# Fit polynomials of degree M to 10 noisy points from a sine wave, then test on new points.
+# Fit polynomials of degree M to 10 noisy points from a sine wave, then test on new
+# points.
 import numpy as np
 
 rng = np.random.default_rng(0)
 f = lambda x: np.sin(2 * np.pi * x)            # the true (hidden) curve
 
 def make(n, even=True):
-    x = np.linspace(0, 1, n) if even else rng.uniform(0, 1, n)   # training x evenly spaced
+    # training x evenly spaced
+    x = np.linspace(0, 1, n) if even else rng.uniform(0, 1, n)
     return x, f(x) + rng.normal(0, 0.3, n)
 
 def fit_rmse(x_tr, y_tr, x_te, y_te, M):
     Phi = np.vander(x_tr, M + 1, increasing=True)
     w = np.linalg.lstsq(Phi, y_tr, rcond=None)[0]
-    r = lambda x, y: np.sqrt(np.mean((np.vander(x, M + 1, increasing=True) @ w - y) ** 2))
+    r = lambda x, y: np.sqrt(
+        np.mean((np.vander(x, M + 1, increasing=True) @ w - y) ** 2)
+    )
     return r(x_tr, y_tr), r(x_te, y_te), np.abs(w).max()
 
 x_te, y_te = make(500, even=False)
@@ -37,7 +41,10 @@ print(" M   train RMSE   test RMSE   largest |w|")
 for M in (0, 1, 3, 6, 9):
     tr, te, wmax = fit_rmse(x10, y10, x_te, y_te, M)
     print(f" {M}     {tr:.3f}       {te:8.3f}   {wmax:12.1f}")
-print("M = 9 passes through all 10 points (train error ~0) but is much worse on new data.")
+print(
+    "M = 9 passes through all 10 points (train error ~0) but is much worse on new "
+    "data."
+)
 
 print("\nMore data tames the same complex model (M = 9):")
 for n in (10, 15, 100):

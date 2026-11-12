@@ -1,6 +1,6 @@
 """
 Chapter 26, Example 2: Transformer Parameter-Count Calculator
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -27,7 +27,8 @@ print("  Linear layer in decoder                : d*V\n")
 
 def transformer_params(d, h, N, V, d_ff=None, verbose=True):
     l = d // h                      # per-head dimension
-    d_ff = d_ff or d                # PWFFNN hidden size (formula above assumes d_ff = d)
+    # PWFFNN hidden size (formula above assumes d_ff = d)
+    d_ff = d_ff or d
     enc_mha   = 3 * l * d * h * N
     dec_mha   = 3 * l * d * h * N
     cross_mha = 3 * l * d * h * N
@@ -50,7 +51,10 @@ def transformer_params(d, h, N, V, d_ff=None, verbose=True):
 transformer_params(d=512, h=8, N=6, V=37000)
 big_ff = transformer_params(d=512, h=8, N=6, V=37000, d_ff=2048, verbose=False)
 print(f"With the paper's real PWFFNN size d_ff = 4d = 2048: {big_ff:,} parameters")
-print("(The paper reports about 65 million; it also counts biases and layer-norm weights.)\n")
+print(
+    "(The paper reports about 65 million; it also counts biases and layer-norm "
+    "weights.)\n"
+)
 
 print("=== How parameters scale with each hyperparameter ===\n")
 print(f"{'Config':<38} {'Parameters':>14}")
@@ -73,4 +77,6 @@ print("\n=== Training the Transformer ===")
 print("  * Trained end-to-end with error backpropagation, cross-entropy loss.")
 print("  * Training data for translation: (source sentence, target sentence) pairs.")
 print("  * Desired output at time t: one-hot vector of the t-th target word.")
-print("  * Error is backpropagated through decoder then encoder layers, N, N-1, ..., 1.")
+print(
+    "  * Error is backpropagated through decoder then encoder layers, N, N-1, ..., 1."
+)

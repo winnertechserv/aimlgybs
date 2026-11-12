@@ -1,6 +1,6 @@
 """
 Chapter 27, Example 1: Vision Transformer Patch Embedding
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -59,7 +59,10 @@ pos = np.random.randn(*seq.shape) * 0.05
 seq = seq + pos
 print(f"Step 4 - add position embeddings: {seq.shape}")
 
-print(f"\nFinal sequence fed to the Transformer encoder: {seq.shape[0]} tokens of dim {d}")
+print(
+    f"\nFinal sequence fed to the Transformer encoder: {seq.shape[0]} tokens of dim "
+    f"{d}"
+)
 print(f"  token 0      = [CLS]  (its final output is used for classification)")
 print(f"  tokens 1..{n_patches} = image patches\n")
 print(f"First 6 dims of [CLS] token : {np.round(seq[0][:6], 4)}")

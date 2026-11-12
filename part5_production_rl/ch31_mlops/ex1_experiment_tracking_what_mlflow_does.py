@@ -1,6 +1,6 @@
 """
 Chapter 31, Example 1: Experiment Tracking (What MLflow Does)
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -45,17 +45,39 @@ def log_run(experiment, params, metrics, artifact_bytes):
 
 # ---- Data ----
 data = load_breast_cancer()
-Xtr, Xte, ytr, yte = train_test_split(data.data, data.target, test_size=0.3, random_state=42)
+Xtr, Xte, ytr, yte = train_test_split(
+    data.data, data.target, test_size=0.3, random_state=42
+)
 sc = StandardScaler(); Xtr = sc.fit_transform(Xtr); Xte = sc.transform(Xte)
 print(f"Dataset: {data.data.shape[0]} samples, {data.data.shape[1]} features\n")
 
 # ---- Run several experiments, logging each one ----
 configs = [
-    ("logreg",       LogisticRegression(C=0.1,  max_iter=2000, random_state=0), {"model":"LogisticRegression","C":0.1}),
-    ("logreg",       LogisticRegression(C=1.0,  max_iter=2000, random_state=0), {"model":"LogisticRegression","C":1.0}),
-    ("logreg",       LogisticRegression(C=10.0, max_iter=2000, random_state=0), {"model":"LogisticRegression","C":10.0}),
-    ("random_forest",RandomForestClassifier(n_estimators=50,  random_state=0),  {"model":"RandomForest","n_estimators":50}),
-    ("random_forest",RandomForestClassifier(n_estimators=200, random_state=0),  {"model":"RandomForest","n_estimators":200}),
+    (
+        "logreg",
+        LogisticRegression(C=0.1, max_iter=2000, random_state=0),
+        {"model": "LogisticRegression", "C": 0.1},
+    ),
+    (
+        "logreg",
+        LogisticRegression(C=1.0, max_iter=2000, random_state=0),
+        {"model": "LogisticRegression", "C": 1.0},
+    ),
+    (
+        "logreg",
+        LogisticRegression(C=10.0, max_iter=2000, random_state=0),
+        {"model": "LogisticRegression", "C": 10.0},
+    ),
+    (
+        "random_forest",
+        RandomForestClassifier(n_estimators=50, random_state=0),
+        {"model": "RandomForest", "n_estimators": 50},
+    ),
+    (
+        "random_forest",
+        RandomForestClassifier(n_estimators=200, random_state=0),
+        {"model": "RandomForest", "n_estimators": 200},
+    ),
 ]
 
 print("Running experiments and logging every run...\n")
@@ -67,16 +89,24 @@ for exp, model, params in configs:
         "test_accuracy" : round(accuracy_score(yte, pred_te), 4),
         "test_f1"       : round(f1_score(yte, pred_te), 4),
     }
-    artifact = repr(getattr(model, "coef_", getattr(model, "feature_importances_", ""))).encode()
+    artifact = repr(
+        getattr(model, "coef_", getattr(model, "feature_importances_", ""))
+    ).encode()
     r = log_run(exp, params, metrics, artifact)
-    print(f"  run {r['run_id']} | {exp:<14} | {str(params):<48} | test_acc={metrics['test_accuracy']}")
+    print(
+        f"  run {r['run_id']} | {exp:<14} | {str(params):<48} | "
+        f"test_acc={metrics['test_accuracy']}"
+    )
 
 with open(STORE, "w") as f:
     json.dump(runs, f, indent=2)
 
 # ---- The "MLflow UI": compare runs ----
 print(f"\n=== Run Comparison (what the MLflow UI shows) ===\n")
-print(f"{'run_id':<10}{'experiment':<16}{'train_acc':>10}{'test_acc':>10}{'test_f1':>9}  {'artifact'}")
+print(
+    f"{'run_id':<10}{'experiment':<16}{'train_acc':>10}{'test_acc':>10}{'test_f1':>9}  "
+    f"{'artifact'}"
+)
 print("-" * 78)
 for r in runs:
     print(f"{r['run_id']:<10}{r['experiment']:<16}"

@@ -1,6 +1,6 @@
 """
 Chapter 7, Example 1: Simple Linear Regression from Scratch
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -13,7 +13,8 @@ tests a new person with 10 years' experience: predicted 62.94, actual 64, square
 Run it:           python ex1_simple_linear_regression_from_scratch.py
 Expected output:  expected_output/ex1_simple_linear_regression_from_scratch.txt
 """
-# Chapter 7 - Example 1: Simple linear regression from scratch (method of least squares)
+# Chapter 7 - Example 1: Simple linear regression from scratch (method of least
+# squares)
 # Salary (in $1000s) vs years of experience for 10 employees.
 import numpy as np
 

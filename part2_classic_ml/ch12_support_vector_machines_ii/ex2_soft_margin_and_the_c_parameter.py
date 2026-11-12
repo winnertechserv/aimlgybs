@@ -1,6 +1,6 @@
 """
 Chapter 12, Example 2: Soft Margin and the C Parameter
-Book: AI-Machine Learning: Get Your Base Strong (Abhinav Srivastava)
+Book: AI & Machine Learning: Get Your Base Strong (Abhinav Srivastava)
 
 What this example shows
 -----------------------
@@ -22,15 +22,20 @@ from sklearn.model_selection import train_test_split
 rng = np.random.default_rng(0)
 X = np.vstack([rng.normal([0, 0], 1.0, (150, 2)), rng.normal([2, 2], 1.0, (150, 2))])
 y = np.r_[-np.ones(150), np.ones(150)]              # classes overlap a little
-X_tr, X_te, y_tr, y_te = train_test_split(X, y, test_size=0.4, stratify=y, random_state=0)
+X_tr, X_te, y_tr, y_te = train_test_split(
+    X, y, test_size=0.4, stratify=y, random_state=0
+)
 
 print("    C     margin  support vectors  train acc  test acc  points with xi>1")
 for C in (0.001, 0.01, 0.1, 1, 100):
     m = SVC(kernel="linear", C=C).fit(X_tr, y_tr)
     w, w0 = m.coef_[0], m.intercept_[0]
     xi = np.maximum(0, 1 - y_tr * (X_tr @ w + w0))  # hinge loss of each training point
-    print(f"  {C:<7g}  {1 / np.linalg.norm(w):5.2f}       {len(m.support_):3d}          "
-          f"{m.score(X_tr, y_tr):.3f}     {m.score(X_te, y_te):.3f}       {np.sum(xi > 1):3d}")
+    print(
+        f"  {C:<7g}  {1 / np.linalg.norm(w):5.2f}       {len(m.support_):3d}          "
+        f"{m.score(X_tr, y_tr):.3f}     {m.score(X_te, y_te):.3f}       "
+        f"{np.sum(xi > 1):3d}"
+    )
 print("\nSmall C: wide margin, many support vectors, tolerates errors.")
 print("Large C: narrow margin, tries hard to classify every training point.")
 
